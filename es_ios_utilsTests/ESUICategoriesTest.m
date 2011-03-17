@@ -7,7 +7,6 @@
 //
 
 #import "ESUICategoriesTest.h"
-#import "ESUtils.h"
 
 @implementation ESUICategoriesTest
 

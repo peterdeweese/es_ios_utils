@@ -8,8 +8,6 @@
 
 #import "ESNSCategoriesTest.h"
 
-#import "ESUtils.h"
-
 @implementation NSCategoriesTest
 
 -(void)testNSArrayCategory
