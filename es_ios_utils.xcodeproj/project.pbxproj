@@ -29,7 +29,6 @@
 		A9E6201913327C3E00EAA1C8 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB5F133179DB0021035B /* ESNSCategories.m */; };
 		A9E6201A13327C3E00EAA1C8 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB791331B2540021035B /* ESUICategories.m */; };
 		A9E6201B13327C3E00EAA1C8 /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB751331A62A0021035B /* ESUtils.m */; };
-		A9E6203E13327FDE00EAA1C8 /* es_ios_utils.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A961ABAC13326D4D0021035B /* es_ios_utils.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,19 +40,6 @@
 			remoteInfo = es_ios_utils;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A9E6203A13327DC700EAA1C8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				A9E6203E13327FDE00EAA1C8 /* es_ios_utils.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A961AB321331795A0021035B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -260,7 +246,6 @@
 				A961ABA913326D4D0021035B /* Frameworks */,
 				A961ABAA13326D4D0021035B /* Resources */,
 				A961ABC013326E500021035B /* Headers */,
-				A9E6203A13327DC700EAA1C8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
