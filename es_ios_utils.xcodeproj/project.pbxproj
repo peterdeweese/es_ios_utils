@@ -93,7 +93,6 @@
 		A961AB241331795A0021035B = {
 			isa = PBXGroup;
 			children = (
-				A961AB6B13318C4C0021035B /* SenTestingKit.framework */,
 				A961AB341331795A0021035B /* es_ios_utils */,
 				A961AB451331795B0021035B /* es_ios_utilsTests */,
 				A961AB311331795A0021035B /* Frameworks */,
@@ -113,6 +112,7 @@
 		A961AB311331795A0021035B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A961AB6B13318C4C0021035B /* SenTestingKit.framework */,
 				A961AB321331795A0021035B /* Foundation.framework */,
 				A961AB3D1331795B0021035B /* UIKit.framework */,
 				A961AB401331795B0021035B /* CoreGraphics.framework */,
