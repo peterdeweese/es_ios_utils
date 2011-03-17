@@ -1,0 +1,6 @@
+To use the static library with an Xcode 4 project, add '-ObjC' to 'Other Linker Flags'.  In Xcode 3.x, use '-all_load' or '-force_load'.  Without this flag, categories may not link properly.  If you include the source directly, this step is not necessicary.
+
+ESUtils.h imports all of the utility classes, so to use add:
+
+#import "ESUtils.h"
+

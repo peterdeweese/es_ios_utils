@@ -1,0 +1,38 @@
+//
+//  NSCategories.h
+//  es_ios_utils
+//
+//  Created by Peter DeWeese on 3/16/11.
+//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+// The class is here to force the linker to load categories
+@interface ESNSCategories:NSObject
+{
+}
+@end
+
+@interface NSArray(ESUtils)
+    @property(readonly) id   firstObject;
+    @property(readonly) BOOL empty;
+@end
+
+@interface NSSet(ESUtils)
+    @property(readonly) BOOL empty;
+@end
+
+// To enqueue or push, use addObject:
+@interface NSMutableArray(ESUtils)
+    // Removes and returns object from the beginning of the array, or nil if empty
+    - (id)dequeue;
+
+    // Removes and returns object from the end of the array, or nil if empty
+    - (id)pop;
+@end
+
+@interface NSString (ESUtils)
+    @property(readonly) NSString *trimmed;
+    @property(readonly) BOOL      empty;
+@end
