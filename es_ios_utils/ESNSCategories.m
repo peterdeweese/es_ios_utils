@@ -50,7 +50,9 @@
 {
     // Create a new instance of the entity managed by the fetched results controller.
     NSManagedObject *new = [NSEntityDescription insertNewObjectForEntityForName:self.fetchRequest.entity.name inManagedObjectContext:self.managedObjectContext];
-        
+    
+    configure(new);
+    
     if(![self.managedObjectContext saveAndDoOnError:doOnError])
         [new release], new=nil;
     
