@@ -16,6 +16,7 @@
 
 @end
 
+typedef void(^ESUICellBlock)(UITableViewCell*);
 
 @interface UIView (ESUtils)
     // These sizing convenience methods manipulate the frame.
@@ -34,5 +35,5 @@
     @property(readonly) BOOL empty;
     - (UITableViewCell*)cellForRow:(int)r inSection:(int)s;
     - (UITableViewCell*)cellForRow:(int)r;
-    - (void)doForEachCellInSection:(int)s action:(void(^)(UITableViewCell *c))action;
+    - (void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
 @end

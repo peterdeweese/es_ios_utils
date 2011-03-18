@@ -32,6 +32,9 @@
 		A961ABC713326F290021035B /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB791331B2540021035B /* ESUICategories.m */; };
 		A961ABC813326F290021035B /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB751331A62A0021035B /* ESUtils.m */; };
 		A961AC00133271250021035B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A961ABFF133271250021035B /* UIKit.framework */; };
+		A97441201333DD0800B22D58 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A974411F1333DD0800B22D58 /* README */; };
+		A97441251333E1BF00B22D58 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97441241333E1BF00B22D58 /* CoreData.framework */; };
+		A97441271333E1FF00B22D58 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97441261333E1FF00B22D58 /* CoreData.framework */; };
 		A9E6201613327AE500EAA1C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E6201513327AE500EAA1C8 /* Foundation.framework */; };
 		A9E6201913327C3E00EAA1C8 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB5F133179DB0021035B /* ESNSCategories.m */; };
 		A9E6201A13327C3E00EAA1C8 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB791331B2540021035B /* ESUICategories.m */; };
@@ -86,6 +89,9 @@
 		A961ABB713326D4D0021035B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A961ABB913326D4D0021035B /* es_ios_utils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "es_ios_utils-Prefix.pch"; sourceTree = "<group>"; };
 		A961ABFF133271250021035B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A974411F1333DD0800B22D58 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		A97441241333E1BF00B22D58 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A97441261333E1FF00B22D58 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A9E6201513327AE500EAA1C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -94,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97441271333E1FF00B22D58 /* CoreData.framework in Frameworks */,
 				A961AB6C13318C4C0021035B /* SenTestingKit.framework in Frameworks */,
 				A961AB3E1331795B0021035B /* UIKit.framework in Frameworks */,
 				A961AB3F1331795B0021035B /* Foundation.framework in Frameworks */,
@@ -105,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97441251333E1BF00B22D58 /* CoreData.framework in Frameworks */,
 				A9E6201613327AE500EAA1C8 /* Foundation.framework in Frameworks */,
 				A961AC00133271250021035B /* UIKit.framework in Frameworks */,
 			);
@@ -121,6 +129,7 @@
 				A961ABB413326D4D0021035B /* Supporting Files */,
 				A961AB311331795A0021035B /* Frameworks */,
 				A961AB301331795A0021035B /* Products */,
+				A974411F1333DD0800B22D58 /* README */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +145,8 @@
 		A961AB311331795A0021035B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A97441261333E1FF00B22D58 /* CoreData.framework */,
+				A97441241333E1BF00B22D58 /* CoreData.framework */,
 				A9E6201513327AE500EAA1C8 /* Foundation.framework */,
 				A961ABFF133271250021035B /* UIKit.framework */,
 				A961AB6B13318C4C0021035B /* SenTestingKit.framework */,
@@ -315,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A961ABB813326D4D0021035B /* InfoPlist.strings in Resources */,
+				A97441201333DD0800B22D58 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

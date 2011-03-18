@@ -54,8 +54,8 @@
 
 @implementation UITextField (ESUtils)
 
-// Perhaps a private ivar, but at least one dev has had luck getting it through Apple: http://stackoverflow.com/questions/1340224/iphone-uitextfield-change-placeholder-text-color
-
+// Uses a private ivar, but Apple reviews allow it in Veporter and other apps:
+//     http://stackoverflow.com/questions/1340224/iphone-uitextfield-change-placeholder-text-color
 - (UIColor*)placeholderColor
 {
     return [self valueForKey:@"_placeholderLabel.textColor"];
@@ -92,7 +92,7 @@
     return [self cellForRow:r inSection:0];
 }
 
-- (void)doForEachCellInSection:(int)s action:(void(^)(UITableViewCell *c))action
+- (void)doForEachCellInSection:(int)s action:(ESUICellBlock)action
 {
     for(int r=0; r<[self numberOfRowsInSection:s]; r++)
         action([self cellForRow:r inSection:s]);

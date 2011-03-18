@@ -22,13 +22,12 @@
     STAssertTrue(emptyArray.empty, @"Array should be empty.");
 }
 
--(void)testNSSetCategory
+-(void)testNSErrorCategory
 {
-    NSSet *set = $set(@"item1", @"item2");
-    NSSet *emptySet = NSSet.set;
+    NSError *error = [NSError errorWithDomain:@"test" code:0 userInfo:nil];
     
-    STAssertFalse(set.empty, @"Set should not be empty.");
-    STAssertTrue(emptySet.empty, @"Set should be empty.");
+    STAssertNoThrow([error log], @"Should not throw error.");
+    STAssertNoThrow([error logWithMessage:@"prefix"], @"Should not throw error.");
 }
 
 -(void)testNSMutableArrayCategory
@@ -42,6 +41,15 @@
     STAssertEqualObjects(last, ma.pop, @"Pop should return last element");
     STAssertEqualObjects(first, ma.dequeue, @"Dequeue should return first element");
     STAssertTrue(ma.count==1, @"Array should have 1 element left after a pop and dequeue.");
+}
+
+-(void)testNSSetCategory
+{
+    NSSet *set = $set(@"item1", @"item2");
+    NSSet *emptySet = NSSet.set;
+    
+    STAssertFalse(set.empty, @"Set should not be empty.");
+    STAssertTrue(emptySet.empty, @"Set should be empty.");
 }
 
 -(void)testNSStringCategory

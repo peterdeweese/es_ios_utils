@@ -5,4 +5,5 @@ To use the static library with an Xcode 4 project, add '-ObjC' to 'Other Linker 
 ESDynamicMethodResolver allows you to 
 
 TODO: Add application tests for UI categories and ESBoundUserDefaults.
+TODO: Add application tests for core data.
 TODO: test framework product.

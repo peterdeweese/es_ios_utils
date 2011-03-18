@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "ESUtils.h"
 
 // The class is here to force the linker to load categories
 @interface ESNSCategories:NSObject
@@ -14,13 +16,27 @@
 }
 @end
 
+typedef void(^EmptyBlock)();
+typedef void(^ErrorBlock)(NSError*);
+typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
+
 @interface NSArray(ESUtils)
     @property(readonly) id   firstObject;
     @property(readonly) BOOL empty;
 @end
 
-@interface NSSet(ESUtils)
-    @property(readonly) BOOL empty;
+@interface NSError(ESUtils)
+    -(void)log;
+    -(void)logWithMessage:(NSString*)message;
+@end
+
+@interface NSFetchedResultsController(ESUtils)
+    // Create and save a new instance of the entity managed by the fetched results controller.
+    -(NSManagedObject*)createAndSaveManagedObject:(ESNSManagedObjectBlock)configure doOnError:(ErrorBlock)e;
+@end
+
+@interface NSManagedObjectContext(ESUtils)
+- (BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
 @end
 
 // To enqueue or push, use addObject:
@@ -30,6 +46,10 @@
 
     // Removes and returns object from the end of the array, or nil if empty
     - (id)pop;
+@end
+
+@interface NSSet(ESUtils)
+    @property(readonly) BOOL empty;
 @end
 
 @interface NSString (ESUtils)
