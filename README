@@ -1,9 +1,0 @@
-To use the static library with an Xcode 4 project, add '-ObjC' to 'Other Linker Flags'.  In Xcode 3.x, use '-all_load' or '-force_load'.  Without this flag, categories may not link properly.  If you include the source directly, this step is not necessicary.
-
-#import "ESUtils.h" imports all of the utility categories.  Include in your .pch file.
-
-ESDynamicMethodResolver allows you to 
-
-TODO: Add application tests for UI categories and ESBoundUserDefaults.
-TODO: Add application tests for core data.
-TODO: test framework product.

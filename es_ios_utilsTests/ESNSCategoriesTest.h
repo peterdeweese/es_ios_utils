@@ -14,7 +14,9 @@
 {
 }
 
+-(void)testIsEmpty;
 -(void)testNSArrayCategory;
+-(void)testNSErrorCategory;
 -(void)testNSSetCategory;
 -(void)testNSMutableArrayCategory;
 -(void)testNSStringCategory;

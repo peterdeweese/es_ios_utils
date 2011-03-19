@@ -10,16 +10,41 @@
 
 @implementation NSCategoriesTest
 
+-(void)testIsEmpty
+{
+    NSArray *emptyArray = NSArray.array;
+    NSArray *array = $array(@"first", @"second", @"third", nil);
+    STAssertFalse(array.isEmpty, @"Array should not be empty.");
+    STAssertTrue(emptyArray.isEmpty, @"Array should be empty.");
+    STAssertTrue(array.isNotEmpty, @"Array should not be empty");
+    STAssertFalse(emptyArray.isNotEmpty, @"Array should be empty");
+    
+    STAssertTrue(@"".isEmpty, @"String should be empty.");
+    STAssertFalse(@"  ".isEmpty, @"String with whitespace should not be empty.");
+    STAssertFalse(@"".isNotEmpty, @"String should be empty.");
+    STAssertTrue(@"  ".isNotEmpty, @"String with whitespace should not be empty.");
+    
+    NSSet *set = $set(@"item1", @"item2");
+    NSSet *emptySet = NSSet.set;
+    STAssertFalse(set.isEmpty, @"Set should not be empty.");
+    STAssertTrue(emptySet.isEmpty, @"Set should be empty.");
+    STAssertTrue(set.isNotEmpty, @"Set should not be empty.");
+    STAssertFalse(emptySet.isNotEmpty, @"Set should be empty.");
+    
+    STAssertTrue([NSNull null].isEmpty, @"NSNull should be empty.");
+    STAssertFalse([NSNull null].isNotEmpty, @"NSNull should be empty.");
+    
+    NSArray *nilArray = nil;
+    STAssertFalse(nilArray.isEmpty, @"I wish that nil empty should be considered true, but alas it will not.");
+    STAssertFalse(nilArray.isNotEmpty, @"Nil should not be not empty.");
+}
+
 -(void)testNSArrayCategory
 {
     NSString *first = @"first";
     NSArray *array = $array(first, @"second", @"third", nil);
-    NSArray *emptyArray = NSArray.array;
     
     STAssertEqualObjects(array.firstObject, first, @"Should return first element.");
-    
-    STAssertFalse(array.empty, @"Array should not be empty.");
-    STAssertTrue(emptyArray.empty, @"Array should be empty.");
 }
 
 -(void)testNSErrorCategory
@@ -45,19 +70,15 @@
 
 -(void)testNSSetCategory
 {
-    NSSet *set = $set(@"item1", @"item2");
-    NSSet *emptySet = NSSet.set;
-    
-    STAssertFalse(set.empty, @"Set should not be empty.");
-    STAssertTrue(emptySet.empty, @"Set should be empty.");
+    // see testEmpty
 }
 
 -(void)testNSStringCategory
 {
-    STAssertEqualObjects(@"trimmed", @"\t trimmed  ".trimmed, @"Trim should remove whitespace.");
-    STAssertTrue(@"".empty, @"String should be empty.");
-    STAssertTrue(@"  ".empty, @"String with only whitespace should be empty.");
-    STAssertFalse(@" dsd ".empty, @"String should not be considered empty.");
+    STAssertEqualObjects(@"strip", @"\t strip\n  ".strip, @"Strip should remove whitespace.");
+    STAssertTrue(@"   \t\n".isBlank, @"String should be considered blank.");
+    STAssertTrue(@"".isBlank, @"String should be considered blank.");
+    STAssertFalse(@" qwer ".isBlank, @"String should not be considered blank.");
 }
 
 @end

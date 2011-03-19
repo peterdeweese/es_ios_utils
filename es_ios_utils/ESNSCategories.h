@@ -16,13 +16,15 @@
 }
 @end
 
+//TODO: How can I externilize these block type definitions?
 typedef void(^EmptyBlock)();
 typedef void(^ErrorBlock)(NSError*);
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)
     @property(readonly) id   firstObject;
-    @property(readonly) BOOL empty;
+    @property(readonly) BOOL isEmpty;
+    @property(readonly) BOOL isNotEmpty;
 @end
 
 @interface NSError(ESUtils)
@@ -48,11 +50,19 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     - (id)pop;
 @end
 
+@interface NSNull(ESUtils)
+    @property(readonly) BOOL isEmpty;
+    @property(readonly) BOOL isNotEmpty;
+@end
+
 @interface NSSet(ESUtils)
-    @property(readonly) BOOL empty;
+    @property(readonly) BOOL isEmpty;
+    @property(readonly) BOOL isNotEmpty;
 @end
 
 @interface NSString (ESUtils)
-    @property(readonly) NSString *trimmed;
-    @property(readonly) BOOL      empty;
+    @property(readonly) NSString *strip;
+    @property(readonly) BOOL      isBlank;
+    @property(readonly) BOOL      isEmpty;
+    @property(readonly) BOOL      isNotEmpty;
 @end

@@ -21,9 +21,14 @@
     return [self objectAtIndex:0];
 }
 
--(BOOL)empty
+-(BOOL)isEmpty
 {
     return self.count == 0;
+}
+
+-(BOOL)isNotEmpty
+{
+    return self.count > 0;
 }
 
 @end
@@ -103,11 +108,31 @@
 @end
 
 
+@implementation NSNull(ESUtils)
+
+-(BOOL)isEmpty
+{
+    return YES;
+}
+
+-(BOOL)isNotEmpty
+{
+    return NO;
+}
+
+@end
+
+
 @implementation NSSet(ESUtils)
 
--(BOOL)empty
+-(BOOL)isEmpty
 {
     return self.count == 0;
+}
+
+-(BOOL)isNotEmpty
+{
+    return self.count > 0;
 }
 
 @end
@@ -115,14 +140,24 @@
 
 @implementation NSString(ESUtils)
 
--(NSString*)trimmed
+-(NSString*)strip
 {
-    return [self stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet];
+    return [self stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
 }
 
--(BOOL)empty
+-(BOOL)isEmpty
 {
-    return self.trimmed.length == 0;
+    return self.length == 0;
+}
+
+-(BOOL)isNotEmpty
+{
+    return self.length > 0;
+}
+
+-(BOOL)isBlank
+{
+    return self.isEmpty || self.strip.isEmpty;
 }
 
 @end
