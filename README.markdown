@@ -19,19 +19,25 @@ There is no target for this right now, but it can be done.  When including the c
 
 Features
 -----------
-See ESNSCategories.h and ESUICategories.h.
+See ESNSCategories.h and ESUICategories.h for more methods.
 
 ###isEmpty and isNotEmpty properties
 Implemented for NSArray, NSNull – which is always empty, NSSet, and NSString.  nil.isEmpty returns false, so a full check requires `!s || s.isEmpty`. Preferably, `nil.isNotEmpty` returns false so no existance check is necessicary.
-
-###ESDynamicMethodResolver
-Use @dynamic to conveniently bind properties files, xml documents, etc.
 
 ###macros
 Very common and generic operations are included as macros for brevity, prefixed with '$'.  Examples:
 `$array(object1, object2, nil)`
 `$set(object1, object2, nil)`
 `$format(@"My Format: %i", 3)`
+
+###ESDynamicMethodResolver
+Use @dynamic to conveniently bind properties files, xml documents, etc.  See ESBoundUserDefaults.h for an example.
+
+###UI
+UIViews frames edition used to require recreation of a CGRect or multiple lines to get a rect from the view, manipulate it, and then set it again. Now you can use a property directly from the UIView, like `myView.x += 20`.
+
+###Core Data
+Blocks are available for error handling and new object configuration.
 
 To Do
 ---------
