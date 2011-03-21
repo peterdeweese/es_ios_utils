@@ -57,6 +57,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSSet(ESUtils)
+    @property(readonly) id   firstObject; //Gets the first object with no guaranteed order.
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;
 @end
