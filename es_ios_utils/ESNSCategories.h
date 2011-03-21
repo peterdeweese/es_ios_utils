@@ -38,7 +38,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSManagedObjectContext(ESUtils)
-- (BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
+    -(NSManagedObject*)createAndSaveManagedObjectNamed:(NSString*)name configure:(ESNSManagedObjectBlock)configure doOnError:(ErrorBlock)doOnError;
+    - (BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
 @end
 
 // To enqueue or push, use addObject:

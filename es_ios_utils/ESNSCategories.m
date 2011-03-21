@@ -53,21 +53,30 @@
 
 -(NSManagedObject*)createAndSaveManagedObject:(ESNSManagedObjectBlock)configure doOnError:(ErrorBlock)doOnError
 {
-    // Create a new instance of the entity managed by the fetched results controller.
-    NSManagedObject *new = [NSEntityDescription insertNewObjectForEntityForName:self.fetchRequest.entity.name inManagedObjectContext:self.managedObjectContext];
-    
-    configure(new);
-    
-    if(![self.managedObjectContext saveAndDoOnError:doOnError])
-        [new release], new=nil;
-    
-    return new;
+    return [self.managedObjectContext createAndSaveManagedObjectNamed:self.fetchRequest.entity.name 
+                                                            configure:configure
+                                                            doOnError:doOnError];
 }
 
 @end
 
 
 @implementation NSManagedObjectContext(ESUtils)
+
+-(NSManagedObject*)createAndSaveManagedObjectNamed:(NSString*)name
+                                         configure:(ESNSManagedObjectBlock)configure
+                                         doOnError:(ErrorBlock)doOnError
+{
+    // Create a new instance of the entity managed by the fetched results controller.
+    NSManagedObject *new = [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
+    
+    configure(new);
+    
+    if(![self saveAndDoOnError:doOnError])
+        [new release], new=nil;
+    
+    return new;
+}
 
 -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError
 {

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 // The class is here to force the linker to load categories
 @interface ESUICategories : NSObject
@@ -17,6 +18,11 @@
 @end
 
 typedef void(^ESUICellBlock)(UITableViewCell*);
+
+@interface UIApplication(ESUtils)
+    +(NSManagedObjectContext*)managedObjectContext;
+@end
+
 
 @interface UIView (ESUtils)
     // These sizing convenience methods manipulate the frame.

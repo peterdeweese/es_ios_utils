@@ -9,11 +9,6 @@
 #import "ESUICategories.h"
 
 
-@implementation ESUICategories
-
-@end
-
-
 @implementation UIView (ESUtils)
 
 - (float)width { return self.frame.size.width; }

@@ -35,6 +35,8 @@
 		A97441251333E1BF00B22D58 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97441241333E1BF00B22D58 /* CoreData.framework */; };
 		A97441271333E1FF00B22D58 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97441261333E1FF00B22D58 /* CoreData.framework */; };
 		A974413213344A4100B22D58 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = A974413113344A4100B22D58 /* README.markdown */; };
+		A9DA7F4A1337D7E500D99F13 /* ESApplicationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DA7F481337D7E500D99F13 /* ESApplicationDelegate.h */; };
+		A9DA7F4B1337D7E500D99F13 /* ESApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA7F491337D7E500D99F13 /* ESApplicationDelegate.m */; };
 		A9E6201613327AE500EAA1C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E6201513327AE500EAA1C8 /* Foundation.framework */; };
 		A9E6201913327C3E00EAA1C8 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB5F133179DB0021035B /* ESNSCategories.m */; };
 		A9E6201A13327C3E00EAA1C8 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A961AB791331B2540021035B /* ESUICategories.m */; };
@@ -92,6 +94,8 @@
 		A97441241333E1BF00B22D58 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A97441261333E1FF00B22D58 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A974413113344A4100B22D58 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		A9DA7F481337D7E500D99F13 /* ESApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApplicationDelegate.h; sourceTree = "<group>"; };
+		A9DA7F491337D7E500D99F13 /* ESApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApplicationDelegate.m; sourceTree = "<group>"; };
 		A9E6201513327AE500EAA1C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -161,6 +165,8 @@
 		A961AB341331795A0021035B /* es_ios_utils */ = {
 			isa = PBXGroup;
 			children = (
+				A9DA7F481337D7E500D99F13 /* ESApplicationDelegate.h */,
+				A9DA7F491337D7E500D99F13 /* ESApplicationDelegate.m */,
 				A961AB5E133179DB0021035B /* ESNSCategories.h */,
 				A961AB5F133179DB0021035B /* ESNSCategories.m */,
 				A961AB781331B2540021035B /* ESUICategories.h */,
@@ -245,6 +251,7 @@
 				A961ABC313326E7A0021035B /* ESUICategories.h in Headers */,
 				A90FEB3613328BFD007726B6 /* ESBoundUserDefaults.h in Headers */,
 				A90FEB3813328BFD007726B6 /* ESDynamicMethodResolver.h in Headers */,
+				A9DA7F4A1337D7E500D99F13 /* ESApplicationDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +382,7 @@
 				A961ABC813326F290021035B /* ESUtils.m in Sources */,
 				A90FEB3713328BFD007726B6 /* ESBoundUserDefaults.m in Sources */,
 				A90FEB3913328BFD007726B6 /* ESDynamicMethodResolver.m in Sources */,
+				A9DA7F4B1337D7E500D99F13 /* ESApplicationDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
