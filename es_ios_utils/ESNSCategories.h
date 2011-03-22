@@ -34,21 +34,21 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSFetchedResultsController(ESUtils)
     // Create and save a new instance of the entity managed by the fetched results controller.
-    -(NSManagedObject*)createAndSaveManagedObject:(ESNSManagedObjectBlock)configure doOnError:(ErrorBlock)e;
+    -(NSManagedObject*)createManagedObject;
 @end
 
 @interface NSManagedObjectContext(ESUtils)
-    -(NSManagedObject*)createAndSaveManagedObjectNamed:(NSString*)name configure:(ESNSManagedObjectBlock)configure doOnError:(ErrorBlock)doOnError;
-    - (BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
+    -(NSManagedObject*)createManagedObjectNamed:(NSString*)name;
+    -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
 @end
 
 // To enqueue or push, use addObject:
 @interface NSMutableArray(ESUtils)
     // Removes and returns object from the beginning of the array, or nil if empty
-    - (id)dequeue;
+    -(id)dequeue;
 
     // Removes and returns object from the end of the array, or nil if empty
-    - (id)pop;
+    -(id)pop;
 @end
 
 @interface NSNull(ESUtils)
