@@ -27,6 +27,11 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) BOOL isNotEmpty;
 @end
 
+@interface NSDictionary(ESUtils)
+    @property(readonly) BOOL isEmpty;
+    @property(readonly) BOOL isNotEmpty;
+@end
+
 @interface NSError(ESUtils)
     -(void)log;
     -(void)logWithMessage:(NSString*)message;
@@ -35,6 +40,13 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSFetchedResultsController(ESUtils)
     // Create and save a new instance of the entity managed by the fetched results controller.
     -(NSManagedObject*)createManagedObject;
+@end
+
+//  Created by Scott Means on 1/5/11.
+//  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/
+//  Released into the public domain without warranty.
+@interface NSManagedObject(ESUtils)
+    @property (nonatomic, readonly) NSString *xmlString;
 @end
 
 @interface NSManagedObjectContext(ESUtils)
@@ -62,8 +74,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSString (ESUtils)
-    @property(readonly) NSString *strip;
-    @property(readonly) BOOL      isBlank;
-    @property(readonly) BOOL      isEmpty;
-    @property(readonly) BOOL      isNotEmpty;
+    @property(nonatomic, readonly) NSData   *dataWithUTF8;
+    @property(nonatomic, readonly) NSString *strip;
+    @property(nonatomic, readonly) BOOL      isBlank;
+    @property(nonatomic, readonly) BOOL      isEmpty;
+    @property(nonatomic, readonly) BOOL      isNotEmpty;
 @end

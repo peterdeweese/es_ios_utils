@@ -34,6 +34,21 @@
 @end
 
 
+@implementation NSDictionary(ESUtils)
+
+-(BOOL)isEmpty
+{
+    return self.count == 0;
+}
+
+-(BOOL)isNotEmpty
+{
+    return self.count > 0;
+}
+
+@end
+
+
 @implementation NSError(ESUtils)
 
 -(void)log
@@ -54,6 +69,84 @@
 -(NSManagedObject*)createManagedObject
 {
     return (NSManagedObject*)[self.managedObjectContext createManagedObjectNamed:self.fetchRequest.entity.name];
+}
+
+@end
+
+
+@implementation NSManagedObject(ESUtils)
+
+//  Created by Scott Means on 1/5/11.
+//  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/
+//  Released into the public domain without warranty.
+//  TODO: a libxml or nsxml implementation may be more appropriate.
+//  Modified to include one-to-one relationships and to prevent inverses causing circular references.
+- (NSString *)xmlString:(NSMutableSet*)referenced
+{
+    if([referenced containsObject:self])
+        return [NSString string];
+    else
+        [referenced addObject:self];
+    
+    NSEntityDescription *ed = self.entity;
+    NSURL *uri = self.objectID.URIRepresentation;
+    NSMutableString *x = [NSMutableString stringWithFormat:@"<%@ id=\"/%@%@\"",
+                          ed.name.lowercaseString, uri.host, uri.path];
+    
+    for (NSString *a in ed.attributesByName.allKeys)
+    {
+        id value = [self valueForKey:a];
+        
+        if (value)
+        {
+            if ([value isKindOfClass:NSString.class])
+                [x appendFormat:@" %@=\"%@\"", a, value];
+            else
+            {
+                if (![value respondsToSelector:@selector(stringValue)])
+                    NSLog(@"no stringValue");
+
+                [x appendFormat:@" %@=\"%@\"", a, [value stringValue]];
+            }
+        }
+    }
+    
+    bool hasChildren = ed.relationshipsByName.isNotEmpty;
+
+    [x appendString:hasChildren ? @">" : @"/>"];
+    
+    for (NSString *r in ed.relationshipsByName)
+    {
+        NSRelationshipDescription *rd = [ed.relationshipsByName objectForKey:r];
+
+        if(rd.isToMany)
+        {
+            hasChildren = YES;
+            [x appendFormat:@"<%@>", r];
+            
+            for (NSManagedObject *c in [self valueForKey:r])
+                [x appendString:[c xmlString:referenced]];
+            
+            [x appendFormat:@"", r];
+        }
+        else
+        {
+            hasChildren = YES;
+            NSManagedObject *c = [self valueForKey:r];
+            [x appendString:[c xmlString:referenced]];
+        }
+    }
+    
+    if (hasChildren)
+        [x appendFormat:@"</%@>", ed.name.lowercaseString];
+    
+    return x;
+}
+
+//Prevents circular dependencies.
+- (NSString*)xmlString
+{
+    return [self xmlString:[[[NSMutableSet alloc] init] autorelease]];
 }
 
 @end
@@ -137,6 +230,11 @@
 
 
 @implementation NSString(ESUtils)
+
+-(NSData*)dataWithUTF8
+{
+    return [self dataUsingEncoding:NSUTF8StringEncoding];
+}
 
 -(NSString*)strip
 {
