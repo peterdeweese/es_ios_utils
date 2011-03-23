@@ -22,7 +22,7 @@ Features
 See ESNSCategories.h and ESUICategories.h for more methods.
 
 ###isEmpty and isNotEmpty properties
-Implemented for NSArray, NSNull – which is always empty, NSSet, and NSString.  nil.isEmpty returns false, so a full check requires `!s || s.isEmpty`. Preferably, `nil.isNotEmpty` returns false so no existance check is necessicary.
+Implemented for NSArray, NSDictionary, NSNull – which is always empty, NSSet, and NSString.  nil.isEmpty returns false, so a full check requires `!s || s.isEmpty`. Preferably, `nil.isNotEmpty` returns false so no existance check is necessicary.
 
 ###macros
 Very common and generic operations are included as macros for brevity, prefixed with '$'.  Examples:
