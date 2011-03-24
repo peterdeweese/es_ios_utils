@@ -1,6 +1,6 @@
 //
 //  ESDynamicMethodResolver.h
-//  NVSL Scorer
+//  es_ios_utils
 //
 //  Use @dynamic to bind ivars to dynamic funcationality, such as in ESBoundUserDefaults.
 //

@@ -1,9 +1,9 @@
 //
 //  ESViewDataMapper.h
-//  cap
+//  es_ios_utils
 //
 //  Created by Peter DeWeese on 3/21/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
