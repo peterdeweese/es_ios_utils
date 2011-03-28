@@ -30,6 +30,7 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
     @property(assign) float height;
     @property(assign) float x;
     @property(assign) float y;
+    @property(assign) CGSize size;
 @end
 
 @interface UITextField (ESUtils)
