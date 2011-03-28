@@ -68,6 +68,16 @@
     STAssertTrue(ma.count==1, @"Array should have 1 element left after a pop and dequeue.");
 }
 
+-(void)testNSMutableDictionaryCategory
+{
+    NSString *value = @"testValue";
+    NSObject *key = [[NSObject alloc] init];
+    NSMutableDictionary *d = [NSMutableDictionary dictionaryWithCapacity:1];
+    
+    STAssertNoThrow([d setObject:value forKeyObject:key], @"Dictionary set with object key should not throw an error.");
+    STAssertEquals([d objectForKeyObject:key], value, @"value should equal entered value");
+}
+
 -(void)testNSSetCategory
 {
     // see testEmpty
