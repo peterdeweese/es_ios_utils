@@ -46,6 +46,11 @@
     return self.count > 0;
 }
 
+-(id)objectForKeyObject:(id)key;
+{
+    return [self objectForKey:[NSValue valueWithNonretainedObject:key]];
+}
+
 @end
 
 
@@ -194,6 +199,16 @@
     id object = [self lastObject];
     [self removeLastObject];
     return object;
+}
+
+@end
+
+
+@implementation NSMutableDictionary(ESUtils)
+
+-(void)setObject:(id)value forKeyObject:(id)key
+{
+    [self setObject:value forKey:[NSValue valueWithNonretainedObject:key]];
 }
 
 @end

@@ -30,6 +30,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSDictionary(ESUtils)
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;
+
+    //Wraps key object in an NSValue.
+    -(id)objectForKeyObject:(id)key;
 @end
 
 @interface NSError(ESUtils)
@@ -61,6 +64,12 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
     // Removes and returns object from the end of the array, or nil if empty
     -(id)pop;
+@end
+
+@interface NSMutableDictionary(ESUtils)
+    // Wraps key in +NSValue valueWithNonretainedObject:
+    // Only use for keys that are not supported by setValue:forKey:
+    -(void)setObject:(id)value forKeyObject:(id)key;
 @end
 
 @interface NSNull(ESUtils)
