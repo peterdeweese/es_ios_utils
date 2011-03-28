@@ -33,11 +33,11 @@
 -(void)addView:(UIView*)view object:(id)object keyPath:(NSString*)keyPath
 {
     if(!maps)
-        self.maps = [[NSMutableArray alloc] init];
+        self.maps = [[[NSMutableArray alloc] init] autorelease];
             
     if(view)
     {
-        ESViewDataMap *m = [ESViewDataMap alloc];
+        ESViewDataMap *m = [[ESViewDataMap alloc] autorelease];
         [self.maps addObject:m];
         
         m.view = view;
