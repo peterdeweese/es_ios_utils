@@ -25,6 +25,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) id   firstObject;
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;
+
+    //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
+    -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
 @end
 
 @interface NSDictionary(ESUtils)

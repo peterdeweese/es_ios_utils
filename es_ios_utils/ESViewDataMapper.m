@@ -61,6 +61,8 @@
             ((UITextField*)m.view).text = value;
         else if([m.view isKindOfClass:UITextView.class])
             ((UITextView*)m.view).text = value;
+        else if([m.view isKindOfClass:UILabel.class])
+            ((UILabel*)m.view).text = value;
         else if([m.view isKindOfClass:UIButton.class])
             [(UIButton*)m.view setTitle:value forState:UIControlStateNormal];
         else
@@ -78,6 +80,8 @@
             value = ((UITextField*)m.view).text;
         else if([m.view isKindOfClass:UITextView.class])
             value = ((UITextView*)m.view).text;
+        else if([m.view isKindOfClass:UILabel.class])
+            value = ((UILabel*)m.view).text;
         else if([m.view isKindOfClass:UIButton.class])
             value = [(UIButton*)m.view titleForState:UIControlStateNormal];
         else

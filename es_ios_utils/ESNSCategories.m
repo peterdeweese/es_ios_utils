@@ -31,6 +31,17 @@
     return self.count > 0;
 }
 
+-(NSArray*)filteredArrayUsingSet:(NSSet*)set
+{
+    NSMutableArray *a = [[[NSMutableArray alloc] initWithCapacity:set.count] autorelease];
+    
+    for(id o in self)
+        if([set containsObject:o])
+            [a addObject:o];
+    
+    return a.copy;
+}
+
 @end
 
 

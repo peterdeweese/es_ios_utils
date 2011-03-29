@@ -42,9 +42,19 @@
 -(void)testNSArrayCategory
 {
     NSString *first = @"first";
-    NSArray *array = $array(first, @"second", @"third", nil);
+    NSString *second = @"second";
+    NSString *third = @"third";
+    NSString *fourth = @"fourth";
+    NSArray *array = $array(first, second, third, fourth, nil);
     
     STAssertEqualObjects(array.firstObject, first, @"Should return first element.");
+    
+    array = $array(first, second, third, fourth, second, nil);
+    NSArray *result = [array filteredArrayUsingSet:$set(fourth, second)];
+    STAssertTrue(3 == result.count, @"Three elements should remain.");
+    STAssertEqualObjects([result objectAtIndex:0], second, @"element should equal second");
+    STAssertEqualObjects([result objectAtIndex:1], fourth, @"element should equal fourth");
+    STAssertEqualObjects([result objectAtIndex:2], second, @"element should equal second");
 }
 
 -(void)testNSErrorCategory
