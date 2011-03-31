@@ -9,6 +9,27 @@
 #import "ESUICategories.h"
 
 
+@implementation UILabel(ESUtils)
+
++(UILabel*)labelWithText:(NSString*)text
+{
+    UILabel *l = [[UILabel alloc] init];
+    l.text = text;
+    [l sizeToFit];
+    return l;
+}
+
++(UILabel*)labelWithBoldText:(NSString*)text
+{
+    UILabel *l = [self labelWithText:text];
+    l.font = [UIFont boldSystemFontOfSize:l.font.pointSize];
+    [l sizeToFit];
+    return l;
+}
+
+@end
+
+
 @implementation UIView (ESUtils)
 
 - (float)width { return self.frame.size.width; }
@@ -123,6 +144,16 @@
 -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation
 {
     [self insertRow:r inSection:0 withRowAnimation:animation];
+}
+
+-(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a
+{
+    [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s] atScrollPosition:p animated:a];
+}
+
+-(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a
+{
+    [self scrollToRow:r inSection:0 atScrollPosition:p animated:a];
 }
 
 @end

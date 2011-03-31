@@ -23,8 +23,13 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
     +(NSManagedObjectContext*)managedObjectContext;
 @end
 
+@interface UILabel(ESUtils)
+    +(UILabel*)labelWithText:(NSString*)text;
+    +(UILabel*)labelWithBoldText:(NSString*)text;
+@end
 
-@interface UIView (ESUtils)
+
+@interface UIView(ESUtils)
     // These sizing convenience methods manipulate the frame.
     @property(assign) float width;
     @property(assign) float height;
@@ -47,4 +52,6 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
     -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
     -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation;
     -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation;
+    -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
+    -(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
 @end
