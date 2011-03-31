@@ -10,8 +10,6 @@
 
 
 @interface ESViewDataMapper : NSObject {
-    @private
-        NSMutableArray *maps;
 }
 
 /*
@@ -22,6 +20,7 @@
 
 -(void)updateViews;
 
+-(void)updateObjectForView:(UIView*)view;
 -(void)updateObjects;
 
 @end
