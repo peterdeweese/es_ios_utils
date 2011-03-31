@@ -36,6 +36,8 @@ Use @dynamic to conveniently bind properties files, xml documents, etc.  See ESB
 ###UI
 UIViews frames edition used to require recreation of a CGRect or multiple lines to get a rect from the view, manipulate it, and then set it again. Now you can use a property directly from the UIView, like `myView.x += 20`.
 
+UITableView convenience methods reduce usage of index paths.  Methods that require a row index but no section assume the first section.
+
 ###Core Data
 Blocks are available for error handling and new object configuration.
 

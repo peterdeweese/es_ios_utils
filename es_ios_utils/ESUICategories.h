@@ -38,9 +38,13 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
     @property(assign) UIColor *placeholderColor;
 @end
 
-@interface UITableView (ESUtils)
-    @property(readonly) BOOL empty;
-    - (UITableViewCell*)cellForRow:(int)r inSection:(int)s;
-    - (UITableViewCell*)cellForRow:(int)r;
-    - (void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
+@interface UITableView(ESUtils)
+@property(readonly) BOOL isEmpty;
+@property(readonly) BOOL isNotEmpty;
+    -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;
+    -(UITableViewCell*)cellForRow:(int)r;
+    -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
+    -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
+    -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation;
+    -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation;
 @end

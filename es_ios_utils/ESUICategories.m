@@ -72,33 +72,57 @@
 @end
 
 
-@implementation UITableView (ESUtils)
+@implementation UITableView(ESUtils)
 
 // Returns YES if there are no rows in any section.
-- (BOOL)empty
+-(BOOL)isEmpty
 {    
     for(int s=0; s<self.numberOfSections; s++)
-        if([self numberOfRowsInSection:s])
+        if([self numberOfRowsInSection:s] > 0)
             return NO;
     
     return YES;
 }
 
-- (UITableViewCell*)cellForRow:(int)r inSection:(int)s
+-(BOOL)isNotEmpty
+{    
+    for(int s=0; s<self.numberOfSections; s++)
+        if([self numberOfRowsInSection:s] > 0)
+            return YES;
+    
+    return NO;
+}
+
+-(UITableViewCell*)cellForRow:(int)r inSection:(int)s
 {
     return [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s]];
 }
 
 // Defaults to the first section
-- (UITableViewCell*)cellForRow:(int)r
+-(UITableViewCell*)cellForRow:(int)r
 {
     return [self cellForRow:r inSection:0];
 }
 
-- (void)doForEachCellInSection:(int)s action:(ESUICellBlock)action
+-(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action
 {
     for(int r=0; r<[self numberOfRowsInSection:s]; r++)
         action([self cellForRow:r inSection:s]);
+}
+
+-(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self insertRowsAtIndexPaths:$array(indexPath, nil) withRowAnimation:animation];
+}
+
+-(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self insertRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s] withRowAnimation:animation];
+}
+
+-(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self insertRow:r inSection:0 withRowAnimation:animation];
 }
 
 @end
