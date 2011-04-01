@@ -156,4 +156,9 @@
     [self scrollToRow:r inSection:0 atScrollPosition:p animated:a];
 }
 
+-(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self deleteRowsAtIndexPaths:$array(i, nil) withRowAnimation:a];
+}
+
 @end
