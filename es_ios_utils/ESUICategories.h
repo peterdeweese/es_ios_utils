@@ -55,4 +55,6 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
     -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
     -(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
     -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a;
+    -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
+    -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
 @end

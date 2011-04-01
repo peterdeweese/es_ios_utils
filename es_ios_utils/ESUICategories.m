@@ -161,4 +161,14 @@
     [self deleteRowsAtIndexPaths:$array(i, nil) withRowAnimation:a];
 }
 
+-(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self deleteRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s] withRowAnimation:a];
+}
+
+-(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self deleteRow:r inSection:0 withRowAnimation:a];
+}
+
 @end
