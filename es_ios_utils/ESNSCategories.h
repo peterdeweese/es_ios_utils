@@ -22,10 +22,10 @@ typedef void(^ErrorBlock)(NSError*);
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)
-    @property(readonly) id   firstObject;
-    @property(readonly) BOOL isEmpty;
-    @property(readonly) BOOL isNotEmpty;
-
+    @property(readonly) id         firstObject;
+    @property(readonly) BOOL       isEmpty;
+    @property(readonly) BOOL       isNotEmpty;
+    @property(readonly) NSUInteger lastIndex;
     //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
     -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
 @end
@@ -52,11 +52,13 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 //  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/
 //  Released into the public domain without warranty.
 @interface NSManagedObject(ESUtils)
+    -(void)delete;
     @property (nonatomic, readonly) NSString *xmlString;
 @end
 
 @interface NSManagedObjectContext(ESUtils)
     -(NSManagedObject*)createManagedObjectNamed:(NSString*)name;
+-(NSManagedObject*)createManagedObjectOfClass:(Class)c;
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
 @end
 

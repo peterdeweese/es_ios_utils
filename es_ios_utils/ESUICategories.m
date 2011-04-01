@@ -7,7 +7,7 @@
 //
 
 #import "ESUICategories.h"
-
+#import "ESUtils.h"
 
 @implementation UILabel(ESUtils)
 

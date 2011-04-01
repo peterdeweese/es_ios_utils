@@ -48,7 +48,7 @@
     NSArray *array = $array(first, second, third, fourth, nil);
     
     STAssertEqualObjects(array.firstObject, first, @"Should return first element.");
-    
+    STAssertTrue(array.lastIndex == array.count-1, @"Should return length-1");
     array = $array(first, second, third, fourth, second, nil);
     NSArray *result = [array filteredArrayUsingSet:$set(fourth, second)];
     STAssertTrue(3 == result.count, @"Three elements should remain.");

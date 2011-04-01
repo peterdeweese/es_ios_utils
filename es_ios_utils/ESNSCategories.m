@@ -7,7 +7,7 @@
 //
 
 #import "ESNSCategories.h"
-
+#import <objc/runtime.h>
 
 @implementation ESNSCategories
 
@@ -18,7 +18,9 @@
 
 -(id)firstObject
 {
-    return [self objectAtIndex:0];
+    if(self.count > 0)
+        return [self objectAtIndex:0];
+    return nil;
 }
 
 -(BOOL)isEmpty
@@ -29,6 +31,11 @@
 -(BOOL)isNotEmpty
 {
     return self.count > 0;
+}
+
+-(NSUInteger)lastIndex
+{
+    return self.count - 1;
 }
 
 -(NSArray*)filteredArrayUsingSet:(NSSet*)set
@@ -91,6 +98,12 @@
 
 
 @implementation NSManagedObject(ESUtils)
+
+-(void)delete
+{
+    [self.managedObjectContext deleteObject:self];
+}
+
 
 //  Created by Scott Means on 1/5/11.
 //  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/
@@ -174,6 +187,11 @@
 {
     // Create a new instance of the entity managed by the fetched results controller.
     return [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
+}
+
+-(NSManagedObject*)createManagedObjectOfClass:(Class)c
+{
+    return [self createManagedObjectNamed:[NSString stringWithUTF8String:class_getName(c)]];
 }
 
 -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError
