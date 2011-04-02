@@ -15,7 +15,6 @@
 		A9414B6A1347B391008C67F4 /* es_ios_utils_appAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */; };
 		A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B6B1347B391008C67F4 /* MainWindow.xib */; };
 		A9414B701347B391008C67F4 /* es_ios_utils_appViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B6F1347B391008C67F4 /* es_ios_utils_appViewController.m */; };
-		A9414B731347B391008C67F4 /* es_ios_utils_appViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* es_ios_utils_appViewController.xib */; };
 		A9414B7A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
 		A9414B7B1347B391008C67F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5B1347B391008C67F4 /* Foundation.framework */; };
 		A9414B7C1347B391008C67F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5D1347B391008C67F4 /* CoreGraphics.framework */; };
@@ -37,6 +36,9 @@
 		A9414BF91347B741008C67F4 /* ESUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BD51347B432008C67F4 /* ESUtilsTest.m */; };
 		A9414BFB1347B768008C67F4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414BFA1347B768008C67F4 /* CoreData.framework */; };
 		A9414BFD1347B8C8008C67F4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414BFC1347B8C8008C67F4 /* CoreData.framework */; };
+		A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */; };
+		A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9414C021347C32E008C67F4 /* Model.xcdatamodeld */; };
+		A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A9414C031347C32E008C67F4 /* Model.xcdatamodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,9 @@
 		A9414BD51347B432008C67F4 /* ESUtilsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESUtilsTest.m; path = es_ios_utilsTests/ESUtilsTest.m; sourceTree = SOURCE_ROOT; };
 		A9414BFA1347B768008C67F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A9414BFC1347B8C8008C67F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A9414BFE1347BD49008C67F4 /* ESApplicationDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESApplicationDelegateTest.h; path = es_ios_utilsTests/ESApplicationDelegateTest.h; sourceTree = SOURCE_ROOT; };
+		A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESApplicationDelegateTest.m; path = es_ios_utilsTests/ESApplicationDelegateTest.m; sourceTree = SOURCE_ROOT; };
+		A9414C031347C32E008C67F4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +173,7 @@
 				A9414B6F1347B391008C67F4 /* es_ios_utils_appViewController.m */,
 				A9414B711347B391008C67F4 /* es_ios_utils_appViewController.xib */,
 				A9414B601347B391008C67F4 /* Supporting Files */,
+				A9414C021347C32E008C67F4 /* Model.xcdatamodeld */,
 			);
 			path = es_ios_utils_app;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 			children = (
 				A9414B861347B391008C67F4 /* es_ios_utils_appTests.h */,
 				A9414B881347B391008C67F4 /* es_ios_utils_appTests.m */,
+				A9414BFE1347BD49008C67F4 /* ESApplicationDelegateTest.h */,
+				A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */,
 				A9414BCE1347B432008C67F4 /* ESDynamicMethodResolverTest.h */,
 				A9414BCF1347B432008C67F4 /* ESDynamicMethodResolverTest.m */,
 				A9414BD01347B432008C67F4 /* ESNSCategoriesTest.h */,
@@ -303,9 +311,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */,
 				A9414B641347B391008C67F4 /* InfoPlist.strings in Resources */,
 				A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */,
-				A9414B731347B391008C67F4 /* es_ios_utils_appViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +361,7 @@
 				A9414BC51347B3F5008C67F4 /* ESUtils.m in Sources */,
 				A9414BC71347B3F5008C67F4 /* ESVerticalLayoutView.m in Sources */,
 				A9414BC91347B3F5008C67F4 /* ESViewDataMapper.m in Sources */,
+				A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */,
 				A9414BF61347B741008C67F4 /* ESDynamicMethodResolverTest.m in Sources */,
 				A9414BF71347B741008C67F4 /* ESNSCategoriesTest.m in Sources */,
 				A9414BF81347B741008C67F4 /* ESUICategoriesTest.m in Sources */,
@@ -549,6 +559,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A9414C021347C32E008C67F4 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A9414C031347C32E008C67F4 /* Model.xcdatamodel */,
+			);
+			currentVersion = A9414C031347C32E008C67F4 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A9414B4C1347B391008C67F4 /* Project object */;
 }

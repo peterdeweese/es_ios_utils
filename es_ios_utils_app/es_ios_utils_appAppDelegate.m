@@ -7,7 +7,12 @@
 
 @synthesize viewController=_viewController;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+-(NSString*)persistantStoreName
+{
+    return @"Model";
+}
+
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
      
@@ -16,7 +21,7 @@
     return YES;
 }
 
-- (void)dealloc
+-(void)dealloc
 {
     [_window release];
     [_viewController release];

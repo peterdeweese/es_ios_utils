@@ -13,6 +13,12 @@
 
 @synthesize managedObjectContext=__managedObjectContext, managedObjectModel=__managedObjectModel, persistentStoreCoordinator=__persistentStoreCoordinator;
 
+-(NSString*)persistantStoreName
+{
+    [NSException raise:NSInternalInconsistencyException format:@"Your UIApplicationDelegate must implement -(NSString*)persistantStoreName.", NSStringFromSelector(_cmd)];
+    return nil;
+}
+
 +(ESApplicationDelegate*)delegate
 {
     id<UIApplicationDelegate> d = [UIApplication sharedApplication].delegate;
@@ -73,7 +79,7 @@
     if (__managedObjectModel)
         return __managedObjectModel;
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"cap" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.persistantStoreName withExtension:@"momd"];
     __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
     return __managedObjectModel;
 }
@@ -87,7 +93,7 @@
     if (__persistentStoreCoordinator)
         return __persistentStoreCoordinator;
     
-    NSURL *storeURL = [self.applicationDocumentsDirectory URLByAppendingPathComponent:@"cap.sqlite"];
+    NSURL *storeURL = [self.applicationDocumentsDirectory URLByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

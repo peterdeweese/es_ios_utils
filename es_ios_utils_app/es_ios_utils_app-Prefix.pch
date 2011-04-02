@@ -8,4 +8,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    // Include ESUtils.h in the .pch file to load all standard ES categories
+    #import "ESUtils.h"
 #endif
