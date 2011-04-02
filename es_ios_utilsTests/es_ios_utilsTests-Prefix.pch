@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'es_ios_utilsTests' target in the 'es_ios_utilsTests' project
-//
-
-#ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <SenTestingKit/SenTestingKit.h>
-    #import "ESUtils.h"
-#endif

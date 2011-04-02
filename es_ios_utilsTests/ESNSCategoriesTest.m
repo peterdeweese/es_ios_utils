@@ -6,6 +6,7 @@
 //  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
 
+#import "ESUtils.h"
 #import "ESNSCategoriesTest.h"
 
 @implementation NSCategoriesTest
