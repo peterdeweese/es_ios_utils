@@ -8,8 +8,21 @@
 
 #import "ESUtils.h"
 #import "ESUICategoriesTest.h"
+#import "es_ios_utils_appAppDelegate.h"
+#import "TestViewController.h"
 
 @implementation ESUICategoriesTest
+
+-(void)testUILabelCategory
+{
+    UILabel *label = [UILabel labelWithText:@"labelWithText"];
+    STAssertNotNil(label, @"Label not created.");
+    //FIXME: Add as subview to see results
+    
+    UILabel *boldLabel = [UILabel labelWithBoldText:@"labelWithBoldText"];
+    STAssertNotNil(boldLabel, @"Bold label not created.");
+    //FIXME: Add as subview to see results
+}
 
 -(void)testUIViewCategory
 {

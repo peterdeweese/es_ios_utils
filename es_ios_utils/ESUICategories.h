@@ -17,10 +17,6 @@
 
 typedef void(^ESUICellBlock)(UITableViewCell*);
 
-@interface UIApplication(ESUtils)
-    +(NSManagedObjectContext*)managedObjectContext;
-@end
-
 @interface UILabel(ESUtils)
     +(UILabel*)labelWithText:(NSString*)text;
     +(UILabel*)labelWithBoldText:(NSString*)text;

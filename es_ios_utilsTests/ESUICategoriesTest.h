@@ -6,9 +6,7 @@
 //  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
 
-@interface ESUICategoriesTest : SenTestCase {
-    
-}
+@interface ESUICategoriesTest : SenTestCase{}
 
 -(void)testUIViewCategory;
 -(void)testUITextFieldCategory;
