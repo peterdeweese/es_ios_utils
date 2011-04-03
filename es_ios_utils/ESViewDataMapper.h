@@ -5,6 +5,10 @@
 //  Created by Peter DeWeese on 3/21/11.
 //  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
+//  To bind a view to a model, use -addView:object:keyPath:.  Values from a view such as a UITextField will be copied as
+//  an NSString to the target.  If you are saving data using some other mechanism but need it to display you can specify
+//  a synthetic read-only property to produce the text.
+//
 
 #import <Foundation/Foundation.h>
 
