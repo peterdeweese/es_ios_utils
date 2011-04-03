@@ -6,8 +6,6 @@
 //  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface ESUtilsTest : SenTestCase {
     
 }

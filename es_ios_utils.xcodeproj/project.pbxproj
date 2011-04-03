@@ -14,7 +14,7 @@
 		A9414B671347B391008C67F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B661347B391008C67F4 /* main.m */; };
 		A9414B6A1347B391008C67F4 /* es_ios_utils_appAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */; };
 		A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B6B1347B391008C67F4 /* MainWindow.xib */; };
-		A9414B701347B391008C67F4 /* es_ios_utils_appViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B6F1347B391008C67F4 /* es_ios_utils_appViewController.m */; };
+		A9414B701347B391008C67F4 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B6F1347B391008C67F4 /* TestViewController.m */; };
 		A9414B7A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
 		A9414B7B1347B391008C67F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5B1347B391008C67F4 /* Foundation.framework */; };
 		A9414B7C1347B391008C67F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5D1347B391008C67F4 /* CoreGraphics.framework */; };
@@ -39,6 +39,8 @@
 		A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */; };
 		A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9414C021347C32E008C67F4 /* Model.xcdatamodeld */; };
 		A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A9414C031347C32E008C67F4 /* Model.xcdatamodel */; };
+		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
+		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,9 +65,9 @@
 		A9414B681347B391008C67F4 /* es_ios_utils_appAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = es_ios_utils_appAppDelegate.h; sourceTree = "<group>"; };
 		A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = es_ios_utils_appAppDelegate.m; sourceTree = "<group>"; };
 		A9414B6C1347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		A9414B6E1347B391008C67F4 /* es_ios_utils_appViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = es_ios_utils_appViewController.h; sourceTree = "<group>"; };
-		A9414B6F1347B391008C67F4 /* es_ios_utils_appViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = es_ios_utils_appViewController.m; sourceTree = "<group>"; };
-		A9414B721347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/es_ios_utils_appViewController.xib; sourceTree = "<group>"; };
+		A9414B6E1347B391008C67F4 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		A9414B6F1347B391008C67F4 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		A9414B721347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestViewController.xib; sourceTree = "<group>"; };
 		A9414B791347B391008C67F4 /* es_ios_utils_appTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = es_ios_utils_appTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9414B811347B391008C67F4 /* es_ios_utils_appTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "es_ios_utils_appTests-Info.plist"; sourceTree = "<group>"; };
 		A9414B831347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -103,6 +105,8 @@
 		A9414BFE1347BD49008C67F4 /* ESApplicationDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESApplicationDelegateTest.h; path = es_ios_utilsTests/ESApplicationDelegateTest.h; sourceTree = SOURCE_ROOT; };
 		A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESApplicationDelegateTest.m; path = es_ios_utilsTests/ESApplicationDelegateTest.m; sourceTree = SOURCE_ROOT; };
 		A9414C031347C32E008C67F4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
+		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,9 +173,9 @@
 				A9414B681347B391008C67F4 /* es_ios_utils_appAppDelegate.h */,
 				A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */,
 				A9414B6B1347B391008C67F4 /* MainWindow.xib */,
-				A9414B6E1347B391008C67F4 /* es_ios_utils_appViewController.h */,
-				A9414B6F1347B391008C67F4 /* es_ios_utils_appViewController.m */,
-				A9414B711347B391008C67F4 /* es_ios_utils_appViewController.xib */,
+				A9414B6E1347B391008C67F4 /* TestViewController.h */,
+				A9414B6F1347B391008C67F4 /* TestViewController.m */,
+				A9414B711347B391008C67F4 /* TestViewController.xib */,
 				A9414B601347B391008C67F4 /* Supporting Files */,
 				A9414C021347C32E008C67F4 /* Model.xcdatamodeld */,
 			);
@@ -204,6 +208,8 @@
 				A9414BD31347B432008C67F4 /* ESUICategoriesTest.m */,
 				A9414BD41347B432008C67F4 /* ESUtilsTest.h */,
 				A9414BD51347B432008C67F4 /* ESUtilsTest.m */,
+				A9BB23A51348085E00156CE2 /* ESViewTest.h */,
+				A9BB23A61348085E00156CE2 /* ESViewTest.m */,
 				A9414B801347B391008C67F4 /* Supporting Files */,
 			);
 			path = es_ios_utils_appTests;
@@ -311,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */,
 				A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */,
 				A9414B641347B391008C67F4 /* InfoPlist.strings in Resources */,
 				A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */,
@@ -351,7 +358,7 @@
 			files = (
 				A9414B671347B391008C67F4 /* main.m in Sources */,
 				A9414B6A1347B391008C67F4 /* es_ios_utils_appAppDelegate.m in Sources */,
-				A9414B701347B391008C67F4 /* es_ios_utils_appViewController.m in Sources */,
+				A9414B701347B391008C67F4 /* TestViewController.m in Sources */,
 				A9414BB91347B3F5008C67F4 /* ESApplicationDelegate.m in Sources */,
 				A9414BBB1347B3F5008C67F4 /* ESBoundUserDefaults.m in Sources */,
 				A9414BBD1347B3F5008C67F4 /* ESDynamicMethodResolver.m in Sources */,
@@ -369,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */,
 				A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */,
 				A9414BF61347B741008C67F4 /* ESDynamicMethodResolverTest.m in Sources */,
 				A9414BF71347B741008C67F4 /* ESNSCategoriesTest.m in Sources */,
@@ -405,12 +413,12 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		A9414B711347B391008C67F4 /* es_ios_utils_appViewController.xib */ = {
+		A9414B711347B391008C67F4 /* TestViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A9414B721347B391008C67F4 /* en */,
 			);
-			name = es_ios_utils_appViewController.xib;
+			name = TestViewController.xib;
 			sourceTree = "<group>";
 		};
 		A9414B821347B391008C67F4 /* InfoPlist.strings */ = {

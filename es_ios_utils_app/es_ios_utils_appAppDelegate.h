@@ -1,4 +1,4 @@
-@class es_ios_utils_appViewController;
+@class TestViewController;
 
 #import "ESApplicationDelegate.h"
 
@@ -9,6 +9,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet es_ios_utils_appViewController *viewController;
+@property (nonatomic, retain) IBOutlet TestViewController *viewController;
 
 @end
