@@ -6,7 +6,8 @@
 //  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
 
-
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 // The class is here to force the linker to load categories
 @interface ESUICategories : NSObject
