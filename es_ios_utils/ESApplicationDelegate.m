@@ -86,14 +86,25 @@
 
 /**
  Returns the persistent store coordinator for the application.
- If the coordinator doesn't already exist, it is created and the application's store added to it.
+ If the coordinator doesn't already exist, it is created. Then we check to see if a default DB
+ is bundled with app and, if so, use that if the database doesn't already exist.
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if (persistentStoreCoordinator)
         return persistentStoreCoordinator;
     
-    NSURL *storeURL = [self.applicationDocumentsDirectory URLByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
+    NSString *storePath = [[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    // If the expected store doesn't exist, copy the default store.
+    if (![fileManager fileExistsAtPath:storePath]) {
+        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:$format(@"%@", self.persistantStoreName) ofType:@"sqlite"];
+        if (defaultStorePath) {
+            [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
+        }
+    }
+    NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
     NSError *error = nil;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
