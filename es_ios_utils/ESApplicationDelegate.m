@@ -11,7 +11,7 @@
 
 @implementation ESApplicationDelegate
 
-@synthesize managedObjectContext=__managedObjectContext, managedObjectModel=__managedObjectModel, persistentStoreCoordinator=__persistentStoreCoordinator;
+@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window;
 
 -(NSString*)persistantStoreName
 {
@@ -30,9 +30,9 @@
 
 - (void)dealloc
 {
-    [__managedObjectContext release];
-    [__managedObjectModel release];
-    [__persistentStoreCoordinator release];
+    [managedObjectContext release];
+    [managedObjectModel release];
+    [persistentStoreCoordinator release];
     
     [super dealloc];
 }
@@ -49,7 +49,7 @@
 
 +(NSManagedObjectContext*)managedObjectContext
 {
-    return [self delegate].managedObjectContext;
+    return self.delegate.managedObjectContext;
 }
 
 /**
@@ -58,16 +58,16 @@
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if (__managedObjectContext)
-        return __managedObjectContext;
+    if(managedObjectContext)
+        return managedObjectContext;
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator)
     {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
-        __managedObjectContext.persistentStoreCoordinator = coordinator;
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        managedObjectContext.persistentStoreCoordinator = coordinator;
     }
-    return __managedObjectContext;
+    return managedObjectContext;
 }
 
 /**
@@ -76,12 +76,12 @@
  */
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (__managedObjectModel)
-        return __managedObjectModel;
+    if (managedObjectModel)
+        return managedObjectModel;
     
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.persistantStoreName withExtension:@"momd"];
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return __managedObjectModel;
+    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
+    return managedObjectModel;
 }
 
 /**
@@ -90,20 +90,31 @@
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (__persistentStoreCoordinator)
-        return __persistentStoreCoordinator;
+    if (persistentStoreCoordinator)
+        return persistentStoreCoordinator;
     
     NSURL *storeURL = [self.applicationDocumentsDirectory URLByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
     
     NSError *error = nil;
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
         [error log];
         abort(); //FIXME: remove before final product
     }    
     
-    return __persistentStoreCoordinator;
+    return persistentStoreCoordinator;
+}
+
+- (void)saveContext
+{
+    if(managedObjectContext.hasChanges)
+    {
+        [managedObjectContext saveAndDoOnError:^(NSError *e) {
+            [e log];
+            abort();
+        }];
+    }
 }
 
 @end
