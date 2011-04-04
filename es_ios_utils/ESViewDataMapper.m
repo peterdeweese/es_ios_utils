@@ -95,7 +95,18 @@
     if(value && ![value isKindOfClass:NSString.class])
         NSLog(@"Warning: Value not set from keyPath '%@' because the value was not an NSString. %@", m.keyPath, value.class);
     else
-        [m.object setValue:value forKeyPath:m.keyPath];
+    {
+        @try
+        {
+            [m.object setValue:value forKeyPath:m.keyPath];
+        }
+        @catch (NSException *e)
+        {
+            if ([e.name isEqual:@"NSUnknownKeyException"])
+                NSLog(@"Value not set: no setter found for %@.", m.keyPath);
+            else @throw(e);
+        }
+    }
 }
 
 -(void)updateObjectForView:(UIView*)view
