@@ -52,6 +52,31 @@
 @end
 
 
+@implementation NSDate(ESUtils)
+
+-(NSDate*)dateByAddingDays:(int)d
+{
+    return [self dateByAddingTimeInterval:d * 24 * 60 * 60];
+}
+
+-(NSDate*)dateByAddingHours:(int)h
+{
+    return [self dateByAddingTimeInterval:h * 60 * 60];
+}
+
+-(NSDate*)dateByAddingMinutes:(int)m
+{
+    return [self dateByAddingTimeInterval:m * 60];
+}
+
+-(NSDate*)dateByAddingSeconds:(int)s
+{
+    return [self dateByAddingTimeInterval:s];
+}
+
+@end
+
+
 @implementation NSDictionary(ESUtils)
 
 -(BOOL)isEmpty

@@ -30,6 +30,13 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
 @end
 
+@interface NSDate(ESUtils)
+    -(NSDate*)dateByAddingDays:(int)d;
+    -(NSDate*)dateByAddingHours:(int)h;
+    -(NSDate*)dateByAddingMinutes:(int)m;
+    -(NSDate*)dateByAddingSeconds:(int)s;
+@end
+
 @interface NSDictionary(ESUtils)
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;

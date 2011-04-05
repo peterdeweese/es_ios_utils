@@ -9,6 +9,25 @@
 #import "ESUICategories.h"
 #import "ESUtils.h"
 
+@implementation NSNotification(ESUtils)
+
+-(CGSize)keyboardSize
+{
+    NSString *key;
+    
+    if(self.name == UIKeyboardDidShowNotification || self.name == UIKeyboardWillShowNotification)
+        key = UIKeyboardFrameEndUserInfoKey;
+    else if(self.name == UIKeyboardDidHideNotification || self.name == UIKeyboardWillHideNotification)
+        key = UIKeyboardFrameBeginUserInfoKey;
+    else
+        [NSException raise:NSInternalInconsistencyException format:@"NSNotification(ESUtils).keyboardSize may only be used with keyboard events."];
+    
+    return [[self.userInfo valueForKey:key] CGRectValue].size;
+}
+
+@end
+
+
 @implementation UILabel(ESUtils)
 
 +(UILabel*)labelWithText:(NSString*)text
@@ -71,7 +90,6 @@
     frame.size = size;
     self.frame = frame;
 }
-
 
 @end
 

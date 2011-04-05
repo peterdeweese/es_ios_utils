@@ -24,6 +24,13 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
 @end
 
 
+@interface NSNotification(ESUtils)
+    //For UIKeyboard* notifications, otherwise an exception is raised.
+    //Use convertRect:fromView: or convertRect:fromWindow: to rotate to current orientation
+    @property(readonly) CGSize keyboardSize;
+@end
+
+
 @interface UIView(ESUtils)
     // These sizing convenience methods manipulate the frame.
     @property(assign) float width;
