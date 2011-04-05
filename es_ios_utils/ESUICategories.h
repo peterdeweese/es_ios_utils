@@ -18,16 +18,21 @@
 
 typedef void(^ESUICellBlock)(UITableViewCell*);
 
-@interface UILabel(ESUtils)
-    +(UILabel*)labelWithText:(NSString*)text;
-    +(UILabel*)labelWithBoldText:(NSString*)text;
-@end
-
-
 @interface NSNotification(ESUtils)
     //For UIKeyboard* notifications, otherwise an exception is raised.
     //Use convertRect:fromView: or convertRect:fromWindow: to rotate to current orientation
     @property(readonly) CGSize keyboardSize;
+@end
+
+
+@interface UIAlertView(ESUtils)
+    +(UIAlertView*)createAndShowWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)button;
+@end
+
+
+@interface UILabel(ESUtils)
+    +(UILabel*)labelWithText:(NSString*)text;
+    +(UILabel*)labelWithBoldText:(NSString*)text;
 @end
 
 

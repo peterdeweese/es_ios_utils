@@ -28,6 +28,22 @@
 @end
 
 
+@implementation UIAlertView(ESUtils)
+
++(UIAlertView*)createAndShowWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)button
+{
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:title
+                                                     message:message
+                                                    delegate:nil
+                                           cancelButtonTitle:nil
+                                           otherButtonTitles:button, nil] autorelease];
+    [alert show];
+    return alert;
+}
+
+@end
+
+
 @implementation UILabel(ESUtils)
 
 +(UILabel*)labelWithText:(NSString*)text
