@@ -119,6 +119,17 @@
     return (NSManagedObject*)[self.managedObjectContext createManagedObjectNamed:self.fetchRequest.entity.name];
 }
 
+-(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError
+{
+    NSError *error;
+    BOOL result = [self performFetch:&error];
+    
+    if (!result)
+        doOnError(error);
+    
+    return result;
+}
+
 @end
 
 

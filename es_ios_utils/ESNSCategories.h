@@ -53,6 +53,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSFetchedResultsController(ESUtils)
     // Create and save a new instance of the entity managed by the fetched results controller.
     -(NSManagedObject*)createManagedObject;
+
+    -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError;
 @end
 
 //  Created by Scott Means on 1/5/11.
