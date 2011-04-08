@@ -36,6 +36,13 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
 @end
 
 
+@interface UINavigationItem(ESUtils)
+
+-(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right;
+
+@end
+
+
 @interface UIView(ESUtils)
     // These sizing convenience methods manipulate the frame.
     @property(assign) float width;

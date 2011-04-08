@@ -65,6 +65,18 @@
 @end
 
 
+@implementation UINavigationItem(ESUtils)
+
+-(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right
+{
+    self.title = title;
+    self.leftBarButtonItem = left;
+    self.rightBarButtonItem = right;
+}
+
+@end
+
+
 @implementation UIView (ESUtils)
 
 - (float)width { return self.frame.size.width; }
