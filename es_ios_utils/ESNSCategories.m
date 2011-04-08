@@ -337,3 +337,20 @@
 }
 
 @end
+
+
+@implementation NSThread(ESUtils)
+
++(void)detachNewThreadBlockImplementation:(ESEmptyBlock)block
+{
+    NSAutoreleasePool *p = [[NSAutoreleasePool alloc] init];
+    block();
+    [p release];
+}
+
++(void)detachNewThreadBlock:(ESEmptyBlock)block
+{
+    [NSThread detachNewThreadSelector:@selector(detachNewThreadBlockImplementation:) toTarget:self withObject:Block_copy(block)];
+}
+
+@end

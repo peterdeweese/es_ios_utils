@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 #import "ESUtils.h"
 
+typedef void(^ESEmptyBlock)();
+
 // The class is here to force the linker to load categories
 @interface ESNSCategories:NSObject
 {
@@ -102,4 +104,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(nonatomic, readonly) BOOL      isBlank;
     @property(nonatomic, readonly) BOOL      isEmpty;
     @property(nonatomic, readonly) BOOL      isNotEmpty;
+@end
+
+@interface NSThread(ESUtils)
+    +(void)detachNewThreadBlock:(ESEmptyBlock)block;
 @end

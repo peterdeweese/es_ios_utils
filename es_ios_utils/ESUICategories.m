@@ -177,6 +177,12 @@
         action([self cellForRow:r inSection:s]);
 }
 
+-(void)doForEachIndexPathInSection:(int)s action:(ESUIIndexPathBlock)action
+{
+    for(int r=0; r<[self numberOfRowsInSection:s]; r++)
+        action([NSIndexPath indexPathForRow:r inSection:s]);
+}
+
 -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
     [self insertRowsAtIndexPaths:$array(indexPath, nil) withRowAnimation:animation];

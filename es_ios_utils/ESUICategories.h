@@ -17,6 +17,7 @@
 @end
 
 typedef void(^ESUICellBlock)(UITableViewCell*);
+typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface NSNotification(ESUtils)
     //For UIKeyboard* notifications, otherwise an exception is raised.
@@ -63,6 +64,7 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
     -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;
     -(UITableViewCell*)cellForRow:(int)r;
     -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
+    -(void)doForEachIndexPathInSection:(int)s action:(ESUIIndexPathBlock)action;
     -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
     -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation;
     -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation;
