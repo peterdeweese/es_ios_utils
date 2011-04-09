@@ -136,6 +136,16 @@
     [self setValue:color forKeyPath:@"_placeholderLabel.textColor"];
 }
 
+-(UIFont*)placeholderFont
+{
+    return [self valueForKey:@"_placeholderLabel.font"];
+}
+
+-(void)setPlaceholderFont:(UIFont*)font
+{
+    [self setValue:font forKeyPath:@"_placeholderLabel.font"];
+}
+
 @end
 
 

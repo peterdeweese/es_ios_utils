@@ -56,6 +56,10 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @interface UITextField (ESUtils)
     // Passed Apple's review.
     @property(assign) UIColor *placeholderColor;
+
+    // Call in viewWillAppear to vertially center.
+    // Reset in textFieldShouldClear: to prevent resetting.
+    @property(assign) UIFont  *placeholderFont;
 @end
 
 @interface UITableView(ESUtils)

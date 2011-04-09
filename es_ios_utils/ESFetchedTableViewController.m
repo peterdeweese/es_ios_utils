@@ -45,7 +45,20 @@
 
 #pragma mark - Implement
 
-- (void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
+-(UITableViewCellStyle)useCellStyle
+{
+    return UITableViewCellStyleDefault;
+}
+
+static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControllerCell";
+
+-(UITableViewCell*)createCell
+{
+    return  [[UITableViewCell alloc] initWithStyle:self.useCellStyle
+                                    reuseIdentifier:kESFetchedTableViewControllerCell];
+}
+
+-(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
 }
@@ -55,7 +68,6 @@
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
     return nil;
 }
-
 
 #pragma mark - Table Controller, Datasource, and Delegate
 
@@ -71,12 +83,10 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView*)t cellForRowAtIndexPath:(NSIndexPath*)i
-{
-    static NSString *CellIdentifier = @"ESFetchedTableViewControllerCell";
-    
-    UITableViewCell *c = [t dequeueReusableCellWithIdentifier:CellIdentifier];
+{    
+    UITableViewCell *c = [t dequeueReusableCellWithIdentifier:kESFetchedTableViewControllerCell];
     if (!c)
-        c = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        c = [self createCell];
     
     [self configureCell:c atIndexPath:i];
     
