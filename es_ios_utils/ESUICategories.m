@@ -144,6 +144,7 @@
     if(UIDevice.isPad)
     {
         UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:self];
+        pc.popoverContentSize = self.view.frame.size;
         [pc presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else
