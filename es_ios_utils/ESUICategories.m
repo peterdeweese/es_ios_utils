@@ -44,6 +44,21 @@
 @end
 
 
+@implementation UIDevice(ESUtils)
+
++(BOOL)isPad
+{
+    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
+}
+
++(BOOL)isPhone
+{
+    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
+}
+
+@end
+
+
 @implementation UILabel(ESUtils)
 
 +(UILabel*)labelWithText:(NSString*)text
@@ -122,7 +137,23 @@
 @end
 
 
-@implementation UITextField (ESUtils)
+@implementation UIViewController(ESUtils)
+
+-(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button
+{
+    if(UIDevice.isPad)
+    {
+        UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:self];
+        [pc presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else
+        [parent.navigationController pushViewController:self animated:YES];
+}
+
+@end
+
+
+@implementation UITextField(ESUtils)
 
 // Uses a private ivar, but Apple reviews allow it in Veporter and other apps:
 //     http://stackoverflow.com/questions/1340224/iphone-uitextfield-change-placeholder-text-color

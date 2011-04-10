@@ -31,6 +31,12 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 
+@interface UIDevice(ESUtils)
++(BOOL)isPad;
++(BOOL)isPhone;
+@end
+
+
 @interface UILabel(ESUtils)
     +(UILabel*)labelWithText:(NSString*)text;
     +(UILabel*)labelWithBoldText:(NSString*)text;
@@ -53,12 +59,17 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     @property(assign) CGSize size;
 @end
 
+@interface UIViewController(ESUtils)
+    //If iPad, use popover, else push
+    -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
+@end
+
 @interface UITextField (ESUtils)
     // Passed Apple's review.
     @property(assign) UIColor *placeholderColor;
 
     // Call in viewWillAppear to vertially center.
-    // Reset in textFieldShouldClear: to prevent resetting.
+    // Reset in textFieldShouldClear: and shouldChangeCharactersInRange to prevent resetting.
     @property(assign) UIFont  *placeholderFont;
 @end
 
