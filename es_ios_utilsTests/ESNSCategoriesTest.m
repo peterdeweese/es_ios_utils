@@ -97,9 +97,14 @@
 -(void)testNSStringCategory
 {
     STAssertEqualObjects(@"strip", @"\t strip\n  ".strip, @"Strip should remove whitespace.");
+    
     STAssertTrue(@"   \t\n".isBlank, @"String should be considered blank.");
     STAssertTrue(@"".isBlank, @"String should be considered blank.");
     STAssertFalse(@" qwer ".isBlank, @"String should not be considered blank.");
+    
+    STAssertFalse(@"   \t\n".isPresent, @"String should not be considered present.");
+    STAssertFalse(@"".isPresent, @"String should not be considered present.");
+    STAssertTrue(@" qwer ".isPresent, @"String should be considered present.");
 }
 
 @end

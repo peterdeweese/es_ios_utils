@@ -333,7 +333,13 @@
 
 -(BOOL)isBlank
 {
+    // Shortcuts object creation by testing before trimming.
     return self.isEmpty || self.strip.isEmpty;
+}
+
+-(BOOL)isPresent
+{
+    return !self.isEmpty && !self.strip.isEmpty;
 }
 
 @end
