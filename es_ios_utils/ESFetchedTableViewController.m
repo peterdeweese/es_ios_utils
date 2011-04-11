@@ -54,8 +54,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(UITableViewCell*)createCell
 {
-    return  [[UITableViewCell alloc] initWithStyle:self.useCellStyle
-                                    reuseIdentifier:kESFetchedTableViewControllerCell];
+    return  [[[UITableViewCell alloc] initWithStyle:self.useCellStyle
+                                    reuseIdentifier:kESFetchedTableViewControllerCell] autorelease];
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath

@@ -345,6 +345,7 @@
 {
     NSAutoreleasePool *p = [[NSAutoreleasePool alloc] init];
     block();
+    Block_release(block);
     [p release];
 }
 
