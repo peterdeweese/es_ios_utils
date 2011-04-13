@@ -74,6 +74,17 @@
     return [self dateByAddingTimeInterval:s];
 }
 
+-(NSString*)relativeString
+{
+    NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
+    f.timeStyle = NSDateFormatterNoStyle;
+    f.dateStyle = NSDateFormatterMediumStyle;
+    f.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    f.doesRelativeDateFormatting=YES;
+    
+    return [f stringForObjectValue:self];
+}
+
 @end
 
 

@@ -37,6 +37,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSDate*)dateByAddingHours:(int)h;
     -(NSDate*)dateByAddingMinutes:(int)m;
     -(NSDate*)dateByAddingSeconds:(int)s;
+    -(NSString*)relativeString;
 @end
 
 @interface NSDictionary(ESUtils)
