@@ -102,7 +102,12 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSString (ESUtils)
     @property(nonatomic, readonly) NSData   *dataWithUTF8;
     @property(nonatomic, readonly) NSString *strip;
+
+    //Returns true if the string exists and contains only whitespace.
     @property(nonatomic, readonly) BOOL      isBlank;
+    //Checks if a string exists and is not blank.  Preferred over isBlank because existance doesn't need to be checked.
+    @property(nonatomic, readonly) BOOL      isPresent;
+
     @property(nonatomic, readonly) BOOL      isEmpty;
     @property(nonatomic, readonly) BOOL      isNotEmpty;
 @end
