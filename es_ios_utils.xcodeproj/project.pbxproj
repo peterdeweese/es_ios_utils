@@ -39,6 +39,7 @@
 		A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */; };
 		A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9414C021347C32E008C67F4 /* Model.xcdatamodeld */; };
 		A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A9414C031347C32E008C67F4 /* Model.xcdatamodel */; };
+		A973624D135E247F000EBD17 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A973624C135E247F000EBD17 /* ESBlockActionSheet.m */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,8 @@
 		A9414BFE1347BD49008C67F4 /* ESApplicationDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESApplicationDelegateTest.h; path = es_ios_utilsTests/ESApplicationDelegateTest.h; sourceTree = SOURCE_ROOT; };
 		A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESApplicationDelegateTest.m; path = es_ios_utilsTests/ESApplicationDelegateTest.m; sourceTree = SOURCE_ROOT; };
 		A9414C031347C32E008C67F4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A973624B135E247F000EBD17 /* ESBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBlockActionSheet.h; sourceTree = "<group>"; };
+		A973624C135E247F000EBD17 /* ESBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBlockActionSheet.m; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -230,6 +233,8 @@
 			children = (
 				A9414BA31347B3F5008C67F4 /* ESApplicationDelegate.h */,
 				A9414BA41347B3F5008C67F4 /* ESApplicationDelegate.m */,
+				A973624B135E247F000EBD17 /* ESBlockActionSheet.h */,
+				A973624C135E247F000EBD17 /* ESBlockActionSheet.m */,
 				A9414BA51347B3F5008C67F4 /* ESBoundUserDefaults.h */,
 				A9414BA61347B3F5008C67F4 /* ESBoundUserDefaults.m */,
 				A9414BA71347B3F5008C67F4 /* ESDynamicMethodResolver.h */,
@@ -369,6 +374,7 @@
 				A9414BC71347B3F5008C67F4 /* ESVerticalLayoutView.m in Sources */,
 				A9414BC91347B3F5008C67F4 /* ESViewDataMapper.m in Sources */,
 				A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */,
+				A973624D135E247F000EBD17 /* ESBlockActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
