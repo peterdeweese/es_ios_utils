@@ -14,7 +14,7 @@
 -(void)testIsEmpty
 {
     NSArray *emptyArray = NSArray.array;
-    NSArray *array = $array(@"first", @"second", @"third", nil);
+    NSArray *array = $array(@"first", @"second", @"third");
     STAssertFalse(array.isEmpty, @"Array should not be empty.");
     STAssertTrue(emptyArray.isEmpty, @"Array should be empty.");
     STAssertTrue(array.isNotEmpty, @"Array should not be empty");
@@ -46,11 +46,11 @@
     NSString *second = @"second";
     NSString *third = @"third";
     NSString *fourth = @"fourth";
-    NSArray *array = $array(first, second, third, fourth, nil);
+    NSArray *array = $array(first, second, third, fourth);
     
     STAssertEqualObjects(array.firstObject, first, @"Should return first element.");
     STAssertTrue(array.lastIndex == array.count-1, @"Should return length-1");
-    array = $array(first, second, third, fourth, second, nil);
+    array = $array(first, second, third, fourth, second);
     NSArray *result = [array filteredArrayUsingSet:$set(fourth, second)];
     STAssertTrue(3 == result.count, @"Three elements should remain.");
     STAssertEqualObjects([result objectAtIndex:0], second, @"element should equal second");
@@ -77,7 +77,7 @@
     NSString *first = @"first";
     NSString *last = @"last";
     
-    NSArray *array = $array(first, @"second", last, nil);
+    NSArray *array = $array(first, @"second", last);
     NSMutableArray *ma = array.mutableCopy;
     
     STAssertEqualObjects(last, ma.pop, @"Pop should return last element");
