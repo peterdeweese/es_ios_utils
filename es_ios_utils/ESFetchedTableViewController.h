@@ -16,8 +16,9 @@
 @property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;
 
 //Configure these:
+@property(nonatomic, readonly) NSString *entityName;
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
-@property(nonatomic, readonly) NSArray *sortDescriptors;
+@property(nonatomic, readonly) NSArray  *sortDescriptors;
 @property(nonatomic, readonly) UITableViewCellStyle useCellStyle; //defaults to normal
 -(UITableViewCell*)createCell; //defaults to creating a cell with useCellStyle
 

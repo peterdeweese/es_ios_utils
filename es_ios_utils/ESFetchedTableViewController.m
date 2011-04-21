@@ -45,6 +45,12 @@
 
 #pragma mark - Implement
 
+-(NSString*)entityName
+{
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+    return nil;
+}
+
 -(UITableViewCellStyle)useCellStyle
 {
     return UITableViewCellStyleDefault;
@@ -111,7 +117,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
         return fetchedResultsController;
     
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    fetchRequest.entity = [NSEntityDescription entityForName:@"Order" inManagedObjectContext:managedObjectContext];
+    fetchRequest.entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:managedObjectContext];
     fetchRequest.fetchBatchSize = 20;
     fetchRequest.sortDescriptors = self.sortDescriptors;
     
