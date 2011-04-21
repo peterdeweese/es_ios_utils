@@ -56,6 +56,12 @@
     STAssertEqualObjects([result objectAtIndex:0], second, @"element should equal second");
     STAssertEqualObjects([result objectAtIndex:1], fourth, @"element should equal fourth");
     STAssertEqualObjects([result objectAtIndex:2], second, @"element should equal second");
+    
+    array = [NSArray arrayByCoalescing:first, $array(second, third), $set(fourth), nil];
+    STAssertEqualObjects([array objectAtIndex:0], first,  @"element should equal first");
+    STAssertEqualObjects([array objectAtIndex:1], second, @"element should equal second");
+    STAssertEqualObjects([array objectAtIndex:2], third,  @"element should equal third");
+    STAssertEqualObjects([array objectAtIndex:3], fourth, @"element should equal fourth");
 }
 
 -(void)testNSErrorCategory

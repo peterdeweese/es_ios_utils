@@ -24,6 +24,10 @@ typedef void(^ErrorBlock)(NSError*);
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)
+    // Each argument is added to the new array. If an argument is a collection, each item from the collection is added
+    // to the array.
+    +(NSArray*)arrayByCoalescing:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
+
     @property(readonly) id         firstObject;
     @property(readonly) BOOL       isEmpty;
     @property(readonly) BOOL       isNotEmpty;

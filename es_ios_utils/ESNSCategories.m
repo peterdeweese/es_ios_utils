@@ -16,6 +16,25 @@
 
 @implementation NSArray(ESUtils)
 
++(NSArray*)arrayByCoalescing:(id)first, ...
+{
+    NSMutableArray *a = [[[NSMutableArray alloc] init] autorelease];
+    
+    va_list args;
+    va_start(args, first);
+    for (id arg = first; arg != nil; arg = va_arg(args, id))
+    {
+        if([arg conformsToProtocol:@protocol(NSFastEnumeration)])
+           for(id o in arg)
+               [a addObject:o];//REFACTOR: pull up copying the whole of any fast enumerator to another
+        else
+            [a addObject:arg];
+    }
+    va_end(args);
+    
+    return [a.copy autorelease];
+}
+
 -(id)firstObject
 {
     if(self.count > 0)
