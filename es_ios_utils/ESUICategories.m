@@ -227,7 +227,7 @@
 
 -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
-    [self insertRowsAtIndexPaths:$array(indexPath, nil) withRowAnimation:animation];
+    [self insertRowsAtIndexPaths:$array(indexPath) withRowAnimation:animation];
 }
 
 -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation
@@ -252,7 +252,7 @@
 
 -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a
 {
-    [self deleteRowsAtIndexPaths:$array(i, nil) withRowAnimation:a];
+    [self deleteRowsAtIndexPaths:$array(i) withRowAnimation:a];
 }
 
 -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
