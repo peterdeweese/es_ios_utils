@@ -111,6 +111,16 @@
     STAssertFalse(@"   \t\n".isPresent, @"String should not be considered present.");
     STAssertFalse(@"".isPresent, @"String should not be considered present.");
     STAssertTrue(@" qwer ".isPresent, @"String should be considered present.");
+    
+    STAssertEqualObjects(@"514 B",
+                         [NSString stringWithFormattedFileSize:514],
+                         @"File size not formatting properly");
+    STAssertEqualObjects(@"5.1 KB",
+                         [NSString stringWithFormattedFileSize:5.1*1024.],
+                         @"File size not formatting properly");
+    STAssertEqualObjects(@"2.7 MB",
+                         [NSString stringWithFormattedFileSize:2.7*1024.*1024.],
+                         @"File size not formatting properly");
 }
 
 @end

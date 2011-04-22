@@ -341,6 +341,25 @@
 
 @implementation NSString(ESUtils)
 
+//REFACTOR: consider pulling up into a math util library
+float logx(float value, float base) 
+{
+    return log10f(value) / log10f(base);
+}
+
++(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength
+{
+    //REFACTOR: consider storing for reuse
+    NSArray *labels = $array(@"B", @"KB", @"MB", @"GB", @"TB");
+    
+    int power = MIN(labels.count-1, floor(logx(byteLength, 1024)));
+    float size = (float)byteLength/powf(1024, power);
+    
+    return $format(@"%@ %@",
+                   power?$format(@"%1.1f",size):$format(@"%i",byteLength),
+                   [labels objectAtIndex:power]);
+}
+
 -(NSData*)dataWithUTF8
 {
     return [self dataUsingEncoding:NSUTF8StringEncoding];
