@@ -349,6 +349,8 @@ float logx(float value, float base)
 
 +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength
 {
+    if(byteLength == 0)
+        return @"0 B";
     //REFACTOR: consider storing for reuse
     NSArray *labels = $array(@"B", @"KB", @"MB", @"GB", @"TB");
     
