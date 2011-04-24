@@ -60,6 +60,9 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIViewController(ESUtils)
+    // Forces without using a private api.
+    -(void)forcePortrait;
+
     //If iPad, use popover, else push
     -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
 @end

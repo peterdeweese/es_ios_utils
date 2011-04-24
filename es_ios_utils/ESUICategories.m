@@ -151,6 +151,15 @@
         [parent.navigationController pushViewController:self animated:YES];
 }
 
+-(void)forcePortrait
+{
+    //force portrait orientation without private methods.
+    UIViewController *c = [[UIViewController alloc]init];
+    [self presentModalViewController:c animated:NO];
+    [self dismissModalViewControllerAnimated:NO];
+    [c release];
+}
+
 @end
 
 
