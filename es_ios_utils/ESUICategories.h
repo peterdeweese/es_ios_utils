@@ -65,6 +65,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
     //If iPad, use popover, else push
     -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
+    -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r;
 @end
 
 @interface UITextField (ESUtils)
