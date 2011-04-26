@@ -148,6 +148,9 @@
         [pc presentPopoverFromBarButtonItem:button
                    permittedArrowDirections:UIPopoverArrowDirectionAny
                                    animated:YES];
+        if(self.modalInPopover)
+            pc.passthroughViews = NSArray.array;
+
     }
     else
         [parent.navigationController pushViewController:self animated:YES];
