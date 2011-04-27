@@ -99,6 +99,11 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     return c;
 }
 
+-(void)configureFetchRequest:(NSFetchRequest*)fetchRequest
+{
+    //optional
+}
+
 -(void)tableView:(UITableView*)t commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)i
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
@@ -123,8 +128,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     fetchRequest.entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:managedObjectContext];
     fetchRequest.fetchBatchSize = 20;
     fetchRequest.sortDescriptors = self.sortDescriptors;
-    
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    [self configureFetchRequest:fetchRequest];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
     
     [self.fetchedResultsController performFetchAndDoOnError:self.doOnError];
