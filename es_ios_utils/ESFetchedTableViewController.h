@@ -10,7 +10,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> { }
+@interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+    NSManagedObjectContext     *managedObjectContext;
+}
 
 @property(nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;

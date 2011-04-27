@@ -112,7 +112,10 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 #pragma mark - Fetched results controller
 
 -(NSFetchedResultsController *)fetchedResultsController
-{    
+{
+    if(!managedObjectContext)
+        [NSException raise:NSInternalInconsistencyException format:@"You must set managedObjectContext in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+
     if (fetchedResultsController)
         return fetchedResultsController;
     
