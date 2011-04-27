@@ -143,7 +143,9 @@
 {
     if(UIDevice.isPad)
     {
-        UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:self];
+        UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
+
+        UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
         pc.popoverContentSize = self.view.frame.size;
         [pc presentPopoverFromBarButtonItem:button
                    permittedArrowDirections:UIPopoverArrowDirectionAny
@@ -160,7 +162,9 @@
 {
     if(UIDevice.isPad)
     {
-        UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:self];
+        UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
+
+        UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
         pc.popoverContentSize = self.view.frame.size;
         [pc presentPopoverFromRect:r
                             inView:parent.view
