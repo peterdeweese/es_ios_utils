@@ -53,7 +53,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSError(ESUtils)
+    @property(nonatomic, readonly) NSArray *detailedErrors;
     -(void)log;
+    -(void)logDetailedErrors;
     -(void)logWithMessage:(NSString*)message;
 @end
 
@@ -64,12 +66,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError;
 @end
 
-//  Created by Scott Means on 1/5/11.
-//  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/
-//  Released into the public domain without warranty.
 @interface NSManagedObject(ESUtils)
     -(void)delete;
-    @property (nonatomic, readonly) NSString *xmlString;
+    @property(nonatomic, readonly) NSString *xmlString;
 @end
 
 @interface NSManagedObjectContext(ESUtils)

@@ -129,14 +129,25 @@
 
 @implementation NSError(ESUtils)
 
+-(NSArray*)detailedErrors
+{
+    return [self.userInfo objectForKey:NSDetailedErrorsKey];
+}
+
+-(void)logDetailedErrors
+{
+    for(NSError *e in self.detailedErrors)
+        [e logWithMessage:@"Detailed Error"];
+}
+
 -(void)log
 {
-    NSLog(@"%@, %@", self, self.userInfo);
+    NSLog(@"%@", self.localizedDescription);
 }
 
 -(void)logWithMessage:(NSString*)message
 {
-    NSLog(@"%@ %@, %@", message, self, self.userInfo);
+    NSLog(@"%@ - %@", message, self);
 }
 
 @end
