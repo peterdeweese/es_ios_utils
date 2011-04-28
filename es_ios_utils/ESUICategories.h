@@ -60,10 +60,14 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIViewController(ESUtils)
+    //Passed Apple's review. Prefixed with a $ to indicate undocumented api and to prevent conflict with key.
+    @property(nonatomic, readonly) UIPopoverController *$popoverController;
+    
     // Forces without using a private api.
     -(void)forcePortrait;
 
     //If iPad, use popover, else push
+-(void)popOrDismiss;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r;
 @end

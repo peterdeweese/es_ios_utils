@@ -139,6 +139,11 @@
 
 @implementation UIViewController(ESUtils)
 
+-(UIPopoverController*)$popoverController
+{
+    return [self valueForKey:@"popoverController"];
+}
+
 -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button
 {
     if(UIDevice.isPad)
@@ -146,7 +151,7 @@
         UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
 
         UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
-        pc.popoverContentSize = self.view.frame.size;
+        pc.popoverContentSize = nav.contentSizeForViewInPopover;
         [pc presentPopoverFromBarButtonItem:button
                    permittedArrowDirections:UIPopoverArrowDirectionAny
                                    animated:YES];
@@ -165,7 +170,7 @@
         UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
 
         UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
-        pc.popoverContentSize = self.view.frame.size;
+        pc.popoverContentSize = nav.contentSizeForViewInPopover;
         [pc presentPopoverFromRect:r
                             inView:parent.view
           permittedArrowDirections:UIPopoverArrowDirectionAny
@@ -173,6 +178,14 @@
     }
     else
         [parent.navigationController pushViewController:self animated:YES];
+}
+
+-(void)popOrDismiss
+{
+    if(UIDevice.isPad)
+        [self.$popoverController dismissPopoverAnimated:YES];
+    else
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)forcePortrait

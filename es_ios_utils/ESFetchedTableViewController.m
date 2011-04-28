@@ -11,7 +11,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, doOnError;
+@synthesize fetchedResultsController, managedObjectContext, doOnError, entityName = _entityName;
 
 -(id)init
 {
@@ -47,8 +47,9 @@
 
 -(NSString*)entityName
 {
-    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
-    return nil;
+    if(!_entityName)
+        [NSException raise:NSInternalInconsistencyException format:@"You must set or override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+    return _entityName;
 }
 
 -(UITableViewCellStyle)useCellStyle
@@ -135,7 +136,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     [self.fetchedResultsController performFetchAndDoOnError:self.doOnError];
     
     return fetchedResultsController;
-}    
+}
 
 #pragma mark - Fetched results controller delegate
 
