@@ -181,6 +181,16 @@
     [self.managedObjectContext deleteObject:self];
 }
 
+-(id)copyWithAttributes
+{
+	id copied = [[self.class alloc] initWithEntity:self.entity
+                    insertIntoManagedObjectContext:self.managedObjectContext];
+    
+	for(NSString *key in self.entity.attributesByName.allKeys)
+		[copied setValue:[self valueForKey:key] forKey:key];
+
+	return copied;
+}
 
 //  Created by Scott Means on 1/5/11.
 //  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/

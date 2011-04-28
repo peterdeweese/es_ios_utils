@@ -68,6 +68,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSManagedObject(ESUtils)
     -(void)delete;
+    
+    //Creates a new managed object and performs a shallow copy, ignoring all relationships
+    @property(nonatomic, readonly) id        copyWithAttributes;
+
     @property(nonatomic, readonly) NSString *xmlString;
 @end
 
