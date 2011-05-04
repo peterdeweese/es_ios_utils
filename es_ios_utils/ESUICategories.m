@@ -167,10 +167,10 @@
 {
     if(UIDevice.isPad)
     {
+        [self.view layoutIfNeeded];
         UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
-
         UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
-        pc.popoverContentSize = nav.contentSizeForViewInPopover;
+        pc.popoverContentSize = nav.view.size;
         [pc presentPopoverFromRect:r
                             inView:parent.view
           permittedArrowDirections:UIPopoverArrowDirectionAny
