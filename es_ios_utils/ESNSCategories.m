@@ -35,6 +35,13 @@
     return [a.copy autorelease];
 }
 
+-(NSArray*)arrayByRemovingObject:(id)anObject
+{
+    NSMutableArray *a = [self.mutableCopy autorelease];
+    [a removeObject:anObject];
+    return a.copy;
+}
+
 -(id)firstObject
 {
     if(self.count > 0)

@@ -311,4 +311,9 @@
     [self deleteRow:r inSection:0 withRowAnimation:a];
 }
 
+-(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self deleteSections:[NSIndexSet indexSetWithIndex:s] withRowAnimation:a];
+}
+
 @end

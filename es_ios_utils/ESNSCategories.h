@@ -27,6 +27,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     // Each argument is added to the new array. If an argument is a collection, each item from the collection is added
     // to the array.
     +(NSArray*)arrayByCoalescing:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
+    -(NSArray*)arrayByRemovingObject:(id)anObject;
 
     @property(readonly) id         firstObject;
     @property(readonly) BOOL       isEmpty;
