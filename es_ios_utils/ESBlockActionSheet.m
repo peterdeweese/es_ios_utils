@@ -69,7 +69,7 @@
     if(sheet)
         return;
     [buttonTitles addObject:buttonTitle];
-    [doOnPresses addObject:doOnPress?(id)doOnPress:NSNull.null];
+    [doOnPresses addObject:doOnPress?(id)Block_copy(doOnPress):NSNull.null];
 }
 
 #pragma mark Control

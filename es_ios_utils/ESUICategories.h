@@ -91,6 +91,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
     -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation;
     -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation;
+    -(void)insertSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
     -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
     -(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
     -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a;

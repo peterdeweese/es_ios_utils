@@ -276,14 +276,19 @@
     [self insertRowsAtIndexPaths:$array(indexPath) withRowAnimation:animation];
 }
 
--(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation
+-(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
 {
-    [self insertRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s] withRowAnimation:animation];
+    [self insertRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s] withRowAnimation:a];
 }
 
--(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation
+-(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)a
 {
-    [self insertRow:r inSection:0 withRowAnimation:animation];
+    [self insertRow:r inSection:0 withRowAnimation:a];
+}
+
+-(void)insertSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self insertSections:[NSIndexSet indexSetWithIndex:s] withRowAnimation:a];
 }
 
 -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a
