@@ -30,8 +30,8 @@
 @property (nonatomic, retain)           NSString      *cancelTitle;
 @property (nonatomic, retain)           NSString      *destroyTitle;
 
-@property (nonatomic, assign) void(^doOnCancel)(UIViewController*);
-@property (nonatomic, assign) void(^doOnDestroy)(UIViewController*);
+@property (nonatomic, copy) void(^doOnCancel)(UIViewController*);
+@property (nonatomic, copy) void(^doOnDestroy)(UIViewController*);
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title;
 
