@@ -35,6 +35,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) NSUInteger lastIndex;
     //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
     -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
+    @property(readonly) NSSet *asSet;
 @end
 
 @interface NSDate(ESUtils)

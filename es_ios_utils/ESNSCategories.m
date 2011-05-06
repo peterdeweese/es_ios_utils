@@ -75,6 +75,11 @@
     return a.copy;
 }
 
+-(NSSet*)asSet
+{
+    return [NSSet setWithArray:self];
+}
+
 @end
 
 
