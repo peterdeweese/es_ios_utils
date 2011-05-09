@@ -106,6 +106,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSSet(ESUtils)
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;
+
+-(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending;
 @end
 
 @interface NSString (ESUtils)

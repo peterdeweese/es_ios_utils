@@ -369,6 +369,14 @@
     return self.count > 0;
 }
 
+-(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending
+{
+    NSSortDescriptor *d = [[NSSortDescriptor alloc] initWithKey:key ascending:ascending];
+    NSArray *result = [self sortedArrayUsingDescriptors:$array(d)];
+    [d release];
+    return result;
+}
+
 @end
 
 
