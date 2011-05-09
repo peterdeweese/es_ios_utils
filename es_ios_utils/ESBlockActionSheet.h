@@ -16,8 +16,8 @@
     NSString *cancelTitle;
     NSString *destroyTitle;
     
-    void(^doOnCancel)(UIViewController*);
-    void(^doOnDestroy)(UIViewController*);
+    void(^doOnCancel)(void);
+    void(^doOnDestroy)(void);
     
     NSMutableArray *buttonTitles;
     NSMutableArray *doOnPresses;
@@ -30,22 +30,22 @@
 @property (nonatomic, retain)           NSString      *cancelTitle;
 @property (nonatomic, retain)           NSString      *destroyTitle;
 
-@property (nonatomic, copy) void(^doOnCancel)(UIViewController*);
-@property (nonatomic, copy) void(^doOnDestroy)(UIViewController*);
+@property (nonatomic, copy) void(^doOnCancel)(void);
+@property (nonatomic, copy) void(^doOnDestroy)(void);
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title;
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
                                    cancelTitle:(NSString*)cancelTitle
-                                    doOnCancel:(void (^)(UIViewController *controller))doOnCancel;
+                                    doOnCancel:(void(^)(void))doOnCancel;
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
                                    cancelTitle:(NSString*)cancelTitle
-                                    doOnCancel:(void (^)(UIViewController *controller))doOnCancel
+                                    doOnCancel:(void(^)(void))doOnCancel
                                   destroyTitle:(NSString*)destroyTitle
-                                   doOnDestroy:(void (^)(UIViewController *controller))doOnDestroy;
+                                   doOnDestroy:(void(^)(void))doOnDestroy;
 
--(void)addButtonWithTitle:(NSString*)title doOnPress:(void (^)(UIViewController*))doOnPress;
+-(void)addButtonWithTitle:(NSString*)title doOnPress:(void(^)(void))doOnPress;
 
 -(IBAction)presentIn:(UIViewController*)controller;
 

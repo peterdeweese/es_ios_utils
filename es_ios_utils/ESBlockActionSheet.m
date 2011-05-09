@@ -20,7 +20,7 @@
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
                                    cancelTitle:(NSString*)cancelTitle
-                                    doOnCancel:(void (^)(UIViewController *controller))doOnCancel
+                                    doOnCancel:(void (^)(void))doOnCancel
 {
     ESBlockActionSheet* sheet = [self blockActionSheetWithTitle:title];
     sheet.cancelTitle = cancelTitle;
@@ -31,9 +31,9 @@
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
                                    cancelTitle:(NSString*)cancelTitle
-                                    doOnCancel:(void (^)(UIViewController *controller))doOnCancel
+                                    doOnCancel:(void(^)(void))doOnCancel
                                    destroyTitle:(NSString*)destroyTitle
-                                    doOnDestroy:(void (^)(UIViewController *controller))doOnDestroy
+                                    doOnDestroy:(void(^)(void))doOnDestroy
 {
     ESBlockActionSheet* sheet = [self blockActionSheetWithTitle:title cancelTitle:cancelTitle doOnCancel:doOnCancel];
     sheet.destroyTitle = destroyTitle;
@@ -64,7 +64,7 @@
 #pragma mark Properties
 @synthesize sheet, title, cancelTitle, destroyTitle, doOnCancel, doOnDestroy;
 
--(void)addButtonWithTitle:(NSString*)buttonTitle doOnPress:(void (^)(UIViewController*))doOnPress
+-(void)addButtonWithTitle:(NSString*)buttonTitle doOnPress:(void(^)(void))doOnPress
 {
     if(sheet)
         return;
@@ -110,9 +110,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    void(^actionBlock)(UIViewController*) = [doOnPresses objectAtIndex:buttonIndex];
+    void(^actionBlock)(void) = [doOnPresses objectAtIndex:buttonIndex];
     if(actionBlock && (id)actionBlock != NSNull.null)
-        actionBlock(controller);
+        actionBlock();
 }
 
 @end
