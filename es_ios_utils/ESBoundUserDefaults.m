@@ -19,6 +19,7 @@
 -(void)dynamicSet:(NSString*)methodName object:(id)o
 {
     [[NSUserDefaults standardUserDefaults] setObject:o forKey:methodName];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
