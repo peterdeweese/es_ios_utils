@@ -304,6 +304,39 @@
     return result;
 }
 
+-(BOOL)hasAny:(Class)type
+{
+    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(type)
+                                              inManagedObjectContext:self];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchLimit = 1;
+    
+    NSError *error = nil;
+
+    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
+    if (error)
+        [error log];
+    
+    return results.isNotEmpty;
+}
+
+-(NSArray*)all:(Class)type
+{
+    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(type)
+                                              inManagedObjectContext:self];
+    fetchRequest.entity = entity;
+    
+    NSError *error = nil;
+    
+    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
+    if (error)
+        [error log];
+    
+    return results;
+}
+
 @end
 
 

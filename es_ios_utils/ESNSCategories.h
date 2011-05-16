@@ -79,8 +79,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSManagedObjectContext(ESUtils)
     -(NSManagedObject*)createManagedObjectNamed:(NSString*)name;
--(NSManagedObject*)createManagedObjectOfClass:(Class)c;
+    -(NSManagedObject*)createManagedObjectOfClass:(Class)c;
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
+    -(BOOL)hasAny:(Class)type;
+    -(NSArray*)all:(Class)type;
 @end
 
 // To enqueue or push, use addObject:
