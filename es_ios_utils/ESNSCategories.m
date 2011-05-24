@@ -42,6 +42,17 @@
     return a.copy;
 }
 
+-(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath
+{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
+    for(NSObject *o in self)
+    {
+        id v = [o valueForKeyPath:keyPath];
+        [result addObject:(v ? v : NSNull.null)];
+    }
+    return result;
+}
+
 -(id)firstObject
 {
     if(self.count > 0)
@@ -288,9 +299,22 @@
     return [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
 }
 
+-(NSManagedObject*)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary
+{
+    // Create a new instance of the entity managed by the fetched results controller.
+    NSManagedObject *o = [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
+    [o quietlySetValuesForKeysWithDictionary:dictionary];
+    return o;
+}
+
 -(NSManagedObject*)createManagedObjectOfClass:(Class)c
 {
     return [self createManagedObjectNamed:[NSString stringWithUTF8String:class_getName(c)]];
+}
+
+-(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary
+{
+    return [self createManagedObjectNamed:[NSString stringWithUTF8String:class_getName(c)] withDictionary:dictionary];
 }
 
 -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError
@@ -321,6 +345,7 @@
     return results.isNotEmpty;
 }
 
+//TODO: shouldn't this be a set?
 -(NSArray*)all:(Class)type
 {
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
@@ -390,6 +415,27 @@
 @end
 
 
+@implementation NSObject(ESUtils)
+
+- (void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues
+{
+    for(NSString *key in keyedValues.allKeys)
+    {
+        @try
+        {
+            [self setValue:[keyedValues objectForKey:key] forKey:key];
+        }
+        @catch (NSException *e)
+        {
+            if(![e.name isEqualToString:@"NSUnknownKeyException"])
+                @throw e;
+        }
+    }
+}
+
+@end
+
+
 @implementation NSSet(ESUtils)
 
 -(BOOL)isEmpty
@@ -408,6 +454,11 @@
     NSArray *result = [self sortedArrayUsingDescriptors:$array(d)];
     [d release];
     return result;
+}
+
+-(NSArray*)asArray
+{
+    return [NSArray arrayByCoalescing:self, nil];
 }
 
 @end

@@ -33,8 +33,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) BOOL       isEmpty;
     @property(readonly) BOOL       isNotEmpty;
     @property(readonly) NSUInteger lastIndex;
+
     //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
     -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
+    -(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath;
     @property(readonly) NSSet *asSet;
 @end
 
@@ -79,7 +81,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSManagedObjectContext(ESUtils)
     -(NSManagedObject*)createManagedObjectNamed:(NSString*)name;
+    -(NSManagedObject*)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary;
     -(NSManagedObject*)createManagedObjectOfClass:(Class)c;
+    -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary;
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
     -(BOOL)hasAny:(Class)type;
     -(NSArray*)all:(Class)type;
@@ -105,11 +109,16 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) BOOL isNotEmpty;
 @end
 
+@interface NSObject(ESUtils)
+    //Ignores missing keys in the target.
+    -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
+@end
+
 @interface NSSet(ESUtils)
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;
-
--(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending;
+    @property(readonly) NSArray *asArray;
+    -(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending;
 @end
 
 @interface NSString (ESUtils)
