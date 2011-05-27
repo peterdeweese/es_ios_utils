@@ -53,6 +53,23 @@
     return result;
 }
 
+-(NSArray*)arrayMappedWithFormat:(NSString*)format
+{
+    return [self arrayMappedWith:^id(id o) {
+        return [NSString stringWithFormat:format, ((NSObject*)o).description];
+    }];
+}
+
+-(NSArray*)arrayMappedWith:(id(^)(id))mapper
+{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
+    
+    for(NSObject *o in self)
+        [result addObject:mapper(o)];
+    
+    return result;
+}
+
 -(id)firstObject
 {
     if(self.count > 0)

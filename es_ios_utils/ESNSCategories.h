@@ -29,6 +29,12 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     +(NSArray*)arrayByCoalescing:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
     -(NSArray*)arrayByRemovingObject:(id)anObject;
 
+    // Analog of ruby's: ["one", "two"].map { |str| "(#{str})" }
+    // [array arrayMappedWithFormat:@"(%@)"]
+    // @returns an array of formatted NSStrings.
+    -(NSArray*)arrayMappedWithFormat:(NSString*)format;
+    -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
+
     @property(readonly) id         firstObject;
     @property(readonly) BOOL       isEmpty;
     @property(readonly) BOOL       isNotEmpty;

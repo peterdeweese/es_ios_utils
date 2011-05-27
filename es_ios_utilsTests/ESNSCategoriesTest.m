@@ -62,6 +62,19 @@
     STAssertEqualObjects([array objectAtIndex:1], second, @"element should equal second");
     STAssertEqualObjects([array objectAtIndex:2], third,  @"element should equal third");
     STAssertEqualObjects([array objectAtIndex:3], fourth, @"element should equal fourth");
+    
+    //wrap with parenthesis to test arrayMappedWithFormat:
+    array = $array(first, second);
+    array = [array arrayMappedWithFormat:@"(%@)"];
+    STAssertEqualObjects([array objectAtIndex:0], @"(first)",  @"element should equal (first)");
+    STAssertEqualObjects([array objectAtIndex:1], @"(second)",  @"element should equal (second)");
+    
+    //unwrap to test arrayMappedWith:
+    array = [array arrayMappedWith:^id(id o){
+        return [((NSString*)o) stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
+    }];
+    STAssertEqualObjects([array objectAtIndex:0], first,  @"element should equal first");
+    STAssertEqualObjects([array objectAtIndex:1], second,  @"element should equal second");
 }
 
 -(void)testNSErrorCategory
