@@ -98,6 +98,7 @@
     {
         @try
         {
+            NSLog(@"Updating object: %@=%@", m.keyPath, value);
             [m.object setValue:value forKeyPath:m.keyPath];
         }
         @catch (NSException *e)
