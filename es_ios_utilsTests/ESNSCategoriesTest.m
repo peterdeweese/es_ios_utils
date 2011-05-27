@@ -108,6 +108,13 @@
     STAssertEquals([d objectForKeyObject:key], value, @"value should equal entered value");
 }
 
+-(void)testNSRegularExpressionCategory
+{
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"postfix$" options:0 error:nil];
+    STAssertTrue([re matches:@"String with postfix"], @"RE should match this string.");
+    STAssertFalse([re matches:@"String without"], @"RE should not match this string.");
+}
+
 -(void)testNSSetCategory
 {
     // see testEmpty

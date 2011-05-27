@@ -15,6 +15,7 @@
 -(void)testNSErrorCategory;
 -(void)testNSSetCategory;
 -(void)testNSMutableArrayCategory;
+-(void)testNSRegularExpressionCategory;
 -(void)testNSStringCategory;
 
 @end

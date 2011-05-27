@@ -453,6 +453,16 @@
 @end
 
 
+@implementation NSRegularExpression(ESUtils)
+
+-(BOOL)matches:(NSString*)string
+{
+    return [self rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, string.length)].location != NSNotFound;
+}
+
+@end
+
+
 @implementation NSSet(ESUtils)
 
 -(BOOL)isEmpty

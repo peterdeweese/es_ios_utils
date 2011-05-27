@@ -120,6 +120,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
 @end
 
+@interface NSRegularExpression(ESUtils)
+    -(BOOL)matches:(NSString*)string;
+@end
+
 @interface NSSet(ESUtils)
     @property(readonly) BOOL isEmpty;
     @property(readonly) BOOL isNotEmpty;
