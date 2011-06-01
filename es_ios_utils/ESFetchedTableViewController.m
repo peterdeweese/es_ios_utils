@@ -48,7 +48,7 @@
 -(NSString*)entityName
 {
     if(!_entityName)
-        [NSException raise:NSInternalInconsistencyException format:@"You must set or override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+        $must_override;
     return _entityName;
 }
 
@@ -67,12 +67,12 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
-    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+    $must_override;
 }
 
 -(NSArray*)sortDescriptors
 {
-    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+    $must_override;
     return nil;
 }
 
@@ -119,8 +119,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(NSFetchedResultsController *)fetchedResultsController
 {
-    if(!managedObjectContext)
-        [NSException raise:NSInternalInconsistencyException format:@"You must set managedObjectContext in a subclass of ESFetchedTableViewController", NSStringFromSelector(_cmd)];
+    assert(managedObjectContext);
 
     if (fetchedResultsController)
         return fetchedResultsController;

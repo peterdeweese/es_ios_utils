@@ -15,6 +15,8 @@
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 
 #define $format(format, objs...) [NSString stringWithFormat: format, objs]
 
+#define $must_override [NSException raise:NSInternalInconsistencyException format:@"You must override %@", NSStringFromSelector(_cmd)];
+
 @interface ESUtils : NSObject
 {    
 }

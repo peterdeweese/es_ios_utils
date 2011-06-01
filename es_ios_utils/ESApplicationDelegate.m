@@ -15,7 +15,7 @@
 
 -(NSString*)persistantStoreName
 {
-    [NSException raise:NSInternalInconsistencyException format:@"Your UIApplicationDelegate must implement -(NSString*)persistantStoreName.", NSStringFromSelector(_cmd)];
+    $must_override;
     return nil;
 }
 
@@ -24,7 +24,7 @@
     id<UIApplicationDelegate> d = [UIApplication sharedApplication].delegate;
     if([d isKindOfClass:ESApplicationDelegate.class])
         return d;
-    [NSException raise:NSInternalInconsistencyException format:@"Your UIApplicationDelegate must extend ESApplicationDelegate to use this method.", NSStringFromSelector(_cmd)];
+    $must_override;
     return nil;
 }
 

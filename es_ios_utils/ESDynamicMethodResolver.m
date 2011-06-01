@@ -16,13 +16,13 @@
 
 -(id)dynamicGet:(NSString*)methodName
 {
-    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESDynamicMethodResolver", NSStringFromSelector(_cmd)];
+    $must_override;
     return nil;
 }
 
 -(void)dynamicSet:(NSString*)methodName object:(id)o
 {
-    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass of ESDynamicMethodResolver", NSStringFromSelector(_cmd)];
+    $must_override;
 }
 
 id getIMP(ESDynamicMethodResolver *self, SEL cmd)
