@@ -326,12 +326,12 @@
 
 -(NSManagedObject*)createManagedObjectOfClass:(Class)c
 {
-    return [self createManagedObjectNamed:[NSString stringWithUTF8String:class_getName(c)]];
+    return [self createManagedObjectNamed:self.className];
 }
 
 -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary
 {
-    return [self createManagedObjectNamed:[NSString stringWithUTF8String:class_getName(c)] withDictionary:dictionary];
+    return [self createManagedObjectNamed:self.className withDictionary:dictionary];
 }
 
 -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError
@@ -448,6 +448,11 @@
                 @throw e;
         }
     }
+}
+
+-(NSString*)className
+{
+    return [NSString stringWithUTF8String:class_getName(self.class)];
 }
 
 @end

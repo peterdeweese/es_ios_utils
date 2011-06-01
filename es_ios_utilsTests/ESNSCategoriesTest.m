@@ -108,6 +108,12 @@
     STAssertEquals([d objectForKeyObject:key], value, @"value should equal entered value");
 }
 
+-(void)testNSObjectCategory
+{
+    NSObject *o = [[NSObject alloc] init];
+    STAssertEqualObjects(o.className, @"NSObject", @"className should return NSObject");
+}
+
 -(void)testNSRegularExpressionCategory
 {
     NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"postfix$" options:0 error:nil];

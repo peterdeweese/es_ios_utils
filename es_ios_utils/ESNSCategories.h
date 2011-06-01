@@ -118,6 +118,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSObject(ESUtils)
     //Ignores missing keys in the target.
     -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
+    @property(readonly) NSString *className;
 @end
 
 @interface NSRegularExpression(ESUtils)
