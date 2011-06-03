@@ -135,6 +135,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSString (ESUtils)
     //Formats like 576B, 5.6MB
     +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength;
+    +(NSString*)stringWithClassName:(Class)c;
 
     @property(nonatomic, readonly) NSData   *dataWithUTF8;
     @property(nonatomic, readonly) NSString *strip;

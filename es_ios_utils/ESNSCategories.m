@@ -326,12 +326,12 @@
 
 -(NSManagedObject*)createManagedObjectOfClass:(Class)c
 {
-    return [self createManagedObjectNamed:self.className];
+    return [self createManagedObjectNamed:[NSString stringWithClassName:c]];
 }
 
 -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary
 {
-    return [self createManagedObjectNamed:self.className withDictionary:dictionary];
+    return [self createManagedObjectNamed:[NSString stringWithClassName:c] withDictionary:dictionary];
 }
 
 -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError
@@ -452,7 +452,7 @@
 
 -(NSString*)className
 {
-    return [NSString stringWithUTF8String:class_getName(self.class)];
+    return [NSString stringWithClassName:self.class];
 }
 
 @end
@@ -517,6 +517,11 @@ float logx(float value, float base)
     return $format(@"%@ %@",
                    power?$format(@"%1.1f",size):$format(@"%i",byteLength),
                    [labels objectAtIndex:power]);
+}
+
++(NSString*)stringWithClassName:(Class)c
+{
+    return [NSString stringWithUTF8String:class_getName(c)];
 }
 
 -(NSData*)dataWithUTF8

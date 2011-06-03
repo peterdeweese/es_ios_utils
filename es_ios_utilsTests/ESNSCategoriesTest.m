@@ -147,6 +147,8 @@
     STAssertEqualObjects(@"2.7 MB",
                          [NSString stringWithFormattedFileSize:2.7*1024.*1024.],
                          @"File size not formatting properly");
+    
+    STAssertEqualObjects([NSString stringWithClassName:NSObject.class], @"NSObject", @"The class name of an object should be NSObject.");
 }
 
 @end
