@@ -40,6 +40,7 @@
 		A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9414C021347C32E008C67F4 /* Model.xcdatamodeld */; };
 		A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A9414C031347C32E008C67F4 /* Model.xcdatamodel */; };
 		A973624D135E247F000EBD17 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A973624C135E247F000EBD17 /* ESBlockActionSheet.m */; };
+		A99823081399618600855F2B /* development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99823071399618600855F2B /* development.plist */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
@@ -108,6 +109,7 @@
 		A9414C031347C32E008C67F4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A973624B135E247F000EBD17 /* ESBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBlockActionSheet.h; sourceTree = "<group>"; };
 		A973624C135E247F000EBD17 /* ESBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBlockActionSheet.m; sourceTree = "<group>"; };
+		A99823071399618600855F2B /* development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = development.plist; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 		A9414B5F1347B391008C67F4 /* es_ios_utils_app */ = {
 			isa = PBXGroup;
 			children = (
+				A99823051399616A00855F2B /* config */,
 				A9414B681347B391008C67F4 /* es_ios_utils_appAppDelegate.h */,
 				A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */,
 				A9414B6B1347B391008C67F4 /* MainWindow.xib */,
@@ -255,6 +258,14 @@
 			path = es_ios_utils;
 			sourceTree = "<group>";
 		};
+		A99823051399616A00855F2B /* config */ = {
+			isa = PBXGroup;
+			children = (
+				A99823071399618600855F2B /* development.plist */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,6 +337,7 @@
 				A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */,
 				A9414B641347B391008C67F4 /* InfoPlist.strings in Resources */,
 				A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */,
+				A99823081399618600855F2B /* development.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

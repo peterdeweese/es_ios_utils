@@ -11,7 +11,7 @@
 
 @implementation ESApplicationDelegate
 
-@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window;
+@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
 
 -(NSString*)persistantStoreName
 {
@@ -28,11 +28,17 @@
     return nil;
 }
 
++(BOOL)isProduction
+{
+    return IS_PRODUCTION;
+}
+
 - (void)dealloc
 {
     [managedObjectContext release];
     [managedObjectModel release];
     [persistentStoreCoordinator release];
+    [config release];
     
     [super dealloc];
 }
@@ -40,10 +46,19 @@
 /**
  Returns the URL to the application's Documents directory.
  */
-- (NSURL *)applicationDocumentsDirectory
+- (NSURL*)applicationDocumentsDirectory
 {
     return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
 }
+
+/**
+ Returns the URL to the application's directory.
+ */
+- (NSString*)applicationDirectory
+{
+    return [NSBundle mainBundle].bundlePath;
+}
+
 
 #pragma mark - Core Data stack
 
@@ -94,7 +109,7 @@
     if (persistentStoreCoordinator)
         return persistentStoreCoordinator;
     
-    NSString *storePath = [[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
+    NSString *storePath = [[self.applicationDocumentsDirectory path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // If the expected store doesn't exist, copy the default store.
@@ -119,6 +134,23 @@
     }    
     
     return persistentStoreCoordinator;
+}
+
+-(NSDictionary*)config
+{
+    if(!config)
+    {
+        NSString *environment = [ESApplicationDelegate isProduction] ? @"production" : @"development";
+        NSLog(@"test: %@", self.applicationDirectory);
+        NSString *configPath = [self.applicationDirectory stringByAppendingPathComponent:$format(@"%@.plist", environment)];
+        //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
+
+        if([[NSFileManager defaultManager] fileExistsAtPath:configPath])
+            config = [[NSDictionary dictionaryWithContentsOfFile:configPath] retain];
+        else
+            NSLog(@"ERROR: no config file found at %@", configPath); 
+    }
+    return config;
 }
 
 - (void)saveContext
