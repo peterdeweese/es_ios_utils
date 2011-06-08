@@ -60,6 +60,14 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) NSDictionary *asCamelCaseKeysFromUnderscore;
     @property(readonly) NSDictionary *asUnderscoreKeysFromCamelCase;
 
+    // Iterates through dictionary, sub-arrays, and sub-dictionaries, performing a deep copy.
+    // Makes copies of arrays and dictionaries, not other objects.
+    @property(readonly) NSDictionary *asDeepCopy;
+
+    // Adds keys to new dictionaries using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
+    -(NSDictionary*)asDeepCopyWithKeyFilter:(NSString*(^)(NSString*))keyFilter;
+
+
     //Wraps key object in an NSValue.
     -(id)objectForKeyObject:(id)key;
 @end

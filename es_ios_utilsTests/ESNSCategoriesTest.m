@@ -79,11 +79,31 @@
 
 -(void)testNSDictionaryCategory
 {
-    NSDictionary *camelCased = [NSDictionary dictionaryWithObjects:$array(@"o1", @"o2") forKeys:$array(@"myKeyOne", @"myKeyTwo")];
-    NSDictionary *underscored = [NSDictionary dictionaryWithObjects:$array(@"o1", @"o2") forKeys:$array(@"my_key_one", @"my_key_two")];
+    static NSString *o1 = @"o1";
+    
+    NSDictionary *camelCased = [NSDictionary dictionaryWithObjects:$array(o1, @"o2") forKeys:$array(@"myKeyOne", @"myKeyTwo")];
+    NSDictionary *underscored = [NSDictionary dictionaryWithObjects:$array(o1, @"o2") forKeys:$array(@"my_key_one", @"my_key_two")];
     
     STAssertEqualObjects(camelCased, underscored.asCamelCaseKeysFromUnderscore, @"Should convert to camel case.");
-    STAssertEqualObjects(underscored, underscored.asUnderscoreKeysFromCamelCase, @"Should convert to underscore.");
+    STAssertEqualObjects(underscored, camelCased.asUnderscoreKeysFromCamelCase, @"Should convert to underscore.");
+    
+    STAssertEqualObjects(camelCased, camelCased.asDeepCopy, @"Deep copy should provide identical copy.");
+
+    NSDictionary *deepDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    o1, @"key", //test plain key
+                                    camelCased, @"dictionary", //test dictionary
+                                    $array(camelCased, underscored),  @"array", //test array of dictionaries
+                                    nil];
+    NSDictionary *deepCopy = deepDictionary.asDeepCopy;
+    STAssertNotNil(deepCopy, nil);
+    STAssertEqualObjects(o1, [deepCopy objectForKey:@"key"], @"simple key should copy.");
+    STAssertTrue(o1 == [deepCopy objectForKey:@"key"], @"simple key should return original object.");
+    
+    STAssertEqualObjects(camelCased, [deepCopy objectForKey:@"dictionary"], @"dictionary should copy.");
+    STAssertTrue(camelCased != [deepCopy objectForKey:@"dictionary"], @"dictionary should not return original object.");
+    
+    STAssertEqualObjects(camelCased, ((NSArray*)[deepCopy objectForKey:@"array"]).firstObject, @"array of dictionaries should copy.");
+    STAssertTrue(camelCased != ((NSArray*)[deepCopy objectForKey:@"array"]).firstObject, @"array of dictionaries should not return original object.");
 }
 
 -(void)testNSErrorCategory

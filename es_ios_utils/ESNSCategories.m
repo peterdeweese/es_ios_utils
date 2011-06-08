@@ -147,7 +147,50 @@
 @end
 
 
+@interface NSDictionary(ESUtilsPrivate)
+    -(NSArray*)deepCopyArray:(NSArray*)a withKeyFilter:(NSString*(^)(NSString*))keyFilter;
+    -(id)deepCopyObject:(id)o withKeyFilter:(NSString*(^)(NSString*))keyFilter;
+@end
+
+@implementation NSDictionary(ESUtilsPrivate)
+
+-(NSArray*)deepCopyArray:(NSArray*)a withKeyFilter:(NSString*(^)(NSString*))keyFilter
+{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:a.count];
+    for(id o in a)
+        [result addObject:[self deepCopyObject:o withKeyFilter:keyFilter]];
+    return result;
+}
+
+-(id)deepCopyObject:(id)o withKeyFilter:(NSString*(^)(NSString*))keyFilter
+{
+    if([o isKindOfClass:NSArray.class])
+        return [self deepCopyArray:o withKeyFilter:keyFilter];
+    else if([o isKindOfClass:NSDictionary.class])
+        return [((NSDictionary*)o) asDeepCopyWithKeyFilter:keyFilter];
+    else return o;
+}
+
+@end
+
 @implementation NSDictionary(ESUtils)
+
+-(NSDictionary*)asDeepCopy
+{
+    return [self asDeepCopyWithKeyFilter:nil];
+}
+
+-(NSDictionary*)asDeepCopyWithKeyFilter:(NSString*(^)(NSString*))keyFilter
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    [result addEntriesFromDictionary:self withKeyFilter:keyFilter];
+
+    //copy subarrays and subdictionaries
+    for(NSString *key in result.allKeys)
+        [result setObject:[self deepCopyObject:[result objectForKey:key] withKeyFilter:keyFilter] forKey:key];
+    
+    return result;
+}
 
 -(BOOL)isEmpty
 {
@@ -166,16 +209,12 @@
 
 -(NSDictionary*)asCamelCaseKeysFromUnderscore
 {
-    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.count];
-    [result addEntriesFromDictionary:self withKeyFilter:^NSString*(NSString *key){ return key.asCamelCaseFromUnderscore; }];
-    return result;
+    return [self asDeepCopyWithKeyFilter:^NSString*(NSString *key){ return key.asCamelCaseFromUnderscore; }];
 }
 
 -(NSDictionary*)asUnderscoreKeysFromCamelCase
 {
-    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.count];
-    [result addEntriesFromDictionary:self withKeyFilter:^NSString*(NSString *key){ return key.asUnderscoreFromCamelCase; }];
-    return result;
+    return [self asDeepCopyWithKeyFilter:^NSString*(NSString *key){ return key.asUnderscoreFromCamelCase; }];
 }
 
 @end
@@ -430,6 +469,9 @@
 
 -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter
 {
+    if(!keyFilter)
+        return [self addEntriesFromDictionary:d];
+    
     for(NSString *key in d.allKeys)
         [self setObject:[d objectForKey:key] forKey:keyFilter(key)];
 }
