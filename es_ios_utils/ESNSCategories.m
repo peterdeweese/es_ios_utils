@@ -555,6 +555,40 @@ float logx(float value, float base)
     return !self.isEmpty && !self.strip.isEmpty;
 }
 
+//credit: http://stackoverflow.com/questions/1918972/camelcase-to-underscores-and-back-in-objective-c
+-(NSString*)asCamelCaseFromUnderscores
+{
+    NSMutableString *output = [NSMutableString string];
+    BOOL makeNextCharacterUpperCase = NO;
+    for (NSInteger idx = 0; idx < [self length]; idx += 1) {
+        unichar c = [self characterAtIndex:idx];
+        if (c == '_') {
+            makeNextCharacterUpperCase = YES;
+        } else if (makeNextCharacterUpperCase) {
+            [output appendString:[[NSString stringWithCharacters:&c length:1] uppercaseString]];
+            makeNextCharacterUpperCase = NO;
+        } else {
+            [output appendFormat:@"%C", c];
+        }
+    }
+    return output;
+}
+
+-(NSString*)asUnderscoresFromCamelCase
+{
+    NSMutableString *output = [NSMutableString string];
+    NSCharacterSet *uppercase = [NSCharacterSet uppercaseLetterCharacterSet];
+    for (NSInteger idx = 0; idx < [self length]; idx += 1) {
+        unichar c = [self characterAtIndex:idx];
+        if ([uppercase characterIsMember:c]) {
+            [output appendFormat:@"_%@", [[NSString stringWithCharacters:&c length:1] lowercaseString]];
+        } else {
+            [output appendFormat:@"%C", c];
+        }
+    }
+    return output;
+}
+
 @end
 
 

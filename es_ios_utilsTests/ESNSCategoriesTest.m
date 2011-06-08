@@ -149,6 +149,12 @@
                          @"File size not formatting properly");
     
     STAssertEqualObjects([NSString stringWithClassName:NSObject.class], @"NSObject", @"The class name of an object should be NSObject.");
+    
+    static NSString *camel = @"myTestString";
+    static NSString *underscore = @"my_test_string";
+    
+    STAssertEqualObjects(camel, underscore.asCamelCaseFromUnderscores, @"Should convert to camel case.");
+    STAssertEqualObjects(underscore, camel.asUnderscoresFromCamelCase, @"Should convert to underscores.");
 }
 
 @end

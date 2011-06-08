@@ -132,7 +132,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending;
 @end
 
-@interface NSString (ESUtils)
+@interface NSString(ESUtils)
     //Formats like 576B, 5.6MB
     +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength;
     +(NSString*)stringWithClassName:(Class)c;
@@ -147,6 +147,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
     @property(nonatomic, readonly) BOOL      isEmpty;
     @property(nonatomic, readonly) BOOL      isNotEmpty;
+
+    @property(nonatomic, readonly) NSString *asCamelCaseFromUnderscores;
+    @property(nonatomic, readonly) NSString *asUnderscoresFromCamelCase;
 @end
 
 @interface NSThread(ESUtils)
