@@ -77,6 +77,15 @@
     STAssertEqualObjects([array objectAtIndex:1], second,  @"element should equal second");
 }
 
+-(void)testNSDictionaryCategory
+{
+    NSDictionary *camelCased = [NSDictionary dictionaryWithObjects:$array(@"o1", @"o2") forKeys:$array(@"myKeyOne", @"myKeyTwo")];
+    NSDictionary *underscored = [NSDictionary dictionaryWithObjects:$array(@"o1", @"o2") forKeys:$array(@"my_key_one", @"my_key_two")];
+    
+    STAssertEqualObjects(camelCased, underscored.asCamelCaseKeysFromUnderscore, @"Should convert to camel case.");
+    STAssertEqualObjects(underscored, underscored.asUnderscoreKeysFromCamelCase, @"Should convert to underscore.");
+}
+
 -(void)testNSErrorCategory
 {
     NSError *error = [NSError errorWithDomain:@"test" code:0 userInfo:nil];
@@ -106,6 +115,14 @@
     
     STAssertNoThrow([d setObject:value forKeyObject:key], @"Dictionary set with object key should not throw an error.");
     STAssertEquals([d objectForKeyObject:key], value, @"value should equal entered value");
+    
+    d = [NSMutableDictionary dictionaryWithCapacity:2];
+    [d setObject:@"object1" forKey:@"key1"];
+    [d setObject:@"object2" forKey:@"key2"];
+    NSMutableDictionary *d2 = [NSMutableDictionary dictionaryWithCapacity:2];
+    [d2 addEntriesFromDictionary:d withKeyFilter:^NSString*(NSString *s){return @"a";}];
+    STAssertTrue(d2.count == 1, @"key should be overwritten.");
+    STAssertEqualObjects(@"a", d2.allKeys.firstObject, @"Key should be 'a'");
 }
 
 -(void)testNSObjectCategory
@@ -153,8 +170,8 @@
     static NSString *camel = @"myTestString";
     static NSString *underscore = @"my_test_string";
     
-    STAssertEqualObjects(camel, underscore.asCamelCaseFromUnderscores, @"Should convert to camel case.");
-    STAssertEqualObjects(underscore, camel.asUnderscoresFromCamelCase, @"Should convert to underscores.");
+    STAssertEqualObjects(camel, underscore.asCamelCaseFromUnderscore, @"Should convert to camel case.");
+    STAssertEqualObjects(underscore, camel.asUnderscoreFromCamelCase, @"Should convert to underscores.");
 }
 
 @end

@@ -55,8 +55,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSDictionary(ESUtils)
-    @property(readonly) BOOL isEmpty;
-    @property(readonly) BOOL isNotEmpty;
+    @property(readonly) BOOL          isEmpty;
+    @property(readonly) BOOL          isNotEmpty;
+    @property(readonly) NSDictionary *asCamelCaseKeysFromUnderscore;
+    @property(readonly) NSDictionary *asUnderscoreKeysFromCamelCase;
 
     //Wraps key object in an NSValue.
     -(id)objectForKeyObject:(id)key;
@@ -108,6 +110,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     // Wraps key in +NSValue valueWithNonretainedObject:
     // Only use for keys that are not supported by setValue:forKey:
     -(void)setObject:(id)value forKeyObject:(id)key;
+    
+    //Changes keys using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
+    -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter;
 @end
 
 @interface NSNull(ESUtils)
@@ -148,8 +153,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(nonatomic, readonly) BOOL      isEmpty;
     @property(nonatomic, readonly) BOOL      isNotEmpty;
 
-    @property(nonatomic, readonly) NSString *asCamelCaseFromUnderscores;
-    @property(nonatomic, readonly) NSString *asUnderscoresFromCamelCase;
+    @property(nonatomic, readonly) NSString *asCamelCaseFromUnderscore;
+    @property(nonatomic, readonly) NSString *asUnderscoreFromCamelCase;
 @end
 
 @interface NSThread(ESUtils)

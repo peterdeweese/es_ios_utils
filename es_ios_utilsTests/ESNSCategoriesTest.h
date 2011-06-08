@@ -6,17 +6,6 @@
 //  Copyright 2011 Eye Street Research, LLC. All rights reserved.
 //
 
-@interface NSCategoriesTest : SenTestCase
-{
-}
-
--(void)testIsEmpty;
--(void)testNSArrayCategory;
--(void)testNSErrorCategory;
--(void)testNSSetCategory;
--(void)testNSMutableArrayCategory;
--(void)testNSObjectCategory;
--(void)testNSRegularExpressionCategory;
--(void)testNSStringCategory;
+@interface NSCategoriesTest : SenTestCase { }
 
 @end

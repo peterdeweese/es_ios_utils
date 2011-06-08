@@ -164,6 +164,20 @@
     return [self objectForKey:[NSValue valueWithNonretainedObject:key]];
 }
 
+-(NSDictionary*)asCamelCaseKeysFromUnderscore
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    [result addEntriesFromDictionary:self withKeyFilter:^NSString*(NSString *key){ return key.asCamelCaseFromUnderscore; }];
+    return result;
+}
+
+-(NSDictionary*)asUnderscoreKeysFromCamelCase
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    [result addEntriesFromDictionary:self withKeyFilter:^NSString*(NSString *key){ return key.asUnderscoreFromCamelCase; }];
+    return result;
+}
+
 @end
 
 
@@ -414,6 +428,12 @@
     [self setObject:value forKey:[NSValue valueWithNonretainedObject:key]];
 }
 
+-(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter
+{
+    for(NSString *key in d.allKeys)
+        [self setObject:[d objectForKey:key] forKey:keyFilter(key)];
+}
+
 @end
 
 
@@ -556,7 +576,7 @@ float logx(float value, float base)
 }
 
 //credit: http://stackoverflow.com/questions/1918972/camelcase-to-underscores-and-back-in-objective-c
--(NSString*)asCamelCaseFromUnderscores
+-(NSString*)asCamelCaseFromUnderscore
 {
     NSMutableString *output = [NSMutableString string];
     BOOL makeNextCharacterUpperCase = NO;
@@ -574,7 +594,7 @@ float logx(float value, float base)
     return output;
 }
 
--(NSString*)asUnderscoresFromCamelCase
+-(NSString*)asUnderscoreFromCamelCase
 {
     NSMutableString *output = [NSMutableString string];
     NSCharacterSet *uppercase = [NSCharacterSet uppercaseLetterCharacterSet];
