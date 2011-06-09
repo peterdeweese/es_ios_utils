@@ -293,9 +293,9 @@
         @try
         {
             NSRelationshipDescription *rd = [self.entity.relationshipsByName objectForKey:key];
-
-            if(!rd && [self respondsToSelector:NSSelectorFromString($format(@"set%@:", key.capitalizedString))])
-                [self setValue:[keyedValues objectForKey:key] forKey:key];
+            NSString *value = [keyedValues objectForKey:key];
+            if(value && ![value isKindOfClass:NSNull.class] && !rd)
+                [self setValue:value forKey:key];
             else
                 NSLog(@"Invalid key(%@) sent to object of type %@.", key, self.className);
         }
@@ -410,7 +410,8 @@
     if(!type || !oDictionary || ![oDictionary isKindOfClass:NSDictionary.class])
         return nil;
     type = type.capitalizedString;
-    NSManagedObject *o = [self createManagedObjectNamed:type withDictionary:oDictionary];
+    NSManagedObject *o = [self createManagedObjectNamed:type];
+    [o quietlySetValuesForKeysWithDictionary:oDictionary];
     
     //Create sub-objects
     for (NSString *r in o.entity.relationshipsByName)

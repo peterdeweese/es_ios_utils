@@ -140,7 +140,7 @@
     if(!config)
     {
         NSString *environment = [ESApplicationDelegate isProduction] ? @"production" : @"development";
-        NSLog(@"test: %@", self.applicationDirectory);
+        NSLog(@"applicationDirectory: %@", self.applicationDirectory);
         NSString *configPath = [self.applicationDirectory stringByAppendingPathComponent:$format(@"%@.plist", environment)];
         //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
 
