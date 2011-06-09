@@ -63,9 +63,15 @@
 -(NSArray*)arrayMappedWith:(id(^)(id))mapper
 {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
-    
+        
     for(NSObject *o in self)
-        [result addObject:mapper(o)];
+    {
+        id r = mapper(o);
+        if(r)
+            [result addObject:r];
+        else
+            NSLog(@"arrayMappedWith: returned nil for %@.", o);
+    }
     
     return result;
 }
@@ -301,7 +307,7 @@
         }
         @catch (NSException *e)
         {
-            if(![e.name isEqualToString:@"NSUnknownKeyException"])
+            if(![e.name isEqualToString:@"NSUnknownKeyException"] && ![e.name isEqualToString:@"NSInvalidArgumentException"])
                 @throw e;
             else
                 NSLog(@"Invalid key(%@) sent to object of type %@.", key, self.className);
@@ -424,14 +430,22 @@
             if(!a || ![a isKindOfClass:NSArray.class])
                 continue;
             
-            NSSet *set = [a arrayMappedWith:^id(id o){
-                return [self createManagedObjectWithJSONDictionary:o];
+            NSString *dumbSingularized = [r characterAtIndex:r.length-1] == 's' ? [r substringToIndex:r.length-1] : r;
+            NSSet *set = [a arrayMappedWith:^id(id obj){
+                return [self createManagedObjectWithJSONDictionary:[NSDictionary dictionaryWithObject:obj forKey:dumbSingularized]];
             }].asSet;
             
             [o setValue:set forKey:r];
         }
         else
-            [o setValue:[self createManagedObjectWithJSONDictionary:[oDictionary objectForKey:r]] forKey:r];
+        {
+            NSDictionary *d = [oDictionary objectForKey:r];
+            if(d)
+            {
+                d = [NSDictionary dictionaryWithObject:[oDictionary objectForKey:r] forKey:r];
+                [o setValue:[self createManagedObjectWithJSONDictionary:d] forKey:r];
+            }
+        }
     }
     return o;
 }

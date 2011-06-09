@@ -193,7 +193,6 @@
 				A9414B6F1347B391008C67F4 /* TestViewController.m */,
 				A9414B711347B391008C67F4 /* TestViewController.xib */,
 				A9414B601347B391008C67F4 /* Supporting Files */,
-				A9414C021347C32E008C67F4 /* Model.xcdatamodeld */,
 			);
 			path = es_ios_utils_app;
 			sourceTree = "<group>";
@@ -279,6 +278,7 @@
 		D073D12A13A0270300DE03B2 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A9414C021347C32E008C67F4 /* Model.xcdatamodeld */,
 				D0B2E5CB13A029AA00F32DB5 /* Object1.h */,
 				D0B2E5CC13A029AA00F32DB5 /* Object1.m */,
 				D0B2E5CE13A029AA00F32DB5 /* Object2.h */,

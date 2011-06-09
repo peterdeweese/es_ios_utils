@@ -101,7 +101,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSManagedObject*)createManagedObjectOfClass:(Class)c;
     -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary;
     
-    // Creates object from ajson style dictionary, that is, the top level dictionary contains a key with the type name mapped to a dictionary with attributes.  Underscore delimited names are converted to camel-case.  To customize key mapping for a specific managed object, override -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
+    // Creates object from ajson style dictionary, that is, the top level dictionary contains a key with the type name mapped to a dictionary
+    // with attributes.  Underscore delimited names are converted to camel-case.  To customize key mapping for a specific managed object,
+    // override -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
+    // Types for to_many relationships use a dumb singularize, stripping 's' from the end.  Improve with activerecord inflection.
     -(NSManagedObject*)createManagedObjectWithJSONDictionary:(NSDictionary*)dictionary;
 
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
