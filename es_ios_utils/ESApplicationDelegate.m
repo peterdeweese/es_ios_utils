@@ -13,7 +13,7 @@
 
 @synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
 
--(NSString*)persistantStoreName
+-(NSString*)persistentStoreName
 {
     $must_override;
     return nil;
@@ -94,7 +94,7 @@
     if (managedObjectModel)
         return managedObjectModel;
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.persistantStoreName withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.persistentStoreName withExtension:@"momd"];
     managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
     return managedObjectModel;
 }
@@ -109,15 +109,14 @@
     if (persistentStoreCoordinator)
         return persistentStoreCoordinator;
     
-    NSString *storePath = [[self.applicationDocumentsDirectory path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistantStoreName)];
+    NSString *storePath = [[self.applicationDocumentsDirectory path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // If the expected store doesn't exist, copy the default store.
     if (![fileManager fileExistsAtPath:storePath]) {
-        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:$format(@"%@", self.persistantStoreName) ofType:@"sqlite"];
-        if (defaultStorePath) {
+        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:$format(@"%@", self.persistentStoreName) ofType:@"sqlite"];
+        if (defaultStorePath)
             [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
-        }
     }
     NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
@@ -153,7 +152,7 @@
     return config;
 }
 
-- (void)saveContext
+-(void)saveContext
 {
     if(managedObjectContext.hasChanges)
     {
@@ -162,6 +161,23 @@
             abort();
         }];
     }
+}
+
+-(void)clearAllPersistentStores
+{
+    [self persistentStoreCoordinator]; //initialize if needed
+        
+    for(NSPersistentStore *store in persistentStoreCoordinator.persistentStores)
+    {
+        [persistentStoreCoordinator removePersistentStore:store error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:store.URL.path error:nil];
+    }
+    
+    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
+    [managedObjectContext release], managedObjectContext = nil;
+    [managedObjectModel release], managedObjectModel = nil;
+    
+    [self persistentStoreCoordinator]; //initialize if needed
 }
 
 @end

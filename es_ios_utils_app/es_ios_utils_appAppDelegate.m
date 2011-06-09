@@ -7,7 +7,7 @@
 
 @synthesize viewController=_viewController;
 
--(NSString*)persistantStoreName
+-(NSString*)persistentStoreName
 {
     return @"Model";
 }

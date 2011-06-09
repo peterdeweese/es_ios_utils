@@ -8,8 +8,17 @@
 
 #import "ESUtils.h"
 #import "ESNSCategoriesTest.h"
+#import "ESApplicationDelegate.h"
+#import "Object1.h"
+#import "Object2.h"
+#import "Object3.h"
 
 @implementation NSCategoriesTest
+
+-(void)setUp
+{
+    [[ESApplicationDelegate delegate] clearAllPersistentStores];
+}
 
 -(void)testIsEmpty
 {
@@ -143,6 +152,63 @@
     [d2 addEntriesFromDictionary:d withKeyFilter:^NSString*(NSString *s){return @"a";}];
     STAssertTrue(d2.count == 1, @"key should be overwritten.");
     STAssertEqualObjects(@"a", d2.allKeys.firstObject, @"Key should be 'a'");
+}
+
+-(void)testNSManagedObjectContextCategory
+{
+    NSManagedObjectContext *context = ESApplicationDelegate.delegate.managedObjectContext;
+    
+    Object1 *object1 = (Object1*)[context createManagedObjectOfClass:Object1.class];
+    STAssertNotNil(object1, nil);
+    STAssertTrue([object1 isKindOfClass:Object1.class], nil);
+    
+    static NSString *value = @"value";
+    NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:
+                       value, @"attribute1",
+                       nil];
+    object1 = (Object1*)[context createManagedObjectOfClass:Object1.class withDictionary:d];
+    STAssertNotNil(object1, nil);
+    STAssertTrue([object1 isKindOfClass:Object1.class], nil);
+    STAssertEquals(value, object1.attribute1, nil);
+    
+    STAssertNoThrow([context saveAndDoOnError:^(NSError *e){
+            STAssertNil(e, nil);
+        }], nil);
+    
+    STAssertFalse(![context hasAny:Object1.class], nil);
+    
+    NSDictionary *d2 = [NSDictionary dictionaryWithObject:
+                        [NSDictionary dictionaryWithObject:value forKey:@"attribute2"]
+                        forKey:@"object2"];
+    NSDictionary *d3 = [NSDictionary dictionaryWithObject:
+                        [NSDictionary dictionaryWithObject:value forKey:@"attribute3"]
+                        forKey:@"object3"];
+    NSDictionary *d1 = [NSDictionary dictionaryWithObject:
+         [NSDictionary dictionaryWithObjectsAndKeys:
+          value, @"attribute1",
+          d2, @"child", 
+          $array(d3, d3), @"children", 
+          nil]
+         forKey:@"object1"];
+    STAssertNoThrow(object1 = (Object1*)[context createManagedObjectWithJSONDictionary:d1], nil);
+    STAssertNotNil(object1, nil);
+    STAssertTrue([object1 isKindOfClass:Object1.class], nil);
+    STAssertEqualObjects(object1.attribute1, value, nil);
+    STAssertNotNil(object1.child, nil);
+    STAssertEqualObjects(object1.child.attribute2, value, nil);
+    STAssertNotNil(object1.children, nil);
+    STAssertTrue(2 == object1.children.count, nil);
+    Object3 *object3 = object1.children.anyObject;
+    STAssertNotNil(object3, nil);
+    STAssertTrue([object3 isKindOfClass:Object3.class], nil);
+    STAssertEqualObjects(value, object3.attribute3, nil);
+    //Check inverse relationships
+    STAssertEqualObjects(object3.parent, object1, nil);
+    STAssertEqualObjects(object1.child.parent, object1, nil);
+    
+    NSArray *a = [context all:Object1.class];
+    STAssertNotNil(a, nil);
+    STAssertTrue(a.count == 3, @" The cout was %i.", a.count);
 }
 
 -(void)testNSObjectCategory

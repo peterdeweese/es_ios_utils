@@ -43,6 +43,9 @@
 		A99823081399618600855F2B /* development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99823071399618600855F2B /* development.plist */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
+		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
+		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
+		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,12 @@
 		A99823071399618600855F2B /* development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = development.plist; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
+		D0B2E5C813A029AA00F32DB5 /* Object3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object3.h; path = model/Object3.h; sourceTree = "<group>"; };
+		D0B2E5C913A029AA00F32DB5 /* Object3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object3.m; path = model/Object3.m; sourceTree = "<group>"; };
+		D0B2E5CB13A029AA00F32DB5 /* Object1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object1.h; path = model/Object1.h; sourceTree = "<group>"; };
+		D0B2E5CC13A029AA00F32DB5 /* Object1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object1.m; path = model/Object1.m; sourceTree = "<group>"; };
+		D0B2E5CE13A029AA00F32DB5 /* Object2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object2.h; path = model/Object2.h; sourceTree = "<group>"; };
+		D0B2E5CF13A029AA00F32DB5 /* Object2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object2.m; path = model/Object2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +184,7 @@
 		A9414B5F1347B391008C67F4 /* es_ios_utils_app */ = {
 			isa = PBXGroup;
 			children = (
+				D073D12A13A0270300DE03B2 /* model */,
 				A99823051399616A00855F2B /* config */,
 				A9414B681347B391008C67F4 /* es_ios_utils_appAppDelegate.h */,
 				A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */,
@@ -264,6 +274,19 @@
 				A99823071399618600855F2B /* development.plist */,
 			);
 			name = config;
+			sourceTree = "<group>";
+		};
+		D073D12A13A0270300DE03B2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D0B2E5CB13A029AA00F32DB5 /* Object1.h */,
+				D0B2E5CC13A029AA00F32DB5 /* Object1.m */,
+				D0B2E5CE13A029AA00F32DB5 /* Object2.h */,
+				D0B2E5CF13A029AA00F32DB5 /* Object2.m */,
+				D0B2E5C813A029AA00F32DB5 /* Object3.h */,
+				D0B2E5C913A029AA00F32DB5 /* Object3.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +410,9 @@
 				A9414BC91347B3F5008C67F4 /* ESViewDataMapper.m in Sources */,
 				A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */,
 				A973624D135E247F000EBD17 /* ESBlockActionSheet.m in Sources */,
+				D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */,
+				D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */,
+				D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

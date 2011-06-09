@@ -285,6 +285,30 @@
 	return copied;
 }
 
+// Ignores missing keys in the target.  Skips relationships.
+- (void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues
+{
+    for(NSString *key in keyedValues.allKeys)
+    {
+        @try
+        {
+            NSRelationshipDescription *rd = [self.entity.relationshipsByName objectForKey:key];
+
+            if(!rd && [self respondsToSelector:NSSelectorFromString($format(@"set%@:", key.capitalizedString))])
+                [self setValue:[keyedValues objectForKey:key] forKey:key];
+            else
+                NSLog(@"Invalid key(%@) sent to object of type %@.", key, self.className);
+        }
+        @catch (NSException *e)
+        {
+            if(![e.name isEqualToString:@"NSUnknownKeyException"])
+                @throw e;
+            else
+                NSLog(@"Invalid key(%@) sent to object of type %@.", key, self.className);
+        }
+    }
+}
+
 //  Created by Scott Means on 1/5/11.
 //  http://smeans.com/2011/01/07/exporting-from-core-data-on-ios/
 //  Released into the public domain without warranty.
@@ -374,6 +398,40 @@
     // Create a new instance of the entity managed by the fetched results controller.
     NSManagedObject *o = [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
     [o quietlySetValuesForKeysWithDictionary:dictionary];
+    return o;
+}
+
+-(NSManagedObject*)createManagedObjectWithJSONDictionary:(NSDictionary*)_dictionary;
+{
+    NSDictionary *dictionary = _dictionary.asCamelCaseKeysFromUnderscore;
+    NSLog(@"%@", dictionary);
+    NSString *type = dictionary.allKeys.firstObject;
+    NSDictionary *oDictionary = [dictionary objectForKey:type];
+    if(!type || !oDictionary || ![oDictionary isKindOfClass:NSDictionary.class])
+        return nil;
+    type = type.capitalizedString;
+    NSManagedObject *o = [self createManagedObjectNamed:type withDictionary:oDictionary];
+    
+    //Create sub-objects
+    for (NSString *r in o.entity.relationshipsByName)
+    {
+        NSRelationshipDescription *rd = [o.entity.relationshipsByName objectForKey:r];
+        
+        if(rd.isToMany)
+        {
+            NSArray *a = [oDictionary objectForKey:r];
+            if(!a || ![a isKindOfClass:NSArray.class])
+                continue;
+            
+            NSSet *set = [a arrayMappedWith:^id(id o){
+                return [self createManagedObjectWithJSONDictionary:o];
+            }].asSet;
+            
+            [o setValue:set forKey:r];
+        }
+        else
+            [o setValue:[self createManagedObjectWithJSONDictionary:[oDictionary objectForKey:r]] forKey:r];
+    }
     return o;
 }
 
@@ -495,22 +553,6 @@
 
 
 @implementation NSObject(ESUtils)
-
-- (void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues
-{
-    for(NSString *key in keyedValues.allKeys)
-    {
-        @try
-        {
-            [self setValue:[keyedValues objectForKey:key] forKey:key];
-        }
-        @catch (NSException *e)
-        {
-            if(![e.name isEqualToString:@"NSUnknownKeyException"])
-                @throw e;
-        }
-    }
-}
 
 -(NSString*)className
 {

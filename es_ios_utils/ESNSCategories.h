@@ -100,6 +100,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSManagedObject*)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary;
     -(NSManagedObject*)createManagedObjectOfClass:(Class)c;
     -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary;
+    
+    // Creates object from ajson style dictionary, that is, the top level dictionary contains a key with the type name mapped to a dictionary with attributes.  Underscore delimited names are converted to camel-case.  To customize key mapping for a specific managed object, override -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
+    -(NSManagedObject*)createManagedObjectWithJSONDictionary:(NSDictionary*)dictionary;
+
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
     -(BOOL)hasAny:(Class)type;
     -(NSArray*)all:(Class)type;
@@ -129,8 +133,6 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSObject(ESUtils)
-    //Ignores missing keys in the target.
-    -(void)quietlySetValuesForKeysWithDictionary:(NSDictionary *)keyedValues;
     @property(readonly) NSString *className;
 @end
 

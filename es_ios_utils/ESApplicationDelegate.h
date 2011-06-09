@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 /*
- * Many Apple templates contain singletons for managaged objects, the documents directory, etc.  This class obviates such repetition and clutter.  Subclasses must implement persistantStoreName.
+ * Many Apple templates contain singletons for managaged objects, the documents directory, etc.  This class obviates such repetition and clutter.  Subclasses must implement persistentStoreName.
  */
 @interface ESApplicationDelegate : NSObject<UIApplicationDelegate> {
     
@@ -27,7 +27,7 @@
 @property(nonatomic, readonly)         NSURL                        *applicationDocumentsDirectory;
 @property(nonatomic, readonly)         NSString                     *applicationDirectory;
 
-@property(nonatomic, readonly)         NSString                     *persistantStoreName;
+@property(nonatomic, readonly)         NSString                     *persistentStoreName;
 
 @property(nonatomic, retain, readonly) NSManagedObjectContext       *managedObjectContext;
 @property(nonatomic, retain, readonly) NSManagedObjectModel         *managedObjectModel;
@@ -35,6 +35,7 @@
 @property(nonatomic, retain, readonly) NSDictionary                 *config;
 
 - (void)saveContext;
+-(void)clearAllPersistentStores;
 
 @end
 
