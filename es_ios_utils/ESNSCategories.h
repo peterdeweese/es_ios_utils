@@ -57,6 +57,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @interface NSDictionary(ESUtils)
     @property(readonly) BOOL          isEmpty;
     @property(readonly) BOOL          isNotEmpty;
+
+    -(BOOL)containsValueForKey:(NSString*)key;
+
     @property(readonly) NSDictionary *asCamelCaseKeysFromUnderscore;
     @property(readonly) NSDictionary *asUnderscoreKeysFromCamelCase;
 

@@ -208,6 +208,12 @@
     return self.count > 0;
 }
 
+-(BOOL)containsValueForKey:(NSString*)key
+{
+    id o = [self objectForKey:key];
+    return true && o && ![o isKindOfClass:NSNull.class];
+}
+
 -(id)objectForKeyObject:(id)key;
 {
     return [self objectForKey:[NSValue valueWithNonretainedObject:key]];
@@ -410,7 +416,6 @@
 -(NSManagedObject*)createManagedObjectWithJSONDictionary:(NSDictionary*)_dictionary;
 {
     NSDictionary *dictionary = _dictionary.asCamelCaseKeysFromUnderscore;
-    NSLog(@"%@", dictionary);
     NSString *type = dictionary.allKeys.firstObject;
     NSDictionary *oDictionary = [dictionary objectForKey:type];
     if(!type || !oDictionary || ![oDictionary isKindOfClass:NSDictionary.class])
@@ -422,6 +427,9 @@
     //Create sub-objects
     for (NSString *r in o.entity.relationshipsByName)
     {
+        //ignore if not in source
+        if(![oDictionary containsValueForKey:r])
+            continue;
         NSRelationshipDescription *rd = [o.entity.relationshipsByName objectForKey:r];
         
         if(rd.isToMany)
@@ -447,6 +455,7 @@
             }
         }
     }
+    NSLog(@"Created %@", o);
     return o;
 }
 
