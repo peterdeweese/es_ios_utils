@@ -11,7 +11,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, doOnError, entityName = _entityName;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityName = _entityName;
 
 -(id)init
 {
@@ -79,7 +79,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 #pragma mark - Table Controller, Datasource, and Delegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+{    
     return self.fetchedResultsController.sections.count;
 }
 
@@ -87,6 +87,12 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:s];
     return sectionInfo.numberOfObjects;
+}
+
+-(NSString*)tableView:(UITableView *)t titleForHeaderInSection:(NSInteger)s
+{
+    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:s];
+    return sectionInfo.name;
 }
 
 -(UITableViewCell*)tableView:(UITableView*)t cellForRowAtIndexPath:(NSIndexPath*)i
@@ -105,6 +111,11 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     //optional
 }
 
+-(void)configureFetchRequestController:(NSFetchedResultsController*)controller
+{
+    //optional
+}
+
 -(void)tableView:(UITableView*)t commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)i
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
@@ -117,7 +128,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 #pragma mark - Fetched results controller
 
--(NSFetchedResultsController *)fetchedResultsController
+-(NSFetchedResultsController*)fetchedResultsController
 {
     assert(managedObjectContext);
 
@@ -129,9 +140,10 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     fetchRequest.fetchBatchSize = 20;
     fetchRequest.sortDescriptors = self.sortDescriptors;
     [self configureFetchRequest:fetchRequest];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:self.sectionNameKeyPath cacheName:nil];
     self.fetchedResultsController.delegate = self;
     
+    [self configureFetchRequestController:self.fetchedResultsController];
     [self.fetchedResultsController performFetchAndDoOnError:self.doOnError];
     
     return fetchedResultsController;
