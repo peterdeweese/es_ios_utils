@@ -413,52 +413,6 @@
     return o;
 }
 
--(NSManagedObject*)createManagedObjectWithJSONDictionary:(NSDictionary*)_dictionary;
-{
-    NSDictionary *dictionary = _dictionary.asCamelCaseKeysFromUnderscore;
-    NSString *type = dictionary.allKeys.firstObject;
-    NSDictionary *oDictionary = [dictionary objectForKey:type];
-    if(!type || !oDictionary || ![oDictionary isKindOfClass:NSDictionary.class])
-        return nil;
-    type = type.capitalizedString;
-    NSManagedObject *o = [self createManagedObjectNamed:type];
-    [o quietlySetValuesForKeysWithDictionary:oDictionary];
-    
-    //Create sub-objects
-    for (NSString *r in o.entity.relationshipsByName)
-    {
-        //ignore if not in source
-        if(![oDictionary containsValueForKey:r])
-            continue;
-        NSRelationshipDescription *rd = [o.entity.relationshipsByName objectForKey:r];
-        
-        if(rd.isToMany)
-        {
-            NSArray *a = [oDictionary objectForKey:r];
-            if(!a || ![a isKindOfClass:NSArray.class])
-                continue;
-            
-            NSString *dumbSingularized = [r characterAtIndex:r.length-1] == 's' ? [r substringToIndex:r.length-1] : r;
-            NSSet *set = [a arrayMappedWith:^id(id obj){
-                return [self createManagedObjectWithJSONDictionary:[NSDictionary dictionaryWithObject:obj forKey:dumbSingularized]];
-            }].asSet;
-            
-            [o setValue:set forKey:r];
-        }
-        else
-        {
-            NSDictionary *d = [oDictionary objectForKey:r];
-            if(d)
-            {
-                d = [NSDictionary dictionaryWithObject:[oDictionary objectForKey:r] forKey:r];
-                [o setValue:[self createManagedObjectWithJSONDictionary:d] forKey:r];
-            }
-        }
-    }
-    NSLog(@"Created %@", o);
-    return o;
-}
-
 -(NSManagedObject*)createManagedObjectOfClass:(Class)c
 {
     return [self createManagedObjectNamed:[NSString stringWithClassName:c]];

@@ -177,35 +177,9 @@
     
     STAssertFalse(![context hasAny:Object1.class], nil);
     
-    NSDictionary *d2 = [NSDictionary dictionaryWithObject:value forKey:@"attribute2"];
-    NSDictionary *d3 = [NSDictionary dictionaryWithObject:value forKey:@"attribute3"];
-    NSDictionary *d1 = [NSDictionary dictionaryWithObject:
-         [NSDictionary dictionaryWithObjectsAndKeys:
-          value, @"attribute1",
-          d2, @"object2", 
-          $array(d3, d3), @"object3s", 
-          nil]
-         forKey:@"object1"];
-
-    STAssertNoThrow(object1 = (Object1*)[context createManagedObjectWithJSONDictionary:d1], nil);
-    STAssertNotNil(object1, nil);
-    STAssertTrue([object1 isKindOfClass:Object1.class], nil);
-    STAssertEqualObjects(object1.attribute1, value, nil);
-    STAssertNotNil(object1.object2, nil);
-    STAssertEqualObjects(object1.object2.attribute2, value, nil);
-    STAssertNotNil(object1.object3s, nil);
-    STAssertTrue(2 == object1.object3s.count, @"object3s count is %i", object1.object3s.count);
-    Object3 *object3 = object1.object3s.anyObject;
-    STAssertNotNil(object3, nil);
-    STAssertTrue([object3 isKindOfClass:Object3.class], nil);
-    STAssertEqualObjects(value, object3.attribute3, nil);
-    //Check inverse relationships
-    STAssertEqualObjects(object3.parent, object1, nil);
-    STAssertEqualObjects(object1.object2.parent, object1, nil);
-    
     NSArray *a = [context all:Object1.class];
     STAssertNotNil(a, nil);
-    STAssertTrue(a.count == 3, @" The cout was %i.", a.count);
+    STAssertTrue(a.count == 2, @" The count was %i.", a.count);
 }
 
 -(void)testNSObjectCategory
