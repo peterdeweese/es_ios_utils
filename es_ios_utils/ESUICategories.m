@@ -322,3 +322,19 @@
 }
 
 @end
+
+
+@implementation UIWindow(ESUtils)
+
+// credit: stackoverflow user aegzorz
+// http://stackoverflow.com/questions/6035068/should-not-display-the-alertview-if-already-another-alertview-is-displaying-in-ip
+-(BOOL)isDisplayingAlert
+{
+    for(UIView* subview in self.subviews)
+        if([subview isKindOfClass:UIAlertView.class])
+            return YES;
+    
+    return NO;
+}
+
+@end

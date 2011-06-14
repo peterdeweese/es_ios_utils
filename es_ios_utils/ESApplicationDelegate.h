@@ -34,7 +34,9 @@
 @property(nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property(nonatomic, retain, readonly) NSDictionary                 *config;
 
-- (void)saveContext;
+@property(nonatomic, readonly) BOOL isDisplayingAlert;
+
+-(void)saveContext;
 -(void)clearAllPersistentStores;
 
 @end

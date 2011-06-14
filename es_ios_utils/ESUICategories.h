@@ -99,3 +99,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
     -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
 @end
+
+@interface UIWindow(ESUtils)
+    @property(nonatomic, readonly) BOOL isDisplayingAlert;
+@end

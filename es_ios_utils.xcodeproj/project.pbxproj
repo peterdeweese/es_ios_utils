@@ -12,7 +12,7 @@
 		A9414B5E1347B391008C67F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5D1347B391008C67F4 /* CoreGraphics.framework */; };
 		A9414B641347B391008C67F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9414B621347B391008C67F4 /* InfoPlist.strings */; };
 		A9414B671347B391008C67F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B661347B391008C67F4 /* main.m */; };
-		A9414B6A1347B391008C67F4 /* es_ios_utils_appAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */; };
+		A9414B6A1347B391008C67F4 /* appDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B691347B391008C67F4 /* appDelegate.m */; };
 		A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B6B1347B391008C67F4 /* MainWindow.xib */; };
 		A9414B701347B391008C67F4 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B6F1347B391008C67F4 /* TestViewController.m */; };
 		A9414B7A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
@@ -67,8 +67,8 @@
 		A9414B631347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A9414B651347B391008C67F4 /* es_ios_utils_app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "es_ios_utils_app-Prefix.pch"; sourceTree = "<group>"; };
 		A9414B661347B391008C67F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A9414B681347B391008C67F4 /* es_ios_utils_appAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = es_ios_utils_appAppDelegate.h; sourceTree = "<group>"; };
-		A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = es_ios_utils_appAppDelegate.m; sourceTree = "<group>"; };
+		A9414B681347B391008C67F4 /* appDelegate.h */ = {isa = PBXFileReference; path = appDelegate.h; sourceTree = "<group>"; };
+		A9414B691347B391008C67F4 /* appDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = appDelegate.m; sourceTree = "<group>"; };
 		A9414B6C1347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		A9414B6E1347B391008C67F4 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		A9414B6F1347B391008C67F4 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 			children = (
 				D073D12A13A0270300DE03B2 /* model */,
 				A99823051399616A00855F2B /* config */,
-				A9414B681347B391008C67F4 /* es_ios_utils_appAppDelegate.h */,
-				A9414B691347B391008C67F4 /* es_ios_utils_appAppDelegate.m */,
+				A9414B681347B391008C67F4 /* appDelegate.h */,
+				A9414B691347B391008C67F4 /* appDelegate.m */,
 				A9414B6B1347B391008C67F4 /* MainWindow.xib */,
 				A9414B6E1347B391008C67F4 /* TestViewController.h */,
 				A9414B6F1347B391008C67F4 /* TestViewController.m */,
@@ -397,7 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9414B671347B391008C67F4 /* main.m in Sources */,
-				A9414B6A1347B391008C67F4 /* es_ios_utils_appAppDelegate.m in Sources */,
+				A9414B6A1347B391008C67F4 /* appDelegate.m in Sources */,
 				A9414B701347B391008C67F4 /* TestViewController.m in Sources */,
 				A9414BB91347B3F5008C67F4 /* ESApplicationDelegate.m in Sources */,
 				A9414BBB1347B3F5008C67F4 /* ESBoundUserDefaults.m in Sources */,

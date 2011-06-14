@@ -1,7 +1,7 @@
-#import "es_ios_utils_appAppDelegate.h"
+#import "appDelegate.h"
 #import "TestViewController.h"
 
-@implementation es_ios_utils_appAppDelegate
+@implementation appDelegate
 
 @synthesize window=_window;
 

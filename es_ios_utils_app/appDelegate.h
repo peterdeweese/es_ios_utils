@@ -3,7 +3,7 @@
 #import "ESApplicationDelegate.h"
 
 //Use ESApplicationDelegate to automatically include core data properties usually included in Apple templates.
-@interface es_ios_utils_appAppDelegate : ESApplicationDelegate {
+@interface appDelegate : ESApplicationDelegate {
 
 }
 

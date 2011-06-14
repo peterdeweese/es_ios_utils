@@ -8,7 +8,7 @@
 
 #import "ESUtils.h"
 #import "ESViewTest.h"
-#import "es_ios_utils_appAppDelegate.h"
+#import "appDelegate.h"
 #import "ESVerticalLayoutView.h"
 #import "ESFlowLayoutView.h"
 #import "TestViewController.h"
@@ -19,7 +19,7 @@
 
 - (void)testESVerticalLayout;
 {
-    es_ios_utils_appAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    appDelegate *delegate = [[UIApplication sharedApplication] delegate];
     STAssertNotNil(delegate, @"UIApplication failed to find the AppDelegate");
 
     ESVerticalLayoutView *v = delegate.viewController.verticalLayout;
@@ -31,7 +31,7 @@
 
 - (void)testESFlowLayout;
 {    
-    es_ios_utils_appAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    appDelegate *delegate = [[UIApplication sharedApplication] delegate];
     STAssertNotNil(delegate, @"UIApplication failed to find the AppDelegate");
     
     ESFlowLayoutView *v = delegate.viewController.flowLayout;

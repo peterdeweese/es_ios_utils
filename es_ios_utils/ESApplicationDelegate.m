@@ -152,6 +152,8 @@
     return config;
 }
 
+-(BOOL)isDisplayingAlert { return self.window.isDisplayingAlert; }
+
 -(void)saveContext
 {
     if(managedObjectContext.hasChanges)

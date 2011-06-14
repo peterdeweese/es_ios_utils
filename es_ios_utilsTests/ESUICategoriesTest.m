@@ -8,7 +8,7 @@
 
 #import "ESUtils.h"
 #import "ESUICategoriesTest.h"
-#import "es_ios_utils_appAppDelegate.h"
+#import "appDelegate.h"
 #import "TestViewController.h"
 
 @implementation ESUICategoriesTest
@@ -54,4 +54,10 @@
 - (void)doForEachCellInSection:(int)s action:(void(^)(UITableViewCell *c))action;
 @end
 */
+
+-(void)testUIWindowCategory
+{
+    STAssertFalse([appDelegate delegate].isDisplayingAlert, nil);
+}
+
 @end
