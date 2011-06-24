@@ -268,6 +268,8 @@
 				A9414BAA1347B3F5008C67F4 /* ESFlowLayoutView.m */,
 				A9414BAB1347B3F5008C67F4 /* ESNSCategories.h */,
 				A9414BAC1347B3F5008C67F4 /* ESNSCategories.m */,
+				34844B3113B5249100904A5E /* ESRotatableViewController.h */,
+				34844B3213B5249100904A5E /* ESRotatableViewController.m */,
 				A9414BAD1347B3F5008C67F4 /* ESUICategories.h */,
 				A9414BAE1347B3F5008C67F4 /* ESUICategories.m */,
 				A9414BAF1347B3F5008C67F4 /* ESUtils.h */,
@@ -276,8 +278,6 @@
 				A9414BB21347B3F5008C67F4 /* ESVerticalLayoutView.m */,
 				A9414BB31347B3F5008C67F4 /* ESViewDataMapper.h */,
 				A9414BB41347B3F5008C67F4 /* ESViewDataMapper.m */,
-				34844B3113B5249100904A5E /* ESRotatableViewController.h */,
-				34844B3213B5249100904A5E /* ESRotatableViewController.m */,
 			);
 			path = es_ios_utils;
 			sourceTree = "<group>";
