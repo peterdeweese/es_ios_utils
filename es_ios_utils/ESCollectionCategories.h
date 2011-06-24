@@ -24,6 +24,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     // @returns an array of formatted NSStrings.
     -(NSArray*)arrayMappedWithFormat:(NSString*)format;
     -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
+    -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
 
     @property(readonly) NSArray    *reversed;
     @property(readonly) id         firstObject;
