@@ -1,11 +1,3 @@
-//
-//  ESBlockActionSheet.m
-//  es_ios_utils
-//
-//  Created by Peter DeWeese on 4/19/11.
-//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
-//
-
 #import "ESBlockActionSheet.h"
 
 @implementation ESBlockActionSheet

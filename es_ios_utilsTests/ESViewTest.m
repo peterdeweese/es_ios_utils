@@ -1,11 +1,3 @@
-//
-//  ESViewTest.m
-//  es_ios_utils
-//
-//  Created by Peter DeWeese on 4/2/11.
-//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
-//
-
 #import "ESUtils.h"
 #import "ESViewTest.h"
 #import "appDelegate.h"

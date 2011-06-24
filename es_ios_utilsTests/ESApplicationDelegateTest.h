@@ -3,9 +3,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 
-@interface ESApplicationDelegateTest : SenTestCase {
-    
-}
+@interface ESApplicationDelegateTest : SenTestCase { }
 
 #if USE_APPLICATION_UNIT_TEST
 -(void)testAppDelegate;       // simple test on application

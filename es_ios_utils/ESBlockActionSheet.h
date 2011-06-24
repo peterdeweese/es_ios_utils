@@ -1,11 +1,3 @@
-//
-//  ESBlockActionSheet.h
-//  es_ios_utils
-//
-//  Created by Peter DeWeese on 4/19/11.
-//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @interface ESBlockActionSheet : NSObject<UIActionSheetDelegate>

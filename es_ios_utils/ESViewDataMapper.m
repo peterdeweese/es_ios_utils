@@ -1,11 +1,3 @@
-//
-//  ESViewDataMapper.m
-//  es_ios_utils
-//
-//  Created by Peter DeWeese on 3/21/11.
-//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
-//
-
 #import "ESUtils.h"
 #import "ESViewDataMapper.h"
 
