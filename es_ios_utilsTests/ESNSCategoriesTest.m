@@ -84,6 +84,9 @@
     }];
     STAssertEqualObjects([array objectAtIndex:0], first,  @"element should equal first");
     STAssertEqualObjects([array objectAtIndex:1], second,  @"element should equal second");
+    
+    array = $array(first, second, third, fourth);
+    STAssertEqualObjects(array.reversed, $array(fourth, third, second, first), nil);
 }
 
 -(void)testNSDictionaryCategory

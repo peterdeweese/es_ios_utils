@@ -1,4 +1,4 @@
-    //
+//
 //  NSCategories.m
 //  es_ios_utils
 //
@@ -74,6 +74,11 @@
     }
     
     return result;
+}
+
+-(NSArray*)reversed
+{
+    return self.reverseObjectEnumerator.allObjects;
 }
 
 -(id)firstObject

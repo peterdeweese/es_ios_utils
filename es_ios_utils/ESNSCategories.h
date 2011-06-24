@@ -35,6 +35,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSArray*)arrayMappedWithFormat:(NSString*)format;
     -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
 
+    @property(readonly) NSArray    *reversed;
     @property(readonly) id         firstObject;
     @property(readonly) BOOL       isEmpty;
     @property(readonly) BOOL       isNotEmpty;
