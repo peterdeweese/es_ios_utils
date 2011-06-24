@@ -43,6 +43,8 @@
 		A99823081399618600855F2B /* development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99823071399618600855F2B /* development.plist */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
+		D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */; };
+		D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */; };
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
 		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
@@ -67,7 +69,7 @@
 		A9414B631347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A9414B651347B391008C67F4 /* es_ios_utils_app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "es_ios_utils_app-Prefix.pch"; sourceTree = "<group>"; };
 		A9414B661347B391008C67F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A9414B681347B391008C67F4 /* appDelegate.h */ = {isa = PBXFileReference; path = appDelegate.h; sourceTree = "<group>"; };
+		A9414B681347B391008C67F4 /* appDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = appDelegate.h; sourceTree = "<group>"; };
 		A9414B691347B391008C67F4 /* appDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = appDelegate.m; sourceTree = "<group>"; };
 		A9414B6C1347B391008C67F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		A9414B6E1347B391008C67F4 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -115,6 +117,10 @@
 		A99823071399618600855F2B /* development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = development.plist; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
+		D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCollectionCategoriesTest.h; path = es_ios_utilsTests/ESCollectionCategoriesTest.h; sourceTree = SOURCE_ROOT; };
+		D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCollectionCategoriesTest.m; path = es_ios_utilsTests/ESCollectionCategoriesTest.m; sourceTree = SOURCE_ROOT; };
+		D073F74713B50EA9004D9DD7 /* ESCollectionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCollectionCategories.h; sourceTree = "<group>"; };
+		D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCollectionCategories.m; sourceTree = "<group>"; };
 		D0B2E5C813A029AA00F32DB5 /* Object3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object3.h; path = model/Object3.h; sourceTree = "<group>"; };
 		D0B2E5C913A029AA00F32DB5 /* Object3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object3.m; path = model/Object3.m; sourceTree = "<group>"; };
 		D0B2E5CB13A029AA00F32DB5 /* Object1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object1.h; path = model/Object1.h; sourceTree = "<group>"; };
@@ -219,6 +225,8 @@
 				A9414BCF1347B432008C67F4 /* ESDynamicMethodResolverTest.m */,
 				A9414BD01347B432008C67F4 /* ESNSCategoriesTest.h */,
 				A9414BD11347B432008C67F4 /* ESNSCategoriesTest.m */,
+				D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */,
+				D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */,
 				A9414BD21347B432008C67F4 /* ESUICategoriesTest.h */,
 				A9414BD31347B432008C67F4 /* ESUICategoriesTest.m */,
 				A9414BD41347B432008C67F4 /* ESUtilsTest.h */,
@@ -249,6 +257,8 @@
 				A973624C135E247F000EBD17 /* ESBlockActionSheet.m */,
 				A9414BA51347B3F5008C67F4 /* ESBoundUserDefaults.h */,
 				A9414BA61347B3F5008C67F4 /* ESBoundUserDefaults.m */,
+				D073F74713B50EA9004D9DD7 /* ESCollectionCategories.h */,
+				D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */,
 				A9414BA71347B3F5008C67F4 /* ESDynamicMethodResolver.h */,
 				A9414BA81347B3F5008C67F4 /* ESDynamicMethodResolver.m */,
 				A9414BA91347B3F5008C67F4 /* ESFlowLayoutView.h */,
@@ -413,6 +423,7 @@
 				D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */,
 				D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */,
 				D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */,
+				D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +438,7 @@
 				A9414BF81347B741008C67F4 /* ESUICategoriesTest.m in Sources */,
 				A9414BF91347B741008C67F4 /* ESUtilsTest.m in Sources */,
 				A9414B891347B391008C67F4 /* es_ios_utils_appTests.m in Sources */,
+				D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
