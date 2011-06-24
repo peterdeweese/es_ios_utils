@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34844B3213B5249100904A5E /* ESRotatableViewController.m */; };
 		A9414B5A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
 		A9414B5C1347B391008C67F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5B1347B391008C67F4 /* Foundation.framework */; };
 		A9414B5E1347B391008C67F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5D1347B391008C67F4 /* CoreGraphics.framework */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34844B3113B5249100904A5E /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
+		34844B3213B5249100904A5E /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
 		A9414B551347B391008C67F4 /* es_ios_utils_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = es_ios_utils_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9414B591347B391008C67F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9414B5B1347B391008C67F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -273,6 +276,8 @@
 				A9414BB21347B3F5008C67F4 /* ESVerticalLayoutView.m */,
 				A9414BB31347B3F5008C67F4 /* ESViewDataMapper.h */,
 				A9414BB41347B3F5008C67F4 /* ESViewDataMapper.m */,
+				34844B3113B5249100904A5E /* ESRotatableViewController.h */,
+				34844B3213B5249100904A5E /* ESRotatableViewController.m */,
 			);
 			path = es_ios_utils;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */,
 				D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */,
 				D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */,
+				34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
