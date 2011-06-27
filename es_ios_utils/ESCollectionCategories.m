@@ -68,6 +68,13 @@
     return result;
 }
 
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+{
+    NSString *format = $format(@"%@ == %@", keyPath, @"%@");
+    NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
+    return [self filteredArrayUsingPredicate:pred];
+}
+
 -(NSArray*)reversed
 {
     return self.reverseObjectEnumerator.allObjects;

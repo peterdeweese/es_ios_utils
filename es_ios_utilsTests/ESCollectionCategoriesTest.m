@@ -81,6 +81,18 @@
     STAssertEqualObjects(array.reversed, $array(fourth, third, second, first), nil);
 }
 
+-(void)testNSArrayFilteredArrayWhereKeyPath
+{
+    static NSString *fiveLength = @"12345";
+    
+    NSArray *source = $array(@"1234", fiveLength, @"123", @"12", fiveLength);
+    NSArray *result = [source filteredArrayWhereKeyPath:@"length" equals:[NSNumber numberWithInt:5]];
+    STAssertNotNil(result, nil);
+    STAssertTrue(result.count == 2, @"was %i", result.count);
+    STAssertEquals(result.firstObject, fiveLength, nil);
+    STAssertEquals(result.lastObject, fiveLength, nil);
+}
+
 -(void)testNSDictionaryCategory
 {
     static NSString *o1 = @"o1";
