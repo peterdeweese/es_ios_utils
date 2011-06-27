@@ -53,6 +53,7 @@
 {
     for(NSError *e in self.detailedErrors)
         [e logWithMessage:@"Detailed Error"];
+    NSLog(@"User Info: %@", self.userInfo);
 }
 
 -(void)log
