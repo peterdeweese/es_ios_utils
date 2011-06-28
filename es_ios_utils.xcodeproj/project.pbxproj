@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3478A44D13BA4A06000270F9 /* ESMKCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3478A44C13BA4A06000270F9 /* ESMKCategories.m */; };
+		3478A45013BA4DA2000270F9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3478A44F13BA4DA2000270F9 /* MapKit.framework */; };
+		3478A45213BA4DCF000270F9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3478A45113BA4DCF000270F9 /* CoreLocation.framework */; };
 		34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34844B3213B5249100904A5E /* ESRotatableViewController.m */; };
 		A9414B5A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
 		A9414B5C1347B391008C67F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5B1347B391008C67F4 /* Foundation.framework */; };
@@ -62,6 +65,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3478A44B13BA4A06000270F9 /* ESMKCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMKCategories.h; sourceTree = "<group>"; };
+		3478A44C13BA4A06000270F9 /* ESMKCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMKCategories.m; sourceTree = "<group>"; };
+		3478A44F13BA4DA2000270F9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3478A45113BA4DCF000270F9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		34844B3113B5249100904A5E /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
 		34844B3213B5249100904A5E /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
 		A9414B551347B391008C67F4 /* es_ios_utils_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = es_ios_utils_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3478A45213BA4DCF000270F9 /* CoreLocation.framework in Frameworks */,
+				3478A45013BA4DA2000270F9 /* MapKit.framework in Frameworks */,
 				A9414BFB1347B768008C67F4 /* CoreData.framework in Frameworks */,
 				A9414B5A1347B391008C67F4 /* UIKit.framework in Frameworks */,
 				A9414B5C1347B391008C67F4 /* Foundation.framework in Frameworks */,
@@ -161,6 +170,8 @@
 		A9414B4A1347B391008C67F4 = {
 			isa = PBXGroup;
 			children = (
+				3478A45113BA4DCF000270F9 /* CoreLocation.framework */,
+				3478A44F13BA4DA2000270F9 /* MapKit.framework */,
 				A9414B9E1347B3F5008C67F4 /* es_ios_utils */,
 				A9414B5F1347B391008C67F4 /* es_ios_utils_app */,
 				A9414B7F1347B391008C67F4 /* es_ios_utils_appTests */,
@@ -278,6 +289,8 @@
 				A9414BB21347B3F5008C67F4 /* ESVerticalLayoutView.m */,
 				A9414BB31347B3F5008C67F4 /* ESViewDataMapper.h */,
 				A9414BB41347B3F5008C67F4 /* ESViewDataMapper.m */,
+				3478A44B13BA4A06000270F9 /* ESMKCategories.h */,
+				3478A44C13BA4A06000270F9 /* ESMKCategories.m */,
 			);
 			path = es_ios_utils;
 			sourceTree = "<group>";
@@ -430,6 +443,7 @@
 				D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */,
 				D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */,
 				34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */,
+				3478A44D13BA4A06000270F9 /* ESMKCategories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

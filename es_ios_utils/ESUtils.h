@@ -3,6 +3,7 @@
 #import "ESCollectionCategories.h"
 #import "ESNSCategories.h"
 #import "ESUICategories.h"
+#import "ESMKCategories.h"
 
 #define $array(objs...) [NSArray arrayWithObjects: objs, nil] 
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 
