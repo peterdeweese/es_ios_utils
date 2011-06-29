@@ -47,6 +47,7 @@
 		A99823081399618600855F2B /* development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99823071399618600855F2B /* development.plist */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
+		D03A76FC13BB5B5A00A32A8E /* ESFlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03A76FB13BB5B5A00A32A8E /* ESFlashMessageView.m */; };
 		D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */; };
 		D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */; };
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
@@ -127,6 +128,8 @@
 		A99823071399618600855F2B /* development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = development.plist; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
+		D03A76FA13BB5B5A00A32A8E /* ESFlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlashMessageView.h; sourceTree = "<group>"; };
+		D03A76FB13BB5B5A00A32A8E /* ESFlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlashMessageView.m; sourceTree = "<group>"; };
 		D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCollectionCategoriesTest.h; path = es_ios_utilsTests/ESCollectionCategoriesTest.h; sourceTree = SOURCE_ROOT; };
 		D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCollectionCategoriesTest.m; path = es_ios_utilsTests/ESCollectionCategoriesTest.m; sourceTree = SOURCE_ROOT; };
 		D073F74713B50EA9004D9DD7 /* ESCollectionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCollectionCategories.h; sourceTree = "<group>"; };
@@ -170,8 +173,6 @@
 		A9414B4A1347B391008C67F4 = {
 			isa = PBXGroup;
 			children = (
-				3478A45113BA4DCF000270F9 /* CoreLocation.framework */,
-				3478A44F13BA4DA2000270F9 /* MapKit.framework */,
 				A9414B9E1347B3F5008C67F4 /* es_ios_utils */,
 				A9414B5F1347B391008C67F4 /* es_ios_utils_app */,
 				A9414B7F1347B391008C67F4 /* es_ios_utils_appTests */,
@@ -192,6 +193,8 @@
 		A9414B581347B391008C67F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3478A45113BA4DCF000270F9 /* CoreLocation.framework */,
+				3478A44F13BA4DA2000270F9 /* MapKit.framework */,
 				A9414BFC1347B8C8008C67F4 /* CoreData.framework */,
 				A9414BFA1347B768008C67F4 /* CoreData.framework */,
 				A9414B591347B391008C67F4 /* UIKit.framework */,
@@ -275,6 +278,8 @@
 				D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */,
 				A9414BA71347B3F5008C67F4 /* ESDynamicMethodResolver.h */,
 				A9414BA81347B3F5008C67F4 /* ESDynamicMethodResolver.m */,
+				D03A76FA13BB5B5A00A32A8E /* ESFlashMessageView.h */,
+				D03A76FB13BB5B5A00A32A8E /* ESFlashMessageView.m */,
 				A9414BA91347B3F5008C67F4 /* ESFlowLayoutView.h */,
 				A9414BAA1347B3F5008C67F4 /* ESFlowLayoutView.m */,
 				A9414BAB1347B3F5008C67F4 /* ESNSCategories.h */,
@@ -444,6 +449,7 @@
 				D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */,
 				34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */,
 				3478A44D13BA4A06000270F9 /* ESMKCategories.m in Sources */,
+				D03A76FC13BB5B5A00A32A8E /* ESFlashMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
