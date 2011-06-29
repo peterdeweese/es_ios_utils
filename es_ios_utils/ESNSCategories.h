@@ -14,6 +14,10 @@
     -(NSString*)relativeString;
 @end
 
+@interface NSDecimalNumber(ESUtils)
+    @property(nonatomic, readonly) BOOL isNotANumber;
+@end
+
 @interface NSError(ESUtils)
     @property(nonatomic, readonly) NSArray *detailedErrors;
     -(void)log;

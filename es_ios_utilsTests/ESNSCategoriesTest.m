@@ -12,6 +12,17 @@
     [[ESApplicationDelegate delegate] clearAllPersistentStores];
 }
 
+-(void)testNSDecimalNumberCategory
+{
+    NSDecimalNumber *n = [NSDecimalNumber decimalNumberWithString:@"asdf"];
+    STAssertNotNil(n, nil);
+    STAssertTrue(n.isNotANumber, nil);
+    
+    n = [NSDecimalNumber decimalNumberWithString:@"1.0"];
+    STAssertNotNil(n, nil);
+    STAssertFalse(n.isNotANumber, nil);
+}
+
 -(void)testNSErrorCategory
 {
     NSError *error = [NSError errorWithDomain:@"test" code:0 userInfo:nil];

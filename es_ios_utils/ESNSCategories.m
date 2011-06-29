@@ -42,6 +42,16 @@
 @end
 
 
+@implementation NSDecimalNumber(ESUtils)
+
+-(BOOL)isNotANumber
+{
+    return [[NSDecimalNumber notANumber] isEqualToNumber:self];
+}
+
+@end
+
+
 @implementation NSError(ESUtils)
 
 -(NSArray*)detailedErrors
