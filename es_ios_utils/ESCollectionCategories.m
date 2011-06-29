@@ -204,12 +204,13 @@
 
 - (id)dequeue
 {
-    if(self.count == 0)
-        return nil;
-    
-    id object = [self objectAtIndex:0];
-    [self removeObjectAtIndex:0];
-    return object;
+    id o = [self objectAtIndex:0];
+    if (o)
+    {
+        [[o retain] autorelease]; // so it isn't dealloc'ed on remove
+        [self removeObjectAtIndex:0];
+    }
+    return o;
 }
 
 - (id)pop
