@@ -276,9 +276,24 @@
 -(NSArray*)all:(Class)type
 {
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(type)
-                                              inManagedObjectContext:self];
-    fetchRequest.entity = entity;
+    fetchRequest.entity = [NSEntityDescription entityForName:NSStringFromClass(type)
+                                      inManagedObjectContext:self];
+    
+    NSError *error = nil;
+    
+    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
+    if (error)
+        [error log];
+    
+    return results;
+}
+
+-(NSArray*)all:(Class)type sortedByKey:(NSString*)key
+{
+    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    fetchRequest.entity = [NSEntityDescription entityForName:NSStringFromClass(type)
+                                      inManagedObjectContext:self];
+    fetchRequest.sortDescriptors = $array([NSSortDescriptor sortDescriptorWithKey:key ascending:YES]);
     
     NSError *error = nil;
     

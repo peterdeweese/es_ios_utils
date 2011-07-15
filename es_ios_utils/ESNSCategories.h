@@ -50,6 +50,7 @@
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
     -(BOOL)hasAny:(Class)type;
     -(NSArray*)all:(Class)type;
+    -(NSArray*)all:(Class)type sortedByKey:(NSString*)key;
 @end
 
 @interface NSObject(ESUtils)
