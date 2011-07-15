@@ -75,6 +75,13 @@
     return [self filteredArrayUsingPredicate:pred];
 }
 
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+{
+    NSString *format = $format(@"%@ IN %@", @"%@", keyPath);
+    NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
+    return [self filteredArrayUsingPredicate:pred];
+}
+
 -(NSArray*)reversed
 {
     return self.reverseObjectEnumerator.allObjects;
