@@ -84,6 +84,16 @@
 @end
 
 
+@implementation UIPopoverController(ESUtils)
+
++(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController*)viewController
+{
+    return [[[UIPopoverController alloc] initWithContentViewController:viewController] autorelease];
+}
+
+@end
+
+
 @implementation UIView (ESUtils)
 
 - (float)width { return self.frame.size.width; }

@@ -36,9 +36,12 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 
 @interface UINavigationItem(ESUtils)
+    -(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right;
+@end
 
--(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right;
 
+@interface UIPopoverController(ESUtils)
+    +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController *)viewController;
 @end
 
 
