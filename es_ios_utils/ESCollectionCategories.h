@@ -67,6 +67,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
     // Removes and returns object from the end of the array, or nil if empty
     -(id)pop;
+
+    -(void)replaceObject:(id)o withObject:(id)newO;
 @end
 
 @interface NSMutableDictionary(ESUtils)

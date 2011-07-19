@@ -229,6 +229,12 @@
     return object;
 }
 
+-(void)replaceObject:(id)o withObject:(id)newO
+{
+    [self replaceObjectAtIndex:[self indexOfObject:o]
+                    withObject:newO];
+}
+
 @end
 
 

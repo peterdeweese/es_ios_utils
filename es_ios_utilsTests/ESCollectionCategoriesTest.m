@@ -122,7 +122,7 @@
     STAssertTrue(camelCased != ((NSArray*)[deepCopy objectForKey:@"array"]).firstObject, @"array of dictionaries should not return original object.");
 }
 
--(void)testNSMutableArrayCategory
+-(void)testNSMutableArrayQueue
 {
     NSString *first = @"first";
     NSString *last = @"last";
@@ -133,6 +133,13 @@
     STAssertEqualObjects(last, ma.pop, @"Pop should return last element");
     STAssertEqualObjects(first, ma.dequeue, @"Dequeue should return first element");
     STAssertTrue(ma.count==1, @"Array should have 1 element left after a pop and dequeue.");
+}
+
+-(void)testNSMutableArrayReplaceObject
+{
+    NSMutableArray *array = [$array(@"one", @"two", @"three") mutableCopy];
+    [array replaceObject:@"two" withObject:@"replaced"];
+    STAssertEqualObjects($array(@"one", @"replaced", @"three"), array, nil);
 }
 
 -(void)testNSMutableDictionaryCategory
