@@ -47,11 +47,12 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UIView(ESUtils)
     // These sizing convenience methods manipulate the frame.
-    @property(assign) float width;
-    @property(assign) float height;
-    @property(assign) float x;
-    @property(assign) float y;
-    @property(assign) CGSize size;
+    @property(assign) float   width;
+    @property(assign) float   height;
+    @property(assign) float   x;
+    @property(assign) float   y;
+    @property(assign) CGSize  size;
+    @property(assign) CGPoint origin;
 @end
 
 @interface UIViewController(ESUtils)
