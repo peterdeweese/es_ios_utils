@@ -49,6 +49,7 @@
 
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
     -(BOOL)hasAny:(Class)type;
+    -(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate arg:(id)arg;
     -(NSArray*)all:(Class)type;
     -(NSArray*)all:(Class)type sortedByKey:(NSString*)key;
 @end

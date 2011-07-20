@@ -272,20 +272,30 @@
     return results.isNotEmpty;
 }
 
+//TODO: add varargs or array for predicate
 //TODO: shouldn't this be a set?
--(NSArray*)all:(Class)type
+-(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate arg:(id)arg
 {
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    fetchRequest.entity = [NSEntityDescription entityForName:NSStringFromClass(type)
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    request.entity = [NSEntityDescription entityForName:NSStringFromClass(type)
                                       inManagedObjectContext:self];
+    
+    if(predicate)
+        request.predicate = [NSPredicate predicateWithFormat:predicate, arg];
     
     NSError *error = nil;
     
-    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
+    NSArray *results = [self executeFetchRequest:request error:&error];
     if (error)
         [error log];
     
-    return results;
+    return results;      
+}
+
+//REFACTOR: rename to fetchAll or fetch
+-(NSArray*)all:(Class)type
+{
+    return [self fetch:type predicateWithFormat:nil arg:nil];
 }
 
 -(NSArray*)all:(Class)type sortedByKey:(NSString*)key
