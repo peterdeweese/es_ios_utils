@@ -103,4 +103,10 @@
     STAssertEqualObjects(underscore, camel.asUnderscoreFromCamelCase, @"Should convert to underscores.");
 }
 
+-(void)testNSStringContainsString
+{
+    STAssertTrue([@"asdf wer adsf" containsString:@"wer"], nil);
+    STAssertFalse([@"asdf wer adsf" containsString:@"ttt"], nil);
+}
+
 @end

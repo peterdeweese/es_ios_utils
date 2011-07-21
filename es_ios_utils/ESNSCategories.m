@@ -375,6 +375,11 @@ float logx(float value, float base)
     return [self stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
 }
 
+-(BOOL)containsString:(NSString*)substring
+{
+    return [self rangeOfString:substring].location != NSNotFound;
+}
+
 -(BOOL)isEmpty
 {
     return self.length == 0;

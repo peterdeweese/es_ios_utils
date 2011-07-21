@@ -69,6 +69,7 @@
 
     @property(nonatomic, readonly) NSData   *dataWithUTF8;
     @property(nonatomic, readonly) NSString *strip;
+    -(BOOL)containsString:(NSString*)substring;
 
     //Returns true if the string exists and contains only whitespace.
     @property(nonatomic, readonly) BOOL      isBlank;
