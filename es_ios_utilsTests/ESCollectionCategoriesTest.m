@@ -64,9 +64,19 @@
     STAssertEqualObjects([array objectAtIndex:2], third,  @"element should equal third");
     STAssertEqualObjects([array objectAtIndex:3], fourth, @"element should equal fourth");
     
+    array = $array(first, second, third, fourth);
+    STAssertEqualObjects(array.reversed, $array(fourth, third, second, first), nil);
+}
+
+-(void)testNSArrayMappedWith
+{
+    NSString *first = @"first";
+    NSString *second = @"second";
+    
     //wrap with parenthesis to test arrayMappedWithFormat:
-    array = $array(first, second);
+    NSArray *array = $array(first, second);
     array = [array arrayMappedWithFormat:@"(%@)"];
+    STAssertTrue(array.count == 2, nil);
     STAssertEqualObjects([array objectAtIndex:0], @"(first)",  @"element should equal (first)");
     STAssertEqualObjects([array objectAtIndex:1], @"(second)",  @"element should equal (second)");
     
@@ -74,11 +84,15 @@
     array = [array arrayMappedWith:^id(id o){
         return [((NSString*)o) stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
     }];
+    STAssertTrue(array.count == 2, nil);
     STAssertEqualObjects([array objectAtIndex:0], first,  @"element should equal first");
     STAssertEqualObjects([array objectAtIndex:1], second,  @"element should equal second");
     
-    array = $array(first, second, third, fourth);
-    STAssertEqualObjects(array.reversed, $array(fourth, third, second, first), nil);
+    //Test single item array (there was an issue with returning two)
+    array = $array(first);
+    array = [array arrayMappedWithFormat:@"\"%@\""];
+    STAssertTrue(array.count == 1, nil);
+    STAssertEqualObjects(array.firstObject, @"\"first\"", nil);
 }
 
 -(void)testNSArrayFilteredArrayWhereKeyPath
