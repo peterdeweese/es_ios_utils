@@ -210,9 +210,87 @@
 }
 
 //Prevents circular dependencies.
-- (NSString*)xmlString
+-(NSString*)xmlString
 {
     return [self xmlString:[[[NSMutableSet alloc] init] autorelease]];
+}
+
+-(NSDictionary*)toDictionaryIgnoringReferencedObjects:(NSMutableSet*)objectsToIgnore
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    [objectsToIgnore addObject:self];
+        
+    for (NSString *attribute in self.entity.attributesByName.allKeys)
+    {
+        id value = [self valueForKey:attribute];
+        NSString *resultValue = nil;
+        
+        if(value)
+        {
+            if ([value isKindOfClass:NSString.class])
+                resultValue = value;
+            else if ([value respondsToSelector:@selector(stringValue)])
+                resultValue = [value stringValue];
+            else
+                resultValue = $format(@"%@", value);
+        }
+        
+        if(resultValue)
+            [result setValue:resultValue forKey:attribute];
+    }
+    
+    //Iterate through relationships.  Uses ordered<relationshipName> when available.
+    for (NSString *relationship in self.entity.relationshipsByName)
+    {
+        NSRelationshipDescription *rd = [self.entity.relationshipsByName objectForKey:relationship];
+        
+        if(rd.isToMany)
+        {
+            id<NSFastEnumeration> many = nil;
+            @try
+            {
+                many = [self valueForKey:$format(@"ordered%@",relationship.capitalizedString)];
+                NSLog(@"Using ordered %@", relationship);
+            }
+            @catch (NSException *e)
+            {
+                if([e.name isEqualToString:@"NSUnknownKeyException"])
+                {
+                    many = [self valueForKey:relationship];
+                    NSLog(@"Using unordered %@", relationship);
+                }
+                else
+                    @throw e;
+            }
+            
+            NSMutableArray *manyDictionaries = [NSMutableArray arrayWithCapacity:[((id)many) count]];
+            for(NSManagedObject *o in many)
+                if(![objectsToIgnore containsObject:o])
+                    [manyDictionaries addObject:[o toDictionaryIgnoringReferencedObjects:objectsToIgnore]];
+            [result setValue:manyDictionaries forKey:relationship];
+        }
+        else
+        {
+            NSManagedObject *o = [self valueForKey:relationship];
+            if(![objectsToIgnore containsObject:o])
+                [result setValue:[o toDictionaryIgnoringReferencedObjects:objectsToIgnore] forKey:relationship];
+        }
+    }
+    
+    return result;
+}
+
+-(NSDictionary*)toDictionaryIgnoringObjects:(NSSet*)objectsToIgnore
+{
+    NSMutableSet *references = objectsToIgnore ? objectsToIgnore.mutableCopy : [NSMutableSet setWithCapacity:10];
+    return [self toDictionaryIgnoringReferencedObjects:references];
+}
+
+//Prevents circular dependencies.
+-(NSDictionary*)toDictionary
+{    
+    return [self toDictionaryIgnoringObjects:nil];
 }
 
 @end

@@ -38,7 +38,13 @@
     //Creates a new managed object and performs a shallow copy, ignoring all relationships
     @property(nonatomic, readonly) id        copyWithAttributes;
 
-    @property(nonatomic, readonly) NSString *xmlString;
+    @property(nonatomic, readonly) NSString     *xmlString;
+
+    //Coerces all attributes into string values.  If a relationship has a method in the form of ordered<Relationship>, that key will be used.  To-many relationships represented as NSArrays.  Circular dependencies prevented by only representing each NSManagedObject once. The first node to be processed wins, and this produces a tree.
+    @property(nonatomic, readonly) NSDictionary *toDictionary;
+
+    //Use this when overriding toDictionary to prevent references from being added.
+    -(NSDictionary*)toDictionaryIgnoringObjects:(NSSet*)objectsToIgnore;
 @end
 
 @interface NSManagedObjectContext(ESUtils)

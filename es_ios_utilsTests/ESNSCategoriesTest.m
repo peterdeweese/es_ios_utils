@@ -31,6 +31,33 @@
     STAssertNoThrow([error logWithMessage:@"prefix"], @"Should not throw error.");
 }
 
+-(void)testNSManagedObjectToDictionary
+{
+    NSManagedObjectContext *context = ESApplicationDelegate.delegate.managedObjectContext;
+
+    Object1 *object1 = (Object1*)[context createManagedObjectOfClass:Object1.class];
+    Object2 *object2 = (Object2*)[context createManagedObjectOfClass:Object2.class];
+    Object3 *object3 = (Object3*)[context createManagedObjectOfClass:Object3.class];
+    
+    object1.attribute1 = @"attribute1.value";
+    object2.attribute2 = @"attribute2.value";
+    object3.attribute3 = @"attribute3.value";
+    
+    object2.parent = object1;
+    object3.parent = object1;
+    
+    [context saveAndDoOnError:^(NSError *e){ STAssertNil(e, nil); }];
+    
+    NSDictionary *result = object1.toDictionary;
+    NSLog(@"%@", result);
+    STAssertEqualObjects([result valueForKeyPath:@"attribute1"], @"attribute1.value", nil);
+    STAssertEqualObjects([result valueForKeyPath:@"object2.attribute2"], @"attribute2.value", nil);
+    NSArray *object3s = [result valueForKey:@"object3s"];
+    NSDictionary *object3D = object3s.firstObject;
+    STAssertNotNil(object3D, nil);
+    STAssertEqualObjects([object3D valueForKey:@"attribute3"], @"attribute3.value", nil);
+}
+
 -(void)testNSManagedObjectContextCategory
 {
     NSManagedObjectContext *context = ESApplicationDelegate.delegate.managedObjectContext;
