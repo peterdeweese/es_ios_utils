@@ -215,7 +215,7 @@
     return [self xmlString:[[[NSMutableSet alloc] init] autorelease]];
 }
 
--(NSDictionary*)toDictionaryIgnoringReferencedObjects:(NSMutableSet*)objectsToIgnore
+-(NSDictionary*)toDictionaryIgnoringReferencedObjects:(NSMutableSet*)objectsToIgnore relationshipFormat:(NSString*)relationshipFormat
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:10];
     
@@ -245,6 +245,8 @@
     {
         NSRelationshipDescription *rd = [self.entity.relationshipsByName objectForKey:relationship];
         
+        NSString *target = relationshipFormat ? $format(relationshipFormat, relationship) : relationship;
+        
         if(rd.isToMany)
         {
             id<NSFastEnumeration> many = nil;
@@ -267,14 +269,14 @@
             NSMutableArray *manyDictionaries = [NSMutableArray arrayWithCapacity:[((id)many) count]];
             for(NSManagedObject *o in many)
                 if(![objectsToIgnore containsObject:o])
-                    [manyDictionaries addObject:[o toDictionaryIgnoringReferencedObjects:objectsToIgnore]];
-            [result setValue:manyDictionaries forKey:relationship];
+                    [manyDictionaries addObject:[o toDictionaryIgnoringReferencedObjects:objectsToIgnore relationshipFormat:relationshipFormat]];
+            [result setValue:manyDictionaries forKey:target];
         }
         else
         {
             NSManagedObject *o = [self valueForKey:relationship];
             if(![objectsToIgnore containsObject:o])
-                [result setValue:[o toDictionaryIgnoringReferencedObjects:objectsToIgnore] forKey:relationship];
+                [result setValue:[o toDictionaryIgnoringReferencedObjects:objectsToIgnore relationshipFormat:relationshipFormat] forKey:target];
         }
     }
     
@@ -284,13 +286,24 @@
 -(NSDictionary*)toDictionaryIgnoringObjects:(NSSet*)objectsToIgnore
 {
     NSMutableSet *references = objectsToIgnore ? objectsToIgnore.mutableCopy : [NSMutableSet setWithCapacity:10];
-    return [self toDictionaryIgnoringReferencedObjects:references];
+    return [self toDictionaryIgnoringReferencedObjects:references relationshipFormat:nil];
 }
 
 //Prevents circular dependencies.
 -(NSDictionary*)toDictionary
 {    
     return [self toDictionaryIgnoringObjects:nil];
+}
+
+-(NSDictionary*)toDictionaryForRailsIgnoringObjects:(NSSet *)objectsToIgnore
+{
+    NSMutableSet *references = objectsToIgnore ? objectsToIgnore.mutableCopy : [NSMutableSet setWithCapacity:10];
+    return [self toDictionaryIgnoringReferencedObjects:references relationshipFormat:@"%@_attributes"].asUnderscoreKeysFromCamelCase;
+}
+
+-(NSDictionary*)toDictionaryForRails
+{
+    return [self toDictionaryForRailsIgnoringObjects:nil];
 }
 
 @end

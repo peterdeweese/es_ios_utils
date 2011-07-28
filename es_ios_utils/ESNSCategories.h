@@ -45,6 +45,10 @@
 
     //Use this when overriding toDictionary to prevent references from being added.
     -(NSDictionary*)toDictionaryIgnoringObjects:(NSSet*)objectsToIgnore;
+
+    //Rails uses <relationship>_attributes and underscores
+    -(NSDictionary*)toDictionaryForRailsIgnoringObjects:(NSSet *)objectsToIgnore;
+    -(NSDictionary*)toDictionaryForRails;
 @end
 
 @interface NSManagedObjectContext(ESUtils)
