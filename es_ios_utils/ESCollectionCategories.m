@@ -254,6 +254,13 @@
         [self setObject:[d objectForKey:key] forKey:keyFilter(key)];
 }
 
+-(void)renameKey:(NSString*)key to:(NSString*)to
+{
+    id value = [self objectForKey:key];
+    [self setObject:value forKey:to];
+    [self removeObjectForKey:key];
+}
+
 @end
 
 

@@ -78,6 +78,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     
     //Changes keys using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
     -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter;
+    -(void)renameKey:(NSString*)key to:(NSString*)to;
 @end
 
 @interface NSNull(ESUtils)
