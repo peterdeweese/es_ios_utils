@@ -7,9 +7,13 @@
     NSString *keyPath;
 }
 
-@property(nonatomic, retain) UIView   *view;
+@property(nonatomic, retain) UIView*   view;
 @property(nonatomic, retain) id        object;
-@property(nonatomic, retain) NSString *keyPath;
+@property(nonatomic, retain) NSString* keyPath;
+
+@property(nonatomic, assign) id        objectValue;
+-(void)updateView;
+-(void)updateObject;
 
 @end
 
@@ -47,72 +51,38 @@
         NSLog(@"Warning: View not added to data map because it is nil.");
 }
 
+-(ESViewDataMap*)mapForView:(UIView*)view
+{
+    return [mapByView objectForKeyObject:view];
+}
+
 -(void)updateViews
 {
     for(ESViewDataMap *m in maps)
-    {
-        NSString *value = [m.object valueForKeyPath:m.keyPath];
-        NSLog(@"Updating view: %@=%@", m.keyPath, value);
-        
-        if(value && ![value isKindOfClass:NSString.class])
-            NSLog(@"Warning: Value not set from keyPath '%@' because the value was not an NSString. %@", m.keyPath, value.class);
-        if([m.view isKindOfClass:UITextField.class])
-            ((UITextField*)m.view).text = value;
-        else if([m.view isKindOfClass:UITextView.class])
-            ((UITextView*)m.view).text = value;
-        else if([m.view isKindOfClass:UILabel.class])
-            ((UILabel*)m.view).text = value;
-        else if([m.view isKindOfClass:UIButton.class])
-            [(UIButton*)m.view setTitle:value forState:UIControlStateNormal];
-        else
-            NSLog(@"Warning: Value not set from keyPath '%@' because the view is not of a supported type. %@", m.keyPath, m.view.class);
-    }
+        [m updateView];
 }
 
--(void)updateObjectForMap:(ESViewDataMap*)m
+-(void)updateView:(UIView*)view
 {
-    NSString *value = nil;
-    
-    if([m.view isKindOfClass:UITextField.class])
-        value = ((UITextField*)m.view).text;
-    else if([m.view isKindOfClass:UITextView.class])
-        value = ((UITextView*)m.view).text;
-    else if([m.view isKindOfClass:UILabel.class])
-        value = ((UILabel*)m.view).text;
-    else if([m.view isKindOfClass:UIButton.class])
-        value = [(UIButton*)m.view titleForState:UIControlStateNormal];
-    else
-        NSLog(@"Warning: Value not set from keyPath '%@' because the view is not of a supported type. %@", m.keyPath, m.view.class);
-        
-    if(value && ![value isKindOfClass:NSString.class])
-        NSLog(@"Warning: Value not set from keyPath '%@' because the value was not an NSString. %@", m.keyPath, value.class);
-    else
-    {
-        @try
-        {
-            NSLog(@"Updating object: %@=%@", m.keyPath, value);
-            [m.object setValue:value forKeyPath:m.keyPath];
-        }
-        @catch (NSException *e)
-        {
-            if ([e.name isEqual:@"NSUnknownKeyException"])
-                NSLog(@"Value not set: no setter found for %@.", m.keyPath);
-            else @throw(e);
-        }
-    }
-}
-
--(void)updateObjectForView:(UIView*)view
-{
-    [self updateObjectForMap:[mapByView objectForKeyObject:view]];
+    [[self mapForView:view] updateView];
 }
 
 -(void)updateObjects
 {
     NSLog(@"Saving values from views.");
-
+    
     for(ESViewDataMap *m in maps)
-        [self updateObjectForMap:m];
+        [m updateObject];
+}
+
+-(void)updateObjectForView:(UIView*)view
+{
+    [[self mapForView:view] updateObject];
+}
+
+-(id)objectValueForView:(UIView*)view
+{
+    return [self mapForView:view].objectValue;
 }
 
 -(void)dealloc
@@ -138,4 +108,65 @@
     [super dealloc];
 }
 
+-(id)objectValue
+{
+    return [self.object valueForKeyPath:self.keyPath];
+}
+
+-(void)setObjectValue:(id)objectValue
+{
+    [self.object setValue:objectValue forKeyPath:self.keyPath];
+}
+
+-(void)updateView
+{
+    NSObject* value = self.objectValue;
+    NSLog(@"Updating view: %@=%@", self.keyPath, value);
+    
+    if([self.view isKindOfClass:UITextField.class])
+        ((UITextField*)self.view).text = (NSString*)value;
+    else if([self.view isKindOfClass:UITextView.class])
+        ((UITextView*)self.view).text = (NSString*)value;
+    else if([self.view isKindOfClass:UILabel.class])
+        ((UILabel*)self.view).text = (NSString*)value;
+    else if([self.view isKindOfClass:UIButton.class])
+        [(UIButton*)self.view setTitle:(NSString*)value forState:UIControlStateNormal];
+    else if([self.view isKindOfClass:UIDatePicker.class])
+        ((UIDatePicker*)self.view).date = (NSDate*)value;
+    else
+        NSLog(@"Warning: Value not set from keyPath '%@' because the view is not of a supported type. %@", self.keyPath, [self.view class]);
+}
+
+-(void)updateObject
+{
+    id value = nil;
+    
+    if([self.view isKindOfClass:UITextField.class])
+        value = ((UITextField*)self.view).text;
+    else if([self.view isKindOfClass:UITextView.class])
+        value = ((UITextView*)self.view).text;
+    else if([self.view isKindOfClass:UILabel.class])
+        value = ((UILabel*)self.view).text;
+    else if([self.view isKindOfClass:UIButton.class])
+        value = [(UIButton*)self.view titleForState:UIControlStateNormal];
+    else if([self.view isKindOfClass:UIDatePicker.class])
+        value = ((UIDatePicker*)self.view).date;
+    else
+        NSLog(@"Warning: Value not set from keyPath '%@' because the view is not of a supported type. %@", self.keyPath, [self.view class]);
+    
+    if(value)
+    {
+        @try
+        {
+            NSLog(@"Updating object: %@=%@", self.keyPath, value);
+            self.objectValue = value;
+        }
+        @catch (NSException *e)
+        {
+            if ([e.name isEqual:@"NSUnknownKeyException"])
+                NSLog(@"Value not set: no setter found for %@.", self.keyPath);
+            else @throw(e);
+        }
+    }
+}
 @end

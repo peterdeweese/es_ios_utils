@@ -15,9 +15,12 @@
  */
 -(void)addView:(UIView*)view object:(id)object keyPath:(NSString*)keyPath;
 
+-(void)updateObjects;
 -(void)updateViews;
 
 -(void)updateObjectForView:(UIView*)view;
--(void)updateObjects;
+-(void)updateView:(UIView*)view;
+
+-(id)objectValueForView:(UIView*)view;
 
 @end

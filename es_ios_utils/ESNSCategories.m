@@ -240,6 +240,7 @@
             [result setValue:resultValue forKey:attribute];
     }
     
+    NSLog(@"%@", self);
     //Iterate through relationships.  Uses ordered<relationshipName> when available.
     for (NSString *relationship in self.entity.relationshipsByName)
     {
