@@ -23,6 +23,11 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 
+@interface UIBarButtonItem(ESUtils)
+    +(UIBarButtonItem*)barButtonItemWithCustomView:(UIView*)v;
+@end
+
+
 @interface UIDevice(ESUtils)
 +(BOOL)isPad;
 +(BOOL)isPhone;

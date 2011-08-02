@@ -146,6 +146,11 @@
 
 -(BOOL)isDisplayingAlert { return self.window.isDisplayingAlert; }
 
++(void)saveContext
+{
+    [self.delegate saveContext];
+}
+
 -(void)saveContext
 {
     if(managedObjectContext.hasChanges)

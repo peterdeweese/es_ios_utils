@@ -28,6 +28,7 @@
 
 @property(nonatomic, readonly) BOOL isDisplayingAlert;
 
++(void)saveContext;
 -(void)saveContext;
 -(void)clearAllPersistentStores;
 

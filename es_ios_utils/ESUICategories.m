@@ -36,6 +36,16 @@
 @end
 
 
+@implementation UIBarButtonItem(ESUtils)
+
++(UIBarButtonItem*)barButtonItemWithCustomView:(UIView*)v
+{
+    return [[[UIBarButtonItem alloc] initWithCustomView:v] autorelease];
+}
+
+@end
+
+
 @implementation UIDevice(ESUtils)
 
 +(BOOL)isPad
