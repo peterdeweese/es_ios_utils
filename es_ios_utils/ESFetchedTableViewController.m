@@ -43,6 +43,11 @@
 }
 
 
+-(id)objectAtIndexPath:(NSIndexPath*)i
+{
+    return [self.fetchedResultsController objectAtIndexPath:i];
+}
+
 #pragma mark - Implement
 
 -(NSString*)entityName
@@ -120,7 +125,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [managedObjectContext deleteObject:[self.fetchedResultsController objectAtIndexPath:i]];
+        [managedObjectContext deleteObject:[self objectAtIndexPath:i]];
         [managedObjectContext saveAndDoOnError:self.doOnError];
     }   
 }
@@ -137,6 +142,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     fetchRequest.entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:managedObjectContext];
+    assert(fetchRequest.entity);
     fetchRequest.fetchBatchSize = 20;
     fetchRequest.sortDescriptors = self.sortDescriptors;
     [self configureFetchRequest:fetchRequest];

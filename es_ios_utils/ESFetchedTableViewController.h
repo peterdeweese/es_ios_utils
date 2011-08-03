@@ -15,6 +15,8 @@
 @property(nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;
 
+-(id)objectAtIndexPath:(NSIndexPath*)i;
+
 //Configure these:
 @property(nonatomic, retain) NSString *entityName;
 @property(nonatomic, retain) NSString *sectionNameKeyPath; //optional, defaults to nil
