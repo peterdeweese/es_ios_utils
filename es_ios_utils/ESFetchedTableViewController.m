@@ -11,7 +11,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityName = _entityName;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityName, sortDescriptors;
 
 -(id)init
 {
@@ -50,13 +50,6 @@
 
 #pragma mark - Implement
 
--(NSString*)entityName
-{
-    if(!_entityName)
-        $must_override;
-    return _entityName;
-}
-
 -(UITableViewCellStyle)useCellStyle
 {
     return UITableViewCellStyleDefault;
@@ -73,12 +66,6 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
     $must_override;
-}
-
--(NSArray*)sortDescriptors
-{
-    $must_override;
-    return nil;
 }
 
 #pragma mark - Table Controller, Datasource, and Delegate
@@ -141,6 +128,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
         return fetchedResultsController;
     
     NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    assert(self.entityName);
     fetchRequest.entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:managedObjectContext];
     assert(fetchRequest.entity);
     fetchRequest.fetchBatchSize = 20;

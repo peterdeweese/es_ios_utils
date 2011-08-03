@@ -19,9 +19,9 @@
 
 //Configure these:
 @property(nonatomic, retain) NSString *entityName;
+@property(nonatomic, retain) NSArray  *sortDescriptors;
 @property(nonatomic, retain) NSString *sectionNameKeyPath; //optional, defaults to nil
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
-@property(nonatomic, readonly) NSArray  *sortDescriptors;
 @property(nonatomic, readonly) UITableViewCellStyle useCellStyle; //defaults to normal
 
 -(UITableViewCell*)createCell; //defaults to creating a cell with useCellStyle
