@@ -50,6 +50,10 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 
+@interface UITableViewCell(ESUtils)
+    +(UITableViewCell*)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier;
+@end
+
 @interface UIView(ESUtils)
     // These sizing convenience methods manipulate the frame.
     @property(assign) float   width;

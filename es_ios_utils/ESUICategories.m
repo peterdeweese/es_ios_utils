@@ -104,7 +104,17 @@
 @end
 
 
-@implementation UIView (ESUtils)
+@implementation UITableViewCell(ESUtils)
+
++(UITableViewCell*)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier
+{
+    return [[[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier] autorelease];
+}
+
+@end
+
+
+@implementation UIView(ESUtils)
 
 - (float)width { return self.frame.size.width; }
 - (void)setWidth:(float)width
