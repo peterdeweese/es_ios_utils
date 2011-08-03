@@ -43,6 +43,16 @@
     return [[[UIBarButtonItem alloc] initWithCustomView:v] autorelease];
 }
 
++(UIBarButtonItem*)barButtonItemWithTitle:(NSString*)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
+{
+    return [[[UIBarButtonItem alloc] initWithTitle:title style:style target:target action:action] autorelease];
+}
+
++(UIBarButtonItem*)barButtonItemWithBarButtonSystemItem:(UIBarButtonSystemItem)item target:(id)target action:(SEL)action
+{
+    return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:target action:action] autorelease];
+}
+
 @end
 
 
