@@ -129,49 +129,38 @@
 - (float)width { return self.frame.size.width; }
 - (void)setWidth:(float)width
 {
-    CGRect bounds = self.bounds;
-    bounds.size.width = width;
-    self.bounds = bounds;
+    self.frame = CGRectMake(self.x, self.y, width, self.height);
+
 }
 
 - (float)height { return self.frame.size.height; }
 - (void)setHeight:(float)height
 {
-    CGRect bounds = self.bounds;
-    bounds.size.height = height;
-    self.bounds = bounds;
+    self.frame = CGRectMake(self.x, self.y, self.width, height);
 }
 
 - (float)x { return self.frame.origin.x; }
 - (void)setX:(float)x
 {
-    CGRect frame = self.frame;
-    frame.origin.x = x;
-    self.frame = frame;
+    self.frame = CGRectMake(x, self.y, self.width, self.height);
 }
 
 - (float)y { return self.frame.origin.y; }
 - (void)setY:(float)y
 {
-    CGRect frame = self.frame;
-    frame.origin.y = y;
-    self.frame = frame;
+    self.frame = CGRectMake(self.x, y, self.width, self.height);
 }
 
 - (CGSize)size { return self.frame.size; }
 - (void)setSize:(CGSize)size
 {
-    CGRect frame = self.frame;
-    frame.size = size;
-    self.frame = frame;
+    self.frame = CGRectMake(self.x, self.y, size.width, size.height);
 }
 
 - (CGPoint)origin { return self.frame.origin; }
 - (void)setOrigin:(CGPoint)origin
 {
-    CGRect frame = self.frame;
-    frame.origin = origin;
-    self.frame = frame;
+    self.frame = CGRectMake(origin.x, origin.y, self.width, self.height);
 }
 
 @end
