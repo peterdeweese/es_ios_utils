@@ -11,7 +11,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityName, sortDescriptors;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityName, sortDescriptors, cellStyle;
 
 -(id)init
 {
@@ -19,6 +19,7 @@
         [e log];
         abort();
     };
+    self.cellStyle = UITableViewCellStyleDefault;
     return self;
 }
 
@@ -50,16 +51,11 @@
 
 #pragma mark - Implement
 
--(UITableViewCellStyle)useCellStyle
-{
-    return UITableViewCellStyleDefault;
-}
-
 static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControllerCell";
 
 -(UITableViewCell*)createCell
 {
-    return  [[[UITableViewCell alloc] initWithStyle:self.useCellStyle
+    return  [[[UITableViewCell alloc] initWithStyle:self.cellStyle
                                     reuseIdentifier:kESFetchedTableViewControllerCell] autorelease];
 }
 
