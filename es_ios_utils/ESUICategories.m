@@ -130,7 +130,6 @@
 - (void)setWidth:(float)width
 {
     self.frame = CGRectMake(self.x, self.y, width, self.height);
-
 }
 
 - (float)height { return self.frame.size.height; }
@@ -161,6 +160,14 @@
 - (void)setOrigin:(CGPoint)origin
 {
     self.frame = CGRectMake(origin.x, origin.y, self.width, self.height);
+}
+
+-(void)replaceInSuperviewWith:(UIView*)v
+{
+    v.autoresizingMask = self.autoresizingMask;
+    v.frame = self.frame;
+    [self.superview addSubview:v];
+    [self removeFromSuperview];
 }
 
 @end

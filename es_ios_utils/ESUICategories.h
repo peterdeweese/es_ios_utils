@@ -64,6 +64,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     @property(assign) float   y;
     @property(assign) CGSize  size;
     @property(assign) CGPoint origin;
+
+    -(void)replaceInSuperviewWith:(UIView*)v;
 @end
 
 @interface UIViewController(ESUtils)
