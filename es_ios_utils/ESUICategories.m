@@ -193,7 +193,7 @@
         [parent.navigationController pushViewController:self animated:YES];
 }
 
--(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r
+-(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r permittedArrowDirections:(UIPopoverArrowDirection)directions
 {
     if(UIDevice.isPad)
     {
@@ -204,11 +204,16 @@
         // calling this.  A good place would be in [self viewDidLoad] 
         [pc presentPopoverFromRect:r
                             inView:parent.view
-          permittedArrowDirections:UIPopoverArrowDirectionAny
+          permittedArrowDirections:directions
                           animated:YES];
     }
     else
         [parent.navigationController pushViewController:self animated:YES];
+}
+
+-(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r
+{
+    [self pushOrPopoverInViewController:parent from:r permittedArrowDirections:UIPopoverArrowDirectionAny];
 }
 
 -(void)popOrDismiss

@@ -77,6 +77,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 -(void)popOrDismiss;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r;
+    -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r permittedArrowDirections:(UIPopoverArrowDirection)directions;
 @end
 
 @interface UITextField (ESUtils)
