@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 
+// TODO: a downside of this implementation is that it must be retained or the block call will return an error. Perhaps we should extend ActionSheet instead.
 @interface ESBlockActionSheet : NSObject<UIActionSheetDelegate>
 {
     UIActionSheet  *sheet;
@@ -40,5 +41,7 @@
 -(void)addButtonWithTitle:(NSString*)title doOnPress:(void(^)(void))doOnPress;
 
 -(IBAction)presentIn:(UIViewController*)controller;
+-(IBAction)presentIn:(UIView*)view fromRect:(CGRect)from;
+-(IBAction)presentFromBarButtonItem:(UIBarButtonItem*)item;
 
 @end

@@ -67,7 +67,7 @@
 #pragma mark Control
 
 //Once this is called, the action sheet becomes static.
--(IBAction)presentIn:(UIViewController*)_controller
+-(IBAction)buildSheet
 {
     if(!sheet)
     {
@@ -93,9 +93,25 @@
             [doOnPresses addObject:doOnCancel?(id)doOnCancel:NSNull.null];
         }
     }
-    
+}
+
+-(IBAction)presentIn:(UIViewController*)_controller
+{
+    [self buildSheet];
     controller = _controller;
     [sheet showInView:controller.view];
+}
+
+-(IBAction)presentIn:(UIView*)view fromRect:(CGRect)from
+{
+    [self buildSheet];
+    [sheet showFromRect:from inView:view animated:YES];
+}
+
+-(IBAction)presentFromBarButtonItem:(UIBarButtonItem*)item
+{
+    [self buildSheet];
+    [sheet showFromBarButtonItem:item animated:YES];
 }
 
 #pragma mark Action Sheet Delegate
