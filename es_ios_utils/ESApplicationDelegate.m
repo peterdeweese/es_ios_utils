@@ -146,20 +146,21 @@
 
 -(BOOL)isDisplayingAlert { return self.window.isDisplayingAlert; }
 
-+(void)saveContext
++(BOOL)saveContext
 {
-    [self.delegate saveContext];
+    return [self.delegate saveContext];
 }
 
--(void)saveContext
+-(BOOL)saveContext
 {
     if(managedObjectContext.hasChanges)
     {
-        [managedObjectContext saveAndDoOnError:^(NSError *e) {
+        return [managedObjectContext saveAndDoOnError:^(NSError *e) {
             [e log];
             abort();
         }];
     }
+    return YES;
 }
 
 -(void)clearAllPersistentStores

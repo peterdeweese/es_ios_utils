@@ -146,4 +146,17 @@
     STAssertFalse([@"asdf wer adsf" containsString:@"ttt"], nil);
 }
 
+-(void)testNSStringUUID
+{
+    NSString *udid1 = [NSString stringWithUUID];
+    NSString *udid2 = [NSString stringWithUUID];
+    
+    STAssertTrue(udid1 && !udid1.isBlank, nil);
+    STAssertTrue(udid2 && !udid2.isBlank, nil);
+    STAssertTrue(udid1.length == 36, nil);
+    STAssertTrue(udid2.length == 36, nil);
+    STAssertFalse([udid1 isEqualToString:udid2], nil);
+    NSLog(@"%d", udid1.length);
+}
+
 @end

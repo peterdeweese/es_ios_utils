@@ -457,6 +457,14 @@ float logx(float value, float base)
     return [NSString stringWithUTF8String:class_getName(c)];
 }
 
++(NSString*)stringWithUUID
+{
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return [(NSString *)string autorelease];
+}
+
 -(NSData*)dataWithUTF8
 {
     return [self dataUsingEncoding:NSUTF8StringEncoding];
