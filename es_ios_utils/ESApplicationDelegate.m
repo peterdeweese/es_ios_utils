@@ -151,6 +151,7 @@
     return [self.delegate saveContext];
 }
 
+//Override to prevent aborting the app upon error.
 -(BOOL)saveContext
 {
     if(managedObjectContext.hasChanges)

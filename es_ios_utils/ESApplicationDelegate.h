@@ -29,7 +29,8 @@
 @property(nonatomic, readonly) BOOL isDisplayingAlert;
 
 +(BOOL)saveContext;
--(BOOL)saveContext;
+-(BOOL)saveContext; //Override to prevent aborting the app upon error.
+
 -(void)clearAllPersistentStores;
 
 @end
