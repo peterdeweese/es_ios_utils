@@ -158,6 +158,7 @@
     {
         return [managedObjectContext saveAndDoOnError:^(NSError *e) {
             [e log];
+            [e logDetailedErrors];
             abort();
         }];
     }

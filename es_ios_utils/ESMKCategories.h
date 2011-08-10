@@ -2,7 +2,7 @@
 
 @interface MKMapView (ESMKCategories)
 
-- (void)zoomToUS50States ;
-- (void)zoomToUS48States ;
+- (void)zoomToUS50States;
+- (void)zoomToUS48States;
 
 @end
