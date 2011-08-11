@@ -39,6 +39,15 @@
     return [f stringForObjectValue:self];
 }
 
+-(NSString*)asStringWithShortFormat
+{
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    return [formatter stringFromDate:self];
+}
+
 @end
 
 

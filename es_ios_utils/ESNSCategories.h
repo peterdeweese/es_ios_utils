@@ -12,6 +12,7 @@
     -(NSDate*)dateByAddingMinutes:(int)m;
     -(NSDate*)dateByAddingSeconds:(int)s;
     -(NSString*)relativeString;
+    @property(nonatomic, readonly) NSString* asStringWithShortFormat;
 @end
 
 @interface NSDecimalNumber(ESUtils)

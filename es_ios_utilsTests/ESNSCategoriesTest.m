@@ -12,6 +12,12 @@
     [[ESApplicationDelegate delegate] clearAllPersistentStores];
 }
 
+-(void)testNSDateCategory
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
+    STAssertEqualObjects(date.asStringWithShortFormat, @"12/31/69 7:00 PM", nil);
+}
+
 -(void)testNSDecimalNumberCategory
 {
     NSDecimalNumber *n = [NSDecimalNumber decimalNumberWithString:@"asdf"];
