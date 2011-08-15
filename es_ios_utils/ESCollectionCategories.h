@@ -36,7 +36,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
     -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
     -(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath;
-    @property(readonly) NSSet *asSet;
+    @property(readonly) NSSet*        asSet;
+    @property(readonly) NSMutableSet* asMutableSet;
 @end
 
 @interface NSDictionary(ESUtils)
@@ -87,8 +88,10 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSSet(ESUtils)
-    @property(readonly) BOOL isEmpty;
-    @property(readonly) BOOL isNotEmpty;
-    @property(readonly) NSArray *asArray;
+    @property(readonly) BOOL          isEmpty;
+    @property(readonly) BOOL          isNotEmpty;
+    @property(readonly) NSArray*      asArray;
+    @property(readonly) NSMutableSet* asMutableSet; //autoreleases, unlike mutableCopy
+
     -(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending;
 @end

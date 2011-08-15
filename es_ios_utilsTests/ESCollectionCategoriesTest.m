@@ -68,6 +68,12 @@
     STAssertEqualObjects(array.reversed, $array(fourth, third, second, first), nil);
 }
 
+-(void)testNSArrayCoersion
+{
+    STAssertNotNil([$array(@"a", @"b") asSet], nil);
+    STAssertNotNil([$array(@"a", @"b") asMutableSet], nil);
+}
+
 -(void)testNSArrayMappedWith
 {
     NSString *first = @"first";
@@ -177,6 +183,7 @@
 -(void)testNSSetCategory
 {
     // see testEmpty
+    STAssertNotNil([$set(@"a", @"b") asMutableSet], nil);
 }
 
 @end

@@ -125,6 +125,11 @@
     return [NSSet setWithArray:self];
 }
 
+-(NSMutableSet*)asMutableSet
+{
+    return self.asSet.asMutableSet;
+}
+
 @end
 
 
@@ -257,8 +262,11 @@
 -(void)renameKey:(NSString*)key to:(NSString*)to
 {
     id value = [self objectForKey:key];
-    [self setObject:value forKey:to];
-    [self removeObjectForKey:key];
+    if(value)
+    {
+        [self setObject:value forKey:to];
+        [self removeObjectForKey:key];
+    }
 }
 
 @end
@@ -302,6 +310,11 @@
 -(NSArray*)asArray
 {
     return [NSArray arrayByCoalescing:self, nil];
+}
+
+-(NSMutableSet*)asMutableSet
+{
+    return [self.mutableCopy autorelease];
 }
 
 @end
