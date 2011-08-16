@@ -130,6 +130,11 @@
     return self.asSet.asMutableSet;
 }
 
+-(NSMutableArray*)asMutableArray
+{
+    return [self.mutableCopy autorelease];
+}
+
 @end
 
 

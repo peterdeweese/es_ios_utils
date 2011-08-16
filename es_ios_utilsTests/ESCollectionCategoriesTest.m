@@ -72,6 +72,7 @@
 {
     STAssertNotNil([$array(@"a", @"b") asSet], nil);
     STAssertNotNil([$array(@"a", @"b") asMutableSet], nil);
+    STAssertNotNil([$array(@"a", @"b") asMutableArray], nil);
 }
 
 -(void)testNSArrayMappedWith
