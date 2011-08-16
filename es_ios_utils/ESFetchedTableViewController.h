@@ -24,7 +24,7 @@
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
 @property(nonatomic, assign) UITableViewCellStyle cellStyle; //defaults to normal
 
--(UITableViewCell*)createCell; //defaults to creating a cell with useCellStyle
+-(UITableViewCell*)createCell; //defaults to creating a cell with cellStyle
 -(void)configureFetchRequest:(NSFetchRequest*)fetchRequest; //optional
 -(void)configureFetchRequestController:(NSFetchedResultsController*)controller; //optional
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath;
