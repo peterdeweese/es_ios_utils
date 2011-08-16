@@ -2,9 +2,9 @@
 
 // Lays out from left to right like text, wrapping whenever the width is met.
 // Resizes vertically automatically to match content.
-@interface ESFlowLayoutView : UIView {
-    double padding;
-}
+@interface ESFlowLayoutView : UIView
+
++(ESFlowLayoutView*)flowLayoutViewWithSubviews:(NSArray*)subviews;
 
 @property (nonatomic, assign) double padding;
 
