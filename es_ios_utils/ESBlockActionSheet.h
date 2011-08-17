@@ -38,6 +38,10 @@
                                   destroyTitle:(NSString*)destroyTitle
                                    doOnDestroy:(void(^)(void))doOnDestroy;
 
++(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
+                                   destroyTitle:(NSString*)destroyTitle
+                                    doOnDestroy:(void(^)(void))doOnDestroy;
+
 -(void)addButtonWithTitle:(NSString*)title doOnPress:(void(^)(void))doOnPress;
 
 -(IBAction)presentIn:(UIViewController*)controller;

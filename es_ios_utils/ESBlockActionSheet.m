@@ -2,7 +2,7 @@
 
 @implementation ESBlockActionSheet
 
-+ (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
++(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
 {
     ESBlockActionSheet* sheet = [[[ESBlockActionSheet alloc] init] autorelease];
     sheet.title = title;
@@ -10,7 +10,7 @@
     return sheet;
 }
 
-+ (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
++(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
                                    cancelTitle:(NSString*)cancelTitle
                                     doOnCancel:(void (^)(void))doOnCancel
 {
@@ -21,9 +21,9 @@
     return sheet;
 }
 
-+ (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
-                                   cancelTitle:(NSString*)cancelTitle
-                                    doOnCancel:(void(^)(void))doOnCancel
++(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
+                                    cancelTitle:(NSString*)cancelTitle
+                                     doOnCancel:(void(^)(void))doOnCancel
                                    destroyTitle:(NSString*)destroyTitle
                                     doOnDestroy:(void(^)(void))doOnDestroy
 {
@@ -32,6 +32,13 @@
     sheet.doOnDestroy = doOnDestroy;
     
     return sheet;
+}
+
++(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
+                                   destroyTitle:(NSString*)destroyTitle
+                                    doOnDestroy:(void(^)(void))doOnDestroy
+{
+    return [self blockActionSheetWithTitle:title cancelTitle:nil doOnCancel:nil destroyTitle:destroyTitle doOnDestroy:doOnDestroy];
 }
 
 - (id)init
