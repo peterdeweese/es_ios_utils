@@ -42,8 +42,14 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 
+@interface UINavigationController(ESUtils)
+    +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc;
+@end
+
+
 @interface UINavigationItem(ESUtils)
     -(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right;
+    -(void)setRightBarButtonItems:(NSArray*)items;
 @end
 
 
@@ -54,6 +60,10 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UITableViewCell(ESUtils)
     +(UITableViewCell*)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier;
+@end
+
+@interface UIToolbar(ESUtils)
+    +(UIToolbar*)toolbarWithItems:(NSArray*)items;
 @end
 
 @interface UIView(ESUtils)
@@ -76,10 +86,11 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     -(void)forcePortrait;
 
     //If iPad, use popover, else push
--(void)popOrDismiss;
+    -(void)popOrDismiss;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r permittedArrowDirections:(UIPopoverArrowDirection)directions;
+    @property(nonatomic, readonly) UIWindow* window;
 @end
 
 @interface UITextField (ESUtils)

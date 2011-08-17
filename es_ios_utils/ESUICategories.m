@@ -92,6 +92,16 @@
 @end
 
 
+@implementation UINavigationController(ESUtils)
+
++(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc
+{
+    return [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+}
+
+@end
+
+
 @implementation UINavigationItem(ESUtils)
 
 -(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right
@@ -99,6 +109,11 @@
     self.title = title;
     self.leftBarButtonItem = left;
     self.rightBarButtonItem = right;
+}
+
+-(void)setRightBarButtonItems:(NSArray*)items
+{
+    self.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[UIToolbar toolbarWithItems:items]];
 }
 
 @end
@@ -119,6 +134,22 @@
 +(UITableViewCell*)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier
 {
     return [[[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier] autorelease];
+}
+
+@end
+
+
+@implementation UIToolbar(ESUtils)
+
++(UIToolbar*)toolbarWithItems:(NSArray*)items
+{    
+    UIToolbar* bar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44.)] autorelease];
+    bar.items = items;
+    
+    UIView* v = bar.subviews.lastObject;
+    bar.width = v.x + v.width;
+    
+    return bar;
 }
 
 @end
@@ -184,7 +215,7 @@
 {
     if(UIDevice.isPad)
     {
-        UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
+        UINavigationController *nav = [UINavigationController navigationControllerWithRootViewController:self];
 
         UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
         // To set the size of the popover view, set the property self.contentSizeForViewInPopover before
@@ -205,7 +236,7 @@
     if(UIDevice.isPad)
     {
         [self.view layoutIfNeeded];
-        UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self] autorelease];
+        UINavigationController *nav = [UINavigationController navigationControllerWithRootViewController:self];
         UIPopoverController *pc = [[UIPopoverController alloc] initWithContentViewController:nav];
         // To set the size of the popover view, set the property self.contentSizeForViewInPopover before
         // calling this.  A good place would be in [self viewDidLoad] 
@@ -239,6 +270,8 @@
     [self dismissModalViewControllerAnimated:NO];
     [c release];
 }
+
+-(UIWindow*)window { return self.view.window; }
 
 @end
 
