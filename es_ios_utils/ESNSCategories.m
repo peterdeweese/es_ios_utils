@@ -305,9 +305,9 @@
     return [self toDictionaryIgnoringObjects:nil];
 }
 
--(NSDictionary*)toDictionaryForRailsIgnoringObjects:(NSSet *)objectsToIgnore
+-(NSDictionary*)toDictionaryForRailsIgnoringObjects:(NSSet*)objectsToIgnore
 {
-    NSMutableSet *references = objectsToIgnore ? objectsToIgnore.mutableCopy : [NSMutableSet setWithCapacity:10];
+    NSMutableSet *references = objectsToIgnore ? objectsToIgnore.asMutableSet : [NSMutableSet setWithCapacity:10];
     return [self toDictionaryIgnoringReferencedObjects:references relationshipFormat:@"%@_attributes"].asUnderscoreKeysFromCamelCase;
 }
 
