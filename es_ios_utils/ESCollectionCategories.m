@@ -183,6 +183,8 @@
     return result;
 }
 
+-(NSMutableDictionary*)asMutableDictionary { return [self.mutableCopy autorelease]; }
+
 -(BOOL)isEmpty
 {
     return self.count == 0;

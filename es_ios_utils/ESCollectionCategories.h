@@ -50,6 +50,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     @property(readonly) NSDictionary *asCamelCaseKeysFromUnderscore;
     @property(readonly) NSDictionary *asUnderscoreKeysFromCamelCase;
 
+    @property(readonly) NSMutableDictionary *asMutableDictionary;
+
     // Iterates through dictionary, sub-arrays, and sub-dictionaries, performing a deep copy.
     // Makes copies of arrays and dictionaries, not other objects.
     @property(readonly) NSDictionary *asDeepCopy;
