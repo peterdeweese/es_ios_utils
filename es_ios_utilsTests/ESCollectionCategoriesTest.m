@@ -12,6 +12,17 @@
     [[ESApplicationDelegate delegate] clearAllPersistentStores];
 }
 
+-(void)testNullCoalesceOperator
+{
+    NSString* o1=@"1";
+    NSString* o2=@"2";
+    NSString* o3=@"3";
+    
+    STAssertEqualObjects(o1  ?: o2  ?: o3, o1, nil);
+    STAssertEqualObjects(nil ?: o2  ?: o3, o2, nil);
+    STAssertEqualObjects(nil ?: nil ?: o3, o3, nil);
+}
+
 -(void)testIsEmpty
 {
     NSArray *emptyArray = NSArray.array;
