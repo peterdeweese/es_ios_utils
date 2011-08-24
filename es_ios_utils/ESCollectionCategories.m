@@ -166,6 +166,18 @@
 
 @implementation NSDictionary(ESUtils)
 
++(NSDictionary*)dictionaryWithObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath
+{
+    NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:20];
+    for(id o in objects)
+    {
+        id key = [o valueForKeyPath:keyPath];
+        if(key)
+            [result setObject:o forKey:key];
+    }
+    return result;
+}
+
 -(NSDictionary*)asDeepCopy
 {
     return [self asDeepCopyWithKeyFilter:nil];

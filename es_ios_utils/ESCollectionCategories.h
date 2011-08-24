@@ -42,6 +42,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSDictionary(ESUtils)
+    +(NSDictionary*)dictionaryWithObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath;
+
     @property(readonly) BOOL          isEmpty;
     @property(readonly) BOOL          isNotEmpty;
 

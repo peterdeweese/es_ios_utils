@@ -154,6 +154,15 @@
     STAssertTrue(camelCased != ((NSArray*)[deepCopy objectForKey:@"array"]).firstObject, @"array of dictionaries should not return original object.");
 }
 
+-(void)testNSDictionaryCreation
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:$array(@"ONE", @"TWO", @"THREE") keyPathForKeys:@"lowercaseString"];
+    STAssertNotNil(dictionary, nil);
+    STAssertEqualObjects([dictionary objectForKey:@"one"], @"ONE", nil);
+    STAssertEqualObjects([dictionary objectForKey:@"two"], @"TWO", nil);
+    STAssertEqualObjects([dictionary objectForKey:@"three"], @"THREE", nil);
+}
+
 -(void)testNSMutableArrayQueue
 {
     NSString *first = @"first";
