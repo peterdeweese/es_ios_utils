@@ -7,9 +7,9 @@
     NSString *keyPath;
 }
 
-@property(nonatomic, retain) UIView*   view;
-@property(nonatomic, retain) id        object;
-@property(nonatomic, retain) NSString* keyPath;
+@property(nonatomic, retain) UIView*          view;
+@property(nonatomic, retain) NSManagedObject* object;
+@property(nonatomic, retain) NSString*        keyPath;
 
 @property(nonatomic, assign) id        objectValue;
 -(void)updateView;
@@ -115,7 +115,8 @@
 
 -(void)setObjectValue:(id)objectValue
 {
-    [self.object setValue:objectValue forKeyPath:self.keyPath];
+    if(!self.object.isDeleted && self.object.managedObjectContext)
+        [self.object setValue:objectValue forKeyPath:self.keyPath];
 }
 
 -(void)updateView
@@ -158,8 +159,8 @@
     {
         @try
         {
-            NSLog(@"Updating object: %@=%@", self.keyPath, value);
-            self.objectValue = value;
+                NSLog(@"Updating object: %@=%@", self.keyPath, value);
+                self.objectValue = value;
         }
         @catch (NSException *e)
         {

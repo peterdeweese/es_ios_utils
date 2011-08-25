@@ -75,6 +75,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     @property(assign) CGSize  size;
     @property(assign) CGPoint origin;
 
+    @property(nonatomic, readonly) BOOL isInPopover;
+
     -(void)replaceInSuperviewWith:(UIView*)v;
 @end
 

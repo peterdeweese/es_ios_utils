@@ -201,6 +201,15 @@
     [self removeFromSuperview];
 }
 
+-(BOOL)isInPopover
+{
+    UIView *v = self;        
+    for (;v.superview != nil; v=v.superview)
+        if ([@"UIPopoverView" isEqualToString:v.className])
+            return YES;
+    return NO;
+}
+
 @end
 
 
@@ -256,7 +265,7 @@
 
 -(void)popOrDismiss
 {
-    if(UIDevice.isPad)
+    if(self.view.isInPopover)
         [self.$popoverController dismissPopoverAnimated:YES];
     else
         [self.navigationController popViewControllerAnimated:YES];
