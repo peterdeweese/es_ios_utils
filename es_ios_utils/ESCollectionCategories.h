@@ -81,7 +81,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     // Wraps key in +NSValue valueWithNonretainedObject:
     // Only use for keys that are not supported by setValue:forKey:
     -(void)setObject:(id)value forKeyObject:(id)key;
-    
+    -(void)setObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath;
+
     //Changes keys using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
     -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter;
     -(void)renameKey:(NSString*)key to:(NSString*)to;

@@ -1,3 +1,2 @@
-@interface NSCollectionCategoriesTest : SenTestCase { }
-
+@interface NSCollectionCategoriesTest : SenTestCase
 @end

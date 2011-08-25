@@ -169,12 +169,8 @@
 +(NSDictionary*)dictionaryWithObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath
 {
     NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:20];
-    for(id o in objects)
-    {
-        id key = [o valueForKeyPath:keyPath];
-        if(key)
-            [result setObject:o forKey:key];
-    }
+
+    [result setObjects:objects keyPathForKeys:keyPath];
     return result;
 }
 
@@ -267,6 +263,16 @@
 -(void)setObject:(id)value forKeyObject:(id)key
 {
     [self setObject:value forKey:[NSValue valueWithNonretainedObject:key]];
+}
+
+-(void)setObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath
+{
+    for(id o in objects)
+    {
+        id key = [o valueForKeyPath:keyPath];
+        if(key)
+            [self setObject:o forKey:key];
+    }
 }
 
 -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter
