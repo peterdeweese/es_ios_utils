@@ -201,6 +201,18 @@
     STAssertEqualObjects(@"a", d2.allKeys.firstObject, @"Key should be 'a'");
 }
 
+-(void)testNSMutableSetCategory
+{
+    NSMutableSet* set = ((NSMutableSet*)$set(@"one", @"two", @"three", @"four", @"five")).asMutableSet;
+    [set removeObjects:$set(@"one", @"three", @"four")];
+    STAssertTrue(set.count == 2, nil);
+    STAssertFalse([set containsObject:@"one"] ,nil);
+    STAssertTrue([set containsObject:@"two"] ,nil);
+    STAssertFalse([set containsObject:@"three"] ,nil);
+    STAssertFalse([set containsObject:@"four"] ,nil);
+    STAssertTrue([set containsObject:@"five"] ,nil);
+}
+
 -(void)testNSSetCategory
 {
     // see testEmpty

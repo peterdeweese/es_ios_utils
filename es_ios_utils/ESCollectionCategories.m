@@ -166,7 +166,7 @@
 
 @implementation NSDictionary(ESUtils)
 
-+(NSDictionary*)dictionaryWithObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath
++(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath
 {
     NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:20];
 
@@ -265,7 +265,7 @@
     [self setObject:value forKey:[NSValue valueWithNonretainedObject:key]];
 }
 
--(void)setObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath
+-(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath
 {
     for(id o in objects)
     {
@@ -292,6 +292,17 @@
         [self setObject:value forKey:to];
         [self removeObjectForKey:key];
     }
+}
+
+@end
+
+
+@implementation NSMutableSet(ESUtils)
+
+-(void)removeObjects:(ESCollection*)objects
+{
+    for(id o in objects)
+        [self removeObject:o];
 }
 
 @end

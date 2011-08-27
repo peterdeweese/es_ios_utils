@@ -5,8 +5,10 @@
 typedef void(^ESEmptyBlock)();
 
 // The class is here to force the linker to load categories
-@interface ESCollectionCategories:NSObject { }
+@interface ESCollectionCategories:NSObject
 @end
+
+typedef NSObject<NSFastEnumeration> ESCollection;
 
 //TODO: How can I externilize these block type definitions?
 typedef void(^EmptyBlock)();
@@ -42,7 +44,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSDictionary(ESUtils)
-    +(NSDictionary*)dictionaryWithObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath;
+    +(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
 
     @property(readonly) BOOL          isEmpty;
     @property(readonly) BOOL          isNotEmpty;
@@ -81,11 +83,15 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     // Wraps key in +NSValue valueWithNonretainedObject:
     // Only use for keys that are not supported by setValue:forKey:
     -(void)setObject:(id)value forKeyObject:(id)key;
-    -(void)setObjects:(NSObject<NSFastEnumeration>*)objects keyPathForKeys:(NSString*)keyPath;
+    -(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
 
     //Changes keys using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
     -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter;
     -(void)renameKey:(NSString*)key to:(NSString*)to;
+@end
+
+@interface NSMutableSet(ESUtils)
+    -(void)removeObjects:(ESCollection*)objects;
 @end
 
 @interface NSNull(ESUtils)
