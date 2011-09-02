@@ -54,6 +54,7 @@
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
 		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
+		D0EE19F71411289300950D53 /* ESBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE19F61411289300950D53 /* ESBarButtonItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,8 @@
 		D0B2E5CC13A029AA00F32DB5 /* Object1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object1.m; path = model/Object1.m; sourceTree = "<group>"; };
 		D0B2E5CE13A029AA00F32DB5 /* Object2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object2.h; path = model/Object2.h; sourceTree = "<group>"; };
 		D0B2E5CF13A029AA00F32DB5 /* Object2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object2.m; path = model/Object2.m; sourceTree = "<group>"; };
+		D0EE19F51411289300950D53 /* ESBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ESBarButtonItem.h; path = cocoa_touch/ui/ESBarButtonItem.h; sourceTree = "<group>"; };
+		D0EE19F61411289300950D53 /* ESBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESBarButtonItem.m; path = cocoa_touch/ui/ESBarButtonItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,8 @@
 				3478A44C13BA4A06000270F9 /* ESMKCategories.m */,
 				D082949813FAA47000DD348F /* ESCircleView.h */,
 				D082949913FAA47000DD348F /* ESCircleView.m */,
+				D0EE19F51411289300950D53 /* ESBarButtonItem.h */,
+				D0EE19F61411289300950D53 /* ESBarButtonItem.m */,
 			);
 			path = es_ios_utils;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				3478A44D13BA4A06000270F9 /* ESMKCategories.m in Sources */,
 				D03A76FC13BB5B5A00A32A8E /* ESFlashMessageView.m in Sources */,
 				D082949A13FAA47000DD348F /* ESCircleView.m in Sources */,
+				D0EE19F71411289300950D53 /* ESBarButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
