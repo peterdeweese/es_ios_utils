@@ -123,7 +123,7 @@
 
 +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController*)viewController
 {
-    return [[[UIPopoverController alloc] initWithContentViewController:viewController] autorelease];
+    return [[UIPopoverController alloc] initWithContentViewController:viewController];
 }
 
 +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController
