@@ -20,6 +20,21 @@
 @end
 
 
+@implementation UIActionSheet(ESUtils)
+
+-(void)cancel:(BOOL)animated
+{
+    [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:animated];
+}
+
+-(IBAction)cancel
+{
+    [self cancel:YES];
+}
+
+@end
+
+
 @implementation UIAlertView(ESUtils)
 
 +(UIAlertView*)createAndShowWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)button

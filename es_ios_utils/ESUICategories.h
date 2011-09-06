@@ -3,9 +3,6 @@
 
 // The class is here to force the linker to load categories
 @interface ESUICategories : NSObject
-{    
-}
-
 @end
 
 typedef void(^ESUICellBlock)(UITableViewCell*);
@@ -15,6 +12,12 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     //For UIKeyboard* notifications, otherwise an exception is raised.
     //Use convertRect:fromView: or convertRect:fromWindow: to rotate to current orientation
     @property(readonly) CGSize keyboardSize;
+@end
+
+
+@interface UIActionSheet(ESUtils)
+  -(void)cancel:(BOOL)animated;
+  -(void)cancel;
 @end
 
 
