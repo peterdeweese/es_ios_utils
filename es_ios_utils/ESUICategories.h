@@ -59,6 +59,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @interface UIPopoverController(ESUtils)
     +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController *)viewController;
     +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController;
+
+    -(void)pointToBarButtonItem:(UIBarButtonItem*)b;
 @end
 
 
@@ -98,6 +100,14 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r;
     -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r permittedArrowDirections:(UIPopoverArrowDirection)directions;
     @property(nonatomic, readonly) UIWindow* window;
+
+    -(void)observeKeyboardEvents;
+    -(void)stopObservingKeyboardEvents;
+    //These methods will only be called after observeKeyboardEvents is called.
+    -(void)keyboardWillShow:(NSNotification*)n;
+    -(void)keyboardDidShow:(NSNotification*)n;
+    -(void)keyboardWillHide:(NSNotification*)n;
+    -(void)keyboardDidHide:(NSNotification*)n;
 @end
 
 @interface UITextField (ESUtils)

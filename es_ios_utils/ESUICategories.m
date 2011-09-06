@@ -147,6 +147,11 @@
     return [UIPopoverController popoverControllerWithContentViewController:nav];
 }
 
+-(void)pointToBarButtonItem:(UIBarButtonItem*)b
+{
+    [self presentPopoverFromBarButtonItem:b permittedArrowDirections:self.popoverArrowDirection animated:YES];
+}
+
 @end
 
 
@@ -298,6 +303,26 @@
 }
 
 -(UIWindow*)window { return self.view.window; }
+
+-(void)observeKeyboardEvents
+{
+    //REFACTOR: use selector creation and iteration
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+-(void)stopObservingKeyboardEvents
+{
+    for(NSString* n in $array(UIKeyboardWillShowNotification, UIKeyboardDidShowNotification, UIKeyboardWillHideNotification, UIKeyboardDidHideNotification))
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:n object:nil];
+}
+
+-(void)keyboardWillShow:(NSNotification*)n {}
+-(void)keyboardDidShow: (NSNotification*)n {}
+-(void)keyboardWillHide:(NSNotification*)n {}
+-(void)keyboardDidHide: (NSNotification*)n {}
 
 @end
 
