@@ -171,7 +171,7 @@
 
 +(UIToolbar*)toolbarWithItems:(NSArray*)items
 {    
-    UIToolbar* bar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44.)] autorelease];
+    UIToolbar* bar = [[[UIToolbar alloc] initWithFrame:$rect(0, 0, 0, 44.)] autorelease];
     bar.items = items;
     
     UIView* v = bar.subviews.lastObject;
@@ -188,37 +188,37 @@
 - (float)width { return self.frame.size.width; }
 - (void)setWidth:(float)width
 {
-    self.frame = CGRectMake(self.x, self.y, width, self.height);
+    self.frame = $rect(self.x, self.y, width, self.height);
 }
 
 - (float)height { return self.frame.size.height; }
 - (void)setHeight:(float)height
 {
-    self.frame = CGRectMake(self.x, self.y, self.width, height);
+    self.frame = $rect(self.x, self.y, self.width, height);
 }
 
 - (float)x { return self.frame.origin.x; }
 - (void)setX:(float)x
 {
-    self.frame = CGRectMake(x, self.y, self.width, self.height);
+    self.frame = $rect(x, self.y, self.width, self.height);
 }
 
 - (float)y { return self.frame.origin.y; }
 - (void)setY:(float)y
 {
-    self.frame = CGRectMake(self.x, y, self.width, self.height);
+    self.frame = $rect(self.x, y, self.width, self.height);
 }
 
 - (CGSize)size { return self.frame.size; }
 - (void)setSize:(CGSize)size
 {
-    self.frame = CGRectMake(self.x, self.y, size.width, size.height);
+    self.frame = $rect(self.x, self.y, size.width, size.height);
 }
 
 - (CGPoint)origin { return self.frame.origin; }
 - (void)setOrigin:(CGPoint)origin
 {
-    self.frame = CGRectMake(origin.x, origin.y, self.width, self.height);
+    self.frame = $rect(origin.x, origin.y, self.width, self.height);
 }
 
 -(void)replaceInSuperviewWith:(UIView*)v
