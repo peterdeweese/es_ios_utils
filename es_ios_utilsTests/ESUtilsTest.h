@@ -1,3 +1,2 @@
-@interface ESUtilsTest : SenTestCase { }
-
+@interface ESUtilsTest : SenTestCase
 @end

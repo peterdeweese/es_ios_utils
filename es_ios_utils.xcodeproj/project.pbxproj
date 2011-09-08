@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3478A44D13BA4A06000270F9 /* ESMKCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3478A44C13BA4A06000270F9 /* ESMKCategories.m */; };
 		3478A45013BA4DA2000270F9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3478A44F13BA4DA2000270F9 /* MapKit.framework */; };
 		3478A45213BA4DCF000270F9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3478A45113BA4DCF000270F9 /* CoreLocation.framework */; };
-		34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34844B3213B5249100904A5E /* ESRotatableViewController.m */; };
 		A9414B5A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
 		A9414B5C1347B391008C67F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5B1347B391008C67F4 /* Foundation.framework */; };
 		A9414B5E1347B391008C67F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5D1347B391008C67F4 /* CoreGraphics.framework */; };
@@ -25,15 +23,6 @@
 		A9414B841347B391008C67F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9414B821347B391008C67F4 /* InfoPlist.strings */; };
 		A9414B871347B391008C67F4 /* es_ios_utils_appTests.h in Resources */ = {isa = PBXBuildFile; fileRef = A9414B861347B391008C67F4 /* es_ios_utils_appTests.h */; };
 		A9414B891347B391008C67F4 /* es_ios_utils_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414B881347B391008C67F4 /* es_ios_utils_appTests.m */; };
-		A9414BB91347B3F5008C67F4 /* ESApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BA41347B3F5008C67F4 /* ESApplicationDelegate.m */; };
-		A9414BBB1347B3F5008C67F4 /* ESBoundUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BA61347B3F5008C67F4 /* ESBoundUserDefaults.m */; };
-		A9414BBD1347B3F5008C67F4 /* ESDynamicMethodResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BA81347B3F5008C67F4 /* ESDynamicMethodResolver.m */; };
-		A9414BBF1347B3F5008C67F4 /* ESFlowLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BAA1347B3F5008C67F4 /* ESFlowLayoutView.m */; };
-		A9414BC11347B3F5008C67F4 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BAC1347B3F5008C67F4 /* ESNSCategories.m */; };
-		A9414BC31347B3F5008C67F4 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BAE1347B3F5008C67F4 /* ESUICategories.m */; };
-		A9414BC51347B3F5008C67F4 /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BB01347B3F5008C67F4 /* ESUtils.m */; };
-		A9414BC71347B3F5008C67F4 /* ESVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BB21347B3F5008C67F4 /* ESVerticalLayoutView.m */; };
-		A9414BC91347B3F5008C67F4 /* ESViewDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BB41347B3F5008C67F4 /* ESViewDataMapper.m */; };
 		A9414BF61347B741008C67F4 /* ESDynamicMethodResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BCF1347B432008C67F4 /* ESDynamicMethodResolverTest.m */; };
 		A9414BF71347B741008C67F4 /* ESNSCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BD11347B432008C67F4 /* ESNSCategoriesTest.m */; };
 		A9414BF81347B741008C67F4 /* ESUICategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BD31347B432008C67F4 /* ESUICategoriesTest.m */; };
@@ -43,18 +32,32 @@
 		A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */; };
 		A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9414C021347C32E008C67F4 /* Model.xcdatamodeld */; };
 		A9414C051347C434008C67F4 /* Model.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = A9414C031347C32E008C67F4 /* Model.xcdatamodel */; };
-		A973624D135E247F000EBD17 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A973624C135E247F000EBD17 /* ESBlockActionSheet.m */; };
 		A99823081399618600855F2B /* development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99823071399618600855F2B /* development.plist */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
-		D03A76FC13BB5B5A00A32A8E /* ESFlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D03A76FB13BB5B5A00A32A8E /* ESFlashMessageView.m */; };
 		D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */; };
-		D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */; };
-		D082949A13FAA47000DD348F /* ESCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D082949913FAA47000DD348F /* ESCircleView.m */; };
+		D078E3CC14187CE400BFDC80 /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3A314187CE400BFDC80 /* ESUtils.m */; };
+		D078E3CD14187CE400BFDC80 /* ESApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3A614187CE400BFDC80 /* ESApplicationDelegate.m */; };
+		D078E3CE14187CE400BFDC80 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3A814187CE400BFDC80 /* ESBlockActionSheet.m */; };
+		D078E3CF14187CE400BFDC80 /* ESCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3AA14187CE400BFDC80 /* ESCircleView.m */; };
+		D078E3D014187CE400BFDC80 /* ESFetchedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3AC14187CE400BFDC80 /* ESFetchedTableViewController.m */; };
+		D078E3D114187CE400BFDC80 /* ESFlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3AE14187CE400BFDC80 /* ESFlashMessageView.m */; };
+		D078E3D214187CE400BFDC80 /* ESFlowLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B014187CE400BFDC80 /* ESFlowLayoutView.m */; };
+		D078E3D314187CE400BFDC80 /* ESMKCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B214187CE400BFDC80 /* ESMKCategories.m */; };
+		D078E3D414187CE400BFDC80 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B414187CE400BFDC80 /* ESNSCategories.m */; };
+		D078E3D514187CE400BFDC80 /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B614187CE400BFDC80 /* ESRotatableViewController.m */; };
+		D078E3D614187CE400BFDC80 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B814187CE400BFDC80 /* ESUICategories.m */; };
+		D078E3D714187CE400BFDC80 /* ESVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3BA14187CE400BFDC80 /* ESVerticalLayoutView.m */; };
+		D078E3D814187CE400BFDC80 /* ESViewDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3BC14187CE400BFDC80 /* ESViewDataMapper.m */; };
+		D078E3D914187CE400BFDC80 /* ESBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3BF14187CE400BFDC80 /* ESBarButtonItem.m */; };
+		D078E3DA14187CE400BFDC80 /* ESMacNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C214187CE400BFDC80 /* ESMacNSCategories.m */; };
+		D078E3DB14187CE400BFDC80 /* ESBoundUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C514187CE400BFDC80 /* ESBoundUserDefaults.m */; };
+		D078E3DC14187CE400BFDC80 /* ESCGMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C714187CE400BFDC80 /* ESCGMethods.m */; };
+		D078E3DD14187CE400BFDC80 /* ESCollectionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C914187CE400BFDC80 /* ESCollectionCategories.m */; };
+		D078E3DE14187CE400BFDC80 /* ESDynamicMethodResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3CB14187CE400BFDC80 /* ESDynamicMethodResolver.m */; };
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
 		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
-		D0EE19F71411289300950D53 /* ESBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE19F61411289300950D53 /* ESBarButtonItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3478A44B13BA4A06000270F9 /* ESMKCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMKCategories.h; sourceTree = "<group>"; };
-		3478A44C13BA4A06000270F9 /* ESMKCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMKCategories.m; sourceTree = "<group>"; };
 		3478A44F13BA4DA2000270F9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3478A45113BA4DCF000270F9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		34844B3113B5249100904A5E /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
-		34844B3213B5249100904A5E /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
 		A9414B551347B391008C67F4 /* es_ios_utils_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = es_ios_utils_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9414B591347B391008C67F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9414B5B1347B391008C67F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,24 +93,6 @@
 		A9414B851347B391008C67F4 /* es_ios_utils_appTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "es_ios_utils_appTests-Prefix.pch"; sourceTree = "<group>"; };
 		A9414B861347B391008C67F4 /* es_ios_utils_appTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = es_ios_utils_appTests.h; sourceTree = "<group>"; };
 		A9414B881347B391008C67F4 /* es_ios_utils_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = es_ios_utils_appTests.m; sourceTree = "<group>"; };
-		A9414BA31347B3F5008C67F4 /* ESApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApplicationDelegate.h; sourceTree = "<group>"; };
-		A9414BA41347B3F5008C67F4 /* ESApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApplicationDelegate.m; sourceTree = "<group>"; };
-		A9414BA51347B3F5008C67F4 /* ESBoundUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBoundUserDefaults.h; sourceTree = "<group>"; };
-		A9414BA61347B3F5008C67F4 /* ESBoundUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBoundUserDefaults.m; sourceTree = "<group>"; };
-		A9414BA71347B3F5008C67F4 /* ESDynamicMethodResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDynamicMethodResolver.h; sourceTree = "<group>"; };
-		A9414BA81347B3F5008C67F4 /* ESDynamicMethodResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDynamicMethodResolver.m; sourceTree = "<group>"; };
-		A9414BA91347B3F5008C67F4 /* ESFlowLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlowLayoutView.h; sourceTree = "<group>"; };
-		A9414BAA1347B3F5008C67F4 /* ESFlowLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlowLayoutView.m; sourceTree = "<group>"; };
-		A9414BAB1347B3F5008C67F4 /* ESNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNSCategories.h; sourceTree = "<group>"; };
-		A9414BAC1347B3F5008C67F4 /* ESNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNSCategories.m; sourceTree = "<group>"; };
-		A9414BAD1347B3F5008C67F4 /* ESUICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUICategories.h; sourceTree = "<group>"; };
-		A9414BAE1347B3F5008C67F4 /* ESUICategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUICategories.m; sourceTree = "<group>"; };
-		A9414BAF1347B3F5008C67F4 /* ESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUtils.h; sourceTree = "<group>"; };
-		A9414BB01347B3F5008C67F4 /* ESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUtils.m; sourceTree = "<group>"; };
-		A9414BB11347B3F5008C67F4 /* ESVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVerticalLayoutView.h; sourceTree = "<group>"; };
-		A9414BB21347B3F5008C67F4 /* ESVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVerticalLayoutView.m; sourceTree = "<group>"; };
-		A9414BB31347B3F5008C67F4 /* ESViewDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESViewDataMapper.h; sourceTree = "<group>"; };
-		A9414BB41347B3F5008C67F4 /* ESViewDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESViewDataMapper.m; sourceTree = "<group>"; };
 		A9414BCE1347B432008C67F4 /* ESDynamicMethodResolverTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESDynamicMethodResolverTest.h; path = es_ios_utilsTests/ESDynamicMethodResolverTest.h; sourceTree = SOURCE_ROOT; };
 		A9414BCF1347B432008C67F4 /* ESDynamicMethodResolverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESDynamicMethodResolverTest.m; path = es_ios_utilsTests/ESDynamicMethodResolverTest.m; sourceTree = SOURCE_ROOT; };
 		A9414BD01347B432008C67F4 /* ESNSCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESNSCategoriesTest.h; path = es_ios_utilsTests/ESNSCategoriesTest.h; sourceTree = SOURCE_ROOT; };
@@ -125,27 +106,55 @@
 		A9414BFE1347BD49008C67F4 /* ESApplicationDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESApplicationDelegateTest.h; path = es_ios_utilsTests/ESApplicationDelegateTest.h; sourceTree = SOURCE_ROOT; };
 		A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESApplicationDelegateTest.m; path = es_ios_utilsTests/ESApplicationDelegateTest.m; sourceTree = SOURCE_ROOT; };
 		A9414C031347C32E008C67F4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		A973624B135E247F000EBD17 /* ESBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBlockActionSheet.h; sourceTree = "<group>"; };
-		A973624C135E247F000EBD17 /* ESBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBlockActionSheet.m; sourceTree = "<group>"; };
 		A99823071399618600855F2B /* development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = development.plist; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
-		D03A76FA13BB5B5A00A32A8E /* ESFlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlashMessageView.h; sourceTree = "<group>"; };
-		D03A76FB13BB5B5A00A32A8E /* ESFlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlashMessageView.m; sourceTree = "<group>"; };
 		D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCollectionCategoriesTest.h; path = es_ios_utilsTests/ESCollectionCategoriesTest.h; sourceTree = SOURCE_ROOT; };
 		D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCollectionCategoriesTest.m; path = es_ios_utilsTests/ESCollectionCategoriesTest.m; sourceTree = SOURCE_ROOT; };
-		D073F74713B50EA9004D9DD7 /* ESCollectionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCollectionCategories.h; sourceTree = "<group>"; };
-		D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCollectionCategories.m; sourceTree = "<group>"; };
-		D082949813FAA47000DD348F /* ESCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCircleView.h; sourceTree = "<group>"; };
-		D082949913FAA47000DD348F /* ESCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCircleView.m; sourceTree = "<group>"; };
+		D078E3A214187CE400BFDC80 /* ESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESUtils.h; path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/ESUtils.h; sourceTree = "<group>"; };
+		D078E3A314187CE400BFDC80 /* ESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESUtils.m; path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/ESUtils.m; sourceTree = "<group>"; };
+		D078E3A514187CE400BFDC80 /* ESApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApplicationDelegate.h; sourceTree = "<group>"; };
+		D078E3A614187CE400BFDC80 /* ESApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApplicationDelegate.m; sourceTree = "<group>"; };
+		D078E3A714187CE400BFDC80 /* ESBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBlockActionSheet.h; sourceTree = "<group>"; };
+		D078E3A814187CE400BFDC80 /* ESBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBlockActionSheet.m; sourceTree = "<group>"; };
+		D078E3A914187CE400BFDC80 /* ESCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCircleView.h; sourceTree = "<group>"; };
+		D078E3AA14187CE400BFDC80 /* ESCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCircleView.m; sourceTree = "<group>"; };
+		D078E3AB14187CE400BFDC80 /* ESFetchedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFetchedTableViewController.h; sourceTree = "<group>"; };
+		D078E3AC14187CE400BFDC80 /* ESFetchedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFetchedTableViewController.m; sourceTree = "<group>"; };
+		D078E3AD14187CE400BFDC80 /* ESFlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlashMessageView.h; sourceTree = "<group>"; };
+		D078E3AE14187CE400BFDC80 /* ESFlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlashMessageView.m; sourceTree = "<group>"; };
+		D078E3AF14187CE400BFDC80 /* ESFlowLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlowLayoutView.h; sourceTree = "<group>"; };
+		D078E3B014187CE400BFDC80 /* ESFlowLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlowLayoutView.m; sourceTree = "<group>"; };
+		D078E3B114187CE400BFDC80 /* ESMKCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMKCategories.h; sourceTree = "<group>"; };
+		D078E3B214187CE400BFDC80 /* ESMKCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMKCategories.m; sourceTree = "<group>"; };
+		D078E3B314187CE400BFDC80 /* ESNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNSCategories.h; sourceTree = "<group>"; };
+		D078E3B414187CE400BFDC80 /* ESNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNSCategories.m; sourceTree = "<group>"; };
+		D078E3B514187CE400BFDC80 /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
+		D078E3B614187CE400BFDC80 /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
+		D078E3B714187CE400BFDC80 /* ESUICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUICategories.h; sourceTree = "<group>"; };
+		D078E3B814187CE400BFDC80 /* ESUICategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUICategories.m; sourceTree = "<group>"; };
+		D078E3B914187CE400BFDC80 /* ESVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVerticalLayoutView.h; sourceTree = "<group>"; };
+		D078E3BA14187CE400BFDC80 /* ESVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVerticalLayoutView.m; sourceTree = "<group>"; };
+		D078E3BB14187CE400BFDC80 /* ESViewDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESViewDataMapper.h; sourceTree = "<group>"; };
+		D078E3BC14187CE400BFDC80 /* ESViewDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESViewDataMapper.m; sourceTree = "<group>"; };
+		D078E3BE14187CE400BFDC80 /* ESBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBarButtonItem.h; sourceTree = "<group>"; };
+		D078E3BF14187CE400BFDC80 /* ESBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBarButtonItem.m; sourceTree = "<group>"; };
+		D078E3C114187CE400BFDC80 /* ESMacNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMacNSCategories.h; sourceTree = "<group>"; };
+		D078E3C214187CE400BFDC80 /* ESMacNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMacNSCategories.m; sourceTree = "<group>"; };
+		D078E3C414187CE400BFDC80 /* ESBoundUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBoundUserDefaults.h; sourceTree = "<group>"; };
+		D078E3C514187CE400BFDC80 /* ESBoundUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBoundUserDefaults.m; sourceTree = "<group>"; };
+		D078E3C614187CE400BFDC80 /* ESCGMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCGMethods.h; sourceTree = "<group>"; };
+		D078E3C714187CE400BFDC80 /* ESCGMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCGMethods.m; sourceTree = "<group>"; };
+		D078E3C814187CE400BFDC80 /* ESCollectionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCollectionCategories.h; sourceTree = "<group>"; };
+		D078E3C914187CE400BFDC80 /* ESCollectionCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCollectionCategories.m; sourceTree = "<group>"; };
+		D078E3CA14187CE400BFDC80 /* ESDynamicMethodResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDynamicMethodResolver.h; sourceTree = "<group>"; };
+		D078E3CB14187CE400BFDC80 /* ESDynamicMethodResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDynamicMethodResolver.m; sourceTree = "<group>"; };
 		D0B2E5C813A029AA00F32DB5 /* Object3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object3.h; path = model/Object3.h; sourceTree = "<group>"; };
 		D0B2E5C913A029AA00F32DB5 /* Object3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object3.m; path = model/Object3.m; sourceTree = "<group>"; };
 		D0B2E5CB13A029AA00F32DB5 /* Object1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object1.h; path = model/Object1.h; sourceTree = "<group>"; };
 		D0B2E5CC13A029AA00F32DB5 /* Object1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object1.m; path = model/Object1.m; sourceTree = "<group>"; };
 		D0B2E5CE13A029AA00F32DB5 /* Object2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object2.h; path = model/Object2.h; sourceTree = "<group>"; };
 		D0B2E5CF13A029AA00F32DB5 /* Object2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object2.m; path = model/Object2.m; sourceTree = "<group>"; };
-		D0EE19F51411289300950D53 /* ESBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ESBarButtonItem.h; path = cocoa_touch/ui/ESBarButtonItem.h; sourceTree = "<group>"; };
-		D0EE19F61411289300950D53 /* ESBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESBarButtonItem.m; path = cocoa_touch/ui/ESBarButtonItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,38 +283,11 @@
 		A9414B9E1347B3F5008C67F4 /* es_ios_utils */ = {
 			isa = PBXGroup;
 			children = (
-				A9414BA31347B3F5008C67F4 /* ESApplicationDelegate.h */,
-				A9414BA41347B3F5008C67F4 /* ESApplicationDelegate.m */,
-				A973624B135E247F000EBD17 /* ESBlockActionSheet.h */,
-				A973624C135E247F000EBD17 /* ESBlockActionSheet.m */,
-				A9414BA51347B3F5008C67F4 /* ESBoundUserDefaults.h */,
-				A9414BA61347B3F5008C67F4 /* ESBoundUserDefaults.m */,
-				D073F74713B50EA9004D9DD7 /* ESCollectionCategories.h */,
-				D073F74813B50EA9004D9DD7 /* ESCollectionCategories.m */,
-				A9414BA71347B3F5008C67F4 /* ESDynamicMethodResolver.h */,
-				A9414BA81347B3F5008C67F4 /* ESDynamicMethodResolver.m */,
-				D03A76FA13BB5B5A00A32A8E /* ESFlashMessageView.h */,
-				D03A76FB13BB5B5A00A32A8E /* ESFlashMessageView.m */,
-				A9414BA91347B3F5008C67F4 /* ESFlowLayoutView.h */,
-				A9414BAA1347B3F5008C67F4 /* ESFlowLayoutView.m */,
-				A9414BAB1347B3F5008C67F4 /* ESNSCategories.h */,
-				A9414BAC1347B3F5008C67F4 /* ESNSCategories.m */,
-				34844B3113B5249100904A5E /* ESRotatableViewController.h */,
-				34844B3213B5249100904A5E /* ESRotatableViewController.m */,
-				A9414BAD1347B3F5008C67F4 /* ESUICategories.h */,
-				A9414BAE1347B3F5008C67F4 /* ESUICategories.m */,
-				A9414BAF1347B3F5008C67F4 /* ESUtils.h */,
-				A9414BB01347B3F5008C67F4 /* ESUtils.m */,
-				A9414BB11347B3F5008C67F4 /* ESVerticalLayoutView.h */,
-				A9414BB21347B3F5008C67F4 /* ESVerticalLayoutView.m */,
-				A9414BB31347B3F5008C67F4 /* ESViewDataMapper.h */,
-				A9414BB41347B3F5008C67F4 /* ESViewDataMapper.m */,
-				3478A44B13BA4A06000270F9 /* ESMKCategories.h */,
-				3478A44C13BA4A06000270F9 /* ESMKCategories.m */,
-				D082949813FAA47000DD348F /* ESCircleView.h */,
-				D082949913FAA47000DD348F /* ESCircleView.m */,
-				D0EE19F51411289300950D53 /* ESBarButtonItem.h */,
-				D0EE19F61411289300950D53 /* ESBarButtonItem.m */,
+				D078E3A214187CE400BFDC80 /* ESUtils.h */,
+				D078E3A314187CE400BFDC80 /* ESUtils.m */,
+				D078E3A414187CE400BFDC80 /* ios */,
+				D078E3C014187CE400BFDC80 /* mac */,
+				D078E3C314187CE400BFDC80 /* universal */,
 			);
 			path = es_ios_utils;
 			sourceTree = "<group>";
@@ -330,6 +312,74 @@
 				D0B2E5C913A029AA00F32DB5 /* Object3.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		D078E3A414187CE400BFDC80 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				D078E3A514187CE400BFDC80 /* ESApplicationDelegate.h */,
+				D078E3A614187CE400BFDC80 /* ESApplicationDelegate.m */,
+				D078E3A714187CE400BFDC80 /* ESBlockActionSheet.h */,
+				D078E3A814187CE400BFDC80 /* ESBlockActionSheet.m */,
+				D078E3A914187CE400BFDC80 /* ESCircleView.h */,
+				D078E3AA14187CE400BFDC80 /* ESCircleView.m */,
+				D078E3AB14187CE400BFDC80 /* ESFetchedTableViewController.h */,
+				D078E3AC14187CE400BFDC80 /* ESFetchedTableViewController.m */,
+				D078E3AD14187CE400BFDC80 /* ESFlashMessageView.h */,
+				D078E3AE14187CE400BFDC80 /* ESFlashMessageView.m */,
+				D078E3AF14187CE400BFDC80 /* ESFlowLayoutView.h */,
+				D078E3B014187CE400BFDC80 /* ESFlowLayoutView.m */,
+				D078E3B114187CE400BFDC80 /* ESMKCategories.h */,
+				D078E3B214187CE400BFDC80 /* ESMKCategories.m */,
+				D078E3B314187CE400BFDC80 /* ESNSCategories.h */,
+				D078E3B414187CE400BFDC80 /* ESNSCategories.m */,
+				D078E3B514187CE400BFDC80 /* ESRotatableViewController.h */,
+				D078E3B614187CE400BFDC80 /* ESRotatableViewController.m */,
+				D078E3B714187CE400BFDC80 /* ESUICategories.h */,
+				D078E3B814187CE400BFDC80 /* ESUICategories.m */,
+				D078E3B914187CE400BFDC80 /* ESVerticalLayoutView.h */,
+				D078E3BA14187CE400BFDC80 /* ESVerticalLayoutView.m */,
+				D078E3BB14187CE400BFDC80 /* ESViewDataMapper.h */,
+				D078E3BC14187CE400BFDC80 /* ESViewDataMapper.m */,
+				D078E3BD14187CE400BFDC80 /* ui */,
+			);
+			name = ios;
+			path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/ios;
+			sourceTree = "<group>";
+		};
+		D078E3BD14187CE400BFDC80 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				D078E3BE14187CE400BFDC80 /* ESBarButtonItem.h */,
+				D078E3BF14187CE400BFDC80 /* ESBarButtonItem.m */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		D078E3C014187CE400BFDC80 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				D078E3C114187CE400BFDC80 /* ESMacNSCategories.h */,
+				D078E3C214187CE400BFDC80 /* ESMacNSCategories.m */,
+			);
+			name = mac;
+			path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/mac;
+			sourceTree = "<group>";
+		};
+		D078E3C314187CE400BFDC80 /* universal */ = {
+			isa = PBXGroup;
+			children = (
+				D078E3C414187CE400BFDC80 /* ESBoundUserDefaults.h */,
+				D078E3C514187CE400BFDC80 /* ESBoundUserDefaults.m */,
+				D078E3C614187CE400BFDC80 /* ESCGMethods.h */,
+				D078E3C714187CE400BFDC80 /* ESCGMethods.m */,
+				D078E3C814187CE400BFDC80 /* ESCollectionCategories.h */,
+				D078E3C914187CE400BFDC80 /* ESCollectionCategories.m */,
+				D078E3CA14187CE400BFDC80 /* ESDynamicMethodResolver.h */,
+				D078E3CB14187CE400BFDC80 /* ESDynamicMethodResolver.m */,
+			);
+			name = universal;
+			path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/universal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,26 +492,29 @@
 				A9414B671347B391008C67F4 /* main.m in Sources */,
 				A9414B6A1347B391008C67F4 /* appDelegate.m in Sources */,
 				A9414B701347B391008C67F4 /* TestViewController.m in Sources */,
-				A9414BB91347B3F5008C67F4 /* ESApplicationDelegate.m in Sources */,
-				A9414BBB1347B3F5008C67F4 /* ESBoundUserDefaults.m in Sources */,
-				A9414BBD1347B3F5008C67F4 /* ESDynamicMethodResolver.m in Sources */,
-				A9414BBF1347B3F5008C67F4 /* ESFlowLayoutView.m in Sources */,
-				A9414BC11347B3F5008C67F4 /* ESNSCategories.m in Sources */,
-				A9414BC31347B3F5008C67F4 /* ESUICategories.m in Sources */,
-				A9414BC51347B3F5008C67F4 /* ESUtils.m in Sources */,
-				A9414BC71347B3F5008C67F4 /* ESVerticalLayoutView.m in Sources */,
-				A9414BC91347B3F5008C67F4 /* ESViewDataMapper.m in Sources */,
 				A9414C041347C32E008C67F4 /* Model.xcdatamodeld in Sources */,
-				A973624D135E247F000EBD17 /* ESBlockActionSheet.m in Sources */,
 				D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */,
 				D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */,
 				D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */,
-				D073F74913B50EA9004D9DD7 /* ESCollectionCategories.m in Sources */,
-				34844B3313B5249100904A5E /* ESRotatableViewController.m in Sources */,
-				3478A44D13BA4A06000270F9 /* ESMKCategories.m in Sources */,
-				D03A76FC13BB5B5A00A32A8E /* ESFlashMessageView.m in Sources */,
-				D082949A13FAA47000DD348F /* ESCircleView.m in Sources */,
-				D0EE19F71411289300950D53 /* ESBarButtonItem.m in Sources */,
+				D078E3CC14187CE400BFDC80 /* ESUtils.m in Sources */,
+				D078E3CD14187CE400BFDC80 /* ESApplicationDelegate.m in Sources */,
+				D078E3CE14187CE400BFDC80 /* ESBlockActionSheet.m in Sources */,
+				D078E3CF14187CE400BFDC80 /* ESCircleView.m in Sources */,
+				D078E3D014187CE400BFDC80 /* ESFetchedTableViewController.m in Sources */,
+				D078E3D114187CE400BFDC80 /* ESFlashMessageView.m in Sources */,
+				D078E3D214187CE400BFDC80 /* ESFlowLayoutView.m in Sources */,
+				D078E3D314187CE400BFDC80 /* ESMKCategories.m in Sources */,
+				D078E3D414187CE400BFDC80 /* ESNSCategories.m in Sources */,
+				D078E3D514187CE400BFDC80 /* ESRotatableViewController.m in Sources */,
+				D078E3D614187CE400BFDC80 /* ESUICategories.m in Sources */,
+				D078E3D714187CE400BFDC80 /* ESVerticalLayoutView.m in Sources */,
+				D078E3D814187CE400BFDC80 /* ESViewDataMapper.m in Sources */,
+				D078E3D914187CE400BFDC80 /* ESBarButtonItem.m in Sources */,
+				D078E3DA14187CE400BFDC80 /* ESMacNSCategories.m in Sources */,
+				D078E3DB14187CE400BFDC80 /* ESBoundUserDefaults.m in Sources */,
+				D078E3DC14187CE400BFDC80 /* ESCGMethods.m in Sources */,
+				D078E3DD14187CE400BFDC80 /* ESCollectionCategories.m in Sources */,
+				D078E3DE14187CE400BFDC80 /* ESDynamicMethodResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,2 @@
-@interface ESDynamicMethodResolverTest : SenTestCase { }
-
--(void)testDynamicMethodResolver;
-
+@interface ESDynamicMethodResolverTest : SenTestCase
 @end

@@ -1,6 +1,2 @@
-@interface ESUICategoriesTest : SenTestCase{}
-
--(void)testUIViewCategory;
--(void)testUITextFieldCategory;
-
+@interface ESUICategoriesTest : SenTestCase
 @end
