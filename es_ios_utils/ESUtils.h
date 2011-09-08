@@ -2,7 +2,10 @@
 #import "ESCGMethods.h"
 #import "TargetConditionals.h"
 
-#if  TARGET_OS_MAC && !TARGET_OS_IPHONE
+#if USE_APPLICATION_UNIT_TEST
+  #define IS_MAC 0
+  #define IS_IOS 1
+#elif  TARGET_OS_MAC && !TARGET_OS_IPHONE
   #define IS_MAC 1
   #define IS_IOS 0
 #elif TARGET_OS_IPHONE

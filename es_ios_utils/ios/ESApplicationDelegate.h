@@ -1,4 +1,4 @@
-#if IS_IOS
+#if IS_IOS || USE_APPLICATION_UNIT_TEST
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
