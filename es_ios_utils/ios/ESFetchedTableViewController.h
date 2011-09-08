@@ -9,6 +9,10 @@
 @property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;
 
 -(id)objectAtIndexPath:(NSIndexPath*)i;
+-(NSIndexPath*)indexPathForObject:(id)o;
+-(void)selectObject:(id)o scrollPosition:(UITableViewScrollPosition)scrollPosition;
+-(void)deselectObject:(id)o;
+-(void)deselectAll;
 
 //Configure these:
 @property(nonatomic, retain) NSString *entityName;

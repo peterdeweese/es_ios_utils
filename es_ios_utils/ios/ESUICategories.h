@@ -47,7 +47,9 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 
 @interface UINavigationController(ESUtils)
-    +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc;
+  +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc;
+
+  -(void)popViewController;
 @end
 
 
@@ -58,10 +60,11 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 
 @interface UIPopoverController(ESUtils)
-    +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController *)viewController;
-    +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController;
+  +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController *)viewController;
+  +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController;
 
-    -(void)pointToBarButtonItem:(UIBarButtonItem*)b;
+  -(void)pointToBarButtonItem:(UIBarButtonItem*)b;
+  -(void)dismiss;
 @end
 
 
@@ -137,6 +140,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
     -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
     -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
+    -(void)deselectAll;
 @end
 
 @interface UIWindow(ESUtils)

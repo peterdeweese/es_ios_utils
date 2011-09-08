@@ -28,18 +28,29 @@
     return [super initWithCoder:coder];
 }
 
--(void)dealloc
-{
-    self.fetchedResultsController = nil;
-    self.managedObjectContext = nil;
-    
-    [super dealloc];
-}
-
-
 -(id)objectAtIndexPath:(NSIndexPath*)i
 {
     return [self.fetchedResultsController objectAtIndexPath:i];
+}
+
+-(NSIndexPath*)indexPathForObject:(id)o
+{
+    return [self.fetchedResultsController indexPathForObject:o];
+}
+
+-(void)selectObject:(id)o scrollPosition:(UITableViewScrollPosition)scrollPosition
+{
+    [self.tableView selectRowAtIndexPath:[self indexPathForObject:o] animated:YES scrollPosition:scrollPosition];
+}
+
+-(void)deselectObject:(id)o
+{
+    [self.tableView deselectRowAtIndexPath:[self indexPathForObject:o] animated:YES];
+}
+
+-(void)deselectAll
+{
+    [self.tableView deselectAll];
 }
 
 #pragma mark - Implement
@@ -185,6 +196,16 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+#pragma mark -
+
+-(void)dealloc
+{
+    self.fetchedResultsController = nil;
+    self.managedObjectContext = nil;
+    
+    [super dealloc];
 }
 
 @end

@@ -116,6 +116,8 @@
     return [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
 }
 
+-(void)popViewController { [self popViewControllerAnimated:YES]; }
+
 @end
 
 
@@ -153,6 +155,8 @@
 {
     [self presentPopoverFromBarButtonItem:b permittedArrowDirections:self.popoverArrowDirection animated:YES];
 }
+
+-(void)dismiss { [self dismissPopoverAnimated:YES]; }
 
 @end
 
@@ -290,9 +294,9 @@
 -(void)popOrDismiss
 {
     if(self.view.isInPopover)
-        [self.$popoverController dismissPopoverAnimated:YES];
+        [self.$popoverController dismiss];
     else
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popViewController];
 }
 
 -(void)forcePortrait
@@ -448,6 +452,11 @@
 -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
 {
     [self deleteSections:[NSIndexSet indexSetWithIndex:s] withRowAnimation:a];
+}
+
+-(void)deselectAll
+{
+    [self deselectRowAtIndexPath:self.indexPathForSelectedRow animated:YES];
 }
 
 @end
