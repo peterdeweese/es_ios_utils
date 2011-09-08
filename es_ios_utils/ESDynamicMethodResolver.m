@@ -1,3 +1,4 @@
+#import "ESUtils.h"
 #import "ESDynamicMethodResolver.h"
 #include <objc/runtime.h>
 
@@ -16,11 +17,13 @@
     $must_override;
 }
 
+id getIMP(ESDynamicMethodResolver *self, SEL cmd);
 id getIMP(ESDynamicMethodResolver *self, SEL cmd)
 {
     return [self dynamicGet:NSStringFromSelector(cmd)];;
 }
 
+void setIMP(ESDynamicMethodResolver *self, SEL cmd, id obj);
 void setIMP(ESDynamicMethodResolver *self, SEL cmd, id obj)
 {
     NSString *method = [NSStringFromSelector(cmd) substringFromIndex:3]; //remove ^set

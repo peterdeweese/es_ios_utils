@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESUICategories.h"
 #import "ESUtils.h"
 
@@ -465,3 +467,5 @@
 }
 
 @end
+
+#endif //IS_IOS

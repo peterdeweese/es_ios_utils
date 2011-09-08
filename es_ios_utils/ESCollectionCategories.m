@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESCollectionCategories.h"
 #import <objc/runtime.h>
 
@@ -354,3 +356,5 @@
 }
 
 @end
+
+#endif /*IS_IOS*/

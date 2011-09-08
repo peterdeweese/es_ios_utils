@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESCircleView.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -24,3 +26,5 @@
 }
 
 @end
+
+#endif //IS_IOS

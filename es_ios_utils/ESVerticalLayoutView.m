@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESUtils.h"
 #import "ESVerticalLayoutView.h"
 #import "math.h"
@@ -30,3 +32,5 @@
 }
 
 @end
+
+#endif //IS_IOS

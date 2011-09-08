@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import <MapKit/MapKit.h>
 
 @interface MKMapView (ESMKCategories)
@@ -6,3 +8,5 @@
 - (void)zoomToUS48States;
 
 @end
+
+#endif //IS_IOS

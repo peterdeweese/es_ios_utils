@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import <UIKit/UIKit.h>
 
 @interface ESFlashMessageView : UILabel { }
@@ -13,3 +15,5 @@
 -(void)stop;
 
 @end
+
+#endif //IS_IOS

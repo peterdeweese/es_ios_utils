@@ -1,5 +1,6 @@
+#if IS_IOS
+
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
 
 // The class is here to force the linker to load categories
 @interface ESUICategories : NSObject
@@ -141,3 +142,5 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @interface UIWindow(ESUtils)
     @property(nonatomic, readonly) BOOL isDisplayingAlert;
 @end
+
+#endif /*IS_IOS*/

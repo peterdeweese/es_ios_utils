@@ -1,3 +1,5 @@
+#ifdef IS_IOS
+
 #import <UIKit/UIKit.h>
 
 @interface ESCircleView : UIView
@@ -7,3 +9,5 @@
 @property(nonatomic, assign) float diameter;
 
 @end
+
+#endif /*IS_IOS*/

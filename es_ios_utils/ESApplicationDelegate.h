@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
@@ -40,3 +42,5 @@
 #else
     #define IS_PRODUCTION YES
 #endif
+
+#endif /*IS_IOS*/

@@ -1,8 +1,9 @@
+#if IS_IOS
+
 #import "ESNSCategories.h"
 #import <objc/runtime.h>
 
 @implementation ESNSCategories
-
 @end
 
 
@@ -563,3 +564,5 @@ float logx(float value, float base)
 }
 
 @end
+
+#endif //IS_IOS

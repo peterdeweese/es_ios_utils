@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESBlockActionSheet.h"
 
 @implementation ESBlockActionSheet
@@ -131,3 +133,5 @@
 }
 
 @end
+
+#endif /*IS_IOS*/

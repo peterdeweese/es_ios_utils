@@ -1,3 +1,5 @@
+#if IS_IOS
+
 //
 //  To bind a view to a model, use -addView:object:keyPath:.  Values from a view such as a UITextField will be copied as
 //  an NSString to the target.  If you are saving data using some other mechanism but need it to display you can specify
@@ -24,3 +26,5 @@
 -(id)objectValueForView:(UIView*)view;
 
 @end
+
+#endif //IS_IOS

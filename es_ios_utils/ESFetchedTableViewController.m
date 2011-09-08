@@ -1,13 +1,6 @@
-//
-//  ESFetchedTableViewController.m
-//  es_ios_utils
-//
-//  Created by Peter DeWeese on 4/8/11.
-//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
-//
+#if IS_IOS
 
 #import "ESFetchedTableViewController.h"
-
 
 @implementation ESFetchedTableViewController
 
@@ -195,3 +188,5 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 }
 
 @end
+
+#endif /*IS_IOS*/

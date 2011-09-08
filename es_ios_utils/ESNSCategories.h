@@ -1,9 +1,11 @@
+#if IS_IOS
+
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "ESUtils.h"
 
 // The class is here to force the linker to load categories
-@interface ESNSCategories:NSObject { }
+@interface ESNSCategories:NSObject
 @end
 
 typedef void(^ESEmptyBlock)();
@@ -101,3 +103,5 @@ typedef void(^ErrorBlock)(NSError*);
 @interface NSThread(ESUtils)
     +(void)detachNewThreadBlock:(ESEmptyBlock)block;
 @end
+
+#endif /*IS_IOS*/

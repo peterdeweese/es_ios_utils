@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESBarButtonItem.h"
 
 @interface ESBarButtonItem()
@@ -73,3 +75,5 @@
 }
 
 @end
+
+#endif /*IS_IOS*/

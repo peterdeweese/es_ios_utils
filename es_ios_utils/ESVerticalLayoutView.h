@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import <UIKit/UIKit.h>
 
 // Lays out in one column with left alignment.
@@ -9,3 +11,5 @@
 @property (nonatomic, assign) double padding;
 
 @end
+
+#endif //IS_IOS

@@ -1,15 +1,8 @@
-//
-//  ESFetchedTableViewController.h
-//  es_ios_utils
-//
-//  Created by Peter DeWeese on 4/8/11.
-//  Copyright 2011 Eye Street Research, LLC. All rights reserved.
-//
-//  Implemented with one section.
-//
+#if IS_IOS
 
 #import <Foundation/Foundation.h>
 
+//  Implemented with one section.
 @interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> { }
 
 @property(nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
@@ -30,3 +23,5 @@
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath;
 
 @end
+
+#endif /*IS_IOS*/

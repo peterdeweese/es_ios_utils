@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESMKCategories.h"
 
 @implementation MKMapView (ESMKCategories)
@@ -23,3 +25,5 @@
 }
 
 @end
+
+#endif //IS_IOS

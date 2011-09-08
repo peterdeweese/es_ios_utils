@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESFlashMessageView.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -95,3 +97,5 @@
 }
 
 @end
+
+#endif //IS_IOS

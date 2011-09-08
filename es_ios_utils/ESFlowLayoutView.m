@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESFlowLayoutView.h"
 #import "ESUtils.h"
 #import "math.h"
@@ -51,3 +53,5 @@
 }
 
 @end
+
+#endif

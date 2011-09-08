@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import <Foundation/Foundation.h>
 
 // TODO: a downside of this implementation is that it must be retained or the block call will return an error. Perhaps we should extend ActionSheet instead.
@@ -49,3 +51,5 @@
 -(IBAction)presentFromBarButtonItem:(UIBarButtonItem*)item;
 
 @end
+
+#endif /*IS_IOS*/

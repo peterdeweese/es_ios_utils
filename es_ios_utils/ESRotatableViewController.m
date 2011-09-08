@@ -1,5 +1,6 @@
-#import "ESRotatableViewController.h"
+#if IS_IOS
 
+#import "ESRotatableViewController.h"
 
 @implementation ESRotatableViewController
 
@@ -10,3 +11,5 @@
 }
 
 @end
+
+#endif //IS_IOS

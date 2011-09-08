@@ -1,3 +1,5 @@
+#if IS_IOS
+
 #import "ESUtils.h"
 #import "ESViewDataMapper.h"
 
@@ -171,3 +173,5 @@
     }
 }
 @end
+
+#endif //IS_IOS
