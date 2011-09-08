@@ -17,6 +17,9 @@
 
 @end
 
+@implementation NSWindowController(ESUtils)
+  -(NSString *)windowNibName { return self.className; }
+@end
 
 @implementation NSWorkspace(ESUtils)
 
