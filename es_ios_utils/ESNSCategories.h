@@ -6,6 +6,9 @@
 @interface ESNSCategories:NSObject { }
 @end
 
+typedef void(^ESEmptyBlock)();
+typedef void(^ErrorBlock)(NSError*);
+
 @interface NSDate(ESUtils)
     -(NSDate*)dateByAddingDays:(int)d;
     -(NSDate*)dateByAddingHours:(int)h;

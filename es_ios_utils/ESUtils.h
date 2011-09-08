@@ -1,9 +1,14 @@
+#ifdef TARGET_OS_IPHONE
+
 #import <Foundation/Foundation.h>
 
-#import "ESCollectionCategories.h"
 #import "ESNSCategories.h"
 #import "ESUICategories.h"
 #import "ESMKCategories.h"
+
+#endif
+
+#import "ESCollectionCategories.h"
 
 #define $array(objs...) [NSArray arrayWithObjects: objs, nil] 
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 

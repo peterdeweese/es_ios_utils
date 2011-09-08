@@ -2,8 +2,6 @@
 #import <CoreData/CoreData.h>
 #import "ESUtils.h"
 
-typedef void(^ESEmptyBlock)();
-
 // The class is here to force the linker to load categories
 @interface ESCollectionCategories:NSObject
 @end
@@ -12,7 +10,6 @@ typedef NSObject<NSFastEnumeration> ESCollection;
 
 //TODO: How can I externilize these block type definitions?
 typedef void(^EmptyBlock)();
-typedef void(^ErrorBlock)(NSError*);
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)
