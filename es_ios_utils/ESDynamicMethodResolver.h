@@ -1,8 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface ESDynamicMethodResolver : NSObject{ }
-
--(id)dynamicGet:(NSString*)methodName;
--(void)dynamicSet:(NSString*)methodName object:(id)o;
-
+@interface ESDynamicMethodResolver : NSObject
+  -(id)dynamicGet:(NSString*)methodName;
+  -(void)dynamicSet:(NSString*)methodName object:(id)o;
 @end

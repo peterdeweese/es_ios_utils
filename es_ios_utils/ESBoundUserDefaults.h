@@ -3,7 +3,4 @@
 @class ESDynamicMethodResolver;
 
 @interface ESBoundUserDefaults : ESDynamicMethodResolver
-{
-}
-
 @end

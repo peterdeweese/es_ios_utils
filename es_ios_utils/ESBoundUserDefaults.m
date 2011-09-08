@@ -2,7 +2,6 @@
 
 @implementation ESBoundUserDefaults
 
-
 -(id)dynamicGet:(NSString*)methodName
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:methodName];

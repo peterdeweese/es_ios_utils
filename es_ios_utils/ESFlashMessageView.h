@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ESFlashMessageView : UILabel { }
+@interface ESFlashMessageView : UILabel
 
 //default color: lightGrayColor
 

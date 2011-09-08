@@ -28,6 +28,5 @@
 
 #define $must_override [NSException raise:NSInternalInconsistencyException format:@"You must override %@", NSStringFromSelector(_cmd)];
 
-@interface ESUtils : NSObject { }
-
+@interface ESUtils : NSObject
 @end

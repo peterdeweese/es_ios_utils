@@ -3,7 +3,7 @@
 #import <Foundation/Foundation.h>
 
 //  Implemented with one section.
-@interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> { }
+@interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property(nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;

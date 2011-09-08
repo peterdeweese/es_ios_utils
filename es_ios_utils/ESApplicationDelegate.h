@@ -7,9 +7,7 @@
 /*
  * Many Apple templates contain singletons for managaged objects, the documents directory, etc.  This class obviates such repetition and clutter.  Subclasses must implement persistentStoreName.
  */
-@interface ESApplicationDelegate : NSObject<UIApplicationDelegate> {
-    
-}
+@interface ESApplicationDelegate : NSObject<UIApplicationDelegate>
 
 +(ESApplicationDelegate*)delegate;
 

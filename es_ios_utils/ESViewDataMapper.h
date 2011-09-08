@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ESViewDataMapper : NSObject { }
+@interface ESViewDataMapper : NSObject
 
 /*
  * Having seperate save and load methods causes dual configuration and potential differences, so this class allows for the mapping to be configured once.
