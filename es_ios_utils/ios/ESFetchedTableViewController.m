@@ -68,6 +68,9 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     $must_override;
 }
 
+-(void)didSelectObject:(id)o { }
+-(void)didDeselectObject:(id)o { }
+
 #pragma mark - Table Controller, Datasource, and Delegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -96,6 +99,16 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     [self configureCell:c atIndexPath:i];
     
     return c;
+}
+
+-(void)tableView:(UITableView*)t didSelectRowAtIndexPath:(NSIndexPath*)i
+{
+    [self didSelectObject:[self objectAtIndexPath:i]];
+}
+
+-(void)tableView:(UITableView*)t didDeselectRowAtIndexPath:(NSIndexPath*)i
+{
+    [self didDeselectObject:[self objectAtIndexPath:i]];
 }
 
 -(void)configureFetchRequest:(NSFetchRequest*)fetchRequest

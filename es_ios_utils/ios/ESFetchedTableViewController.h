@@ -20,6 +20,8 @@
 @property(nonatomic, retain) NSString *sectionNameKeyPath; //optional, defaults to nil
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
 @property(nonatomic, assign) UITableViewCellStyle cellStyle; //defaults to normal
+-(void)didSelectObject:(id)o;
+-(void)didDeselectObject:(id)o;
 
 -(UITableViewCell*)createCell; //defaults to creating a cell with cellStyle
 -(void)configureFetchRequest:(NSFetchRequest*)fetchRequest; //optional
