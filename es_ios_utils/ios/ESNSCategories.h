@@ -31,7 +31,16 @@ typedef void(^ErrorBlock)(NSError*);
     -(void)logWithMessage:(NSString*)message;
 @end
 
+@interface NSFetchRequest(ESUtils)
+  +(NSFetchRequest*)fetchRequest;
+  +(NSFetchRequest*)fetchRequestWithEntity:(NSEntityDescription*)entity;
+  +(NSFetchRequest*)fetchRequestForClass:(Class)c inManagedObjectContext:(NSManagedObjectContext*)context;
+@end
+
 @interface NSFetchedResultsController(ESUtils)
+    +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName;
+    +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath;
+
     // Create and save a new instance of the entity managed by the fetched results controller.
     -(NSManagedObject*)createManagedObject;
 
@@ -64,8 +73,10 @@ typedef void(^ErrorBlock)(NSError*);
     -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary;
 
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
-    -(BOOL)hasAny:(Class)type;
+    -(NSArray*)fetch:(NSFetchRequest*)request;
+    -(NSArray*)fetch:(Class)type predicate:(NSPredicate*)predicate;
     -(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate arg:(id)arg;
+    -(BOOL)hasAny:(Class)type;
     -(NSArray*)all:(Class)type;
     -(NSArray*)all:(Class)type sortedByKey:(NSString*)key;
 @end

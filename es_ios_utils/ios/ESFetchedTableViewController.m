@@ -4,7 +4,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityName, sortDescriptors, cellStyle;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, sortDescriptors, cellStyle;
 
 -(id)init
 {
@@ -59,8 +59,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(UITableViewCell*)createCell
 {
-    return  [[[UITableViewCell alloc] initWithStyle:self.cellStyle
-                                    reuseIdentifier:kESFetchedTableViewControllerCell] autorelease];
+    return  [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:kESFetchedTableViewControllerCell] autorelease];
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
@@ -140,14 +139,12 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     if (fetchedResultsController)
         return fetchedResultsController;
     
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    assert(self.entityName);
-    fetchRequest.entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:managedObjectContext];
-    assert(fetchRequest.entity);
+    assert(self.entityClass);
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass inManagedObjectContext:self.managedObjectContext];
     fetchRequest.fetchBatchSize = 20;
     fetchRequest.sortDescriptors = self.sortDescriptors;
     [self configureFetchRequest:fetchRequest];
-    self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:self.sectionNameKeyPath cacheName:nil] autorelease];
+    self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:self.sectionNameKeyPath];
     self.fetchedResultsController.delegate = self;
     
     [self configureFetchRequestController:self.fetchedResultsController];
@@ -216,7 +213,9 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 -(void)dealloc
 {
     self.fetchedResultsController = nil;
-    self.managedObjectContext = nil;
+    self.managedObjectContext     = nil;
+    self.sortDescriptors          = nil;
+    self.sectionNameKeyPath       = nil;
     
     [super dealloc];
 }

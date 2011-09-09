@@ -89,7 +89,36 @@
 @end
 
 
+@implementation NSFetchRequest(ESUtils)
+
++(NSFetchRequest*)fetchRequest { return [[[NSFetchRequest alloc] init] autorelease]; }
+
++(NSFetchRequest*)fetchRequestWithEntity:(NSEntityDescription*)entity
+{
+    NSFetchRequest* request = [self fetchRequest];
+    request.entity = entity;
+    return request;
+}
+
++(NSFetchRequest*)fetchRequestForClass:(Class)c inManagedObjectContext:(NSManagedObjectContext*)context
+{
+    return [NSFetchRequest fetchRequestWithEntity:[NSEntityDescription entityForName:[NSString stringWithClassName:c] inManagedObjectContext:context]];
+}
+
+@end
+
+
 @implementation NSFetchedResultsController(ESUtils)
+
++(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName
+{
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:cacheName];
+}
+
++(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath
+{
+    return [self fetchedResultsControllerWithRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:nil];
+}
 
 -(NSManagedObject*)createManagedObject
 {
@@ -357,34 +386,8 @@
     return result;
 }
 
--(BOOL)hasAny:(Class)type
+-(NSArray*)fetch:(NSFetchRequest*)request
 {
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass(type)
-                                              inManagedObjectContext:self];
-    fetchRequest.entity = entity;
-    fetchRequest.fetchLimit = 1;
-    
-    NSError *error = nil;
-
-    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
-    if (error)
-        [error log];
-    
-    return results.isNotEmpty;
-}
-
-//TODO: add varargs or array for predicate
-//TODO: shouldn't this be a set?
--(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate arg:(id)arg
-{
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
-    request.entity = [NSEntityDescription entityForName:NSStringFromClass(type)
-                                      inManagedObjectContext:self];
-    
-    if(predicate)
-        request.predicate = [NSPredicate predicateWithFormat:predicate, arg];
-    
     NSError *error = nil;
     
     NSArray *results = [self executeFetchRequest:request error:&error];
@@ -392,6 +395,30 @@
         [error log];
     
     return results;      
+}
+
+-(NSArray*)fetch:(Class)type predicate:(NSPredicate*)predicate
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestForClass:type inManagedObjectContext:self];
+    if(predicate)
+        request.predicate = predicate;
+    
+    return [self fetch:request];     
+}
+
+//TODO: add varargs or array for predicate
+//TODO: shouldn't this be a set?
+-(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate arg:(id)arg
+{
+    return [self fetch:type predicate:predicate ? [NSPredicate predicateWithFormat:predicate, arg] : nil];   
+}
+
+-(BOOL)hasAny:(Class)type
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestForClass:type inManagedObjectContext:self];
+    request.fetchLimit = 1;
+        
+    return [self fetch:request].isNotEmpty;
 }
 
 //REFACTOR: rename to fetchAll or fetch
@@ -402,18 +429,10 @@
 
 -(NSArray*)all:(Class)type sortedByKey:(NSString*)key
 {
-    NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    fetchRequest.entity = [NSEntityDescription entityForName:NSStringFromClass(type)
-                                      inManagedObjectContext:self];
-    fetchRequest.sortDescriptors = $array([NSSortDescriptor sortDescriptorWithKey:key ascending:YES]);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestForClass:type inManagedObjectContext:self];
+    request.sortDescriptors = $array([NSSortDescriptor sortDescriptorWithKey:key ascending:YES]);
     
-    NSError *error = nil;
-    
-    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
-    if (error)
-        [error log];
-    
-    return results;
+    return [self fetch:request];
 }
 
 @end
