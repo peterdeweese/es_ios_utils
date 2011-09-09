@@ -16,7 +16,6 @@
 
 //Configure these:
 @property(nonatomic, assign) Class     entityClass;
-@property(nonatomic, retain) NSArray*  sortDescriptors;
 @property(nonatomic, retain) NSString* sectionNameKeyPath; //optional, defaults to nil
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
 @property(nonatomic, assign) UITableViewCellStyle cellStyle; //defaults to normal

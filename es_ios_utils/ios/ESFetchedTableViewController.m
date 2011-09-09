@@ -4,7 +4,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, sortDescriptors, cellStyle;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellStyle;
 
 -(id)init
 {
@@ -132,17 +132,12 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 #pragma mark - Fetched results controller
 
--(NSFetchedResultsController*)fetchedResultsController
+-(NSFetchedResultsController*)generateFetchedResultsControllerWithManagedObjectContext:(NSManagedObjectContext*)context
 {
-    assert(managedObjectContext);
-
-    if (fetchedResultsController)
-        return fetchedResultsController;
-    
+    assert(context);
     assert(self.entityClass);
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass inManagedObjectContext:self.managedObjectContext];
     fetchRequest.fetchBatchSize = 20;
-    fetchRequest.sortDescriptors = self.sortDescriptors;
     [self configureFetchRequest:fetchRequest];
     self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:self.sectionNameKeyPath];
     self.fetchedResultsController.delegate = self;
@@ -151,6 +146,11 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     [self.fetchedResultsController performFetchAndDoOnError:self.doOnError];
     
     return fetchedResultsController;
+}
+
+-(NSFetchedResultsController*)fetchedResultsController
+{
+    return fetchedResultsController ?: (fetchedResultsController = [self generateFetchedResultsControllerWithManagedObjectContext:self.managedObjectContext]);
 }
 
 #pragma mark - Fetched results controller delegate
@@ -214,7 +214,6 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     self.fetchedResultsController = nil;
     self.managedObjectContext     = nil;
-    self.sortDescriptors          = nil;
     self.sectionNameKeyPath       = nil;
     
     [super dealloc];
