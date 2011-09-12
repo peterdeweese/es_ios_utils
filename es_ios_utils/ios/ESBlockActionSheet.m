@@ -2,6 +2,11 @@
 
 #import "ESBlockActionSheet.h"
 
+@interface ESBlockActionSheet()
+  @property(nonatomic, retain) NSMutableArray* buttonTitles;
+  @property(nonatomic, retain) NSMutableArray* doOnPresses;
+@end
+
 @implementation ESBlockActionSheet
 
 +(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
@@ -45,32 +50,21 @@
 
 - (id)init
 {
-    doOnPresses  = [NSMutableArray arrayWithCapacity:10];
-    buttonTitles = [NSMutableArray arrayWithCapacity:10];
+    self.doOnPresses  = [NSMutableArray arrayWithCapacity:10];
+    self.buttonTitles = [NSMutableArray arrayWithCapacity:10];
     
     return self;
 }
 
-- (void)dealloc
-{
-    [sheet release];
-    [doOnCancel release];
-    [doOnDestroy release];
-    [doOnPresses release];
-    [buttonTitles release];
-    
-    [super dealloc];
-}
-
 #pragma mark Properties
-@synthesize sheet, title, cancelTitle, destroyTitle, doOnCancel, doOnDestroy;
+@synthesize sheet, title, cancelTitle, destroyTitle, doOnCancel, doOnDestroy, buttonTitles, doOnPresses;
 
 -(void)addButtonWithTitle:(NSString*)buttonTitle doOnPress:(void(^)(void))doOnPress
 {
     if(sheet)
         return;
     [buttonTitles addObject:buttonTitle];
-    [doOnPresses addObject:doOnPress?(id)Block_copy(doOnPress):NSNull.null];
+    [doOnPresses addObject:doOnPress?(id)[doOnPress copy]:NSNull.null];
 }
 
 #pragma mark Control
@@ -104,10 +98,9 @@
     }
 }
 
--(IBAction)presentIn:(UIViewController*)_controller
+-(IBAction)presentIn:(UIViewController*)controller
 {
     [self buildSheet];
-    controller = _controller;
     [sheet showInView:controller.view];
 }
 
@@ -130,6 +123,19 @@
     void(^actionBlock)(void) = [doOnPresses objectAtIndex:buttonIndex];
     if(actionBlock && (id)actionBlock != NSNull.null)
         actionBlock();
+}
+
+- (void)dealloc
+{
+    self.sheet = nil;
+    self.doOnCancel = nil;
+    self.doOnDestroy = nil;
+    for(id b in self.doOnPresses) //each block was copied before adding
+        [b release];
+    self.doOnPresses = nil;
+    self.buttonTitles = nil;
+    
+    [super dealloc];
 }
 
 @end
