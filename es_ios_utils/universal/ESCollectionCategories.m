@@ -11,7 +11,7 @@
 
 +(NSArray*)arrayByCoalescing:(id)first, ...
 {
-    NSMutableArray *a = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *a = [NSMutableArray arrayWithCapacity:10];
     
     va_list args;
     va_start(args, first);
@@ -112,7 +112,7 @@
 
 -(NSArray*)filteredArrayUsingSet:(NSSet*)set
 {
-    NSMutableArray *a = [[[NSMutableArray alloc] initWithCapacity:set.count] autorelease];
+    NSMutableArray *a = [NSMutableArray arrayWithCapacity:set.count];
     
     for(id o in self)
         if([set containsObject:o])

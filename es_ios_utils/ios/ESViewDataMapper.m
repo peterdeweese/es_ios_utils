@@ -34,8 +34,8 @@
 {
     if(!maps)
     {
-        self.maps = [[[NSMutableArray alloc] init] autorelease];
-        self.mapByView = [[[NSMutableDictionary alloc] init] autorelease];
+        self.maps = [NSMutableArray arrayWithCapacity:10];
+        self.mapByView = [NSMutableDictionary dictionaryWithCapacity:10];
     }
     
     if(view)

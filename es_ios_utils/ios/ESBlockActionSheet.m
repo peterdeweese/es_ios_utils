@@ -45,8 +45,8 @@
 
 - (id)init
 {
-    doOnPresses  = [[[NSMutableArray alloc] init] retain];
-    buttonTitles = [[[NSMutableArray alloc] init] retain];
+    doOnPresses  = [NSMutableArray arrayWithCapacity:10];
+    buttonTitles = [NSMutableArray arrayWithCapacity:10];
     
     return self;
 }
