@@ -132,7 +132,7 @@
 
 -(void)setRightBarButtonItems:(NSArray*)items
 {
-    self.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[UIToolbar toolbarWithItems:items]];
+    self.rightBarButtonItem = [UIBarButtonItem barButtonItemWithCustomView:[UIToolbar toolbarWithItems:items]];
 }
 
 @end

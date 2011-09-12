@@ -32,7 +32,7 @@
 {
     NSMutableArray *a = [self.mutableCopy autorelease];
     [a removeObject:anObject];
-    return a.copy;
+    return [a.copy autorelease];
 }
 
 -(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath
@@ -118,7 +118,7 @@
         if([set containsObject:o])
             [a addObject:o];
     
-    return a.copy;
+    return [a.copy autorelease];
 }
 
 -(NSSet*)asSet
