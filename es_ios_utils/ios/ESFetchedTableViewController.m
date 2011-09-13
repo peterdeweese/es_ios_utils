@@ -1,4 +1,4 @@
-#if IS_IOS
+#if IS_IOS && CORE_DATA_AVAILABLE
 
 #import "ESFetchedTableViewController.h"
 

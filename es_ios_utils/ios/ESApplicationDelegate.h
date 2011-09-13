@@ -1,4 +1,4 @@
-#if IS_IOS || USE_APPLICATION_UNIT_TEST
+#if CORE_DATA_AVAILABLE && (IS_IOS || USE_APPLICATION_UNIT_TEST)
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
@@ -41,4 +41,4 @@
     #define IS_PRODUCTION YES
 #endif
 
-#endif /*IS_IOS*/
+#endif //IS_IOS

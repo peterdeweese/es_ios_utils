@@ -1,4 +1,4 @@
-#if IS_IOS
+#if CORE_DATA_AVAILABLE && (IS_IOS || USE_APPLICATION_UNIT_TEST)
 
 #import "ESApplicationDelegate.h"
 #import "ESUtils.h"
@@ -186,4 +186,4 @@
 
 @end
 
-#endif /*IS_IOS*/
+#endif //IS_IOS

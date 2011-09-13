@@ -13,6 +13,10 @@
   #define IS_IOS 1
 #endif
 
+#if NSCoreDataVersionNumber
+  #define CORE_DATA_AVAILABLE 1
+#endif
+
 #if IS_IOS
   #import <Foundation/Foundation.h>
 
