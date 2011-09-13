@@ -64,8 +64,6 @@
 
 @implementation NSError(ESUtils)
 
-#if CORE_DATA_AVAILABLE
-
 -(NSArray*)detailedErrors
 {
     return [self.userInfo objectForKey:NSDetailedErrorsKey];
@@ -77,8 +75,6 @@
         [e logWithMessage:@"Detailed Error"];
     NSLog(@"User Info: %@", self.userInfo);
 }
-
-#endif //CORE_DATA_AVAILABLE
 
 -(void)log
 {
@@ -92,8 +88,6 @@
 
 @end
 
-
-#if CORE_DATA_AVAILABLE
 
 @implementation NSFetchRequest(ESUtils)
 
@@ -442,8 +436,6 @@
 }
 
 @end
-
-#endif //CORE_DATA_AVAILABLE
 
 
 @implementation NSObject(ESUtils)

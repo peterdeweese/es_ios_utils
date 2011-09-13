@@ -1,6 +1,7 @@
 #if IS_IOS
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "ESUtils.h"
 
 // The class is here to force the linker to load categories
@@ -24,20 +25,11 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSError(ESUtils)
-  #if CORE_DATA_AVAILABLE
     @property(nonatomic, readonly) NSArray *detailedErrors;
+    -(void)log;
     -(void)logDetailedErrors;
-  #endif //CORE_DATA_AVAILABLE
-
-  -(void)log;
-  -(void)logWithMessage:(NSString*)message;
+    -(void)logWithMessage:(NSString*)message;
 @end
-
-
-//REFACTOR: Pull these into their own CoreData set of categories
-#if CORE_DATA_AVAILABLE
-
-#import <CoreData/CoreData.h>
 
 @interface NSFetchRequest(ESUtils)
   +(NSFetchRequest*)fetchRequest;
@@ -46,13 +38,13 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSFetchedResultsController(ESUtils)
-  +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName;
-  +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath;
+    +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName;
+    +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath;
 
-  // Create and save a new instance of the entity managed by the fetched results controller.
-  -(NSManagedObject*)createManagedObject;
+    // Create and save a new instance of the entity managed by the fetched results controller.
+    -(NSManagedObject*)createManagedObject;
 
-  -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError;
+    -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError;
 @end
 
 @interface NSManagedObject(ESUtils)
@@ -88,9 +80,6 @@ typedef void(^ErrorBlock)(NSError*);
     -(NSArray*)all:(Class)type;
     -(NSArray*)all:(Class)type sortedByKey:(NSString*)key;
 @end
-
-#endif //CORE_DATA_AVAILABLE
-
 
 @interface NSObject(ESUtils)
     @property(readonly) NSString *className;
