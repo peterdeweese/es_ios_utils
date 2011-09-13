@@ -22,7 +22,6 @@
 
   #import "ESNSCategories.h"
   #import "ESUICategories.h"
-  #import "ESMKCategories.h"
 #endif
 
 #if IS_MAC
