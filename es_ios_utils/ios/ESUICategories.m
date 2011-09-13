@@ -85,6 +85,16 @@
     return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
 }
 
++(BOOL)isInLandscape
+{
+    return UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+}
+
++(BOOL)isInPortrait
+{
+    return UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation);
+}
+
 @end
 
 

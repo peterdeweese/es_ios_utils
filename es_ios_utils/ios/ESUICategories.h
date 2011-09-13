@@ -35,8 +35,10 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 
 @interface UIDevice(ESUtils)
-+(BOOL)isPad;
-+(BOOL)isPhone;
+    +(BOOL)isPad;
+    +(BOOL)isPhone;
+    +(BOOL)isInLandscape;
+    +(BOOL)isInPortrait;
 @end
 
 
