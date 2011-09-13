@@ -79,6 +79,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIView(ESUtils)
+    +(void)animate:(void(^)(void))animations;
+
     // These sizing convenience methods manipulate the frame.
     @property(assign) float   width;
     @property(assign) float   height;
@@ -90,6 +92,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     @property(nonatomic, readonly) BOOL isInPopover;
 
     -(void)replaceInSuperviewWith:(UIView*)v;
+    -(void)centerInSuperview;
 @end
 
 @interface UIViewController(ESUtils)

@@ -87,7 +87,7 @@
 
 +(BOOL)isInLandscape
 {
-    return UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+    return UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation);
 }
 
 +(BOOL)isInPortrait
@@ -199,6 +199,11 @@
 
 @implementation UIView(ESUtils)
 
++(void)animate:(void(^)(void))animations
+{
+    [self animateWithDuration:0.5 animations:animations];
+}
+
 - (float)width { return self.frame.size.width; }
 - (void)setWidth:(float)width
 {
@@ -250,6 +255,18 @@
         if ([@"UIPopoverView" isEqualToString:v.className])
             return YES;
     return NO;
+}
+
+//Only works when view has a superview and a window, as orientation is also considered
+-(void)centerInSuperview
+{
+    if(self.superview && self.window)
+    {
+        CGPoint center = [CG centerOfSize:self.superview.size];
+        if(UIDevice.isInLandscape)
+            center = CGPointMake(center.y, center.x);
+        self.center = center;
+    }
 }
 
 @end

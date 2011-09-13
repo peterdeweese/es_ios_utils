@@ -8,4 +8,8 @@
   +(float)scaleToAspectFit:(CGSize)source into:(CGSize)into;
   +(float)scaleToAspectFit:(CGSize)source into:(CGSize)into padding:(float)padding;
   +(float)scaleToAspectFill:(CGSize)source into:(CGSize)into;
+
+  +(CGSize)multiplySize:(CGSize)size by:(float)multiple;
+  +(CGPoint)pointFromSize:(CGSize)s;
+  +(CGPoint)centerOfSize:(CGSize)s;
 @end

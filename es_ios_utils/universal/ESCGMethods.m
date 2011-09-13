@@ -18,4 +18,19 @@
     return MAX(into.width/source.width, into.height/source.height);
 }
 
++(CGSize)multiplySize:(CGSize)s by:(float)multiple
+{
+    return CGSizeMake(s.width * multiple, s.height * multiple);
+}
+
++(CGPoint)pointFromSize:(CGSize)s
+{
+    return CGPointMake(s.width, s.height);
+}
+
++(CGPoint)centerOfSize:(CGSize)s
+{
+    return [CG pointFromSize:[CG multiplySize:s by:0.5]];
+}
+
 @end
