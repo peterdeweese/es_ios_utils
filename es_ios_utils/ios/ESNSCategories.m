@@ -461,6 +461,7 @@
 @implementation NSString(ESUtils)
 
 //REFACTOR: consider pulling up into a math util library
+float logx(float value, float base);
 float logx(float value, float base) 
 {
     return log10f(value) / log10f(base);
