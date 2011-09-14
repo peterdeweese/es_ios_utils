@@ -4,7 +4,7 @@
 
 @implementation ESTextField
 
-@synthesize customNextResponder;
+@synthesize nextEditor;
 
 -(void)initialize
 {
@@ -34,12 +34,12 @@
 
 -(void)useCustomNextResponder:(NSNotification*)n
 {
-    [customNextResponder becomeFirstResponder];
+    [nextEditor becomeFirstResponder];
 }
 
 -(void)dealloc
 {
-    self.customNextResponder = nil;
+    self.nextEditor = nil;
     [super dealloc];
 }
 
