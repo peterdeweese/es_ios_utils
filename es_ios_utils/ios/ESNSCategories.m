@@ -29,24 +29,24 @@
     return [f stringForObjectValue:self];
 }
 
--(BOOL)isLaterThan:(NSDate*)d
+-(BOOL)isAfter:(NSDate*)d
 {
     return [self compare:d] == NSOrderedDescending;
 }
 
--(BOOL)isEarlierThan:(NSDate*)d
+-(BOOL)isBefore:(NSDate*)d
 {
     return [self compare:d] == NSOrderedAscending;
 }
 
 -(BOOL)isPast
 {
-    return [self isEarlierThan:NSDate.date];
+    return [self isBefore:NSDate.date];
 }
 
 -(BOOL)isFuture
 {
-    return [self isLaterThan:NSDate.date];
+    return [self isAfter:NSDate.date];
 }
 
 -(NSDate*)dateByAddingDays:(int)d

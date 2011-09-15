@@ -36,28 +36,31 @@
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
 		D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */; };
-		D078E3CC14187CE400BFDC80 /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3A314187CE400BFDC80 /* ESUtils.m */; };
-		D078E3CD14187CE400BFDC80 /* ESApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3A614187CE400BFDC80 /* ESApplicationDelegate.m */; };
-		D078E3CE14187CE400BFDC80 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3A814187CE400BFDC80 /* ESBlockActionSheet.m */; };
-		D078E3CF14187CE400BFDC80 /* ESCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3AA14187CE400BFDC80 /* ESCircleView.m */; };
-		D078E3D014187CE400BFDC80 /* ESFetchedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3AC14187CE400BFDC80 /* ESFetchedTableViewController.m */; };
-		D078E3D114187CE400BFDC80 /* ESFlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3AE14187CE400BFDC80 /* ESFlashMessageView.m */; };
-		D078E3D214187CE400BFDC80 /* ESFlowLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B014187CE400BFDC80 /* ESFlowLayoutView.m */; };
-		D078E3D314187CE400BFDC80 /* ESMKCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B214187CE400BFDC80 /* ESMKCategories.m */; };
-		D078E3D414187CE400BFDC80 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B414187CE400BFDC80 /* ESNSCategories.m */; };
-		D078E3D514187CE400BFDC80 /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B614187CE400BFDC80 /* ESRotatableViewController.m */; };
-		D078E3D614187CE400BFDC80 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3B814187CE400BFDC80 /* ESUICategories.m */; };
-		D078E3D714187CE400BFDC80 /* ESVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3BA14187CE400BFDC80 /* ESVerticalLayoutView.m */; };
-		D078E3D814187CE400BFDC80 /* ESViewDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3BC14187CE400BFDC80 /* ESViewDataMapper.m */; };
-		D078E3D914187CE400BFDC80 /* ESBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3BF14187CE400BFDC80 /* ESBarButtonItem.m */; };
-		D078E3DA14187CE400BFDC80 /* ESMacNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C214187CE400BFDC80 /* ESMacNSCategories.m */; };
-		D078E3DB14187CE400BFDC80 /* ESBoundUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C514187CE400BFDC80 /* ESBoundUserDefaults.m */; };
-		D078E3DC14187CE400BFDC80 /* ESCGMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C714187CE400BFDC80 /* ESCGMethods.m */; };
-		D078E3DD14187CE400BFDC80 /* ESCollectionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3C914187CE400BFDC80 /* ESCollectionCategories.m */; };
-		D078E3DE14187CE400BFDC80 /* ESDynamicMethodResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = D078E3CB14187CE400BFDC80 /* ESDynamicMethodResolver.m */; };
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
 		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
+		D0C1DF341422622200CD31C2 /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF051422622200CD31C2 /* ESUtils.m */; };
+		D0C1DF351422622200CD31C2 /* ESApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF081422622200CD31C2 /* ESApplicationDelegate.m */; };
+		D0C1DF361422622200CD31C2 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF0A1422622200CD31C2 /* ESBlockActionSheet.m */; };
+		D0C1DF371422622200CD31C2 /* ESCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF0C1422622200CD31C2 /* ESCircleView.m */; };
+		D0C1DF381422622200CD31C2 /* ESFetchedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF0E1422622200CD31C2 /* ESFetchedTableViewController.m */; };
+		D0C1DF391422622200CD31C2 /* ESFlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF101422622200CD31C2 /* ESFlashMessageView.m */; };
+		D0C1DF3A1422622200CD31C2 /* ESFlowLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF121422622200CD31C2 /* ESFlowLayoutView.m */; };
+		D0C1DF3B1422622200CD31C2 /* ESMKCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF141422622200CD31C2 /* ESMKCategories.m */; };
+		D0C1DF3C1422622200CD31C2 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF161422622200CD31C2 /* ESNSCategories.m */; };
+		D0C1DF3D1422622200CD31C2 /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF181422622200CD31C2 /* ESRotatableViewController.m */; };
+		D0C1DF3E1422622200CD31C2 /* ESTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF1A1422622200CD31C2 /* ESTextField.m */; };
+		D0C1DF3F1422622200CD31C2 /* ESUICategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF1C1422622200CD31C2 /* ESUICategories.m */; };
+		D0C1DF401422622200CD31C2 /* ESVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF1E1422622200CD31C2 /* ESVerticalLayoutView.m */; };
+		D0C1DF411422622200CD31C2 /* ESViewDataMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF201422622200CD31C2 /* ESViewDataMapper.m */; };
+		D0C1DF421422622200CD31C2 /* ESBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF231422622200CD31C2 /* ESBarButtonItem.m */; };
+		D0C1DF431422622200CD31C2 /* ESRoundedRectTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF251422622200CD31C2 /* ESRoundedRectTextView.m */; };
+		D0C1DF441422622200CD31C2 /* ESMacNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF281422622200CD31C2 /* ESMacNSCategories.m */; };
+		D0C1DF451422622200CD31C2 /* ESBoundDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF2B1422622200CD31C2 /* ESBoundDictionary.m */; };
+		D0C1DF461422622200CD31C2 /* ESBoundUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF2D1422622200CD31C2 /* ESBoundUserDefaults.m */; };
+		D0C1DF471422622200CD31C2 /* ESCGMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF2F1422622200CD31C2 /* ESCGMethods.m */; };
+		D0C1DF481422622200CD31C2 /* ESCollectionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF311422622200CD31C2 /* ESCollectionCategories.m */; };
+		D0C1DF491422622200CD31C2 /* ESDynamicMethodResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF331422622200CD31C2 /* ESDynamicMethodResolver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,50 +114,56 @@
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
 		D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCollectionCategoriesTest.h; path = es_ios_utilsTests/ESCollectionCategoriesTest.h; sourceTree = SOURCE_ROOT; };
 		D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCollectionCategoriesTest.m; path = es_ios_utilsTests/ESCollectionCategoriesTest.m; sourceTree = SOURCE_ROOT; };
-		D078E3A214187CE400BFDC80 /* ESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESUtils.h; path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/ESUtils.h; sourceTree = "<group>"; };
-		D078E3A314187CE400BFDC80 /* ESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESUtils.m; path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/ESUtils.m; sourceTree = "<group>"; };
-		D078E3A514187CE400BFDC80 /* ESApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApplicationDelegate.h; sourceTree = "<group>"; };
-		D078E3A614187CE400BFDC80 /* ESApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApplicationDelegate.m; sourceTree = "<group>"; };
-		D078E3A714187CE400BFDC80 /* ESBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBlockActionSheet.h; sourceTree = "<group>"; };
-		D078E3A814187CE400BFDC80 /* ESBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBlockActionSheet.m; sourceTree = "<group>"; };
-		D078E3A914187CE400BFDC80 /* ESCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCircleView.h; sourceTree = "<group>"; };
-		D078E3AA14187CE400BFDC80 /* ESCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCircleView.m; sourceTree = "<group>"; };
-		D078E3AB14187CE400BFDC80 /* ESFetchedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFetchedTableViewController.h; sourceTree = "<group>"; };
-		D078E3AC14187CE400BFDC80 /* ESFetchedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFetchedTableViewController.m; sourceTree = "<group>"; };
-		D078E3AD14187CE400BFDC80 /* ESFlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlashMessageView.h; sourceTree = "<group>"; };
-		D078E3AE14187CE400BFDC80 /* ESFlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlashMessageView.m; sourceTree = "<group>"; };
-		D078E3AF14187CE400BFDC80 /* ESFlowLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlowLayoutView.h; sourceTree = "<group>"; };
-		D078E3B014187CE400BFDC80 /* ESFlowLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlowLayoutView.m; sourceTree = "<group>"; };
-		D078E3B114187CE400BFDC80 /* ESMKCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMKCategories.h; sourceTree = "<group>"; };
-		D078E3B214187CE400BFDC80 /* ESMKCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMKCategories.m; sourceTree = "<group>"; };
-		D078E3B314187CE400BFDC80 /* ESNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNSCategories.h; sourceTree = "<group>"; };
-		D078E3B414187CE400BFDC80 /* ESNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNSCategories.m; sourceTree = "<group>"; };
-		D078E3B514187CE400BFDC80 /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
-		D078E3B614187CE400BFDC80 /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
-		D078E3B714187CE400BFDC80 /* ESUICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUICategories.h; sourceTree = "<group>"; };
-		D078E3B814187CE400BFDC80 /* ESUICategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUICategories.m; sourceTree = "<group>"; };
-		D078E3B914187CE400BFDC80 /* ESVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVerticalLayoutView.h; sourceTree = "<group>"; };
-		D078E3BA14187CE400BFDC80 /* ESVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVerticalLayoutView.m; sourceTree = "<group>"; };
-		D078E3BB14187CE400BFDC80 /* ESViewDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESViewDataMapper.h; sourceTree = "<group>"; };
-		D078E3BC14187CE400BFDC80 /* ESViewDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESViewDataMapper.m; sourceTree = "<group>"; };
-		D078E3BE14187CE400BFDC80 /* ESBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBarButtonItem.h; sourceTree = "<group>"; };
-		D078E3BF14187CE400BFDC80 /* ESBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBarButtonItem.m; sourceTree = "<group>"; };
-		D078E3C114187CE400BFDC80 /* ESMacNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMacNSCategories.h; sourceTree = "<group>"; };
-		D078E3C214187CE400BFDC80 /* ESMacNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMacNSCategories.m; sourceTree = "<group>"; };
-		D078E3C414187CE400BFDC80 /* ESBoundUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBoundUserDefaults.h; sourceTree = "<group>"; };
-		D078E3C514187CE400BFDC80 /* ESBoundUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBoundUserDefaults.m; sourceTree = "<group>"; };
-		D078E3C614187CE400BFDC80 /* ESCGMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCGMethods.h; sourceTree = "<group>"; };
-		D078E3C714187CE400BFDC80 /* ESCGMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCGMethods.m; sourceTree = "<group>"; };
-		D078E3C814187CE400BFDC80 /* ESCollectionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCollectionCategories.h; sourceTree = "<group>"; };
-		D078E3C914187CE400BFDC80 /* ESCollectionCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCollectionCategories.m; sourceTree = "<group>"; };
-		D078E3CA14187CE400BFDC80 /* ESDynamicMethodResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDynamicMethodResolver.h; sourceTree = "<group>"; };
-		D078E3CB14187CE400BFDC80 /* ESDynamicMethodResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDynamicMethodResolver.m; sourceTree = "<group>"; };
 		D0B2E5C813A029AA00F32DB5 /* Object3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object3.h; path = model/Object3.h; sourceTree = "<group>"; };
 		D0B2E5C913A029AA00F32DB5 /* Object3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object3.m; path = model/Object3.m; sourceTree = "<group>"; };
 		D0B2E5CB13A029AA00F32DB5 /* Object1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object1.h; path = model/Object1.h; sourceTree = "<group>"; };
 		D0B2E5CC13A029AA00F32DB5 /* Object1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object1.m; path = model/Object1.m; sourceTree = "<group>"; };
 		D0B2E5CE13A029AA00F32DB5 /* Object2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object2.h; path = model/Object2.h; sourceTree = "<group>"; };
 		D0B2E5CF13A029AA00F32DB5 /* Object2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object2.m; path = model/Object2.m; sourceTree = "<group>"; };
+		D0C1DF041422622200CD31C2 /* ESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUtils.h; sourceTree = "<group>"; };
+		D0C1DF051422622200CD31C2 /* ESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUtils.m; sourceTree = "<group>"; };
+		D0C1DF071422622200CD31C2 /* ESApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApplicationDelegate.h; sourceTree = "<group>"; };
+		D0C1DF081422622200CD31C2 /* ESApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApplicationDelegate.m; sourceTree = "<group>"; };
+		D0C1DF091422622200CD31C2 /* ESBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBlockActionSheet.h; sourceTree = "<group>"; };
+		D0C1DF0A1422622200CD31C2 /* ESBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBlockActionSheet.m; sourceTree = "<group>"; };
+		D0C1DF0B1422622200CD31C2 /* ESCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCircleView.h; sourceTree = "<group>"; };
+		D0C1DF0C1422622200CD31C2 /* ESCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCircleView.m; sourceTree = "<group>"; };
+		D0C1DF0D1422622200CD31C2 /* ESFetchedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFetchedTableViewController.h; sourceTree = "<group>"; };
+		D0C1DF0E1422622200CD31C2 /* ESFetchedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFetchedTableViewController.m; sourceTree = "<group>"; };
+		D0C1DF0F1422622200CD31C2 /* ESFlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlashMessageView.h; sourceTree = "<group>"; };
+		D0C1DF101422622200CD31C2 /* ESFlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlashMessageView.m; sourceTree = "<group>"; };
+		D0C1DF111422622200CD31C2 /* ESFlowLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFlowLayoutView.h; sourceTree = "<group>"; };
+		D0C1DF121422622200CD31C2 /* ESFlowLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlowLayoutView.m; sourceTree = "<group>"; };
+		D0C1DF131422622200CD31C2 /* ESMKCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMKCategories.h; sourceTree = "<group>"; };
+		D0C1DF141422622200CD31C2 /* ESMKCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMKCategories.m; sourceTree = "<group>"; };
+		D0C1DF151422622200CD31C2 /* ESNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNSCategories.h; sourceTree = "<group>"; };
+		D0C1DF161422622200CD31C2 /* ESNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNSCategories.m; sourceTree = "<group>"; };
+		D0C1DF171422622200CD31C2 /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
+		D0C1DF181422622200CD31C2 /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
+		D0C1DF191422622200CD31C2 /* ESTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTextField.h; sourceTree = "<group>"; };
+		D0C1DF1A1422622200CD31C2 /* ESTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTextField.m; sourceTree = "<group>"; };
+		D0C1DF1B1422622200CD31C2 /* ESUICategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUICategories.h; sourceTree = "<group>"; };
+		D0C1DF1C1422622200CD31C2 /* ESUICategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUICategories.m; sourceTree = "<group>"; };
+		D0C1DF1D1422622200CD31C2 /* ESVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESVerticalLayoutView.h; sourceTree = "<group>"; };
+		D0C1DF1E1422622200CD31C2 /* ESVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESVerticalLayoutView.m; sourceTree = "<group>"; };
+		D0C1DF1F1422622200CD31C2 /* ESViewDataMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESViewDataMapper.h; sourceTree = "<group>"; };
+		D0C1DF201422622200CD31C2 /* ESViewDataMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESViewDataMapper.m; sourceTree = "<group>"; };
+		D0C1DF221422622200CD31C2 /* ESBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBarButtonItem.h; sourceTree = "<group>"; };
+		D0C1DF231422622200CD31C2 /* ESBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBarButtonItem.m; sourceTree = "<group>"; };
+		D0C1DF241422622200CD31C2 /* ESRoundedRectTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRoundedRectTextView.h; sourceTree = "<group>"; };
+		D0C1DF251422622200CD31C2 /* ESRoundedRectTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRoundedRectTextView.m; sourceTree = "<group>"; };
+		D0C1DF271422622200CD31C2 /* ESMacNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMacNSCategories.h; sourceTree = "<group>"; };
+		D0C1DF281422622200CD31C2 /* ESMacNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMacNSCategories.m; sourceTree = "<group>"; };
+		D0C1DF2A1422622200CD31C2 /* ESBoundDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBoundDictionary.h; sourceTree = "<group>"; };
+		D0C1DF2B1422622200CD31C2 /* ESBoundDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBoundDictionary.m; sourceTree = "<group>"; };
+		D0C1DF2C1422622200CD31C2 /* ESBoundUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBoundUserDefaults.h; sourceTree = "<group>"; };
+		D0C1DF2D1422622200CD31C2 /* ESBoundUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBoundUserDefaults.m; sourceTree = "<group>"; };
+		D0C1DF2E1422622200CD31C2 /* ESCGMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCGMethods.h; sourceTree = "<group>"; };
+		D0C1DF2F1422622200CD31C2 /* ESCGMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCGMethods.m; sourceTree = "<group>"; };
+		D0C1DF301422622200CD31C2 /* ESCollectionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCollectionCategories.h; sourceTree = "<group>"; };
+		D0C1DF311422622200CD31C2 /* ESCollectionCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCollectionCategories.m; sourceTree = "<group>"; };
+		D0C1DF321422622200CD31C2 /* ESDynamicMethodResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDynamicMethodResolver.h; sourceTree = "<group>"; };
+		D0C1DF331422622200CD31C2 /* ESDynamicMethodResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDynamicMethodResolver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +197,7 @@
 		A9414B4A1347B391008C67F4 = {
 			isa = PBXGroup;
 			children = (
-				A9414B9E1347B3F5008C67F4 /* es_ios_utils */,
+				D0C1DF031422622200CD31C2 /* es_ios_utils */,
 				A9414B5F1347B391008C67F4 /* es_ios_utils_app */,
 				A9414B7F1347B391008C67F4 /* es_ios_utils_appTests */,
 				A9414B581347B391008C67F4 /* Frameworks */,
@@ -280,18 +289,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A9414B9E1347B3F5008C67F4 /* es_ios_utils */ = {
-			isa = PBXGroup;
-			children = (
-				D078E3A214187CE400BFDC80 /* ESUtils.h */,
-				D078E3A314187CE400BFDC80 /* ESUtils.m */,
-				D078E3A414187CE400BFDC80 /* ios */,
-				D078E3C014187CE400BFDC80 /* mac */,
-				D078E3C314187CE400BFDC80 /* universal */,
-			);
-			path = es_ios_utils;
-			sourceTree = "<group>";
-		};
 		A99823051399616A00855F2B /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,72 +311,87 @@
 			name = model;
 			sourceTree = "<group>";
 		};
-		D078E3A414187CE400BFDC80 /* ios */ = {
+		D0C1DF031422622200CD31C2 /* es_ios_utils */ = {
 			isa = PBXGroup;
 			children = (
-				D078E3A514187CE400BFDC80 /* ESApplicationDelegate.h */,
-				D078E3A614187CE400BFDC80 /* ESApplicationDelegate.m */,
-				D078E3A714187CE400BFDC80 /* ESBlockActionSheet.h */,
-				D078E3A814187CE400BFDC80 /* ESBlockActionSheet.m */,
-				D078E3A914187CE400BFDC80 /* ESCircleView.h */,
-				D078E3AA14187CE400BFDC80 /* ESCircleView.m */,
-				D078E3AB14187CE400BFDC80 /* ESFetchedTableViewController.h */,
-				D078E3AC14187CE400BFDC80 /* ESFetchedTableViewController.m */,
-				D078E3AD14187CE400BFDC80 /* ESFlashMessageView.h */,
-				D078E3AE14187CE400BFDC80 /* ESFlashMessageView.m */,
-				D078E3AF14187CE400BFDC80 /* ESFlowLayoutView.h */,
-				D078E3B014187CE400BFDC80 /* ESFlowLayoutView.m */,
-				D078E3B114187CE400BFDC80 /* ESMKCategories.h */,
-				D078E3B214187CE400BFDC80 /* ESMKCategories.m */,
-				D078E3B314187CE400BFDC80 /* ESNSCategories.h */,
-				D078E3B414187CE400BFDC80 /* ESNSCategories.m */,
-				D078E3B514187CE400BFDC80 /* ESRotatableViewController.h */,
-				D078E3B614187CE400BFDC80 /* ESRotatableViewController.m */,
-				D078E3B714187CE400BFDC80 /* ESUICategories.h */,
-				D078E3B814187CE400BFDC80 /* ESUICategories.m */,
-				D078E3B914187CE400BFDC80 /* ESVerticalLayoutView.h */,
-				D078E3BA14187CE400BFDC80 /* ESVerticalLayoutView.m */,
-				D078E3BB14187CE400BFDC80 /* ESViewDataMapper.h */,
-				D078E3BC14187CE400BFDC80 /* ESViewDataMapper.m */,
-				D078E3BD14187CE400BFDC80 /* ui */,
+				D0C1DF041422622200CD31C2 /* ESUtils.h */,
+				D0C1DF051422622200CD31C2 /* ESUtils.m */,
+				D0C1DF061422622200CD31C2 /* ios */,
+				D0C1DF261422622200CD31C2 /* mac */,
+				D0C1DF291422622200CD31C2 /* universal */,
 			);
-			name = ios;
-			path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/ios;
+			path = es_ios_utils;
 			sourceTree = "<group>";
 		};
-		D078E3BD14187CE400BFDC80 /* ui */ = {
+		D0C1DF061422622200CD31C2 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D078E3BE14187CE400BFDC80 /* ESBarButtonItem.h */,
-				D078E3BF14187CE400BFDC80 /* ESBarButtonItem.m */,
+				D0C1DF071422622200CD31C2 /* ESApplicationDelegate.h */,
+				D0C1DF081422622200CD31C2 /* ESApplicationDelegate.m */,
+				D0C1DF091422622200CD31C2 /* ESBlockActionSheet.h */,
+				D0C1DF0A1422622200CD31C2 /* ESBlockActionSheet.m */,
+				D0C1DF0B1422622200CD31C2 /* ESCircleView.h */,
+				D0C1DF0C1422622200CD31C2 /* ESCircleView.m */,
+				D0C1DF0D1422622200CD31C2 /* ESFetchedTableViewController.h */,
+				D0C1DF0E1422622200CD31C2 /* ESFetchedTableViewController.m */,
+				D0C1DF0F1422622200CD31C2 /* ESFlashMessageView.h */,
+				D0C1DF101422622200CD31C2 /* ESFlashMessageView.m */,
+				D0C1DF111422622200CD31C2 /* ESFlowLayoutView.h */,
+				D0C1DF121422622200CD31C2 /* ESFlowLayoutView.m */,
+				D0C1DF131422622200CD31C2 /* ESMKCategories.h */,
+				D0C1DF141422622200CD31C2 /* ESMKCategories.m */,
+				D0C1DF151422622200CD31C2 /* ESNSCategories.h */,
+				D0C1DF161422622200CD31C2 /* ESNSCategories.m */,
+				D0C1DF171422622200CD31C2 /* ESRotatableViewController.h */,
+				D0C1DF181422622200CD31C2 /* ESRotatableViewController.m */,
+				D0C1DF191422622200CD31C2 /* ESTextField.h */,
+				D0C1DF1A1422622200CD31C2 /* ESTextField.m */,
+				D0C1DF1B1422622200CD31C2 /* ESUICategories.h */,
+				D0C1DF1C1422622200CD31C2 /* ESUICategories.m */,
+				D0C1DF1D1422622200CD31C2 /* ESVerticalLayoutView.h */,
+				D0C1DF1E1422622200CD31C2 /* ESVerticalLayoutView.m */,
+				D0C1DF1F1422622200CD31C2 /* ESViewDataMapper.h */,
+				D0C1DF201422622200CD31C2 /* ESViewDataMapper.m */,
+				D0C1DF211422622200CD31C2 /* ui */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		D0C1DF211422622200CD31C2 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				D0C1DF221422622200CD31C2 /* ESBarButtonItem.h */,
+				D0C1DF231422622200CD31C2 /* ESBarButtonItem.m */,
+				D0C1DF241422622200CD31C2 /* ESRoundedRectTextView.h */,
+				D0C1DF251422622200CD31C2 /* ESRoundedRectTextView.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
 		};
-		D078E3C014187CE400BFDC80 /* mac */ = {
+		D0C1DF261422622200CD31C2 /* mac */ = {
 			isa = PBXGroup;
 			children = (
-				D078E3C114187CE400BFDC80 /* ESMacNSCategories.h */,
-				D078E3C214187CE400BFDC80 /* ESMacNSCategories.m */,
+				D0C1DF271422622200CD31C2 /* ESMacNSCategories.h */,
+				D0C1DF281422622200CD31C2 /* ESMacNSCategories.m */,
 			);
-			name = mac;
-			path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/mac;
+			path = mac;
 			sourceTree = "<group>";
 		};
-		D078E3C314187CE400BFDC80 /* universal */ = {
+		D0C1DF291422622200CD31C2 /* universal */ = {
 			isa = PBXGroup;
 			children = (
-				D078E3C414187CE400BFDC80 /* ESBoundUserDefaults.h */,
-				D078E3C514187CE400BFDC80 /* ESBoundUserDefaults.m */,
-				D078E3C614187CE400BFDC80 /* ESCGMethods.h */,
-				D078E3C714187CE400BFDC80 /* ESCGMethods.m */,
-				D078E3C814187CE400BFDC80 /* ESCollectionCategories.h */,
-				D078E3C914187CE400BFDC80 /* ESCollectionCategories.m */,
-				D078E3CA14187CE400BFDC80 /* ESDynamicMethodResolver.h */,
-				D078E3CB14187CE400BFDC80 /* ESDynamicMethodResolver.m */,
+				D0C1DF2A1422622200CD31C2 /* ESBoundDictionary.h */,
+				D0C1DF2B1422622200CD31C2 /* ESBoundDictionary.m */,
+				D0C1DF2C1422622200CD31C2 /* ESBoundUserDefaults.h */,
+				D0C1DF2D1422622200CD31C2 /* ESBoundUserDefaults.m */,
+				D0C1DF2E1422622200CD31C2 /* ESCGMethods.h */,
+				D0C1DF2F1422622200CD31C2 /* ESCGMethods.m */,
+				D0C1DF301422622200CD31C2 /* ESCollectionCategories.h */,
+				D0C1DF311422622200CD31C2 /* ESCollectionCategories.m */,
+				D0C1DF321422622200CD31C2 /* ESDynamicMethodResolver.h */,
+				D0C1DF331422622200CD31C2 /* ESDynamicMethodResolver.m */,
 			);
-			name = universal;
-			path = ../../../../../cap_ios/ext/es_ios_utils/es_ios_utils/universal;
+			path = universal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,25 +508,28 @@
 				D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */,
 				D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */,
 				D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */,
-				D078E3CC14187CE400BFDC80 /* ESUtils.m in Sources */,
-				D078E3CD14187CE400BFDC80 /* ESApplicationDelegate.m in Sources */,
-				D078E3CE14187CE400BFDC80 /* ESBlockActionSheet.m in Sources */,
-				D078E3CF14187CE400BFDC80 /* ESCircleView.m in Sources */,
-				D078E3D014187CE400BFDC80 /* ESFetchedTableViewController.m in Sources */,
-				D078E3D114187CE400BFDC80 /* ESFlashMessageView.m in Sources */,
-				D078E3D214187CE400BFDC80 /* ESFlowLayoutView.m in Sources */,
-				D078E3D314187CE400BFDC80 /* ESMKCategories.m in Sources */,
-				D078E3D414187CE400BFDC80 /* ESNSCategories.m in Sources */,
-				D078E3D514187CE400BFDC80 /* ESRotatableViewController.m in Sources */,
-				D078E3D614187CE400BFDC80 /* ESUICategories.m in Sources */,
-				D078E3D714187CE400BFDC80 /* ESVerticalLayoutView.m in Sources */,
-				D078E3D814187CE400BFDC80 /* ESViewDataMapper.m in Sources */,
-				D078E3D914187CE400BFDC80 /* ESBarButtonItem.m in Sources */,
-				D078E3DA14187CE400BFDC80 /* ESMacNSCategories.m in Sources */,
-				D078E3DB14187CE400BFDC80 /* ESBoundUserDefaults.m in Sources */,
-				D078E3DC14187CE400BFDC80 /* ESCGMethods.m in Sources */,
-				D078E3DD14187CE400BFDC80 /* ESCollectionCategories.m in Sources */,
-				D078E3DE14187CE400BFDC80 /* ESDynamicMethodResolver.m in Sources */,
+				D0C1DF341422622200CD31C2 /* ESUtils.m in Sources */,
+				D0C1DF351422622200CD31C2 /* ESApplicationDelegate.m in Sources */,
+				D0C1DF361422622200CD31C2 /* ESBlockActionSheet.m in Sources */,
+				D0C1DF371422622200CD31C2 /* ESCircleView.m in Sources */,
+				D0C1DF381422622200CD31C2 /* ESFetchedTableViewController.m in Sources */,
+				D0C1DF391422622200CD31C2 /* ESFlashMessageView.m in Sources */,
+				D0C1DF3A1422622200CD31C2 /* ESFlowLayoutView.m in Sources */,
+				D0C1DF3B1422622200CD31C2 /* ESMKCategories.m in Sources */,
+				D0C1DF3C1422622200CD31C2 /* ESNSCategories.m in Sources */,
+				D0C1DF3D1422622200CD31C2 /* ESRotatableViewController.m in Sources */,
+				D0C1DF3E1422622200CD31C2 /* ESTextField.m in Sources */,
+				D0C1DF3F1422622200CD31C2 /* ESUICategories.m in Sources */,
+				D0C1DF401422622200CD31C2 /* ESVerticalLayoutView.m in Sources */,
+				D0C1DF411422622200CD31C2 /* ESViewDataMapper.m in Sources */,
+				D0C1DF421422622200CD31C2 /* ESBarButtonItem.m in Sources */,
+				D0C1DF431422622200CD31C2 /* ESRoundedRectTextView.m in Sources */,
+				D0C1DF441422622200CD31C2 /* ESMacNSCategories.m in Sources */,
+				D0C1DF451422622200CD31C2 /* ESBoundDictionary.m in Sources */,
+				D0C1DF461422622200CD31C2 /* ESBoundUserDefaults.m in Sources */,
+				D0C1DF471422622200CD31C2 /* ESCGMethods.m in Sources */,
+				D0C1DF481422622200CD31C2 /* ESCollectionCategories.m in Sources */,
+				D0C1DF491422622200CD31C2 /* ESDynamicMethodResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

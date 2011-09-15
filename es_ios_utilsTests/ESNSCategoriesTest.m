@@ -14,8 +14,23 @@
 
 -(void)testNSDateCategory
 {
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
-    STAssertEqualObjects(date.asStringWithShortFormat, @"12/31/69 7:00 PM", nil);
+    NSDate *earliest = [NSDate dateWithTimeIntervalSince1970:0];
+    STAssertEqualObjects(earliest.asStringWithShortFormat, @"12/31/69 7:00 PM", nil);
+    
+    NSDate *early = NSDate.date;
+    NSDate *late = [early dateByAddingDays:10];
+    STAssertTrue([early isBefore:late], nil);
+    STAssertFalse([early isAfter:late], nil);
+    
+    STAssertTrue([late isAfter:early], nil);
+    STAssertFalse([late isBefore:early], nil);
+    
+    STAssertTrue(earliest.isPast, nil);
+    STAssertFalse(earliest.isFuture, nil);
+    STAssertTrue(early.isPast, nil);
+    STAssertFalse(early.isFuture, nil);
+    STAssertTrue(late.isFuture, nil);
+    STAssertFalse(late.isPast, nil);
 }
 
 -(void)testNSDecimalNumberCategory

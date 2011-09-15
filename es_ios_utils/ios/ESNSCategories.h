@@ -15,8 +15,8 @@ typedef void(^ErrorBlock)(NSError*);
   @property(nonatomic, readonly) NSString* asStringWithShortFormat;
   @property(nonatomic, readonly) NSString* asRelativeString;
 
-  -(BOOL)isLaterThan:(NSDate*)d;
-  -(BOOL)isEarlierThan:(NSDate*)d;
+  -(BOOL)isBefore:(NSDate*)d;
+  -(BOOL)isAfter:(NSDate*)d;
   @property(nonatomic, readonly) BOOL      isPast;
   @property(nonatomic, readonly) BOOL      isFuture;
 
