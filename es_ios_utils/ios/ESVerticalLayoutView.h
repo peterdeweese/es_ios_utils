@@ -8,7 +8,7 @@
     double padding;
 }
 
-@property (nonatomic, assign) double padding;
+@property(nonatomic, assign) double padding;
 
 @end
 
