@@ -9,6 +9,46 @@
 
 @implementation NSDate(ESUtils)
 
+-(NSString*)asStringWithShortFormat
+{
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    return [formatter stringFromDate:self];
+}
+
+-(NSString*)asRelativeString
+{
+    NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
+    f.timeStyle = NSDateFormatterNoStyle;
+    f.dateStyle = NSDateFormatterMediumStyle;
+    f.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    f.doesRelativeDateFormatting=YES;
+    
+    return [f stringForObjectValue:self];
+}
+
+-(BOOL)isLaterThan:(NSDate*)d
+{
+    return [self compare:d] == NSOrderedDescending;
+}
+
+-(BOOL)isEarlierThan:(NSDate*)d
+{
+    return [self compare:d] == NSOrderedAscending;
+}
+
+-(BOOL)isPast
+{
+    return [self isEarlierThan:NSDate.date];
+}
+
+-(BOOL)isFuture
+{
+    return [self isLaterThan:NSDate.date];
+}
+
 -(NSDate*)dateByAddingDays:(int)d
 {
     return [self dateByAddingTimeInterval:d * 24 * 60 * 60];
@@ -27,26 +67,6 @@
 -(NSDate*)dateByAddingSeconds:(int)s
 {
     return [self dateByAddingTimeInterval:s];
-}
-
--(NSString*)relativeString
-{
-    NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
-    f.timeStyle = NSDateFormatterNoStyle;
-    f.dateStyle = NSDateFormatterMediumStyle;
-    f.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
-    f.doesRelativeDateFormatting=YES;
-    
-    return [f stringForObjectValue:self];
-}
-
--(NSString*)asStringWithShortFormat
-{
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    return [formatter stringFromDate:self];
 }
 
 @end

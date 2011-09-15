@@ -12,16 +12,22 @@ typedef void(^ESEmptyBlock)();
 typedef void(^ErrorBlock)(NSError*);
 
 @interface NSDate(ESUtils)
-    -(NSDate*)dateByAddingDays:(int)d;
-    -(NSDate*)dateByAddingHours:(int)h;
-    -(NSDate*)dateByAddingMinutes:(int)m;
-    -(NSDate*)dateByAddingSeconds:(int)s;
-    -(NSString*)relativeString;
-    @property(nonatomic, readonly) NSString* asStringWithShortFormat;
+  @property(nonatomic, readonly) NSString* asStringWithShortFormat;
+  @property(nonatomic, readonly) NSString* asRelativeString;
+
+  -(BOOL)isLaterThan:(NSDate*)d;
+  -(BOOL)isEarlierThan:(NSDate*)d;
+  @property(nonatomic, readonly) BOOL      isPast;
+  @property(nonatomic, readonly) BOOL      isFuture;
+
+  -(NSDate*)dateByAddingDays:(int)d;
+  -(NSDate*)dateByAddingHours:(int)h;
+  -(NSDate*)dateByAddingMinutes:(int)m;
+  -(NSDate*)dateByAddingSeconds:(int)s;
 @end
 
 @interface NSDecimalNumber(ESUtils)
-    @property(nonatomic, readonly) BOOL isNotANumber;
+  @property(nonatomic, readonly) BOOL isNotANumber;
 @end
 
 @interface NSError(ESUtils)
