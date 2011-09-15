@@ -128,24 +128,28 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     @property(assign) UIFont  *placeholderFont;
 @end
 
+@interface UITextView(ESUtils)
+  -(void)styleAsRoundedRect;
+@end
+
 @interface UITableView(ESUtils)
-@property(readonly) BOOL isEmpty;
-@property(readonly) BOOL isNotEmpty;
-    -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;
-    -(UITableViewCell*)cellForRow:(int)r;
-    -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
-    -(void)doForEachIndexPathInSection:(int)s action:(ESUIIndexPathBlock)action;
-    -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
-    -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation;
-    -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation;
-    -(void)insertSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
-    -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
-    -(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
-    -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a;
-    -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
-    -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
-    -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
-    -(void)deselectAll;
+  @property(readonly) BOOL isEmpty;
+  @property(readonly) BOOL isNotEmpty;
+  -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;
+  -(UITableViewCell*)cellForRow:(int)r;
+  -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
+  -(void)doForEachIndexPathInSection:(int)s action:(ESUIIndexPathBlock)action;
+  -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
+  -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)animation;
+  -(void)insertRow:(int)r withRowAnimation:(UITableViewRowAnimation)animation;
+  -(void)insertSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
+  -(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
+  -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)deselectAll;
 @end
 
 @interface UIWindow(ESUtils)

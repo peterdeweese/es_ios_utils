@@ -2,6 +2,7 @@
 
 #import "ESUICategories.h"
 #import "ESUtils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation NSNotification(ESUtils)
 
@@ -382,6 +383,20 @@
 -(void)setPlaceholderFont:(UIFont*)font
 {
     [self setValue:font forKeyPath:@"_placeholderLabel.font"];
+}
+
+@end
+
+
+@implementation UITextView(ESUtils)
+
+-(void)styleAsRoundedRect
+{
+    self.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    self.layer.borderWidth = 1.;
+    self.layer.cornerRadius = 4.5;
+    self.backgroundColor = UIColor.whiteColor;
+    self.clipsToBounds = YES;
 }
 
 @end
