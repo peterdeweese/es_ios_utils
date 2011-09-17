@@ -1,20 +1,28 @@
 #import "ESUtils.h"
 #import "ESDynamicMethodResolver.h"
-#include <objc/runtime.h>
+#import <objc/runtime.h>
 
 @implementation ESDynamicMethodResolver
 
 #pragma mark Dynamic Methods
 
+-(void)dynamicSet:(NSString*)methodName object:(id)o{ $must_override; }
 -(id)dynamicGet:(NSString*)methodName
 {
     $must_override;
-    return nil;
+    return nil; 
 }
 
--(void)dynamicSet:(NSString*)methodName object:(id)o
+-(void)dynamicSet:(NSString*)methodName double:(double)d { }
+-(double)dynamicGetDouble:(NSString*)methodName { return NAN; }
+
+//TODO: there should be a better way to get from a setter name to a property
++(NSString*)stripSet:(NSString*)s //remove ^set
 {
-    $must_override;
+    NSString *method = [s substringFromIndex:3];
+    method = [method substringToIndex:method.length - 1]; //remove :$
+    method = [method stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[method substringToIndex:1].lowercaseString];
+    return method;
 }
 
 id getIMP(ESDynamicMethodResolver *self, SEL cmd);
@@ -23,25 +31,51 @@ id getIMP(ESDynamicMethodResolver *self, SEL cmd)
     return [self dynamicGet:NSStringFromSelector(cmd)];;
 }
 
+//TODO pass property name instead of calculating it again
 void setIMP(ESDynamicMethodResolver *self, SEL cmd, id obj);
 void setIMP(ESDynamicMethodResolver *self, SEL cmd, id obj)
-{
-    NSString *method = [NSStringFromSelector(cmd) substringFromIndex:3]; //remove ^set
-    method = [method substringToIndex:method.length - 1]; //remove :$
-    method = [method stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[method substringToIndex:1] lowercaseString]];
-    
-    [self dynamicSet:method object:obj];
+{    
+    [self dynamicSet:[ESDynamicMethodResolver stripSet:NSStringFromSelector(cmd)] object:obj];
 }
+
+double getDoubleIMP(ESDynamicMethodResolver *self, SEL cmd);
+double getDoubleIMP(ESDynamicMethodResolver *self, SEL cmd)
+{
+    return [self dynamicGetDouble:NSStringFromSelector(cmd)];;
+}
+
+void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, float d);
+void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, float d)
+{    
+    [self dynamicSet:[ESDynamicMethodResolver stripSet:NSStringFromSelector(cmd)] double:d];
+}
+
 
 + (BOOL)resolveInstanceMethod:(SEL)aSEL
 {
-    NSString *method = NSStringFromSelector(aSEL);
-        
-    if([method hasPrefix:@"set"])
-        class_addMethod([self class], aSEL, (IMP)setIMP, "v@:");
-    else
-        class_addMethod([self class], aSEL, (IMP)getIMP, "@@:@");
+    NSString *property = NSStringFromSelector(aSEL);
+    BOOL isSet = [property hasPrefix:@"set"];
+    if(isSet) property = [self stripSet:property];
+    //TODO: this could be generisized for all primitives
+    BOOL isDouble = [@"Td" isEqualToString:[ES typeNameStringForProperty:property inClass:self.class]];
     
+    IMP imp;
+    const char* types;
+    
+    
+    if(isSet)
+    {
+        imp = isDouble ? (IMP)setDoubleIMP : (IMP)setIMP;
+        types = isDouble ? "v@:" : "v@:";
+    }
+    else
+    {
+        imp = isDouble ? (IMP)getDoubleIMP : (IMP)getIMP;
+        types = isDouble ? "d@:@" : "@@:@";
+    }
+    
+    class_addMethod(self.class, aSEL, imp, types);
+
     return YES;
 }
 

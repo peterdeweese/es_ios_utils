@@ -2,10 +2,8 @@
 #import "ESDynamicMethodResolver.h"
 
 @interface TestDynamic:ESDynamicMethodResolver
-{
-    NSString *_data;
-}
-@property (assign) NSString *data;
+  @property(assign) NSString* data;
+  @property(assign) double    doubleData;
 @end
 
 @implementation ESDynamicMethodResolverTest
@@ -27,17 +25,28 @@
 
 @implementation TestDynamic
 
-@dynamic data;
+@dynamic data, doubleData;
                     
 -(id)dynamicGet:(NSString*)methodName
 {
-    return [@"data" isEqualToString:methodName] ? _data : nil;
+    return [@"data" isEqualToString:methodName] ? self.data : nil;
 }
 
 -(void)dynamicSet:(NSString*)methodName object:(id)o
 {
     if([@"data" isEqualToString:methodName])
-        _data = o;
+        self.data = o;
+}
+
+-(double)dynamicGetDouble:(NSString*)methodName
+{
+    return [@"data" isEqualToString:methodName] ? (double)self.doubleData : (double)NAN;
+}
+
+-(void)dynamicSet:(NSString*)methodName double:(double)d
+{
+    if([@"data" isEqualToString:methodName])
+        self.doubleData = d;
 }
 
 @end

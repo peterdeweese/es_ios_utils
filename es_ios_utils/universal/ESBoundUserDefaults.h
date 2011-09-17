@@ -1,4 +1,4 @@
-#include "ESDynamicMethodResolver.h"
+#import "ESDynamicMethodResolver.h"
 
 @class ESDynamicMethodResolver;
 

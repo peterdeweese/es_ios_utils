@@ -34,5 +34,7 @@
 
 #define $must_override [NSException raise:NSInternalInconsistencyException format:@"You must override %@", NSStringFromSelector(_cmd)];
 
-@interface ESUtils : NSObject
+@interface ES : NSObject
+  +(NSString*)typeNameStringForProperty:(NSString*)propertyName inClass:(Class)c;
+  +(BOOL)isPropertyADouble:(NSString*)propertyName inClass:(Class)c;
 @end
