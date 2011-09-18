@@ -2,8 +2,12 @@
 #import "ESDynamicMethodResolver.h"
 
 @interface TestDynamic:ESDynamicMethodResolver
-  @property(assign) NSString* data;
-  @property(assign) double    doubleData;
+{
+    NSString *_data;
+    double    _doubleData;
+}
+@property (assign) NSString *data;
+@property (assign) double    doubleData;
 @end
 
 @implementation ESDynamicMethodResolverTest
@@ -17,6 +21,11 @@
     STAssertEquals(data, d.data, @"Property value should match what we set.");
     STAssertNotNil(d.data, @"Property should not be nil.");
     
+    //Test with double
+    double myDouble = 123.456;
+    STAssertNoThrow(d.doubleData = myDouble, @"Property should set with no error");
+    STAssertEquals(myDouble, d.doubleData, @"Property value should match what we set.");
+    
     [d release];
 }
 
@@ -26,27 +35,31 @@
 @implementation TestDynamic
 
 @dynamic data, doubleData;
-                    
+
 -(id)dynamicGet:(NSString*)methodName
 {
-    return [@"data" isEqualToString:methodName] ? self.data : nil;
+    return [@"data" isEqualToString:methodName] ? _data : nil;
 }
 
 -(void)dynamicSet:(NSString*)methodName object:(id)o
 {
     if([@"data" isEqualToString:methodName])
-        self.data = o;
+        _data = o;
 }
+
 
 -(double)dynamicGetDouble:(NSString*)methodName
 {
-    return [@"data" isEqualToString:methodName] ? (double)self.doubleData : (double)NAN;
+    if([@"doubleData" isEqualToString:methodName])
+        return _doubleData;
+    return NAN;
 }
 
 -(void)dynamicSet:(NSString*)methodName double:(double)d
 {
-    if([@"data" isEqualToString:methodName])
-        self.doubleData = d;
+    if([@"doubleData" isEqualToString:methodName])
+        _doubleData = d;
 }
 
 @end
+

@@ -28,7 +28,7 @@
 id getIMP(ESDynamicMethodResolver *self, SEL cmd);
 id getIMP(ESDynamicMethodResolver *self, SEL cmd)
 {
-    return [self dynamicGet:NSStringFromSelector(cmd)];;
+    return [self dynamicGet:NSStringFromSelector(cmd)];
 }
 
 //TODO pass property name instead of calculating it again
@@ -44,8 +44,8 @@ double getDoubleIMP(ESDynamicMethodResolver *self, SEL cmd)
     return [self dynamicGetDouble:NSStringFromSelector(cmd)];;
 }
 
-void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, float d);
-void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, float d)
+void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, double d);
+void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, double d)
 {    
     [self dynamicSet:[ESDynamicMethodResolver stripSet:NSStringFromSelector(cmd)] double:d];
 }
@@ -66,16 +66,16 @@ void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, float d)
     if(isSet)
     {
         imp = isDouble ? (IMP)setDoubleIMP : (IMP)setIMP;
-        types = isDouble ? "v@:" : "v@:";
+        types = "v@:"; //TODO: use @encode() instead
     }
     else
     {
         imp = isDouble ? (IMP)getDoubleIMP : (IMP)getIMP;
-        types = isDouble ? "d@:@" : "@@:@";
+        types = isDouble ? "d@:@" : "@@:@"; //TODO: use @encode() instead
     }
     
     class_addMethod(self.class, aSEL, imp, types);
-
+    
     return YES;
 }
 
