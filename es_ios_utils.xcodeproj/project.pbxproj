@@ -39,6 +39,7 @@
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
 		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
+		D0B4ABD71425A7180032D249 /* ESBoundUserDefaultsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B4ABD41425A6780032D249 /* ESBoundUserDefaultsTest.m */; };
 		D0C1DF341422622200CD31C2 /* ESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF051422622200CD31C2 /* ESUtils.m */; };
 		D0C1DF351422622200CD31C2 /* ESApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF081422622200CD31C2 /* ESApplicationDelegate.m */; };
 		D0C1DF361422622200CD31C2 /* ESBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1DF0A1422622200CD31C2 /* ESBlockActionSheet.m */; };
@@ -120,6 +121,8 @@
 		D0B2E5CC13A029AA00F32DB5 /* Object1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object1.m; path = model/Object1.m; sourceTree = "<group>"; };
 		D0B2E5CE13A029AA00F32DB5 /* Object2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object2.h; path = model/Object2.h; sourceTree = "<group>"; };
 		D0B2E5CF13A029AA00F32DB5 /* Object2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object2.m; path = model/Object2.m; sourceTree = "<group>"; };
+		D0B4ABD31425A6780032D249 /* ESBoundUserDefaultsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBoundUserDefaultsTest.h; sourceTree = "<group>"; };
+		D0B4ABD41425A6780032D249 /* ESBoundUserDefaultsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBoundUserDefaultsTest.m; sourceTree = "<group>"; };
 		D0C1DF041422622200CD31C2 /* ESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUtils.h; sourceTree = "<group>"; };
 		D0C1DF051422622200CD31C2 /* ESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESUtils.m; sourceTree = "<group>"; };
 		D0C1DF071422622200CD31C2 /* ESApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApplicationDelegate.h; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				A9414B881347B391008C67F4 /* es_ios_utils_appTests.m */,
 				A9414BFE1347BD49008C67F4 /* ESApplicationDelegateTest.h */,
 				A9414BFF1347BD49008C67F4 /* ESApplicationDelegateTest.m */,
+				D0B4ABD31425A6780032D249 /* ESBoundUserDefaultsTest.h */,
+				D0B4ABD41425A6780032D249 /* ESBoundUserDefaultsTest.m */,
 				A9414BCE1347B432008C67F4 /* ESDynamicMethodResolverTest.h */,
 				A9414BCF1347B432008C67F4 /* ESDynamicMethodResolverTest.m */,
 				A9414BD01347B432008C67F4 /* ESNSCategoriesTest.h */,
@@ -545,6 +550,7 @@
 				A9414BF91347B741008C67F4 /* ESUtilsTest.m in Sources */,
 				A9414B891347B391008C67F4 /* es_ios_utils_appTests.m in Sources */,
 				D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */,
+				D0B4ABD71425A7180032D249 /* ESBoundUserDefaultsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

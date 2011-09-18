@@ -5,12 +5,12 @@
 
 -(id)dynamicGet:(NSString*)methodName
 {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:methodName];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:methodName];
 }
 
 -(void)dynamicSet:(NSString*)methodName object:(id)o
 {
-    NSLog(@"attribute: %@", [ES isPropertyADouble:methodName inClass:self.class] ? @"Y" : @"N");
+    //NSLog(@"attribute: %@", [ES isPropertyADouble:methodName inClass:self.class] ? @"Y" : @"N");
     
     //Some kind of constant for a switch would be better than checking for each type
     [[NSUserDefaults standardUserDefaults] setObject:o forKey:methodName];
