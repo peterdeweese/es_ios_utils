@@ -1,5 +1,3 @@
-#if IS_IOS
-
 #import "ESNSCategories.h"
 #import <objc/runtime.h>
 
@@ -69,6 +67,21 @@
     return [self dateByAddingTimeInterval:s];
 }
 
+-(NSInteger)hour
+{
+    return [[NSCalendar currentCalendar] components:kCFCalendarUnitHour fromDate:self].hour;
+}
+
+-(NSInteger)minute
+{
+    return [[NSCalendar currentCalendar] components:kCFCalendarUnitMinute fromDate:self].minute;
+}
+
+-(NSInteger)second
+{
+    return [[NSCalendar currentCalendar] components:kCFCalendarUnitSecond fromDate:self].second;
+}
+
 @end
 
 
@@ -128,6 +141,8 @@
 @end
 
 
+#if IS_IOS
+
 @implementation NSFetchedResultsController(ESUtils)
 
 +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName
@@ -157,6 +172,8 @@
 }
 
 @end
+
+#endif //IS_IOS
 
 
 @implementation NSManagedObject(ESUtils)
@@ -604,5 +621,3 @@ float logx(float value, float base)
 }
 
 @end
-
-#endif //IS_IOS

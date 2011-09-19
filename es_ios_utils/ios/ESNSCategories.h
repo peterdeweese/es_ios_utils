@@ -1,4 +1,3 @@
-#if IS_IOS
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
@@ -24,6 +23,10 @@ typedef void(^ErrorBlock)(NSError*);
   -(NSDate*)dateByAddingHours:(int)h;
   -(NSDate*)dateByAddingMinutes:(int)m;
   -(NSDate*)dateByAddingSeconds:(int)s;
+
+  @property(nonatomic, readonly) NSInteger hour;
+  @property(nonatomic, readonly) NSInteger minute;
+  @property(nonatomic, readonly) NSInteger second;
 @end
 
 @interface NSDecimalNumber(ESUtils)
@@ -43,6 +46,8 @@ typedef void(^ErrorBlock)(NSError*);
   +(NSFetchRequest*)fetchRequestForClass:(Class)c inManagedObjectContext:(NSManagedObjectContext*)context;
 @end
 
+#if IS_IOS
+
 @interface NSFetchedResultsController(ESUtils)
     +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName;
     +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath;
@@ -52,6 +57,8 @@ typedef void(^ErrorBlock)(NSError*);
 
     -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError;
 @end
+
+#endif //IS_IOS
 
 @interface NSManagedObject(ESUtils)
     -(void)delete;
@@ -120,5 +127,3 @@ typedef void(^ErrorBlock)(NSError*);
 @interface NSThread(ESUtils)
     +(void)detachNewThreadBlock:(ESEmptyBlock)block;
 @end
-
-#endif /*IS_IOS*/

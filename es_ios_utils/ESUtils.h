@@ -20,13 +20,14 @@
 #if IS_IOS
   #import <Foundation/Foundation.h>
 
-  #import "ESNSCategories.h"
   #import "ESUICategories.h"
 #endif
 
 #if IS_MAC
   #import "ESMacNSCategories.h"
 #endif
+
+#import "ESNSCategories.h"
 
 #define $array(objs...) [NSArray arrayWithObjects: objs, nil] 
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 
