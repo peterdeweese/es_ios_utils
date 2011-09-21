@@ -33,6 +33,13 @@
         NSLog(@"Overlay not found for bringOverlayToFront. %@", overlay);
 }
 
+-(CLLocationDistance)convertDistance:(float)distance toLocationDistanceFromView:(UIView*)v
+{
+    CLLocationCoordinate2D a = [self convertPoint:CGPointZero toCoordinateFromView:v];
+    CLLocationCoordinate2D b = [self convertPoint:$point(0, distance) toCoordinateFromView:v];
+    return b.longitude - a.longitude;
+}
+
 @end
 
 #endif //IS_IOS

@@ -20,12 +20,12 @@
 
 +(CGSize)multiplySize:(CGSize)s by:(float)multiple
 {
-    return CGSizeMake(s.width * multiple, s.height * multiple);
+    return $size(s.width * multiple, s.height * multiple);
 }
 
 +(CGPoint)pointFromSize:(CGSize)s
 {
-    return CGPointMake(s.width, s.height);
+    return $point(s.width, s.height);
 }
 
 +(CGPoint)centerOfSize:(CGSize)s
@@ -35,7 +35,7 @@
 
 +(CGPoint)subtractPoint:(CGPoint)p from:(CGPoint)from
 {
-    return CGPointMake(from.x - p.x, from.y - p.y);
+    return $point(from.x - p.x, from.y - p.y);
 }
 
 +(float)distanceFromOriginToPoint:(CGPoint)p
