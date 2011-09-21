@@ -33,4 +33,14 @@
     return [CG pointFromSize:[CG multiplySize:s by:0.5]];
 }
 
++(CGPoint)subtractPoint:(CGPoint)p from:(CGPoint)from
+{
+    return CGPointMake(from.x - p.x, from.y - p.y);
+}
+
++(float)distanceFromOriginToPoint:(CGPoint)p
+{
+    return sqrtf(p.x*p.x + p.y*p.y);
+}
+
 @end

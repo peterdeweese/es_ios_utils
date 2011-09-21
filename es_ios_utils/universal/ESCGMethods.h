@@ -12,4 +12,6 @@
   +(CGSize)multiplySize:(CGSize)size by:(float)multiple;
   +(CGPoint)pointFromSize:(CGSize)s;
   +(CGPoint)centerOfSize:(CGSize)s;
+  +(CGPoint)subtractPoint:(CGPoint)p from:(CGPoint)from;
+  +(float)distanceFromOriginToPoint:(CGPoint)p;
 @end
