@@ -90,7 +90,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   @property(assign) CGPoint  origin;
   @property(assign) UIColor* borderColor;
 
-  @property(nonatomic, readonly) BOOL isInPopover;
+  @property(nonatomic, readonly) BOOL         isInPopover;
+  @property(nonatomic, readonly) UIResponder* findFirstResponder;
 
   -(void)replaceInSuperviewWith:(UIView*)v;
   -(void)centerInSuperview;
@@ -118,6 +119,12 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
     -(void)keyboardDidShow:(NSNotification*)n;
     -(void)keyboardWillHide:(NSNotification*)n;
     -(void)keyboardDidHide:(NSNotification*)n;
+@end
+
+@interface UIScrollView(ESUtils)
+  -(void)scrollViewToVisibleForKeyboard:(UIView*)v;
+  -(void)scrollViewToVisibleForKeyboard:(UIView*)v animated:(BOOL)animated;
+  -(void)scrollFirstResponderToVisibleForKeyboard;
 @end
 
 @interface UITextField (ESUtils)

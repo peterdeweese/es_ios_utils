@@ -205,38 +205,38 @@
     [self animateWithDuration:0.5 animations:animations];
 }
 
-- (float)width { return self.frame.size.width; }
-- (void)setWidth:(float)width
+-(float)width { return self.frame.size.width; }
+-(void)setWidth:(float)width
 {
     self.frame = $rect(self.x, self.y, width, self.height);
 }
 
-- (float)height { return self.frame.size.height; }
-- (void)setHeight:(float)height
+-(float)height { return self.frame.size.height; }
+-(void)setHeight:(float)height
 {
     self.frame = $rect(self.x, self.y, self.width, height);
 }
 
-- (float)x { return self.frame.origin.x; }
-- (void)setX:(float)x
+-(float)x { return self.frame.origin.x; }
+-(void)setX:(float)x
 {
     self.frame = $rect(x, self.y, self.width, self.height);
 }
 
-- (float)y { return self.frame.origin.y; }
-- (void)setY:(float)y
+-(float)y { return self.frame.origin.y; }
+-(void)setY:(float)y
 {
     self.frame = $rect(self.x, y, self.width, self.height);
 }
 
-- (CGSize)size { return self.frame.size; }
-- (void)setSize:(CGSize)size
+-(CGSize)size { return self.frame.size; }
+-(void)setSize:(CGSize)size
 {
     self.frame = $rect(self.x, self.y, size.width, size.height);
 }
 
-- (CGPoint)origin { return self.frame.origin; }
-- (void)setOrigin:(CGPoint)origin
+-(CGPoint)origin { return self.frame.origin; }
+-(void)setOrigin:(CGPoint)origin
 {
     self.frame = $rect(origin.x, origin.y, self.width, self.height);
 }
@@ -259,6 +259,19 @@
         if ([@"UIPopoverView" isEqualToString:v.className])
             return YES;
     return NO;
+}
+
+-(UIResponder*)findFirstResponder
+{
+    if (self.isFirstResponder)
+        return self;
+    
+    UIResponder* result;
+    for (UIView* v in self.subviews)
+        if((result = v.findFirstResponder))
+            return result;
+    
+    return nil;
 }
 
 //Only works when view has a superview and a window, as orientation is also considered
@@ -360,6 +373,31 @@
 -(void)keyboardDidShow: (NSNotification*)n {}
 -(void)keyboardWillHide:(NSNotification*)n {}
 -(void)keyboardDidHide: (NSNotification*)n {}
+
+@end
+
+
+@implementation UIScrollView(ESUtils)
+
+-(void)scrollViewToVisibleForKeyboard:(UIView*)v { [self scrollViewToVisibleForKeyboard:v animated:YES]; }
+-(void)scrollViewToVisibleForKeyboard:(UIView*)v animated:(BOOL)animated
+{
+    CGRect aRect = self.frame;
+    aRect.size.height -= 352; //TODO: get keyboard height programmatically
+    CGPoint origin = v.origin;
+    origin.y -= self.contentOffset.y;
+    origin.y += v.height;
+    if (!CGRectContainsPoint(aRect, origin) )
+    {
+        CGPoint scrollPoint = CGPointMake(0.0, v.y-(aRect.size.height)+v.height); 
+        [self setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+-(void)scrollFirstResponderToVisibleForKeyboard
+{
+    [self scrollViewToVisibleForKeyboard:(UIView*)self.findFirstResponder];
+}
 
 @end
 
