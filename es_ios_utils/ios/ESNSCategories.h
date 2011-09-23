@@ -103,6 +103,8 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSString(ESUtils)
+    @property(nonatomic, readonly) NSMutableString* asMutableString;
+
     //Formats like 576B, 5.6MB
     +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength;
     +(NSString*)stringWithClassName:(Class)c;

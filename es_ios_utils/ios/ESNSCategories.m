@@ -497,6 +497,11 @@
 
 @implementation NSString(ESUtils)
 
+-(NSMutableString*)asMutableString
+{
+    return [self.mutableCopy autorelease];
+}
+
 //REFACTOR: consider pulling up into a math util library
 float logx(float value, float base);
 float logx(float value, float base) 
