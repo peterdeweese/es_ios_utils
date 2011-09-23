@@ -241,6 +241,9 @@
     self.frame = $rect(origin.x, origin.y, self.width, self.height);
 }
 
+-(UIColor*)borderColor { return [UIColor colorWithCGColor:self.layer.borderColor]; }
+-(void)setBorderColor:(UIColor*)c { self.layer.borderColor = c.CGColor; }
+
 -(void)replaceInSuperviewWith:(UIView*)v
 {
     v.autoresizingMask = self.autoresizingMask;
@@ -392,7 +395,7 @@
 
 -(void)styleAsRoundedRect
 {
-    self.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    self.borderColor = UIColor.lightGrayColor;
     self.layer.borderWidth = 1.;
     self.layer.cornerRadius = 4.5;
     self.backgroundColor = UIColor.whiteColor;

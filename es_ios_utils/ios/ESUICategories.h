@@ -79,20 +79,21 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIView(ESUtils)
-    +(void)animate:(void(^)(void))animations;
+  +(void)animate:(void(^)(void))animations;
 
-    // These sizing convenience methods manipulate the frame.
-    @property(assign) float   width;
-    @property(assign) float   height;
-    @property(assign) float   x;
-    @property(assign) float   y;
-    @property(assign) CGSize  size;
-    @property(assign) CGPoint origin;
+  // These sizing convenience methods manipulate the frame.
+  @property(assign) float    width;
+  @property(assign) float    height;
+  @property(assign) float    x;
+  @property(assign) float    y;
+  @property(assign) CGSize   size;
+  @property(assign) CGPoint  origin;
+  @property(assign) UIColor* borderColor;
 
-    @property(nonatomic, readonly) BOOL isInPopover;
+  @property(nonatomic, readonly) BOOL isInPopover;
 
-    -(void)replaceInSuperviewWith:(UIView*)v;
-    -(void)centerInSuperview;
+  -(void)replaceInSuperviewWith:(UIView*)v;
+  -(void)centerInSuperview;
 @end
 
 @interface UIViewController(ESUtils)
