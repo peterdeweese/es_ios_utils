@@ -2,6 +2,16 @@
 
 @implementation CG
 
++(BOOL)point:(CGPoint)p1 isEqualTo:(CGPoint)p2
+{
+    return CGPointEqualToPoint(p1, p2);
+}
+
++(BOOL)pointIsZero:(CGPoint)p
+{
+    return [CG point:p isEqualTo:CGPointZero];
+}
+
 +(float)scaleToAspectFit:(CGSize)source into:(CGSize)into
 {
     return MIN(into.width/source.width, into.height/source.height);
@@ -41,6 +51,11 @@
 +(float)distanceFromOriginToPoint:(CGPoint)p
 {
     return sqrtf(p.x*p.x + p.y*p.y);
+}
+
++(float)distanceFromPoint:(CGPoint)from to:(CGPoint)to
+{
+    return [CG distanceFromOriginToPoint:[CG subtractPoint:from from:to]];
 }
 
 

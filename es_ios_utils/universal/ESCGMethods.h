@@ -5,6 +5,8 @@
 #define $rect(x, y, w, h) CGRectMake(x, y, w, h)
 
 @interface CG : NSObject
+  +(BOOL)point:(CGPoint)p1 isEqualTo:(CGPoint)p2;
+  +(BOOL)pointIsZero:(CGPoint)p;
   +(float)scaleToAspectFit:(CGSize)source into:(CGSize)into;
   +(float)scaleToAspectFit:(CGSize)source into:(CGSize)into padding:(float)padding;
   +(float)scaleToAspectFill:(CGSize)source into:(CGSize)into;
@@ -14,6 +16,7 @@
   +(CGPoint)centerOfSize:(CGSize)s;
   +(CGPoint)subtractPoint:(CGPoint)p from:(CGPoint)from;
   +(float)distanceFromOriginToPoint:(CGPoint)p;
+  +(float)distanceFromPoint:(CGPoint)from to:(CGPoint)to;
 
   //drawing methods. Methods without context references use the current context.
   +(CGContextRef)currentContext;
