@@ -28,15 +28,17 @@
   +(void)context:(CGContextRef)c setLineCap:(CGLineCap)cap;
   +(void)context:(CGContextRef)c setStrokeColor:(UIColor*)color;
   +(void)context:(CGContextRef)c setFillColor:(UIColor*)color;
-  +(void)context:(CGContextRef)c drawElipseInRect:(CGRect)r;
-  +(void)context:(CGContextRef)c drawCircleAt:(CGPoint)p radius:(float)r;
+  +(void)context:(CGContextRef)c addElipseInRect:(CGRect)r;
+  +(void)context:(CGContextRef)c addCircleAt:(CGPoint)p radius:(float)r;
   +(void)context:(CGContextRef)c moveTo:(CGPoint)p;
   +(void)context:(CGContextRef)c addLineTo:(CGPoint)p;
   +(void)context:(CGContextRef)c addLineFrom:(CGPoint)f to:(CGPoint)t;
+  +(void)context:(CGContextRef)c addLines:(const CGPoint*)points count:(size_t)count;
 
   +(void)beginPath;
   +(void)drawPath:(CGPathDrawingMode)mode;
   +(void)fillPath;
+  +(void)drawPath;
 
   +(void)setLineWidth:(CGFloat)w;
   +(void)setLineCap:(CGLineCap)cap;
@@ -47,4 +49,5 @@
   +(void)moveTo:(CGPoint)p;
   +(void)addLineTo:(CGPoint)p;
   +(void)addLineFrom:(CGPoint)f to:(CGPoint)t;
++(void)addLines:(const CGPoint*)points count:(size_t)count;
 @end

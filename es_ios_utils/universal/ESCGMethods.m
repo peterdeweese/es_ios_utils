@@ -96,14 +96,14 @@
     CGContextSetFillColorWithColor(c, color.CGColor);
 }
 
-+(void)context:(CGContextRef)c drawElipseInRect:(CGRect)r
++(void)context:(CGContextRef)c addElipseInRect:(CGRect)r
 {
     CGContextAddEllipseInRect(c, r);
 }
 
-+(void)context:(CGContextRef)c drawCircleAt:(CGPoint)p radius:(float)r
++(void)context:(CGContextRef)c addCircleAt:(CGPoint)p radius:(float)r
 {
-    [CG context:c drawElipseInRect:$rect(p.x - r, p.y-r, r*2, r*2)];
+    [CG context:c addElipseInRect:$rect(p.x - r, p.y-r, r*2, r*2)];
 }
 
 +(void)context:(CGContextRef)c moveTo:(CGPoint)p
@@ -122,6 +122,11 @@
     [self context:c addLineTo:t];
 }
 
++(void)context:(CGContextRef)c addLines:(const CGPoint*)points count:(size_t)count
+{
+    CGContextAddLines(c, points, count);
+}
+
 
 #pragma mark Use Current Context
 
@@ -138,6 +143,11 @@
 +(void)fillPath
 {
     [CG drawPath:kCGPathFillStroke];
+}
+
++(void)drawPath
+{
+    [CG drawPath:kCGPathStroke];
 }
 
 +(void)setLineWidth:(CGFloat)w
@@ -162,12 +172,12 @@
 
 +(void)drawElipseInRect:(CGRect)r
 {
-    [CG context:CG.currentContext drawElipseInRect:r];
+    [CG context:CG.currentContext addElipseInRect:r];
 }
 
 +(void)drawCircleAt:(CGPoint)p radius:(float)r
 {
-    [CG context:CG.currentContext drawCircleAt:p radius:r];
+    [CG context:CG.currentContext addCircleAt:p radius:r];
 }
 
 +(void)moveTo:(CGPoint)p
@@ -183,6 +193,11 @@
 +(void)addLineFrom:(CGPoint)f to:(CGPoint)t
 {
     [CG context:CG.currentContext addLineFrom:f to:t];
+}
+
++(void)addLines:(const CGPoint*)points count:(size_t)count
+{
+    [CG context:CG.currentContext addLines:points count:count];
 }
 
 @end
