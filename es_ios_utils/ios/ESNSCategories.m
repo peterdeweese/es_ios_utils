@@ -155,9 +155,9 @@
     return [self fetchedResultsControllerWithRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:nil];
 }
 
--(NSManagedObject*)createManagedObject
+-(id)createManagedObject
 {
-    return (NSManagedObject*)[self.managedObjectContext createManagedObjectNamed:self.fetchRequest.entity.name];
+    return [self.managedObjectContext createManagedObjectNamed:self.fetchRequest.entity.name];
 }
 
 -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError
@@ -388,13 +388,13 @@
 
 @implementation NSManagedObjectContext(ESUtils)
 
--(NSManagedObject*)createManagedObjectNamed:(NSString*)name
+-(id)createManagedObjectNamed:(NSString*)name
 {
     // Create a new instance of the entity managed by the fetched results controller.
     return [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
 }
 
--(NSManagedObject*)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary
+-(id)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary
 {
     // Create a new instance of the entity managed by the fetched results controller.
     NSManagedObject *o = [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
@@ -402,12 +402,12 @@
     return o;
 }
 
--(NSManagedObject*)createManagedObjectOfClass:(Class)c
+-(id)createManagedObjectOfClass:(Class)c
 {
     return [self createManagedObjectNamed:[NSString stringWithClassName:c]];
 }
 
--(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary
+-(id)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary
 {
     return [self createManagedObjectNamed:[NSString stringWithClassName:c] withDictionary:dictionary];
 }

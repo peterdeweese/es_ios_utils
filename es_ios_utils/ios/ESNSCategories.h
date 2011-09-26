@@ -53,7 +53,7 @@ typedef void(^ErrorBlock)(NSError*);
     +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath;
 
     // Create and save a new instance of the entity managed by the fetched results controller.
-    -(NSManagedObject*)createManagedObject;
+    -(id)createManagedObject;
 
     -(BOOL)performFetchAndDoOnError:(ErrorBlock)doOnError;
 @end
@@ -80,10 +80,10 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSManagedObjectContext(ESUtils)
-    -(NSManagedObject*)createManagedObjectNamed:(NSString*)name;
-    -(NSManagedObject*)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary;
-    -(NSManagedObject*)createManagedObjectOfClass:(Class)c;
-    -(NSManagedObject*)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary;
+    -(id)createManagedObjectNamed:(NSString*)name;
+    -(id)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary;
+    -(id)createManagedObjectOfClass:(Class)c;
+    -(id)createManagedObjectOfClass:(Class)c withDictionary:(NSDictionary*)dictionary;
 
     -(BOOL)saveAndDoOnError:(ErrorBlock)doOnError;
     -(NSArray*)fetch:(NSFetchRequest*)request;
