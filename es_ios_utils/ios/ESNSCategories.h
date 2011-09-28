@@ -34,11 +34,15 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSError(ESUtils)
+#if CORE_DATA_AVAILABLE
     @property(nonatomic, readonly) NSArray *detailedErrors;
-    -(void)log;
     -(void)logDetailedErrors;
+#endif //CORE_DATA_AVAILABLE
+    -(void)log;
     -(void)logWithMessage:(NSString*)message;
 @end
+
+#if CORE_DATA_AVAILABLE
 
 @interface NSFetchRequest(ESUtils)
   +(NSFetchRequest*)fetchRequest;
@@ -93,6 +97,8 @@ typedef void(^ErrorBlock)(NSError*);
     -(NSArray*)all:(Class)type;
     -(NSArray*)all:(Class)type sortedByKey:(NSString*)key;
 @end
+
+#endif //CORE_DATA_AVAILABLE
 
 @interface NSObject(ESUtils)
     @property(readonly) NSString *className;

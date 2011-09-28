@@ -13,7 +13,7 @@
   #define IS_IOS 1
 #endif
 
-#ifdef _COREDATADEFINES_H
+#if NSCoreDataVersionNumber
   #define CORE_DATA_AVAILABLE 1
 #endif
 
