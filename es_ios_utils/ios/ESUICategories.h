@@ -10,9 +10,9 @@ typedef void(^ESUICellBlock)(UITableViewCell*);
 typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface NSNotification(ESUtils)
-    //For UIKeyboard* notifications, otherwise an exception is raised.
-    //Use convertRect:fromView: or convertRect:fromWindow: to rotate to current orientation
-    @property(readonly) CGSize keyboardSize;
+  //For UIKeyboard* notifications, otherwise an exception is raised.
+  @property(readonly) CGSize keyboardSize;
+  -(CGSize)keyboardSizeRotatedForView:(UIView*)view;
 @end
 
 

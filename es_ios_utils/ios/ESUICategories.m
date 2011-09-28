@@ -20,6 +20,12 @@
     return [[self.userInfo valueForKey:key] CGRectValue].size;
 }
 
+-(CGSize)keyboardSizeRotatedForView:(UIView*)view
+{
+    CGSize s = self.keyboardSize;
+    return [view.window convertRect:$rect(0,0,s.width,s.height) toView:view].size;
+}
+
 @end
 
 
