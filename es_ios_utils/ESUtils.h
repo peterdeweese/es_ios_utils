@@ -8,13 +8,15 @@
 #elif  TARGET_OS_MAC && !TARGET_OS_IPHONE
   #define IS_MAC 1
   #define IS_IOS 0
+  #ifdef _COREDATADEFINES_H
+    #define CORE_DATA_AVAILABLE 1
+  #endif
 #elif TARGET_OS_IPHONE
   #define IS_MAC 0
   #define IS_IOS 1
-#endif
-
-#if NSCoreDataVersionNumber || defined(_COREDATADEFINES_H)
-  #define CORE_DATA_AVAILABLE 1
+  #if NSCoreDataVersionNumber
+    #define CORE_DATA_AVAILABLE 1
+  #endif
 #endif
 
 #if IS_IOS
