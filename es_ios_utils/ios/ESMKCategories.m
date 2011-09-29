@@ -35,6 +35,7 @@
 
 -(CLLocationDistance)convertDistance:(float)distance toLocationDistanceFromView:(UIView*)v
 {
+    //TODO: I think using MKMetersBetweenMapPoints would make more sense
     CLLocationCoordinate2D a = [self convertPoint:CGPointZero toCoordinateFromView:v];
     CLLocationCoordinate2D b = [self convertPoint:$point(0, distance) toCoordinateFromView:v];
     return b.longitude - a.longitude;
