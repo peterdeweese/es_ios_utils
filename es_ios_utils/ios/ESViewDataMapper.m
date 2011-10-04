@@ -135,7 +135,7 @@
     else if([self.view isKindOfClass:UIButton.class])
         [(UIButton*)self.view setTitle:(NSString*)value forState:UIControlStateNormal];
     else if([self.view isKindOfClass:UIDatePicker.class])
-        ((UIDatePicker*)self.view).date = (NSDate*)value;
+        ((UIDatePicker*)self.view).date = (NSDate*)value ?: NSDate.date;
     else
         NSLog(@"Warning: Value not set from keyPath '%@' because the view is not of a supported type. %@", self.keyPath, [self.view class]);
 }
