@@ -14,7 +14,7 @@
 #elif TARGET_OS_IPHONE
   #define IS_MAC 0
   #define IS_IOS 1
-  #if NSCoreDataVersionNumber
+#ifdef _COREDATADEFINES_H
     #define CORE_DATA_AVAILABLE 1
   #endif
 #endif

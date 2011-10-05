@@ -64,7 +64,7 @@
     if(sheet)
         return;
     [buttonTitles addObject:buttonTitle];
-    [doOnPresses addObject:doOnPress?(id)[doOnPress copy]:NSNull.null];
+    [doOnPresses addObject:doOnPress?(id)[[doOnPress copy] autorelease]:NSNull.null];
 }
 
 #pragma mark Control
@@ -130,8 +130,6 @@
     self.sheet = nil;
     self.doOnCancel = nil;
     self.doOnDestroy = nil;
-    for(id b in self.doOnPresses) //each block was copied before adding
-        [b release];
     self.doOnPresses = nil;
     self.buttonTitles = nil;
     
