@@ -13,6 +13,7 @@
     
     formatter.timeStyle = NSDateFormatterShortStyle;
     formatter.dateStyle = NSDateFormatterShortStyle;
+    
     return [formatter stringFromDate:self];
 }
 
