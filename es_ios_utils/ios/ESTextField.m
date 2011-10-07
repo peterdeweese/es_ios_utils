@@ -13,21 +13,21 @@
 
 -(id)init
 {
-    self = [super init];
+    [super init];
     [self initialize];
     return self;
 }
 
 -(id)initWithCoder:(NSCoder*)c
 {
-    self = [super initWithCoder:c];
+    [super initWithCoder:c];
     [self initialize];
     return self;
 }
 
 -(id)initWithFrame:(CGRect)f
 {
-    self = [super initWithFrame:f];
+    [super initWithFrame:f];
     [self initialize];
     return self;
 }

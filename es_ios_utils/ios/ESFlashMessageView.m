@@ -17,7 +17,7 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    [super initWithFrame:frame];
     
     self.queue = [NSMutableArray arrayWithCapacity:20];
     self.fadeDuration = 0.5;

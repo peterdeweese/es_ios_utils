@@ -6,7 +6,7 @@
 
 -(id)initWithDictionary:(NSDictionary*)d
 {
-    self = [super init];
+    [super init];
     dictionary = [d retain];
     return self;
 }
