@@ -153,7 +153,7 @@
 
 +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName
 {
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:cacheName];
+    return [[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:cacheName] autorelease];
 }
 
 +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath
@@ -368,7 +368,7 @@
 
 -(NSDictionary*)toDictionaryIgnoringObjects:(NSSet*)objectsToIgnore
 {
-    NSMutableSet *references = objectsToIgnore ? objectsToIgnore.mutableCopy : [NSMutableSet setWithCapacity:10];
+    NSMutableSet *references = objectsToIgnore ? objectsToIgnore.asMutableSet : [NSMutableSet setWithCapacity:10];
     return [self toDictionaryIgnoringReferencedObjects:references relationshipFormat:nil];
 }
 

@@ -109,7 +109,7 @@
 
 +(UILabel*)labelWithText:(NSString*)text
 {
-    UILabel *l = [[UILabel alloc] init];
+    UILabel *l = [[[UILabel alloc] init] autorelease];
     l.text = text;
     [l sizeToFit];
     return l;
@@ -159,7 +159,7 @@
 
 +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController*)viewController
 {
-    return [[UIPopoverController alloc] initWithContentViewController:viewController];
+    return [[[UIPopoverController alloc] initWithContentViewController:viewController] autorelease];
 }
 
 +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController

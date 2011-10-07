@@ -5,21 +5,21 @@
 
 -(id)init
 {
-    [super init];
+    self = [super init];
     [self styleAsRoundedRect];
     return self;
 }
 
 -(id)initWithCoder:(NSCoder*)aDecoder
 {
-    [super initWithCoder:aDecoder];
+    self = [super initWithCoder:aDecoder];
     [self styleAsRoundedRect];
     return self;
 }
 
 -(id)initWithFrame:(CGRect)frame
 {
-    [super initWithFrame:frame];
+    self = [super initWithFrame:frame];
     [self styleAsRoundedRect];
     return self;
 }
