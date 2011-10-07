@@ -262,7 +262,7 @@
 {
     UIView *v = self;        
     for (;v.superview != nil; v=v.superview)
-        if ([@"UIPopoverView" isEqualToString:v.className])
+        if ([v.className hasSuffix:@"UIPopoverView"])
             return YES;
     return NO;
 }
