@@ -17,19 +17,20 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    [super initWithFrame:frame];
-    
-    self.queue = [NSMutableArray arrayWithCapacity:20];
-    self.fadeDuration = 0.5;
-    self.maxAlpha = 0.8;
-    
-    self.layer.cornerRadius = 15;
-    self.textAlignment = UITextAlignmentCenter;
-    self.alpha = 0.0;
-    self.backgroundColor = UIColor.darkGrayColor;
-    self.textColor = UIColor.whiteColor;
-    self.autoresizingMask = ( UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin );
-    self.numberOfLines = 0;
+    if(self = [super initWithFrame:frame])
+    {
+        self.queue = [NSMutableArray arrayWithCapacity:20];
+        self.fadeDuration = 0.5;
+        self.maxAlpha = 0.8;
+        
+        self.layer.cornerRadius = 15;
+        self.textAlignment = UITextAlignmentCenter;
+        self.alpha = 0.0;
+        self.backgroundColor = UIColor.darkGrayColor;
+        self.textColor = UIColor.whiteColor;
+        self.autoresizingMask = ( UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin );
+        self.numberOfLines = 0;
+    }
     
     return self;
 }
