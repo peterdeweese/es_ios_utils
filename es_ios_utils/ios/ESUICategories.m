@@ -207,6 +207,11 @@
 
 @implementation UIView(ESUtils)
 
++(UIView*)viewWithFrame:(CGRect)frame
+{
+    return [[[UIView alloc] initWithFrame:frame] autorelease];
+}
+
 +(void)animate:(void(^)(void))animations
 {
     [self animateWithDuration:0.5 animations:animations];
@@ -411,6 +416,11 @@
 
 
 @implementation UITextField(ESUtils)
+
++(UITextField*)textFieldWithFrame:(CGRect)frame
+{
+    return [[[UITextField alloc] initWithFrame:frame] autorelease];
+}
 
 // Uses a private ivar, but Apple reviews allow it in Veporter and other apps:
 //     http://stackoverflow.com/questions/1340224/iphone-uitextfield-change-placeholder-text-color

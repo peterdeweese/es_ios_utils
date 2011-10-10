@@ -79,6 +79,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIView(ESUtils)
+  +(UIView*)viewWithFrame:(CGRect)frame;
   +(void)animate:(void(^)(void))animations;
 
   // These sizing convenience methods manipulate the frame.
@@ -128,12 +129,14 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UITextField (ESUtils)
-    // Passed Apple's review.
-    @property(assign) UIColor *placeholderColor;
+  +(UITextField*)textFieldWithFrame:(CGRect)frame;
 
-    // Call in viewWillAppear to vertially center.
-    // Reset in textFieldShouldClear: and shouldChangeCharactersInRange to prevent resetting.
-    @property(assign) UIFont  *placeholderFont;
+  // Passed Apple's review.
+  @property(assign) UIColor *placeholderColor;
+
+  // Call in viewWillAppear to vertially center.
+  // Reset in textFieldShouldClear: and shouldChangeCharactersInRange to prevent resetting.
+  @property(assign) UIFont  *placeholderFont;
 @end
 
 @interface UITextView(ESUtils)
