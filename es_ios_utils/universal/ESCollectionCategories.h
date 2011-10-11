@@ -41,7 +41,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSDictionary(ESUtils)
-    +(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
++(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
++(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath keyPathForValues:(NSString*)valuePath;
 
     @property(readonly) BOOL          isEmpty;
     @property(readonly) BOOL          isNotEmpty;
@@ -77,14 +78,15 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSMutableDictionary(ESUtils)
-    // Wraps key in +NSValue valueWithNonretainedObject:
-    // Only use for keys that are not supported by setValue:forKey:
-    -(void)setObject:(id)value forKeyObject:(id)key;
-    -(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
+  // Wraps key in +NSValue valueWithNonretainedObject:
+  // Only use for keys that are not supported by setValue:forKey:
+  -(void)setObject:(id)value forKeyObject:(id)key;
+  -(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
+  -(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath keyPathForValues:(NSString*)valuePath;
 
-    //Changes keys using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
-    -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter;
-    -(void)renameKey:(NSString*)key to:(NSString*)to;
+  //Changes keys using keyFilter. If keyFilter generates duplicate non-unique keys, objects will be overwritten.
+  -(void)addEntriesFromDictionary:(NSDictionary*)d withKeyFilter:(NSString*(^)(NSString*))keyFilter;
+  -(void)renameKey:(NSString*)key to:(NSString*)to;
 @end
 
 @interface NSMutableSet(ESUtils)

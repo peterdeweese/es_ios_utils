@@ -29,6 +29,18 @@
     [d release];
 }
 
+-(void)testKVC
+{
+    TestDynamic *d = [TestDynamic alloc];
+    NSString *data = @"theDataValue";
+    
+    STAssertNoThrow(d.data = data, @"Property should set with no error");
+    STAssertEquals(data, d.data, @"Property value should match what we set.");
+    STAssertNotNil([d valueForKey:@"data"], @"Property should not be nil.");
+    
+    [d release];
+}
+
 @end
 
 

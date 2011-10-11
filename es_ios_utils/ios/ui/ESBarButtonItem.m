@@ -11,6 +11,25 @@
 
 @implementation ESBarButtonItem
 
++(ESBarButtonItem*)barButtonItemWithTitle:(NSString*)title action:(void(^)(void))blockAction
+
+{
+    ESBarButtonItem* result = [[[ESBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
+    result.blockAction = blockAction;
+    return result;
+}
+
++(ESBarButtonItem*)barButtonItemToEditTable:(UITableView*)t
+{
+    ESBarButtonItem* item __block;
+    item = [ESBarButtonItem barButtonItemWithTitle:@"Edit" action:^{
+        [t setEditing:!t.editing animated:YES];
+        item.title = t.editing ? @"Done" : @"Edit";
+        item.style = t.editing ? UIBarButtonItemStyleDone : UIBarButtonItemStylePlain;
+    }];
+    return item;
+}
+
 @synthesize blockAction, viewControllerForPopover, userTarget, userAction;
 @synthesize /*private*/ popoverController;
 

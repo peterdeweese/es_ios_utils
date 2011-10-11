@@ -175,6 +175,14 @@
     return result;
 }
 
++(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath keyPathForValues:(NSString*)valuePath
+{
+    NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:20];
+    
+    [result setObjects:objects keyPathForKeys:keyPath keyPathForValues:valuePath];
+    return result;
+}
+
 -(NSDictionary*)asDeepCopy
 {
     return [self asDeepCopyWithKeyFilter:nil];
@@ -273,6 +281,16 @@
         id key = [o valueForKeyPath:keyPath];
         if(key)
             [self setObject:o forKey:key];
+    }
+}
+
+-(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath keyPathForValues:(NSString*)valuePath
+{
+    for(id o in objects)
+    {
+        id key = [o valueForKeyPath:keyPath];
+        if(key)
+            [self setObject:[o valueForKeyPath:valuePath] forKey:key];
     }
 }
 

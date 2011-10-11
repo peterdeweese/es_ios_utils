@@ -79,4 +79,9 @@ void setDoubleIMP(ESDynamicMethodResolver *self, SEL cmd, double d)
     return YES;
 }
 
+-(id)valueForKey:(NSString*)key
+{
+    return [self dynamicGet:key];
+}
+
 @end

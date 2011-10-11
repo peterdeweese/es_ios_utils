@@ -161,6 +161,12 @@
     STAssertEqualObjects([dictionary objectForKey:@"one"], @"ONE", nil);
     STAssertEqualObjects([dictionary objectForKey:@"two"], @"TWO", nil);
     STAssertEqualObjects([dictionary objectForKey:@"three"], @"THREE", nil);
+    
+    dictionary = [NSDictionary dictionaryWithObjects:$array(@"ONE", @"TWO", @"THREE") keyPathForKeys:@"lowercaseString" keyPathForValues:@"description"];
+    STAssertNotNil(dictionary, nil);
+    STAssertEqualObjects([dictionary objectForKey:@"one"], @"ONE", nil);
+    STAssertEqualObjects([dictionary objectForKey:@"two"], @"TWO", nil);
+    STAssertEqualObjects([dictionary objectForKey:@"three"], @"THREE", nil);
 }
 
 -(void)testNSMutableArrayQueue
