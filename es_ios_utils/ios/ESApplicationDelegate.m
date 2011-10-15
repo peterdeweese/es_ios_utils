@@ -7,11 +7,7 @@
 
 @synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
 
--(NSString*)persistentStoreName
-{
-    $must_override;
-    return nil;
-}
+-(NSString*)persistentStoreName { return @"app"; }
 
 +(ESApplicationDelegate*)delegate
 {
