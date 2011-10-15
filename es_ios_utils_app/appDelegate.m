@@ -9,7 +9,7 @@
 
 -(NSString*)persistentStoreName
 {
-    return @"Model";
+    return [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleName"];
 }
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

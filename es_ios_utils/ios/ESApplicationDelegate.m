@@ -1,7 +1,7 @@
-#if IS_IOS
-
-#import "ESApplicationDelegate.h"
 #import "ESUtils.h"
+#import "ESApplicationDelegate.h"
+
+#if IS_IOS && CORE_DATA_AVAILABLE
 
 @implementation ESApplicationDelegate
 

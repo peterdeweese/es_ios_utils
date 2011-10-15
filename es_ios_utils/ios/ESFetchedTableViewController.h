@@ -1,4 +1,6 @@
-#if IS_IOS
+#import "ESUtils.h"
+
+#if IS_IOS && CORE_DATA_AVAILABLE
 
 #import <Foundation/Foundation.h>
 

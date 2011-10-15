@@ -453,6 +453,9 @@
 /* Begin PBXProject section */
 		A9414B4C1347B391008C67F4 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = A9414B4F1347B391008C67F4 /* Build configuration list for PBXProject "es_ios_utils" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -652,6 +655,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_app/es_ios_utils_app-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_app/es_ios_utils_app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -665,6 +669,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_app/es_ios_utils_app-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_app/es_ios_utils_app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
@@ -683,6 +688,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_appTests/es_ios_utils_appTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_appTests/es_ios_utils_appTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -705,6 +711,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_appTests/es_ios_utils_appTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_appTests/es_ios_utils_appTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

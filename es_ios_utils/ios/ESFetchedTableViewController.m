@@ -1,5 +1,8 @@
-#if IS_IOS
+#import "ESUtils.h"
 
+#if IS_IOS && CORE_DATA_AVAILABLE
+
+#import "ESCDCategories.h"
 #import "ESFetchedTableViewController.h"
 
 @implementation ESFetchedTableViewController
