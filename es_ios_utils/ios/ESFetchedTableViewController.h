@@ -7,8 +7,10 @@
 //  Implemented with one section.
 @interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property(nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;
+@property(nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
+@property(nonatomic, retain) NSManagedObjectContext*     managedObjectContext;
+
+@property(nonatomic, readonly) id selectedObject;
 
 -(id)objectAtIndexPath:(NSIndexPath*)i;
 -(NSIndexPath*)indexPathForObject:(id)o;

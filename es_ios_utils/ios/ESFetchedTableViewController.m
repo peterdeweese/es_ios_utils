@@ -73,6 +73,11 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 -(void)didSelectObject:(id)o { }
 -(void)didDeselectObject:(id)o { }
 
+-(id)selectedObject
+{
+    return [self.fetchedResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
+}
+
 #pragma mark - Table Controller, Datasource, and Delegate
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
