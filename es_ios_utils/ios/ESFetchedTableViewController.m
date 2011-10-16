@@ -211,6 +211,12 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     [self.tableView endUpdates];
 }
 
+-(void)insertNewObject
+{
+    NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:entityClass];
+    [newManagedObject.managedObjectContext saveAndDoOnError:doOnError];
+}
+
 #pragma mark -
 
 -(void)dealloc
