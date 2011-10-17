@@ -229,7 +229,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     self.fetchedResultsController = nil;
     self.managedObjectContext     = nil;
     self.sectionNameKeyPath       = nil;
-    
+    self.doOnError                = nil;
     [super dealloc];
 }
 
