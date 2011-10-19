@@ -7,7 +7,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellStyle;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellReuseIdentifier, cellStyle;
 
 -(id)init
 {
@@ -62,7 +62,9 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(UITableViewCell*)createCell
 {
-    return  [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:kESFetchedTableViewControllerCell] autorelease];
+    id reuseIdentifier = cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
+    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    return c ?: [[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier];
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
@@ -229,6 +231,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     self.fetchedResultsController = nil;
     self.managedObjectContext     = nil;
     self.sectionNameKeyPath       = nil;
+    self.cellReuseIdentifier      = nil;
+    self.entityClass              = nil;
     self.doOnError                = nil;
     [super dealloc];
 }

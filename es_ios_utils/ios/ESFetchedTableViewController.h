@@ -20,6 +20,7 @@
 
 //Configure these:
 @property(nonatomic, assign) Class     entityClass;
+@property(nonatomic, retain) NSString* cellReuseIdentifier;
 @property(nonatomic, retain) NSString* sectionNameKeyPath; //optional, defaults to nil
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
 @property(nonatomic, assign) UITableViewCellStyle cellStyle; //defaults to normal
