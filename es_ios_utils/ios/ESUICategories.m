@@ -256,6 +256,12 @@
 -(UIColor*)borderColor { return [UIColor colorWithCGColor:self.layer.borderColor]; }
 -(void)setBorderColor:(UIColor*)c { self.layer.borderColor = c.CGColor; }
 
+-(float)borderWidth { return self.layer.borderWidth; }
+-(void)setBorderWidth:(float)w { self.layer.borderWidth = w; }
+
+-(float)cornerRadius { return self.layer.cornerRadius; }
+-(void)setCornerRadius:(float)r { self.layer.cornerRadius = r; }
+
 -(void)replaceInSuperviewWith:(UIView*)v
 {
     v.autoresizingMask = self.autoresizingMask;
@@ -460,8 +466,8 @@
 -(void)styleAsRoundedRect
 {
     self.borderColor = UIColor.lightGrayColor;
-    self.layer.borderWidth = 1.;
-    self.layer.cornerRadius = 4.5;
+    self.borderWidth = 1.;
+    self.cornerRadius = 4.5;
     self.backgroundColor = UIColor.whiteColor;
     self.clipsToBounds = YES;
 }

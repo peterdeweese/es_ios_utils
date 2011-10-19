@@ -90,6 +90,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   @property(assign) CGSize   size;
   @property(assign) CGPoint  origin;
   @property(assign) UIColor* borderColor;
+  @property(assign) float    borderWidth;
+  @property(assign) float    cornerRadius;
 
   @property(nonatomic, readonly) BOOL         isInPopover;
   @property(nonatomic, readonly) UIResponder* findFirstResponder;

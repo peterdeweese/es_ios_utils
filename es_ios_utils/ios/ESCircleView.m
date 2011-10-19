@@ -16,7 +16,7 @@
 {
     float size = MIN(self.width, self.height);
     self.size = $size(size, size);
-    self.layer.cornerRadius = size/2.;
+    self.cornerRadius = size/2.;
 }
 
 -(float)diameter { return self.width; }
