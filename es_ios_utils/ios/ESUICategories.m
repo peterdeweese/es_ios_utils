@@ -80,6 +80,18 @@
 @end
 
 
+@implementation UIButton(ESUtils)
+
+-(NSString*)title { return [self titleForState:UIControlStateNormal]; }
+-(void)setTitle:(NSString *)title
+{
+    [self setTitle:title forState:UIControlStateNormal];
+}
+
+@end
+
+
+
 @implementation UIDevice(ESUtils)
 
 +(BOOL)isPad
@@ -151,6 +163,41 @@
 -(void)setRightBarButtonItems:(NSArray*)items
 {
     self.rightBarButtonItem = [UIBarButtonItem barButtonItemWithCustomView:[UIToolbar toolbarWithItems:items]];
+}
+
+@end
+
+
+@implementation UIPickerView(ESUtils)
+
++(UIPickerView*)pickerView
+{
+    return [[[UIPickerView alloc] init] autorelease];
+}
+
++(UIPickerView*)pickerViewWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource
+{
+    return [[[self alloc] initWithDelegate:delegate dataSource:dataSource] autorelease];
+}
+
++(UIPickerView*)pickerViewWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
+{
+    return [self pickerViewWithDelegate:delegate dataSource:delegate];
+}
+
+-(id)initWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource
+{
+    if(self = [super init])
+    {
+        self.delegate = delegate;
+        self.dataSource = dataSource;
+    }
+    return self;
+}
+
+-(id)initWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
+{
+    return [self initWithDelegate:delegate dataSource:delegate];
 }
 
 @end
