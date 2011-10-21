@@ -49,6 +49,7 @@
 @end
 
 @interface NSManagedObjectContext(ESCDCategories)
+  -(id)createUninsertedManagedObjectOfClass:(Class)c;
   -(id)createManagedObjectNamed:(NSString*)name;
   -(id)createManagedObjectNamed:(NSString*)name withDictionary:(NSDictionary*)dictionary;
   -(id)createManagedObjectOfClass:(Class)c;
