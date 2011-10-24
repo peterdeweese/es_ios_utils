@@ -64,7 +64,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     id reuseIdentifier = cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
     UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
-    return c ?: [[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier];
+    return c ?: [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier] autorelease];
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
