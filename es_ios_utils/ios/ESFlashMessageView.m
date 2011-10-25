@@ -55,24 +55,26 @@
 {
     @synchronized(queue)
     {
-        NSString *message = queue.dequeue;
+        __block NSString *message = queue.dequeue;
         
         if(message)
         {
             NSLog(@"Setting flash message: %@", message);
             if(self.alpha == 0.0)
                 self.text = message;
+            __block typeof(self) bself = self;
             [UIView animateWithDuration:fadeDuration
                              animations:^{
-                                 self.text = message;
-                                 self.alpha = maxAlpha;
+                                 bself.text = message;
+                                 bself.alpha = bself.maxAlpha;
                              }];
         }
         else if(self.alpha >= maxAlpha)
         {
+            __block typeof(self) bself = self;
             [UIView animateWithDuration:fadeDuration
                              animations:^{
-                                 self.alpha = 0.0;
+                                 bself.alpha = 0.0;
                              }];
         }
     }

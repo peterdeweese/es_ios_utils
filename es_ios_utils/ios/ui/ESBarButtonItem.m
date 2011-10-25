@@ -19,7 +19,7 @@
     return result;
 }
 
-+(ESBarButtonItem*)barButtonItemToEditTable:(UITableView*)t
++(ESBarButtonItem*)barButtonItemToEditTable:(__block UITableView*)t
 {
     ESBarButtonItem* item __block;
     item = [ESBarButtonItem barButtonItemWithTitle:@"Edit" action:^{
