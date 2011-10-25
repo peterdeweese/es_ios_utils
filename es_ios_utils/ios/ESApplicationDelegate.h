@@ -1,8 +1,12 @@
-#if IS_IOS || USE_APPLICATION_UNIT_TEST
+#import "ESUtils.h"
+
+#if (IS_IOS && CORE_DATA_AVAILABLE) || USE_APPLICATION_UNIT_TEST
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
+
+#import "ESCDCategories.h"
 
 /*
  * Many Apple templates contain singletons for managaged objects, the documents directory, etc.  This class obviates such repetition and clutter.  Subclasses must implement persistentStoreName.

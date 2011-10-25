@@ -35,6 +35,8 @@
 		A99823081399618600855F2B /* development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99823071399618600855F2B /* development.plist */; };
 		A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB23A61348085E00156CE2 /* ESViewTest.m */; };
 		A9BB23AA13480B0300156CE2 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9414B711347B391008C67F4 /* TestViewController.xib */; };
+		D047A0921451074500F5AD0B /* ESCDCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D047A08F145106C600F5AD0B /* ESCDCategoriesTest.m */; };
+		D047A095145109A800F5AD0B /* ESCDCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D047A094145109A800F5AD0B /* ESCDCategories.m */; };
 		D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */; };
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
@@ -115,6 +117,10 @@
 		A99823071399618600855F2B /* development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = development.plist; sourceTree = "<group>"; };
 		A9BB23A51348085E00156CE2 /* ESViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESViewTest.h; path = es_ios_utilsTests/ESViewTest.h; sourceTree = SOURCE_ROOT; };
 		A9BB23A61348085E00156CE2 /* ESViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESViewTest.m; path = es_ios_utilsTests/ESViewTest.m; sourceTree = SOURCE_ROOT; };
+		D047A08E145106C600F5AD0B /* ESCDCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCDCategoriesTest.h; sourceTree = "<group>"; };
+		D047A08F145106C600F5AD0B /* ESCDCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCDCategoriesTest.m; sourceTree = "<group>"; };
+		D047A093145109A800F5AD0B /* ESCDCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCDCategories.h; sourceTree = "<group>"; };
+		D047A094145109A800F5AD0B /* ESCDCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCDCategories.m; sourceTree = "<group>"; };
 		D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCollectionCategoriesTest.h; path = es_ios_utilsTests/ESCollectionCategoriesTest.h; sourceTree = SOURCE_ROOT; };
 		D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCollectionCategoriesTest.m; path = es_ios_utilsTests/ESCollectionCategoriesTest.m; sourceTree = SOURCE_ROOT; };
 		D0B2E5C813A029AA00F32DB5 /* Object3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object3.h; path = model/Object3.h; sourceTree = "<group>"; };
@@ -286,6 +292,8 @@
 				A9BB23A51348085E00156CE2 /* ESViewTest.h */,
 				A9BB23A61348085E00156CE2 /* ESViewTest.m */,
 				A9414B801347B391008C67F4 /* Supporting Files */,
+				D047A08E145106C600F5AD0B /* ESCDCategoriesTest.h */,
+				D047A08F145106C600F5AD0B /* ESCDCategoriesTest.m */,
 			);
 			path = es_ios_utils_appTests;
 			sourceTree = "<group>";
@@ -341,6 +349,8 @@
 				D0BB0ED41444A2CE00EE3D1D /* ESApplicationDelegate.m */,
 				D0BB0ED51444A2CE00EE3D1D /* ESBlockActionSheet.h */,
 				D0BB0ED61444A2CE00EE3D1D /* ESBlockActionSheet.m */,
+				D047A093145109A800F5AD0B /* ESCDCategories.h */,
+				D047A094145109A800F5AD0B /* ESCDCategories.m */,
 				D0BB0ED71444A2CE00EE3D1D /* ESCircleView.h */,
 				D0BB0ED81444A2CE00EE3D1D /* ESCircleView.m */,
 				D0BB0ED91444A2CE00EE3D1D /* ESFetchedTableViewController.h */,
@@ -453,6 +463,9 @@
 /* Begin PBXProject section */
 		A9414B4C1347B391008C67F4 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = A9414B4F1347B391008C67F4 /* Build configuration list for PBXProject "es_ios_utils" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -547,6 +560,7 @@
 				D0BB0F191444A2CE00EE3D1D /* ESCGMethods.m in Sources */,
 				D0BB0F1A1444A2CE00EE3D1D /* ESCollectionCategories.m in Sources */,
 				D0BB0F1B1444A2CE00EE3D1D /* ESDynamicMethodResolver.m in Sources */,
+				D047A095145109A800F5AD0B /* ESCDCategories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D047A0921451074500F5AD0B /* ESCDCategoriesTest.m in Sources */,
 				A9BB23A9134809BB00156CE2 /* ESViewTest.m in Sources */,
 				A9414C011347BDF8008C67F4 /* ESApplicationDelegateTest.m in Sources */,
 				A9414BF61347B741008C67F4 /* ESDynamicMethodResolverTest.m in Sources */,
@@ -652,6 +667,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_app/es_ios_utils_app-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_app/es_ios_utils_app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -665,6 +681,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_app/es_ios_utils_app-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_app/es_ios_utils_app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
@@ -683,6 +700,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_appTests/es_ios_utils_appTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_appTests/es_ios_utils_appTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -705,6 +723,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "es_ios_utils_appTests/es_ios_utils_appTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "es_ios_utils_appTests/es_ios_utils_appTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

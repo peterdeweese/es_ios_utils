@@ -13,12 +13,8 @@
 
 -(id)init
 {
-    if(self = [super init])
-    {
-        self.dataSource              = self;
-        self.delegate                = self;
+    if(self = [super initWithDelegateAndDataSource:self])
         self.showsSelectionIndicator = YES;
-    }
     return self;
 }
 

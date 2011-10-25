@@ -6,8 +6,8 @@
 
 -(id)initWithDictionary:(NSDictionary*)d
 {
-    [super init];
-    dictionary = [d retain];
+    if(self = [super init])
+        dictionary = [d retain];
     return self;
 }
 

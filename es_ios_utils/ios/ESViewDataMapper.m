@@ -133,7 +133,7 @@
     else if([self.view isKindOfClass:UILabel.class])
         ((UILabel*)self.view).text = (NSString*)value;
     else if([self.view isKindOfClass:UIButton.class])
-        [(UIButton*)self.view setTitle:(NSString*)value forState:UIControlStateNormal];
+        ((UIButton*)self.view).title = (NSString*)value;
     else if([self.view isKindOfClass:UIDatePicker.class])
         ((UIDatePicker*)self.view).date = (NSDate*)value ?: NSDate.date;
     else

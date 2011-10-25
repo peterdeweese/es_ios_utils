@@ -1,17 +1,13 @@
-#if IS_IOS
-
-#import "ESApplicationDelegate.h"
 #import "ESUtils.h"
+#import "ESApplicationDelegate.h"
+
+#if IS_IOS && CORE_DATA_AVAILABLE
 
 @implementation ESApplicationDelegate
 
 @synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
 
--(NSString*)persistentStoreName
-{
-    $must_override;
-    return nil;
-}
+-(NSString*)persistentStoreName { return @"app"; }
 
 +(ESApplicationDelegate*)delegate
 {

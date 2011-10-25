@@ -1,10 +1,13 @@
-#if IS_IOS
+#import "ESUtils.h"
 
+#if IS_IOS && CORE_DATA_AVAILABLE
+
+#import "ESCDCategories.h"
 #import "ESFetchedTableViewController.h"
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellStyle;
+@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellReuseIdentifier, cellStyle;
 
 -(id)init
 {
@@ -59,7 +62,9 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(UITableViewCell*)createCell
 {
-    return  [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:kESFetchedTableViewControllerCell] autorelease];
+    id reuseIdentifier = cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
+    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    return c ?: [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier] autorelease];
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
@@ -69,6 +74,11 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(void)didSelectObject:(id)o { }
 -(void)didDeselectObject:(id)o { }
+
+-(id)selectedObject
+{
+    return [self.fetchedResultsController objectAtIndexPath:self.tableView.indexPathForSelectedRow];
+}
 
 #pragma mark - Table Controller, Datasource, and Delegate
 
@@ -208,6 +218,12 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     [self.tableView endUpdates];
 }
 
+-(void)insertNewObject
+{
+    NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:entityClass];
+    [newManagedObject.managedObjectContext saveAndDoOnError:doOnError];
+}
+
 #pragma mark -
 
 -(void)dealloc
@@ -215,7 +231,9 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     self.fetchedResultsController = nil;
     self.managedObjectContext     = nil;
     self.sectionNameKeyPath       = nil;
-    
+    self.cellReuseIdentifier      = nil;
+    self.entityClass              = nil;
+    self.doOnError                = nil;
     [super dealloc];
 }
 

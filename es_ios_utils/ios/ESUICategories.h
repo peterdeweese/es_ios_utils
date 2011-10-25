@@ -34,6 +34,11 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 
+@interface UIButton(ESUtils)
+  @property(nonatomic, assign) NSString* title;
+@end
+
+
 @interface UIDevice(ESUtils)
     +(BOOL)isPad;
     +(BOOL)isPhone;
@@ -58,6 +63,15 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @interface UINavigationItem(ESUtils)
     -(void)configureWithTitle:(NSString*)title leftItem:(UIBarButtonItem*)left rightItem:(UIBarButtonItem*)right;
     -(void)setRightBarButtonItems:(NSArray*)items;
+@end
+
+
+@interface UIPickerView(ESUtils)
+  +(UIPickerView*)pickerView;
+  +(UIPickerView*)pickerViewWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource;
+  +(UIPickerView*)pickerViewWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate;
+  -(id)initWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource;
+  -(id)initWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate;
 @end
 
 
@@ -90,6 +104,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   @property(assign) CGSize   size;
   @property(assign) CGPoint  origin;
   @property(assign) UIColor* borderColor;
+  @property(assign) float    borderWidth;
+  @property(assign) float    cornerRadius;
 
   @property(nonatomic, readonly) BOOL         isInPopover;
   @property(nonatomic, readonly) UIResponder* findFirstResponder;

@@ -80,6 +80,18 @@
 @end
 
 
+@implementation UIButton(ESUtils)
+
+-(NSString*)title { return [self titleForState:UIControlStateNormal]; }
+-(void)setTitle:(NSString *)title
+{
+    [self setTitle:title forState:UIControlStateNormal];
+}
+
+@end
+
+
+
 @implementation UIDevice(ESUtils)
 
 +(BOOL)isPad
@@ -151,6 +163,41 @@
 -(void)setRightBarButtonItems:(NSArray*)items
 {
     self.rightBarButtonItem = [UIBarButtonItem barButtonItemWithCustomView:[UIToolbar toolbarWithItems:items]];
+}
+
+@end
+
+
+@implementation UIPickerView(ESUtils)
+
++(UIPickerView*)pickerView
+{
+    return [[[UIPickerView alloc] init] autorelease];
+}
+
++(UIPickerView*)pickerViewWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource
+{
+    return [[[self alloc] initWithDelegate:delegate dataSource:dataSource] autorelease];
+}
+
++(UIPickerView*)pickerViewWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
+{
+    return [self pickerViewWithDelegate:delegate dataSource:delegate];
+}
+
+-(id)initWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource
+{
+    if(self = [super init])
+    {
+        self.delegate = delegate;
+        self.dataSource = dataSource;
+    }
+    return self;
+}
+
+-(id)initWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
+{
+    return [self initWithDelegate:delegate dataSource:delegate];
 }
 
 @end
@@ -255,6 +302,12 @@
 
 -(UIColor*)borderColor { return [UIColor colorWithCGColor:self.layer.borderColor]; }
 -(void)setBorderColor:(UIColor*)c { self.layer.borderColor = c.CGColor; }
+
+-(float)borderWidth { return self.layer.borderWidth; }
+-(void)setBorderWidth:(float)w { self.layer.borderWidth = w; }
+
+-(float)cornerRadius { return self.layer.cornerRadius; }
+-(void)setCornerRadius:(float)r { self.layer.cornerRadius = r; }
 
 -(void)replaceInSuperviewWith:(UIView*)v
 {
@@ -460,8 +513,8 @@
 -(void)styleAsRoundedRect
 {
     self.borderColor = UIColor.lightGrayColor;
-    self.layer.borderWidth = 1.;
-    self.layer.cornerRadius = 4.5;
+    self.borderWidth = 1.;
+    self.cornerRadius = 4.5;
     self.backgroundColor = UIColor.whiteColor;
     self.clipsToBounds = YES;
 }

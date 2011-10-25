@@ -238,7 +238,12 @@
 
 @implementation NSMutableArray(ESUtils)
 
-- (id)dequeue
+-(NSArray*)asArray
+{
+    return [self.copy autorelease];
+}
+
+-(id)dequeue
 {
     if(self.isEmpty)
         return nil;
@@ -248,7 +253,7 @@
     return o;
 }
 
-- (id)pop
+-(id)pop
 {
     if(self.count == 0)
         return nil;

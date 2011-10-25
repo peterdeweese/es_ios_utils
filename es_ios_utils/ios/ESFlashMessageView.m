@@ -23,7 +23,7 @@
         self.fadeDuration = 0.5;
         self.maxAlpha = 0.8;
         
-        self.layer.cornerRadius = 15;
+        self.cornerRadius = 15;
         self.textAlignment = UITextAlignmentCenter;
         self.alpha = 0.0;
         self.backgroundColor = UIColor.darkGrayColor;

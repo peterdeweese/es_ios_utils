@@ -68,13 +68,15 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 // To enqueue or push, use addObject:
 @interface NSMutableArray(ESUtils)
-    // Removes and returns object from the beginning of the array, or nil if empty
-    -(id)dequeue;
+  @property(readonly) NSArray* asArray;
 
-    // Removes and returns object from the end of the array, or nil if empty
-    -(id)pop;
+  // Removes and returns object from the beginning of the array, or nil if empty
+  -(id)dequeue;
 
-    -(void)replaceObject:(id)o withObject:(id)newO;
+  // Removes and returns object from the end of the array, or nil if empty
+  -(id)pop;
+
+  -(void)replaceObject:(id)o withObject:(id)newO;
 @end
 
 @interface NSMutableDictionary(ESUtils)

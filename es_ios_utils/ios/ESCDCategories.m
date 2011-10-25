@@ -216,6 +216,11 @@
 
 @implementation NSManagedObjectContext(ESCDCategories)
 
+-(id)createUninsertedManagedObjectOfClass:(Class)c
+{
+    return [[c alloc] initWithEntity:[NSEntityDescription entityForName:[NSString stringWithClassName:c] inManagedObjectContext:self] insertIntoManagedObjectContext:nil];
+}
+
 -(id)createManagedObjectNamed:(NSString*)name
 {
     // Create a new instance of the entity managed by the fetched results controller.

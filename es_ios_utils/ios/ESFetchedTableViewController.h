@@ -1,12 +1,16 @@
-#if IS_IOS
+#import "ESUtils.h"
+
+#if IS_IOS && CORE_DATA_AVAILABLE
 
 #import <Foundation/Foundation.h>
 
 //  Implemented with one section.
 @interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property(nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property(nonatomic, retain) NSManagedObjectContext     *managedObjectContext;
+@property(nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
+@property(nonatomic, retain) NSManagedObjectContext*     managedObjectContext;
+
+@property(nonatomic, readonly) id selectedObject;
 
 -(id)objectAtIndexPath:(NSIndexPath*)i;
 -(NSIndexPath*)indexPathForObject:(id)o;
@@ -16,6 +20,7 @@
 
 //Configure these:
 @property(nonatomic, assign) Class     entityClass;
+@property(nonatomic, retain) NSString* cellReuseIdentifier;
 @property(nonatomic, retain) NSString* sectionNameKeyPath; //optional, defaults to nil
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
 @property(nonatomic, assign) UITableViewCellStyle cellStyle; //defaults to normal
