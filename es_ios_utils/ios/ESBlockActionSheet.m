@@ -61,10 +61,10 @@
 
 -(void)addButtonWithTitle:(NSString*)buttonTitle doOnPress:(void(^)(void))doOnPress
 {
-    if(sheet)
+    if(self.sheet)
         return;
-    [buttonTitles addObject:buttonTitle];
-    [doOnPresses addObject:doOnPress?(id)[[doOnPress copy] autorelease]:NSNull.null];
+    [self.buttonTitles addObject:buttonTitle];
+    [self.doOnPresses addObject:doOnPress?(id)[[doOnPress copy] autorelease]:NSNull.null];
 }
 
 #pragma mark Control
@@ -72,28 +72,28 @@
 //Once this is called, the action sheet becomes static.
 -(IBAction)buildSheet
 {
-    if(!sheet)
+    if(!self.sheet)
     {
-        sheet = [[UIActionSheet alloc] init];
-        sheet.title = title;
-        sheet.delegate = self;
+        self.sheet = [[[UIActionSheet alloc] init] autorelease];
+        self.sheet.title = title;
+        self.sheet.delegate = self;
         
-        if(destroyTitle)
+        if(self.destroyTitle)
         {
-            [sheet addButtonWithTitle:destroyTitle];
-            sheet.destructiveButtonIndex = sheet.numberOfButtons-1;
-            [doOnPresses insertObject:doOnDestroy?(id)doOnDestroy:NSNull.null atIndex:0];
+            [self.sheet addButtonWithTitle:destroyTitle];
+            self.sheet.destructiveButtonIndex = sheet.numberOfButtons-1;
+            [self.doOnPresses insertObject:self.doOnDestroy?(id)self.doOnDestroy:NSNull.null atIndex:0];
         }
         
-        if(buttonTitles)
-            for(NSString *buttonTitle in buttonTitles)
-                [sheet addButtonWithTitle:buttonTitle];
+        if(self.buttonTitles)
+            for(NSString *buttonTitle in self.buttonTitles)
+                [self.sheet addButtonWithTitle:buttonTitle];
         
-        if(cancelTitle)
+        if(self.cancelTitle)
         {
-            [sheet addButtonWithTitle:cancelTitle];
-            sheet.cancelButtonIndex = sheet.numberOfButtons-1;
-            [doOnPresses addObject:doOnCancel?(id)doOnCancel:NSNull.null];
+            [self.sheet addButtonWithTitle:self.cancelTitle];
+            self.sheet.cancelButtonIndex = sheet.numberOfButtons-1;
+            [self.doOnPresses addObject:self.doOnCancel?(id)self.doOnCancel:NSNull.null];
         }
     }
 }
@@ -101,37 +101,40 @@
 -(IBAction)presentIn:(UIViewController*)controller
 {
     [self buildSheet];
-    [sheet showInView:controller.view];
+    [self.sheet showInView:controller.view];
 }
 
 -(IBAction)presentIn:(UIView*)view fromRect:(CGRect)from
 {
     [self buildSheet];
-    [sheet showFromRect:from inView:view animated:YES];
+    [self.sheet showFromRect:from inView:view animated:YES];
 }
 
 -(IBAction)presentFromBarButtonItem:(UIBarButtonItem*)item
 {
     [self buildSheet];
-    [sheet showFromBarButtonItem:item animated:YES];
+    [self.sheet showFromBarButtonItem:item animated:YES];
 }
 
 #pragma mark Action Sheet Delegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    void(^actionBlock)(void) = [doOnPresses objectAtIndex:buttonIndex];
+    void(^actionBlock)(void) = [self.doOnPresses objectAtIndex:buttonIndex];
     if(actionBlock && (id)actionBlock != NSNull.null)
         actionBlock();
 }
 
 - (void)dealloc
 {
-    self.sheet = nil;
-    self.doOnCancel = nil;
-    self.doOnDestroy = nil;
-    self.doOnPresses = nil;
+    self.sheet        = nil;
+    self.doOnCancel   = nil;
+    self.doOnDestroy  = nil;
+    self.doOnPresses  = nil;
     self.buttonTitles = nil;
+    self.title        = nil;
+    self.cancelTitle  = nil;
+    self.destroyTitle = nil;
     
     [super dealloc];
 }
