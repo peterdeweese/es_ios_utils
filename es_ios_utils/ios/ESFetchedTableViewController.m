@@ -228,12 +228,13 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(void)dealloc
 {
-    self.fetchedResultsController = nil;
-    self.managedObjectContext     = nil;
-    self.sectionNameKeyPath       = nil;
-    self.cellReuseIdentifier      = nil;
-    self.entityClass              = nil;
-    self.doOnError                = nil;
+    self.fetchedResultsController.delegate = nil;
+    self.fetchedResultsController          = nil;
+    self.managedObjectContext              = nil;
+    self.sectionNameKeyPath                = nil;
+    self.cellReuseIdentifier               = nil;
+    self.entityClass                       = nil;
+    self.doOnError                         = nil;
     [super dealloc];
 }
 
