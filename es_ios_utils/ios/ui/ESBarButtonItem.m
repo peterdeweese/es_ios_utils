@@ -58,26 +58,28 @@
 
 -(void)presentPopover
 {
-    if(!popoverController)
+    if(!self.popoverController)
     {
         UIViewController* vc = viewControllerForPopover ?: (createViewControllerForPopover!=nil ? createViewControllerForPopover() : nil);
         if(vc)
         {
             self.popoverController = [UIPopoverController popoverControllerWithNavigationAndContentViewController:vc];
-            popoverController.delegate = self;
-            [popoverController presentPopoverFromBarButtonItem:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            self.popoverController.delegate = self;
+            [self.popoverController presentPopoverFromBarButtonItem:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
     }
 }
 
 -(void)dismissPopover
 {
-    [popoverController dismissPopoverAnimated:YES];
+    [self.popoverController dismissPopoverAnimated:YES];
+    self.popoverController.delegate = nil;
     self.popoverController = nil;
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController*)pc
 {
+    self.popoverController.delegate = nil;
     self.popoverController = nil;
 }
 
@@ -88,6 +90,7 @@
 {
     self.blockAction                    = nil;
     self.viewControllerForPopover       = nil;
+    self.popoverController.delegate     = nil;
     self.popoverController              = nil;
     self.userTarget                     = nil;
     self.userAction                     = nil;
