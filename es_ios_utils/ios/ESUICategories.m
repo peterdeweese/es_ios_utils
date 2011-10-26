@@ -361,43 +361,11 @@
     return [self valueForKey:@"popoverController"];
 }
 
--(void)popoverFromBarButtonItem:(UIBarButtonItem*)button
+-(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem*)button
 {
     UIPopoverController *pc = [UIPopoverController popoverControllerWithNavigationAndContentViewController:self];
     [pc presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
--(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button
-{
-    if(UIDevice.isPad)
-    {
-        [self.view layoutIfNeeded];
-        [self popoverFromBarButtonItem:button];
-    }
-    else
-        [parent.navigationController pushViewController:self animated:YES];
-}
-
--(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r permittedArrowDirections:(UIPopoverArrowDirection)directions
-{
-    if(UIDevice.isPad)
-    {
-        [self.view layoutIfNeeded];
-        UIPopoverController *pc = [UIPopoverController popoverControllerWithNavigationAndContentViewController:self];
-        // To set the size of the popover view, set the property self.contentSizeForViewInPopover before
-        // calling this.  A good place would be in [self viewDidLoad] 
-        [pc presentPopoverFromRect:r
-                            inView:parent.view
-          permittedArrowDirections:directions
-                          animated:YES];
-    }
-    else
-        [parent.navigationController pushViewController:self animated:YES];
-}
-
--(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r
-{
-    [self pushOrPopoverInViewController:parent from:r permittedArrowDirections:UIPopoverArrowDirectionAny];
+    return pc;
 }
 
 -(void)popOrDismiss

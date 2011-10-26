@@ -125,10 +125,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
     //If iPad, use popover, else push
     -(void)popOrDismiss;
-    -(void)popoverFromBarButtonItem:(UIBarButtonItem*)button;
-    -(void)pushOrPopoverInViewController:(UIViewController*)parent fromBarButtonItem:(UIBarButtonItem*)button;
-    -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r;
-    -(void)pushOrPopoverInViewController:(UIViewController*)parent from:(CGRect)r permittedArrowDirections:(UIPopoverArrowDirection)directions;
+    -(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem*)button;
     @property(nonatomic, readonly) UIWindow* window;
 
     -(void)observeKeyboardEvents;
