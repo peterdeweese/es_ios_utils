@@ -115,26 +115,29 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIViewController(ESUtils)
-    //Passed Apple's review. Prefixed with a $ to indicate undocumented api and to prevent conflict with key.
-    @property(nonatomic, readonly) UIPopoverController *$popoverController;
+  //Passed Apple's review. Prefixed with a $ to indicate undocumented api and to prevent conflict with key.
+  @property(nonatomic, readonly) UIPopoverController *$popoverController;
     
-    // Forces without using a private api.
-    -(void)forcePortrait;
+  // Forces without using a private api.
+  -(void)forcePortrait;
 
-    -(void)forcePopoverSize;
+  -(void)forcePopoverSize;
 
-    //If iPad, use popover, else push
-    -(void)popOrDismiss;
-    -(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem*)button;
-    @property(nonatomic, readonly) UIWindow* window;
+  -(void)popOrDismiss;
 
-    -(void)observeKeyboardEvents;
-    -(void)stopObservingKeyboardEvents;
-    //These methods will only be called after observeKeyboardEvents is called.
-    -(void)keyboardWillShow:(NSNotification*)n;
-    -(void)keyboardDidShow:(NSNotification*)n;
-    -(void)keyboardWillHide:(NSNotification*)n;
-    -(void)keyboardDidHide:(NSNotification*)n;
+  //You must retain this popover while it is open (releasing upon popoverControllerDidDismissPopover), or retain the view controller passed in. Retaining one popover in the parent view controller can be a convenient way to insure that only one is open.
+  -(UIPopoverController*)popoverIn:(UIViewController*)vc fromRect:(CGRect)r delegate:(id<UIPopoverControllerDelegate>)delegate;
+  -(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem *)button delegate:(id<UIPopoverControllerDelegate>)delegate;
+  -(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem*)button;
+  @property(nonatomic, readonly) UIWindow* window;
+
+  -(void)observeKeyboardEvents;
+  -(void)stopObservingKeyboardEvents;
+  //These methods will only be called after observeKeyboardEvents is called.
+  -(void)keyboardWillShow:(NSNotification*)n;
+  -(void)keyboardDidShow:(NSNotification*)n;
+  -(void)keyboardWillHide:(NSNotification*)n;
+  -(void)keyboardDidHide:(NSNotification*)n;
 @end
 
 @interface UIScrollView(ESUtils)

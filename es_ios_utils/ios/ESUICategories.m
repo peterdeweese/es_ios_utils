@@ -361,11 +361,25 @@
     return [self valueForKey:@"popoverController"];
 }
 
--(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem*)button
+-(UIPopoverController*)popoverIn:(UIViewController*)vc fromRect:(CGRect)r delegate:(id<UIPopoverControllerDelegate>)delegate
 {
-    UIPopoverController *pc = [UIPopoverController popoverControllerWithNavigationAndContentViewController:self];
+    UIPopoverController* pc = [UIPopoverController popoverControllerWithNavigationAndContentViewController:vc];
+    pc.delegate = delegate;
+    [pc presentPopoverFromRect:r inView:vc.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    return pc;
+}
+
+-(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem*)button delegate:(id<UIPopoverControllerDelegate>)delegate
+{
+    UIPopoverController* pc = [UIPopoverController popoverControllerWithNavigationAndContentViewController:self];
+    pc.delegate = delegate;
     [pc presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     return pc;
+}
+
+-(UIPopoverController*)popoverFromBarButtonItem:(UIBarButtonItem *)button
+{
+    return [self popoverFromBarButtonItem:button delegate:nil];
 }
 
 -(void)popOrDismiss

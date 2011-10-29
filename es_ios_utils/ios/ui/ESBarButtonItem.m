@@ -21,7 +21,7 @@
 
 +(ESBarButtonItem*)barButtonItemToEditTable:(__block UITableView*)t
 {
-    ESBarButtonItem* item __block;
+    __block ESBarButtonItem* item;
     item = [ESBarButtonItem barButtonItemWithTitle:@"Edit" action:^{
         [t setEditing:!t.editing animated:YES];
         item.title = t.editing ? @"Done" : @"Edit";
