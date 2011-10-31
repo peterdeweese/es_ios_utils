@@ -30,6 +30,7 @@
 #endif
 
 #import "ESNSCategories.h"
+#import "ESCollectionCategories.h"
 
 #define $array(objs...) [NSArray arrayWithObjects: objs, nil] 
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 

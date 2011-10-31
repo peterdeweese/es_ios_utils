@@ -1,5 +1,3 @@
-#if IS_IOS
-
 #import "ESCollectionCategories.h"
 #import <objc/runtime.h>
 
@@ -81,6 +79,11 @@
     NSString *format = $format(@"%@ IN %@", @"%@", keyPath);
     NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
     return [self filteredArrayUsingPredicate:pred];
+}
+
+-(BOOL)isIndexInRange:(NSInteger)i
+{
+    return i >= 0 && i < self.count;
 }
 
 -(NSArray*)reversed
@@ -378,5 +381,3 @@
 }
 
 @end
-
-#endif /*IS_IOS*/

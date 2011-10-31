@@ -25,6 +25,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
     -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
     -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+    -(BOOL)isIndexInRange:(NSInteger)i;
 
     @property(readonly) NSArray    *reversed;
     @property(readonly) id         firstObject;

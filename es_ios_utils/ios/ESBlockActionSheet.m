@@ -120,21 +120,25 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    void(^actionBlock)(void) = [self.doOnPresses objectAtIndex:buttonIndex];
-    if(actionBlock && (id)actionBlock != NSNull.null)
-        actionBlock();
+    if([doOnPresses isIndexInRange:buttonIndex])//filter out cancel
+    {
+        void(^actionBlock)(void) = [self.doOnPresses objectAtIndex:buttonIndex];
+        if(actionBlock && (id)actionBlock != NSNull.null)
+            actionBlock();
+    }
 }
 
 - (void)dealloc
 {
-    self.sheet        = nil;
-    self.doOnCancel   = nil;
-    self.doOnDestroy  = nil;
-    self.doOnPresses  = nil;
-    self.buttonTitles = nil;
-    self.title        = nil;
-    self.cancelTitle  = nil;
-    self.destroyTitle = nil;
+    self.sheet.delegate = nil;
+    self.doOnCancel     = nil;
+    self.doOnDestroy    = nil;
+    self.doOnPresses    = nil;
+    self.sheet          = nil;
+    self.buttonTitles   = nil;
+    self.title          = nil;
+    self.cancelTitle    = nil;
+    self.destroyTitle   = nil;
     
     [super dealloc];
 }

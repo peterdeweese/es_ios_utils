@@ -77,6 +77,12 @@
     
     array = $array(first, second, third, fourth);
     STAssertEqualObjects(array.reversed, $array(fourth, third, second, first), nil);
+    
+    array = $array(first, second);
+    STAssertFalse([array isIndexInRange:-1], nil);
+    STAssertTrue([array isIndexInRange:0], nil);
+    STAssertTrue([array isIndexInRange:1], nil);
+    STAssertFalse([array isIndexInRange:2], nil);
 }
 
 -(void)testNSArrayCoersion
