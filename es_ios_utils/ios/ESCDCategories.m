@@ -157,7 +157,7 @@
             id<NSFastEnumeration> many = nil;
             @try
             {
-                many = [self valueForKey:$format(@"ordered%@",relationship.capitalizedString)];
+                many = [self valueForKey:$format(@"ordered%@",relationship.asCapitalizedFirstLetter)];
                 NSLog(@"Using ordered %@", relationship);
             }
             @catch (NSException *e)

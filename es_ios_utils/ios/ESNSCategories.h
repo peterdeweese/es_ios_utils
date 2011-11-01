@@ -64,6 +64,7 @@ typedef void(^ErrorBlock)(NSError*);
     @property(nonatomic, readonly) BOOL      isEmpty;
     @property(nonatomic, readonly) BOOL      isNotEmpty;
 
+    @property(nonatomic, readonly) NSString *asCapitalizedFirstLetter;
     @property(nonatomic, readonly) NSString *asCamelCaseFromUnderscore;
     @property(nonatomic, readonly) NSString *asUnderscoreFromCamelCase;
 @end

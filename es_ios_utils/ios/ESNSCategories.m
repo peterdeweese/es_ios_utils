@@ -209,6 +209,13 @@ float logx(float value, float base)
     return !self.isEmpty && !self.strip.isEmpty;
 }
 
+-(NSString*)asCapitalizedFirstLetter
+{
+    if(self.isBlank) return self;
+    
+    return $format(@"%@%@", [self substringToIndex:1].uppercaseString, [self substringFromIndex:1]);
+}
+
 //credit: http://stackoverflow.com/questions/1918972/camelcase-to-underscores-and-back-in-objective-c
 -(NSString*)asCamelCaseFromUnderscore
 {

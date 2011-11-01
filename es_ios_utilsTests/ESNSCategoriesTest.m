@@ -96,6 +96,12 @@
     STAssertEqualObjects(underscore, camel.asUnderscoreFromCamelCase, @"Should convert to underscores.");
 }
 
+-(void)testNSStringTransformation
+{
+    STAssertEqualObjects(@"Eventcodes", @"eventCodes".capitalizedString, nil);
+    STAssertEqualObjects(@"EventCodes", @"eventCodes".asCapitalizedFirstLetter, nil);
+}
+
 -(void)testNSStringContainsString
 {
     STAssertTrue([@"asdf wer adsf" containsString:@"wer"], nil);
