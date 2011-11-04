@@ -37,6 +37,8 @@
 -(IBAction)presentIn:(UIViewController*)controller;
 -(IBAction)presentIn:(UIView*)view fromRect:(CGRect)from;
 -(IBAction)presentFromBarButtonItem:(UIBarButtonItem*)item;
+-(IBAction)dismissWithAnimation:(BOOL)animate;
+-(IBAction)dismiss;
 
 @end
 

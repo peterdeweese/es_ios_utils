@@ -116,6 +116,16 @@
     [self.sheet showFromBarButtonItem:item animated:YES];
 }
 
+-(IBAction)dismissWithAnimation:(BOOL)animate
+{
+    [self.sheet dismissWithClickedButtonIndex:-1 animated:animate];
+}
+
+-(IBAction)dismiss
+{
+    [self dismissWithAnimation:YES];
+}
+
 #pragma mark Action Sheet Delegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
