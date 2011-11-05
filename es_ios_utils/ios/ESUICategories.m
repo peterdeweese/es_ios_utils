@@ -351,6 +351,40 @@
     }
 }
 
+-(void)resizeSuperviewAndSetHeight:(float)dynamicHeight
+{
+    __block CGRect oldFrame = self.frame;
+    self.height = dynamicHeight;
+    
+    // Grow or shrink parent.  Find all sibling elements below this element and change their y.
+    if(oldFrame.size.height != self.height)
+    {
+        __block float diff = self.height - oldFrame.size.height;
+        __block typeof(self) bself = self;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            float newHeight = bself.superview.height + diff;
+            if([bself.superview respondsToSelector:@selector(shouldResizeDynamically)])
+            {
+                [bself.superview resizeSuperviewAndSetHeight:newHeight];
+            }
+            else
+            {
+                bself.superview.height = newHeight;
+            }
+            
+            for(UIView *v in bself.superview.subviews)
+                if(v.y >= bself.y + oldFrame.size.height)
+                    v.y = v.y + diff;
+        }];
+    }
+    
+    //On the device these values are somehow garbled.  It works without this section on the simulator.
+    self.width = oldFrame.size.width;
+    self.origin = oldFrame.origin;
+}
+
+
 @end
 
 
