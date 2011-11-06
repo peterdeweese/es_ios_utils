@@ -351,7 +351,7 @@
     }
 }
 
--(void)resizeSuperviewAndSetHeight:(float)dynamicHeight
+-(void)resizeSuperviewAndSetHeight:(float)dynamicHeight animated:(BOOL)animate
 {
     __block CGRect oldFrame = self.frame;
     self.height = dynamicHeight;
@@ -362,26 +362,45 @@
         __block float diff = self.height - oldFrame.size.height;
         __block typeof(self) bself = self;
         
-        [UIView animateWithDuration:0.5 animations:^{
-            float newHeight = bself.superview.height + diff;
+        void(^resizeBlock)(void) = ^{
             if([bself.superview respondsToSelector:@selector(shouldResizeDynamically)])
             {
-                [bself.superview resizeSuperviewAndSetHeight:newHeight];
+                [bself.superview resizeSuperviewAndSetHeight:bself.superview.height + diff];
+            }
+            else if([bself.superview isKindOfClass:[UIScrollView class]])
+            {
+                CGSize content = ((UIScrollView *)bself.superview).contentSize;
+                content.height += diff;
+                ((UIScrollView *)bself.superview).contentSize = content;
             }
             else
             {
-                bself.superview.height = newHeight;
+                bself.superview.height += diff;
             }
             
             for(UIView *v in bself.superview.subviews)
                 if(v.y >= bself.y + oldFrame.size.height)
                     v.y = v.y + diff;
-        }];
+        };
+        
+        if(animate)
+        {
+            [UIView animateWithDuration:0.5 animations:resizeBlock];
+        }
+        else
+        {
+            resizeBlock();
+        }
     }
     
     //On the device these values are somehow garbled.  It works without this section on the simulator.
     self.width = oldFrame.size.width;
     self.origin = oldFrame.origin;
+}
+
+-(void)resizeSuperviewAndSetHeight:(float)dynamicHeight
+{
+    [self resizeSuperviewAndSetHeight:dynamicHeight animated:NO];
 }
 
 

@@ -114,6 +114,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   -(void)centerInSuperview;
 
   -(void)resizeSuperviewAndSetHeight:(float)dynamicHeight;
+  -(void)resizeSuperviewAndSetHeight:(float)dynamicHeight animated:(BOOL)animate;
 @end
 
 @interface UIViewController(ESUtils)
