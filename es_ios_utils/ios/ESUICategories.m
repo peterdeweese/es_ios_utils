@@ -345,6 +345,7 @@
     if(self.superview && self.window)
     {
         CGPoint center = [CG centerOfSize:self.superview.size];
+        //TODO: This should be handled with a translate, as this will only work in certain circumstances as is.
         if(UIDevice.isInLandscape)
             center = CGPointMake(center.y, center.x);
         self.center = center;
