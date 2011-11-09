@@ -14,6 +14,7 @@
 @property(nonatomic, retain)           NSString      *destroyTitle;
 
 @property(nonatomic, copy) void(^doOnCancel)(void);
+@property(nonatomic, copy) void(^doOnClose)(void);
 @property(nonatomic, copy) void(^doOnDestroy)(void);
 
 + (ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title;

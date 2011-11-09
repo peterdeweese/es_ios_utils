@@ -57,7 +57,7 @@
 }
 
 #pragma mark Properties
-@synthesize sheet, title, cancelTitle, destroyTitle, doOnCancel, doOnDestroy, buttonTitles, doOnPresses;
+@synthesize sheet, title, cancelTitle, destroyTitle, doOnCancel, doOnClose, doOnDestroy, buttonTitles, doOnPresses;
 
 -(void)addButtonWithTitle:(NSString*)buttonTitle doOnPress:(void(^)(void))doOnPress
 {
@@ -136,12 +136,15 @@
         if(actionBlock && (id)actionBlock != NSNull.null)
             actionBlock();
     }
+    if(doOnClose)
+        doOnClose();
 }
 
 - (void)dealloc
 {
     self.sheet.delegate = nil;
     self.doOnCancel     = nil;
+    self.doOnClose      = nil;
     self.doOnDestroy    = nil;
     self.doOnPresses    = nil;
     self.sheet          = nil;
