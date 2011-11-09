@@ -218,7 +218,7 @@
 
 -(id)createUninsertedManagedObjectOfClass:(Class)c
 {
-    return [[c alloc] initWithEntity:[NSEntityDescription entityForName:[NSString stringWithClassName:c] inManagedObjectContext:self] insertIntoManagedObjectContext:nil];
+    return [[[c alloc] initWithEntity:[NSEntityDescription entityForName:[NSString stringWithClassName:c] inManagedObjectContext:self] insertIntoManagedObjectContext:nil] autorelease];
 }
 
 -(id)createManagedObjectNamed:(NSString*)name
