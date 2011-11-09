@@ -121,7 +121,7 @@
 
 +(UILabel*)labelWithText:(NSString*)text
 {
-    UILabel *l = UILabel.alloc.init.autorelease;
+    UILabel *l = [[[UILabel alloc] init] autorelease];
     l.text = text;
     [l sizeToFit];
     return l;
