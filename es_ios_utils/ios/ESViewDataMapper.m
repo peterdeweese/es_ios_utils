@@ -40,7 +40,7 @@
     
     if(view)
     {
-        ESViewDataMap *m = [[ESViewDataMap alloc] autorelease];
+        ESViewDataMap *m = [[[ESViewDataMap alloc] init] autorelease];
         [maps addObject:m];
         [mapByView setObject:m forKeyObject:view];
         
