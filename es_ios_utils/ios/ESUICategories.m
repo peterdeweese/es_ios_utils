@@ -493,12 +493,13 @@
 {
     CGRect aRect = self.frame;
     aRect.size.height -= 352; //TODO: get keyboard height programmatically
-    CGPoint origin = v.origin;
-    origin.y -= self.contentOffset.y;
-    origin.y += v.height;
-    if (!CGRectContainsPoint(aRect, origin) )
+    
+    CGPoint originInScrollView = [self convertPoint:v.bounds.origin fromView:v];
+    CGPoint translatedOrigin = CGPointMake(originInScrollView.x, originInScrollView.y - self.contentOffset.y + v.height);
+    if (!CGRectContainsPoint(aRect, translatedOrigin) )
     {
-        CGPoint scrollPoint = CGPointMake(0.0, v.y-(aRect.size.height)+v.height); 
+        int padding = 20;
+        CGPoint scrollPoint = CGPointMake(0.0, MAX(0, originInScrollView.y - aRect.size.height + v.height + padding));
         [self setContentOffset:scrollPoint animated:YES];
     }
 }
