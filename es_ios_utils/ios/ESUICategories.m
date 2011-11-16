@@ -196,7 +196,7 @@
 
 -(id)initWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
 {
-    return [self initWithDelegate:delegate dataSource:delegate];
+    return self = [self initWithDelegate:delegate dataSource:delegate];
 }
 
 @end

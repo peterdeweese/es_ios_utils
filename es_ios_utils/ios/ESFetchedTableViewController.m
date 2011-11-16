@@ -11,24 +11,25 @@
 
 -(id)init
 {
-    self.doOnError = ^(NSError *e){
-        [e log];
-        abort();
-    };
-    self.cellStyle = UITableViewCellStyleDefault;
+    if(self = [super init])
+    {
+        self.doOnError = ^(NSError *e){
+            [e log];
+            abort();
+        };
+        self.cellStyle = UITableViewCellStyleDefault;
+    }
     return self;
 }
 
 -(id)initWithNibName:(NSString*)name bundle:(NSBundle*)b
 {
-    [self init];
-    return [super initWithNibName:name bundle:b];
+    return self = [super initWithNibName:name bundle:b];
 }
 
 -(id)initWithCoder:(NSCoder*)coder
 {
-    [self init];
-    return [super initWithCoder:coder];
+    return self = [super initWithCoder:coder];
 }
 
 -(id)objectAtIndexPath:(NSIndexPath*)i
