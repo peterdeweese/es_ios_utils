@@ -11,7 +11,7 @@
 
 +(ESApplicationDelegate*)delegate
 {
-    id<UIApplicationDelegate> d = [UIApplication sharedApplication].delegate;
+    id<UIApplicationDelegate> d = UIApplication.sharedApplication.delegate;
     if([d isKindOfClass:ESApplicationDelegate.class])
         return d;
     $must_override;
@@ -38,7 +38,7 @@
  */
 - (NSURL*)applicationDocumentsDirectory
 {
-    return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
+    return [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
 }
 
 /**
@@ -46,7 +46,7 @@
  */
 - (NSString*)applicationDirectory
 {
-    return [NSBundle mainBundle].bundlePath;
+    return NSBundle.mainBundle.bundlePath;
 }
 
 
@@ -84,7 +84,7 @@
     if (managedObjectModel)
         return managedObjectModel;
     
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.persistentStoreName withExtension:@"momd"];
+    NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
     managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
     return managedObjectModel;
 }
@@ -100,11 +100,11 @@
         return persistentStoreCoordinator;
     
     NSString *storePath = [[self.applicationDocumentsDirectory path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSFileManager *fileManager = NSFileManager.defaultManager;
 
     // If the expected store doesn't exist, copy the default store.
     if (![fileManager fileExistsAtPath:storePath]) {
-        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:$format(@"%@", self.persistentStoreName) ofType:@"sqlite"];
+        NSString *defaultStorePath = [NSBundle.mainBundle pathForResource:$format(@"%@", self.persistentStoreName) ofType:@"sqlite"];
         if (defaultStorePath)
             [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:NULL];
     }
@@ -134,7 +134,7 @@
         NSString *configPath = [self.applicationDirectory stringByAppendingPathComponent:$format(@"%@.plist", environment)];
         //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
 
-        if([[NSFileManager defaultManager] fileExistsAtPath:configPath])
+        if([NSFileManager.defaultManager fileExistsAtPath:configPath])
             config = [[NSDictionary dictionaryWithContentsOfFile:configPath] retain];
         else
             NSLog(@"ERROR: no config file found at %@", configPath); 
@@ -170,7 +170,7 @@
     for(NSPersistentStore *store in persistentStoreCoordinator.persistentStores)
     {
         [persistentStoreCoordinator removePersistentStore:store error:nil];
-        [[NSFileManager defaultManager] removeItemAtPath:store.URL.path error:nil];
+        [NSFileManager.defaultManager removeItemAtPath:store.URL.path error:nil];
     }
     
     [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
