@@ -23,16 +23,6 @@
     return IS_PRODUCTION;
 }
 
-- (void)dealloc
-{
-    [managedObjectContext release];
-    [managedObjectModel release];
-    [persistentStoreCoordinator release];
-    [config release];
-    
-    [super dealloc];
-}
-
 /**
  Returns the URL to the application's Documents directory.
  */
@@ -129,7 +119,7 @@
 {
     if(!config)
     {
-        NSString *environment = [ESApplicationDelegate isProduction] ? @"production" : @"development";
+        NSString *environment = ESApplicationDelegate.isProduction ? @"production" : @"development";
         NSLog(@"applicationDirectory: %@", self.applicationDirectory);
         NSString *configPath = [self.applicationDirectory stringByAppendingPathComponent:$format(@"%@.plist", environment)];
         //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
@@ -178,6 +168,17 @@
     [managedObjectModel release], managedObjectModel = nil;
     
     [self persistentStoreCoordinator]; //initialize if needed
+}
+
+- (void)dealloc
+{
+    //released manually because they are readonly
+    [managedObjectContext release], managedObjectContext = nil;
+    [managedObjectModel release], managedObjectModel = nil;
+    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
+    [config release], config = nil;
+
+    [super dealloc];
 }
 
 @end
