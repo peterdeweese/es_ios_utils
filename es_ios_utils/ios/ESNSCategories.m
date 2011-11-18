@@ -170,7 +170,7 @@ float logx(float value, float base)
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
-    return (__bridge_transfer NSString*)string;
+    return [NSString stringWithString:(__bridge_transfer NSString*)string];
 }
 
 -(NSData*)dataWithUTF8
