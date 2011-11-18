@@ -1,6 +1,7 @@
 #if IS_IOS
 
 #import "ESBarButtonItem.h"
+#import <objc/message.h>
 
 @interface ESBarButtonItem()
 @property(nonatomic, retain) UIPopoverController* popoverController;
@@ -14,7 +15,7 @@
 +(ESBarButtonItem*)barButtonItemWithTitle:(NSString*)title action:(void(^)(void))blockAction
 
 {
-    ESBarButtonItem* result = [[[ESBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
+    ESBarButtonItem* result = [[ESBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil];
     result.blockAction = blockAction;
     return result;
 }
@@ -45,8 +46,9 @@
         [self dismissPopover];
     else
     {
+        //performSelector gets an ARC warning
         if(userTarget && userAction && [userTarget respondsToSelector:userAction])
-            [userTarget performSelector:userAction];
+            objc_msgSend(userTarget, userAction);
         
         [self presentPopover];
         
@@ -81,21 +83,6 @@
 {
     self.popoverController.delegate = nil;
     self.popoverController = nil;
-}
-
-
-#pragma mark - Cleanup
-
--(void)dealloc
-{
-    self.blockAction                    = nil;
-    self.viewControllerForPopover       = nil;
-    self.popoverController.delegate     = nil;
-    self.popoverController              = nil;
-    self.userTarget                     = nil;
-    self.userAction                     = nil;
-    self.createViewControllerForPopover = nil;
-    [super dealloc];
 }
 
 @end

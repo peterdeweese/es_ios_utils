@@ -9,7 +9,7 @@
 
 -(NSString*)asStringWithShortFormat
 {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     formatter.timeStyle = NSDateFormatterShortStyle;
     formatter.dateStyle = NSDateFormatterShortStyle;
@@ -19,10 +19,10 @@
 
 -(NSString*)asRelativeString
 {
-    NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
     f.timeStyle = NSDateFormatterNoStyle;
     f.dateStyle = NSDateFormatterMediumStyle;
-    f.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     f.doesRelativeDateFormatting=YES;
     
     return [f stringForObjectValue:self];
@@ -135,7 +135,7 @@
 
 -(NSMutableString*)asMutableString
 {
-    return [self.mutableCopy autorelease];
+    return self.mutableCopy;
 }
 
 //REFACTOR: consider pulling up into a math util library
@@ -170,7 +170,7 @@ float logx(float value, float base)
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
-    return [(NSString *)string autorelease];
+    return (__bridge_transfer NSString*)string;
 }
 
 -(NSData*)dataWithUTF8
@@ -257,15 +257,13 @@ float logx(float value, float base)
 
 +(void)detachNewThreadBlockImplementation:(ESEmptyBlock)block
 {
-    NSAutoreleasePool *p = [[NSAutoreleasePool alloc] init];
     block();
-    Block_release(block);
-    [p release];
 }
 
+#warning is this the right way to do this in arc?
 +(void)detachNewThreadBlock:(ESEmptyBlock)block
 {
-    [NSThread detachNewThreadSelector:@selector(detachNewThreadBlockImplementation:) toTarget:self withObject:Block_copy(block)];
+    [NSThread detachNewThreadSelector:@selector(detachNewThreadBlockImplementation:) toTarget:self withObject:block];
 }
 
 @end

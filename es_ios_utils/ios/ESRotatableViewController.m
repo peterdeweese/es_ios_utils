@@ -18,12 +18,6 @@
 
 -(void)releaseRetainedXibObjects { /*override*/ }
 
--(void)dealloc
-{
-    [self releaseRetainedXibObjects];
-    [super dealloc];
-}
-
 @end
 
 #endif //IS_IOS

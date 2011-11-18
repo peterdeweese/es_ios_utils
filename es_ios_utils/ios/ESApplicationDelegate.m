@@ -125,7 +125,7 @@
         //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
 
         if([NSFileManager.defaultManager fileExistsAtPath:configPath])
-            config = [[NSDictionary dictionaryWithContentsOfFile:configPath] retain];
+            config = [NSDictionary dictionaryWithContentsOfFile:configPath];
         else
             NSLog(@"ERROR: no config file found at %@", configPath); 
     }
@@ -163,22 +163,12 @@
         [NSFileManager.defaultManager removeItemAtPath:store.URL.path error:nil];
     }
     
-    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
-    [managedObjectContext release], managedObjectContext = nil;
-    [managedObjectModel release], managedObjectModel = nil;
+#warning is this right in arc?  these are readonly
+    persistentStoreCoordinator = nil;
+    managedObjectContext = nil;
+    managedObjectModel = nil;
     
     [self persistentStoreCoordinator]; //initialize if needed
-}
-
-- (void)dealloc
-{
-    //released manually because they are readonly
-    [managedObjectContext release], managedObjectContext = nil;
-    [managedObjectModel release], managedObjectModel = nil;
-    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
-    [config release], config = nil;
-
-    [super dealloc];
 }
 
 @end

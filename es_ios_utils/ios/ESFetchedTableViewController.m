@@ -65,7 +65,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     id reuseIdentifier = cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
     UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
-    return c ?: [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier] autorelease];
+    return c ?: [[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier];
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
@@ -223,20 +223,6 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:entityClass];
     [newManagedObject.managedObjectContext saveAndDoOnError:doOnError];
-}
-
-#pragma mark -
-
--(void)dealloc
-{
-    self.fetchedResultsController.delegate = nil;
-    self.fetchedResultsController          = nil;
-    self.managedObjectContext              = nil;
-    self.sectionNameKeyPath                = nil;
-    self.cellReuseIdentifier               = nil;
-    self.entityClass                       = nil;
-    self.doOnError                         = nil;
-    [super dealloc];
 }
 
 @end

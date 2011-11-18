@@ -4,5 +4,5 @@
 @interface ESBoundDictionary : ESDynamicMethodResolver
   -(id)initWithDictionary:(NSDictionary*)d;
 
-  @property(nonatomic, readonly) NSDictionary* dictionary;
+  @property(nonatomic, retain) NSDictionary* dictionary;
 @end

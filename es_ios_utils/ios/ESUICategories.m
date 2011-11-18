@@ -48,11 +48,11 @@
 
 +(UIAlertView*)createAndShowWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)button
 {
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:title
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                      message:message
                                                     delegate:nil
                                            cancelButtonTitle:nil
-                                           otherButtonTitles:button, nil] autorelease];
+                                           otherButtonTitles:button, nil];
     [alert show];
     return alert;
 }
@@ -64,17 +64,17 @@
 
 +(UIBarButtonItem*)barButtonItemWithCustomView:(UIView*)v
 {
-    return [[[UIBarButtonItem alloc] initWithCustomView:v] autorelease];
+    return [[UIBarButtonItem alloc] initWithCustomView:v];
 }
 
 +(UIBarButtonItem*)barButtonItemWithTitle:(NSString*)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
 {
-    return [[[UIBarButtonItem alloc] initWithTitle:title style:style target:target action:action] autorelease];
+    return [[UIBarButtonItem alloc] initWithTitle:title style:style target:target action:action];
 }
 
 +(UIBarButtonItem*)barButtonItemWithBarButtonSystemItem:(UIBarButtonSystemItem)item target:(id)target action:(SEL)action
 {
-    return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:target action:action] autorelease];
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:target action:action];
 }
 
 @end
@@ -121,7 +121,7 @@
 
 +(UILabel*)labelWithText:(NSString*)text
 {
-    UILabel *l = [[[UILabel alloc] init] autorelease];
+    UILabel *l = [[UILabel alloc] init];
     l.text = text;
     [l sizeToFit];
     return l;
@@ -142,7 +142,7 @@
 
 +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc
 {
-    return [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    return [[UINavigationController alloc] initWithRootViewController:vc];
 }
 
 -(void)popViewController { [self popViewControllerAnimated:YES]; }
@@ -171,12 +171,12 @@
 
 +(UIPickerView*)pickerView
 {
-    return [[[UIPickerView alloc] init] autorelease];
+    return [[UIPickerView alloc] init];
 }
 
 +(UIPickerView*)pickerViewWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource
 {
-    return [[[self alloc] initWithDelegate:delegate dataSource:dataSource] autorelease];
+    return [[self alloc] initWithDelegate:delegate dataSource:dataSource];
 }
 
 +(UIPickerView*)pickerViewWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
@@ -206,7 +206,7 @@
 
 +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController*)viewController
 {
-    return [[[UIPopoverController alloc] initWithContentViewController:viewController] autorelease];
+    return [[UIPopoverController alloc] initWithContentViewController:viewController];
 }
 
 +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController
@@ -229,7 +229,7 @@
 
 +(UITableViewCell*)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier
 {
-    return [[[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier] autorelease];
+    return [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier];
 }
 
 @end
@@ -239,7 +239,7 @@
 
 +(UIToolbar*)toolbarWithItems:(NSArray*)items
 {    
-    UIToolbar* bar = [[[UIToolbar alloc] initWithFrame:$rect(0, 0, 0, 44.)] autorelease];
+    UIToolbar* bar = [[UIToolbar alloc] initWithFrame:$rect(0, 0, 0, 44.)];
     bar.items = items;
     
     UIView* v = bar.subviews.lastObject;
@@ -255,7 +255,7 @@
 
 +(UIView*)viewWithFrame:(CGRect)frame
 {
-    return [[[UIView alloc] initWithFrame:frame] autorelease];
+    return [[UIView alloc] initWithFrame:frame];
 }
 
 +(void)animate:(void(^)(void))animations
@@ -449,7 +449,6 @@
     UIViewController *c = [[UIViewController alloc]init];
     [self presentModalViewController:c animated:NO];
     [self dismissModalViewControllerAnimated:NO];
-    [c release];
 }
 
 -(void)forcePopoverSize
@@ -516,7 +515,7 @@
 
 +(UITextField*)textFieldWithFrame:(CGRect)frame
 {
-    return [[[UITextField alloc] initWithFrame:frame] autorelease];
+    return [[UITextField alloc] initWithFrame:frame];
 }
 
 // Uses a private ivar, but Apple reviews allow it in Veporter and other apps:

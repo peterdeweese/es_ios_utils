@@ -11,7 +11,7 @@
 
 +(ESBlockActionSheet*)blockActionSheetWithTitle:(NSString*)title
 {
-    ESBlockActionSheet* sheet = [[[ESBlockActionSheet alloc] init] autorelease];
+    ESBlockActionSheet* sheet = [[ESBlockActionSheet alloc] init];
     sheet.title = title;
     
     return sheet;
@@ -64,7 +64,7 @@
     if(self.sheet)
         return;
     [self.buttonTitles addObject:buttonTitle];
-    [self.doOnPresses addObject:doOnPress?(id)[[doOnPress copy] autorelease]:NSNull.null];
+    [self.doOnPresses addObject:doOnPress?(id)[doOnPress copy]:NSNull.null];
 }
 
 #pragma mark Control
@@ -74,7 +74,7 @@
 {
     if(!self.sheet)
     {
-        self.sheet = [[[UIActionSheet alloc] init] autorelease];
+        self.sheet = [[UIActionSheet alloc] init];
         self.sheet.title = title;
         self.sheet.delegate = self;
         
@@ -138,22 +138,6 @@
     }
     if(doOnClose)
         doOnClose();
-}
-
-- (void)dealloc
-{
-    self.sheet.delegate = nil;
-    self.doOnCancel     = nil;
-    self.doOnClose      = nil;
-    self.doOnDestroy    = nil;
-    self.doOnPresses    = nil;
-    self.sheet          = nil;
-    self.buttonTitles   = nil;
-    self.title          = nil;
-    self.cancelTitle    = nil;
-    self.destroyTitle   = nil;
-    
-    [super dealloc];
 }
 
 @end

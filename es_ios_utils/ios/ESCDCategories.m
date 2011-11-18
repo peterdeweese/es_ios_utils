@@ -25,7 +25,7 @@
 
 @implementation NSFetchRequest(ESCDCategories)
 
-+(NSFetchRequest*)fetchRequest { return [[[NSFetchRequest alloc] init] autorelease]; }
++(NSFetchRequest*)fetchRequest { return [[NSFetchRequest alloc] init]; }
 
 +(NSFetchRequest*)fetchRequestWithEntity:(NSEntityDescription*)entity
 {
@@ -48,7 +48,7 @@
 
 +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath cacheName:(NSString*)cacheName
 {
-    return [[[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:cacheName] autorelease];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:sectionNameKeyPath cacheName:cacheName];
 }
 
 +(NSFetchedResultsController*)fetchedResultsControllerWithRequest:(NSFetchRequest*)request managedObjectContext:(NSManagedObjectContext*)context sectionNameKeyPath:(NSString*)sectionNameKeyPath
@@ -218,7 +218,7 @@
 
 -(id)createUninsertedManagedObjectOfClass:(Class)c
 {
-    return [[[c alloc] initWithEntity:[NSEntityDescription entityForName:[NSString stringWithClassName:c] inManagedObjectContext:self] insertIntoManagedObjectContext:nil] autorelease];
+    return [[c alloc] initWithEntity:[NSEntityDescription entityForName:[NSString stringWithClassName:c] inManagedObjectContext:self] insertIntoManagedObjectContext:nil];
 }
 
 -(id)createManagedObjectNamed:(NSString*)name

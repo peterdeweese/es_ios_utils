@@ -35,14 +35,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    self.queue = nil;
-    self.timer = nil;
-    
-    [super dealloc];
-}
-
 -(void)addMessage:(NSString*)message
 {
     @synchronized(queue)

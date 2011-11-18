@@ -6,7 +6,7 @@
 
 +(ESArrayBackedPickerView*)arrayBackedPickerViewWithArray:(NSArray*)array
 {
-    ESArrayBackedPickerView* result = [[[ESArrayBackedPickerView alloc] init] autorelease];
+    ESArrayBackedPickerView* result = [[ESArrayBackedPickerView alloc] init];
     result.array = array;
     return result;
 }
@@ -65,18 +65,6 @@
     id result = valueKey ? [[array objectAtIndex:r] valueForKey:valueKey] : [self titleForRow:r];
     if(doOnSelect)
         doOnSelect(result);
-}
-
-
-#pragma mark - Cleanup
-
--(void)dealloc
-{
-    self.array      = nil;
-    self.key        = nil;
-    self.valueKey   = nil;
-    self.doOnSelect = nil;
-    [super dealloc];
 }
 
 @end
