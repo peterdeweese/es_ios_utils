@@ -40,6 +40,7 @@ typedef void(^ErrorBlock)(NSError*);
   @property(readonly) NSString *className;
   -(SEL)setterMethodSelectorForKey:(NSString*)key;
   -(BOOL)hasSetterForKey:(NSString*)key;
+  -(void)setValuesForKeys:(id<NSFastEnumeration>)keys withDictionary:(NSDictionary*)d;
 @end
 
 @interface NSRegularExpression(ESUtils)

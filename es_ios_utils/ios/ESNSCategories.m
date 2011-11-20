@@ -128,6 +128,15 @@
     return [self respondsToSelector:[self setterMethodSelectorForKey:key]];
 }
 
+-(void)setValuesForKeys:(id<NSFastEnumeration>)keys withDictionary:(NSDictionary*)d
+{
+    for(id k in keys)
+        if([self hasSetterForKey:k])
+            [self setValue:[d objectForKey:k] forKey:k];
+        else
+            NSLog(@"No setter found in %@ for %@.", self.className, k);
+}
+
 @end
 
 
