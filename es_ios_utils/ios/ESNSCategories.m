@@ -118,6 +118,16 @@
     return [NSString stringWithClassName:self.class];
 }
 
+-(SEL)setterMethodSelectorForKey:(NSString*)key
+{
+    return NSSelectorFromString([NSString stringWithSetterMethodNameForKey:key]);
+}
+
+-(BOOL)hasSetterForKey:(NSString*)key
+{
+    return [self respondsToSelector:[self setterMethodSelectorForKey:key]];
+}
+
 @end
 
 
@@ -171,6 +181,11 @@ float logx(float value, float base)
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
     return [NSString stringWithString:(__bridge_transfer NSString*)string];
+}
+
++(NSString*)stringWithSetterMethodNameForKey:(NSString*)key
+{
+    return $format(@"set%@:", key.asCapitalizedFirstLetter);
 }
 
 -(NSData*)dataWithUTF8
