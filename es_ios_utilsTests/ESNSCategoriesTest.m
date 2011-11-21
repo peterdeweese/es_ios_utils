@@ -60,6 +60,8 @@
     NSMutableString* s = @"value".asMutableString;
     STAssertFalse([s hasSetterForKey:@"asdf"], nil);
     STAssertTrue([s hasSetterForKey:@"string"], nil);
+    [s setValuesForKeys:$array(@"string") withDictionary:[NSDictionary dictionaryWithObject:@"new value" forKey:@"string"]];
+    STAssertEqualObjects(@"new value", s, nil);
 }
 
 -(void)testNSRegularExpressionCategory
