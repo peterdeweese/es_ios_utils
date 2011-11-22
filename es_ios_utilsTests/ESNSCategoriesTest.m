@@ -9,7 +9,7 @@
 
 -(void)setUp
 {
-    [[ESApplicationDelegate delegate] clearAllPersistentStores];
+    [ESApplicationDelegate.delegate clearAllPersistentStores];
 }
 
 -(void)testNSDateCategory
@@ -56,6 +56,12 @@
 {
     NSObject *o = [[NSObject alloc] init];
     STAssertEqualObjects(o.className, @"NSObject", @"className should return NSObject");
+    
+    NSMutableString* s = @"value".asMutableString;
+    STAssertFalse([s hasSetterForKey:@"asdf"], nil);
+    STAssertTrue([s hasSetterForKey:@"string"], nil);
+    [s setValuesForKeys:$array(@"string") withDictionary:[NSDictionary dictionaryWithObject:@"new value" forKey:@"string"]];
+    STAssertEqualObjects(@"new value", s, nil);
 }
 
 -(void)testNSRegularExpressionCategory
@@ -94,6 +100,8 @@
     
     STAssertEqualObjects(camel, underscore.asCamelCaseFromUnderscore, @"Should convert to camel case.");
     STAssertEqualObjects(underscore, camel.asUnderscoreFromCamelCase, @"Should convert to underscores.");
+    
+    STAssertEqualObjects([NSString stringWithSetterMethodNameForKey:@"asdfQwer"], @"setAsdfQwer:", nil);
 }
 
 -(void)testNSStringTransformation

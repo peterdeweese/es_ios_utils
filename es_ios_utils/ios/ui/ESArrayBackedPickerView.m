@@ -21,7 +21,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     if(self = [super initWithCoder:aDecoder])
-        [self init];
+        self.showsSelectionIndicator = YES;
     return self;
 }
 

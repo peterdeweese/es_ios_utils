@@ -118,6 +118,25 @@
     return [NSString stringWithClassName:self.class];
 }
 
+-(SEL)setterMethodSelectorForKey:(NSString*)key
+{
+    return NSSelectorFromString([NSString stringWithSetterMethodNameForKey:key]);
+}
+
+-(BOOL)hasSetterForKey:(NSString*)key
+{
+    return [self respondsToSelector:[self setterMethodSelectorForKey:key]];
+}
+
+-(void)setValuesForKeys:(id<NSFastEnumeration>)keys withDictionary:(NSDictionary*)d
+{
+    for(id k in keys)
+        if([self hasSetterForKey:k])
+            [self setValue:[d objectForKey:k] forKey:k];
+        else
+            NSLog(@"No setter found in %@ for %@.", self.className, k);
+}
+
 @end
 
 
@@ -171,6 +190,11 @@ float logx(float value, float base)
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
     return [(NSString *)string autorelease];
+}
+
++(NSString*)stringWithSetterMethodNameForKey:(NSString*)key
+{
+    return $format(@"set%@:", key.asCapitalizedFirstLetter);
 }
 
 -(NSData*)dataWithUTF8

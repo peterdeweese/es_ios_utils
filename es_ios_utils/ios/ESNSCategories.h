@@ -37,7 +37,10 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSObject(ESUtils)
-    @property(readonly) NSString *className;
+  @property(readonly) NSString *className;
+  -(SEL)setterMethodSelectorForKey:(NSString*)key;
+  -(BOOL)hasSetterForKey:(NSString*)key;
+  -(void)setValuesForKeys:(id<NSFastEnumeration>)keys withDictionary:(NSDictionary*)d;
 @end
 
 @interface NSRegularExpression(ESUtils)
@@ -51,6 +54,7 @@ typedef void(^ErrorBlock)(NSError*);
     +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength;
     +(NSString*)stringWithClassName:(Class)c;
     +(NSString*)stringWithUUID;
+    +(NSString*)stringWithSetterMethodNameForKey:(NSString*)key;
 
     @property(nonatomic, readonly) NSData   *dataWithUTF8;
     @property(nonatomic, readonly) NSString *strip;
