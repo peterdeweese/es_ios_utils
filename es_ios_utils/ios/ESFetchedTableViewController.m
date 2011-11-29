@@ -63,8 +63,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(UITableViewCell*)createCell
 {
-    id reuseIdentifier = cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
-    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    id reuseIdentifier = self.cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
+    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:self.cellReuseIdentifier];
     return c ?: [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier] autorelease];
 }
 
@@ -135,8 +135,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [managedObjectContext deleteObject:[self objectAtIndexPath:i]];
-        [managedObjectContext saveAndDoOnError:self.doOnError];
+        [self.managedObjectContext deleteObject:[self objectAtIndexPath:i]];
+        [self.managedObjectContext saveAndDoOnError:self.doOnError];
     }   
 }
 
@@ -223,8 +223,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(void)insertNewObject
 {
-    NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:entityClass];
-    [newManagedObject.managedObjectContext saveAndDoOnError:doOnError];
+    NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:self.entityClass];
+    [newManagedObject.managedObjectContext saveAndDoOnError:self.doOnError];
 }
 
 #pragma mark -
