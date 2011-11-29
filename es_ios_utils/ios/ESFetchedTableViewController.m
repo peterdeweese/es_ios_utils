@@ -7,7 +7,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellReuseIdentifier, cellStyle;
+@synthesize fetchedResultsController = _fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellReuseIdentifier, cellStyle;
 
 -(id)init
 {
@@ -147,21 +147,23 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     assert(context);
     assert(self.entityClass);
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass 
+                                                 inManagedObjectContext:context];
     fetchRequest.fetchBatchSize = 20;
     [self configureFetchRequest:fetchRequest];
-    self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:self.sectionNameKeyPath];
+    self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest
+                                                                               managedObjectContext:context sectionNameKeyPath:self.sectionNameKeyPath];
     self.fetchedResultsController.delegate = self;
     
     [self configureFetchRequestController:self.fetchedResultsController];
     [self.fetchedResultsController performFetchAndDoOnError:self.doOnError];
     
-    return fetchedResultsController;
+    return self.fetchedResultsController;
 }
 
 -(NSFetchedResultsController*)fetchedResultsController
 {
-    return fetchedResultsController ?: (fetchedResultsController = [self generateFetchedResultsControllerWithManagedObjectContext:self.managedObjectContext]);
+    return _fetchedResultsController ?: (self.fetchedResultsController = [self generateFetchedResultsControllerWithManagedObjectContext:self.managedObjectContext]);
 }
 
 #pragma mark - Fetched results controller delegate
@@ -229,7 +231,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(void)dealloc
 {
-    self.fetchedResultsController.delegate = nil;
+    _fetchedResultsController.delegate     = nil;
     self.fetchedResultsController          = nil;
     self.managedObjectContext              = nil;
     self.sectionNameKeyPath                = nil;
