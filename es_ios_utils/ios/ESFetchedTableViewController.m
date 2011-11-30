@@ -152,7 +152,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     fetchRequest.fetchBatchSize = 20;
     [self configureFetchRequest:fetchRequest];
     self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest
-                                                                               managedObjectContext:context sectionNameKeyPath:self.sectionNameKeyPath];
+                                                                               managedObjectContext:context 
+                                                                                 sectionNameKeyPath:self.sectionNameKeyPath];
     self.fetchedResultsController.delegate = self;
     
     [self configureFetchRequestController:self.fetchedResultsController];
