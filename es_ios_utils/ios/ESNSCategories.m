@@ -5,6 +5,16 @@
 @end
 
 
+@implementation NSBundle(ESUtils)
+
+-(NSURL*)URLForResource:(NSString*)resource
+{
+    return [self URLForResource:resource withExtension:nil];
+}
+
+@end
+
+
 @implementation NSDate(ESUtils)
 
 -(NSString*)asStringWithShortFormat
