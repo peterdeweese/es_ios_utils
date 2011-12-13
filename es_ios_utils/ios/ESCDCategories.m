@@ -283,6 +283,12 @@
     return [self fetch:type predicate:predicate ? [NSPredicate predicateWithFormat:predicate, arg] : nil];   
 }
 
+-(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate args:(id)first, ...
+{
+    va_list args;
+    return [self fetch:type predicate:predicate ? [NSPredicate predicateWithFormat:predicate, args] : nil];   
+}
+
 -(BOOL)hasAny:(Class)type
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestForClass:type inManagedObjectContext:self];
