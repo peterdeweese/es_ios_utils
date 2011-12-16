@@ -83,6 +83,13 @@
     STAssertTrue([array isIndexInRange:0], nil);
     STAssertTrue([array isIndexInRange:1], nil);
     STAssertFalse([array isIndexInRange:2], nil);
+    
+    array = $array(first, second, third);
+    STAssertNoThrow(array = array.arrayByRemovingLastObject, nil);
+    STAssertNotNil(array, nil);
+    STAssertTrue(2 == array.count, nil);
+    STAssertEquals(first, array.firstObject, nil);
+    STAssertEquals(second, array.lastObject, nil);
 }
 
 -(void)testNSArrayCoersion

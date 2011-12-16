@@ -7,7 +7,7 @@
 
 @implementation ESFetchedTableViewController
 
-@synthesize fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellReuseIdentifier, cellStyle;
+@synthesize fetchedResultsController = _fetchedResultsController, managedObjectContext, sectionNameKeyPath, doOnError, entityClass, cellReuseIdentifier, cellStyle;
 
 -(id)init
 {
@@ -63,8 +63,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(UITableViewCell*)createCell
 {
-    id reuseIdentifier = cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
-    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    id reuseIdentifier = self.cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
+    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:self.cellReuseIdentifier];
     return c ?: [[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier];
 }
 
@@ -135,8 +135,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [managedObjectContext deleteObject:[self objectAtIndexPath:i]];
-        [managedObjectContext saveAndDoOnError:self.doOnError];
+        [self.managedObjectContext deleteObject:[self objectAtIndexPath:i]];
+        [self.managedObjectContext saveAndDoOnError:self.doOnError];
     }   
 }
 
@@ -147,21 +147,24 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     assert(context);
     assert(self.entityClass);
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass 
+                                                 inManagedObjectContext:context];
     fetchRequest.fetchBatchSize = 20;
     [self configureFetchRequest:fetchRequest];
-    self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:self.sectionNameKeyPath];
+    self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest
+                                                                               managedObjectContext:context 
+                                                                                 sectionNameKeyPath:self.sectionNameKeyPath];
     self.fetchedResultsController.delegate = self;
     
     [self configureFetchRequestController:self.fetchedResultsController];
     [self.fetchedResultsController performFetchAndDoOnError:self.doOnError];
     
-    return fetchedResultsController;
+    return self.fetchedResultsController;
 }
 
 -(NSFetchedResultsController*)fetchedResultsController
 {
-    return fetchedResultsController ?: (fetchedResultsController = [self generateFetchedResultsControllerWithManagedObjectContext:self.managedObjectContext]);
+    return _fetchedResultsController ?: (self.fetchedResultsController = [self generateFetchedResultsControllerWithManagedObjectContext:self.managedObjectContext]);
 }
 
 #pragma mark - Fetched results controller delegate
@@ -221,8 +224,8 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(void)insertNewObject
 {
-    NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:entityClass];
-    [newManagedObject.managedObjectContext saveAndDoOnError:doOnError];
+    NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:self.entityClass];
+    [newManagedObject.managedObjectContext saveAndDoOnError:self.doOnError];
 }
 
 @end

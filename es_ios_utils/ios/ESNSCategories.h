@@ -8,6 +8,10 @@
 typedef void(^ESEmptyBlock)();
 typedef void(^ErrorBlock)(NSError*);
 
+@interface NSBundle(ESUtils)
+  -(NSURL*)URLForResource:(NSString*)resource;
+@end
+
 @interface NSDate(ESUtils)
   @property(nonatomic, readonly) NSString* asStringWithShortFormat;
   @property(nonatomic, readonly) NSString* asRelativeString;

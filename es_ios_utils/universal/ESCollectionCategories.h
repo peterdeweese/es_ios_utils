@@ -27,7 +27,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
     -(BOOL)isIndexInRange:(NSInteger)i;
 
-    @property(readonly) NSArray    *reversed;
+    @property(readonly) NSArray*   arrayByRemovingLastObject;
+    @property(readonly) NSArray*   reversed;
     @property(readonly) id         firstObject;
     @property(readonly) BOOL       isEmpty;
     @property(readonly) BOOL       isNotEmpty;

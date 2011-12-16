@@ -248,6 +248,21 @@
     return bar;
 }
 
+-(void)removeItem:(UIBarButtonItem*)i
+{
+    self.items = [self.items arrayByRemovingObject:i];
+}
+
+-(void)removeLastItem
+{
+    self.items = [self.items arrayByRemovingLastObject];
+}
+
+-(void)addItem:(UIBarButtonItem*)i
+{
+    self.items = [self.items arrayByAddingObject:i];
+}
+
 @end
 
 

@@ -89,7 +89,11 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIToolbar(ESUtils)
-    +(UIToolbar*)toolbarWithItems:(NSArray*)items;
+  +(UIToolbar*)toolbarWithItems:(NSArray*)items;
+  -(void)removeItem:(UIBarButtonItem*)i;
+  -(void)removeLastItem;
+  -(void)addItem:(UIBarButtonItem*)i;
+
 @end
 
 @interface UIView(ESUtils)
