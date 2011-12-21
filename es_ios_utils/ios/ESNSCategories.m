@@ -121,6 +121,16 @@
 @end
 
 
+@implementation NSLock(ESUtils)
+
++(NSLock*)lock
+{
+    return [[[NSLock alloc] init] autorelease];
+}
+
+@end
+
+
 @implementation NSObject(ESUtils)
 
 -(NSString*)className

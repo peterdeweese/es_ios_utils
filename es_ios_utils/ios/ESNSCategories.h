@@ -36,8 +36,12 @@ typedef void(^ErrorBlock)(NSError*);
 @end
 
 @interface NSError(ESUtils)
-    -(void)log;
-    -(void)logWithMessage:(NSString*)message;
+  -(void)log;
+  -(void)logWithMessage:(NSString*)message;
+@end
+
+@interface NSLock(ESUtils)
+    +(NSLock*)lock;
 @end
 
 @interface NSObject(ESUtils)
