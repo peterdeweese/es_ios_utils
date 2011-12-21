@@ -35,6 +35,7 @@
 #define $array(objs...) [NSArray arrayWithObjects: objs, nil] 
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 
 #define $format(format, objs...) [NSString stringWithFormat: format, objs]
+#define $bself __block typeof(self) bself = self
 
 #define $must_override [NSException raise:NSInternalInconsistencyException format:@"You must override %@", NSStringFromSelector(_cmd)];
 
