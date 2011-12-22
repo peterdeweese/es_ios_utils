@@ -15,23 +15,40 @@
 @end
 
 
+@implementation NSDateFormatter(ESUtils)
+
++(NSDateFormatter*)dateFormatter
+{
+    return [[[NSDateFormatter alloc] init] autorelease];
+}
+
++(NSDateFormatter*)dateFormatterWithTimeStyle:(NSDateFormatterStyle)timeStyle dateStyle:(NSDateFormatterStyle)dateStyle
+{
+    NSDateFormatter* result = [NSDateFormatter dateFormatter];
+    result.timeStyle = NSDateFormatterShortStyle;
+    result.dateStyle = NSDateFormatterShortStyle;
+    return result;
+}
+
++(NSDateFormatter*)dateFormatterWithStyle:(NSDateFormatterStyle)style
+{
+    return [NSDateFormatter dateFormatterWithTimeStyle:style dateStyle:style];
+}
+
+@end
+
+
 @implementation NSDate(ESUtils)
 
 -(NSString*)asStringWithShortFormat
 {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    
-    return [formatter stringFromDate:self];
+    NSDateFormatter *f = [NSDateFormatter dateFormatterWithStyle:NSDateFormatterShortStyle];
+    return [f stringFromDate:self];
 }
 
 -(NSString*)asRelativeString
 {
-    NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
-    f.timeStyle = NSDateFormatterNoStyle;
-    f.dateStyle = NSDateFormatterMediumStyle;
+    NSDateFormatter *f = [NSDateFormatter dateFormatterWithTimeStyle:NSDateFormatterNoStyle dateStyle:NSDateFormatterMediumStyle];
     f.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
     f.doesRelativeDateFormatting=YES;
     
@@ -80,17 +97,17 @@
 
 -(NSInteger)hour
 {
-    return [[NSCalendar currentCalendar] components:kCFCalendarUnitHour fromDate:self].hour;
+    return [NSCalendar.currentCalendar components:kCFCalendarUnitHour fromDate:self].hour;
 }
 
 -(NSInteger)minute
 {
-    return [[NSCalendar currentCalendar] components:kCFCalendarUnitMinute fromDate:self].minute;
+    return [NSCalendar.currentCalendar components:kCFCalendarUnitMinute fromDate:self].minute;
 }
 
 -(NSInteger)second
 {
-    return [[NSCalendar currentCalendar] components:kCFCalendarUnitSecond fromDate:self].second;
+    return [NSCalendar.currentCalendar components:kCFCalendarUnitSecond fromDate:self].second;
 }
 
 @end
@@ -100,7 +117,7 @@
 
 -(BOOL)isNotANumber
 {
-    return [[NSDecimalNumber notANumber] isEqualToNumber:self];
+    return [NSDecimalNumber.notANumber isEqualToNumber:self];
 }
 
 @end

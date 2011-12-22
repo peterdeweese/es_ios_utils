@@ -12,6 +12,12 @@ typedef void(^ErrorBlock)(NSError*);
   -(NSURL*)URLForResource:(NSString*)resource;
 @end
 
+@interface NSDateFormatter(ESUtils)
+  +(NSDateFormatter*)dateFormatter;
+  +(NSDateFormatter*)dateFormatterWithTimeStyle:(NSDateFormatterStyle)timeStyle dateStyle:(NSDateFormatterStyle)dateStyle;
+  +(NSDateFormatter*)dateFormatterWithStyle:(NSDateFormatterStyle)style;
+@end
+
 @interface NSDate(ESUtils)
   @property(nonatomic, readonly) NSString* asStringWithShortFormat;
   @property(nonatomic, readonly) NSString* asRelativeString;
