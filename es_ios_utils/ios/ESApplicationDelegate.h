@@ -13,7 +13,7 @@
  */
 @interface ESApplicationDelegate : NSObject<UIApplicationDelegate>
 
-+(ESApplicationDelegate*)delegate;
++(ESApplicationDelegate*)instance;
 
 +(NSManagedObjectContext*)managedObjectContext;
 +(BOOL)isProduction;
