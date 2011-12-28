@@ -574,6 +574,11 @@
 
 @implementation UITableView(ESUtils)
 
++(UITableView*)tableViewWithFrame:(CGRect)bounds style:(UITableViewStyle)style
+{
+    return [[[UITableView alloc] initWithFrame:bounds style:style] autorelease];
+}
+
 // Returns YES if there are no rows in any section.
 -(BOOL)isEmpty
 {    

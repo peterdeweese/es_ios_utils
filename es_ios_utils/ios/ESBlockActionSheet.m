@@ -132,7 +132,7 @@
 {
     if([self.doOnPresses isIndexInRange:buttonIndex])//filter out cancel
     {
-        __block typeof (self) bself = self ;
+        $bself;
         void(^actionBlock)(void) = [bself.doOnPresses objectAtIndex:buttonIndex];
         if(actionBlock && (id)actionBlock != NSNull.null)
             actionBlock();

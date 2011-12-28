@@ -1,4 +1,5 @@
 #import "ESArrayBackedPickerView.h"
+#import "ESCollectionCategories.h"
 
 @implementation ESArrayBackedPickerView
 
