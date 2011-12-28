@@ -9,7 +9,7 @@
 
 -(NSString*)persistentStoreName { return @"app"; }
 
-+(ESApplicationDelegate*)delegate
++(ESApplicationDelegate*)instance
 {
     id<UIApplicationDelegate> d = UIApplication.sharedApplication.delegate;
     if([d isKindOfClass:ESApplicationDelegate.class])
@@ -44,7 +44,7 @@
 
 +(NSManagedObjectContext*)managedObjectContext
 {
-    return self.delegate.managedObjectContext;
+    return self.instance.managedObjectContext;
 }
 
 /**
@@ -136,7 +136,7 @@
 
 +(BOOL)saveContext
 {
-    return [self.delegate saveContext];
+    return [self.instance saveContext];
 }
 
 //Override to prevent aborting the app upon error.
