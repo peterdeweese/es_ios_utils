@@ -33,9 +33,16 @@
 
 -(NSArray*)arrayByRemovingObject:(id)anObject
 {
-    NSMutableArray *a = [self.mutableCopy autorelease];
+    NSMutableArray *a = self.asMutableArray;
     [a removeObject:anObject];
-    return [a.copy autorelease];
+    return a.asArray;
+}
+
+-(NSArray*)arrayByRemovingObjectAtIndex:(int)index
+{
+    NSMutableArray* a = self.asMutableArray;
+    [a removeObjectAtIndex:index];
+    return a.asArray;
 }
 
 -(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath

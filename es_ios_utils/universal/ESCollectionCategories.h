@@ -17,6 +17,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
     // to the array.
     +(NSArray*)arrayByCoalescing:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
     -(NSArray*)arrayByRemovingObject:(id)anObject;
+    -(NSArray*)arrayByRemovingObjectAtIndex:(int)index;
 
     // Analog of ruby's: ["one", "two"].map { |str| "(#{str})" }
     // [array arrayMappedWithFormat:@"(%@)"]
@@ -43,8 +44,8 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 @end
 
 @interface NSDictionary(ESUtils)
-+(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
-+(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath keyPathForValues:(NSString*)valuePath;
+  +(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath;
+  +(NSDictionary*)dictionaryWithObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath keyPathForValues:(NSString*)valuePath;
 
     @property(readonly) BOOL          isEmpty;
     @property(readonly) BOOL          isNotEmpty;
