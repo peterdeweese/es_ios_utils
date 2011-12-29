@@ -7,6 +7,12 @@
 
 @synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
 
+-(BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
+{
+    NSLog(@"Application Directory: %@", self.applicationDirectory);
+    return YES;
+}
+
 -(NSString*)persistentStoreName { return @"app"; }
 
 +(ESApplicationDelegate*)instance
