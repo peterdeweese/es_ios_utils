@@ -679,6 +679,33 @@
 @end
 
 
+@implementation UIImage(ESUtils)
+
++(UIImage*)imageFromLayer:(CALayer*)layer
+{
+    UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.opaque, 0.0);
+
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return outputImage;
+}
+
+@end
+
+
+@implementation UIImageView(ESUtils)
+
++(UIImageView*)imageViewWithImage:(UIImage*)i
+{
+    return [[[UIImageView alloc] initWithImage:i] autorelease];
+}
+
+@end
+
+
 @implementation UIWindow(ESUtils)
 
 // credit: stackoverflow user aegzorz

@@ -189,8 +189,16 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   -(void)deselectAll;
 @end
 
+@interface UIImage(ESUtils)
+  +(UIImage*)imageFromLayer:(CALayer*)layer;
+@end
+
+@interface UIImageView(ESUtils)
+  +(UIImageView*)imageViewWithImage:(UIImage*)i;
+@end
+
 @interface UIWindow(ESUtils)
-    @property(nonatomic, readonly) BOOL isDisplayingAlert;
+  @property(nonatomic, readonly) BOOL isDisplayingAlert;
 @end
 
 #endif /*IS_IOS*/
