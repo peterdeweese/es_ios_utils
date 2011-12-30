@@ -11,7 +11,7 @@
 
 -(void)testNSManagedObjectToDictionary
 {
-    NSManagedObjectContext *context = ESApplicationDelegate.delegate.managedObjectContext;
+    NSManagedObjectContext *context = ESApplicationDelegate.instance.managedObjectContext;
     
     Object1 *object1 = (Object1*)[context createManagedObjectOfClass:Object1.class];
     Object2 *object2 = (Object2*)[context createManagedObjectOfClass:Object2.class];
@@ -48,7 +48,7 @@
 
 -(void)testNSManagedObjectContextCategory
 {
-    NSManagedObjectContext *context = ESApplicationDelegate.delegate.managedObjectContext;
+    NSManagedObjectContext *context = ESApplicationDelegate.instance.managedObjectContext;
     
     Object1 *object1 = (Object1*)[context createManagedObjectOfClass:Object1.class];
     STAssertNotNil(object1, nil);

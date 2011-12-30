@@ -3,9 +3,13 @@
 
 #if IS_IOS && CORE_DATA_AVAILABLE
 
+@interface ESApplicationDelegate()
+  @property(retain) NSManagedObjectModel* privateManagedObjectModel;
+@end
+
 @implementation ESApplicationDelegate
 
-@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
+@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config, privateManagedObjectModel;
 
 -(BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -75,13 +79,13 @@
  Returns the managed object model for the application.
  If the model doesn't already exist, it is created from the application's model.
  */
-- (NSManagedObjectModel *)managedObjectModel
+- (NSManagedObjectModel*)managedObjectModel
 {
-    if (managedObjectModel)
-        return managedObjectModel;
+    if (privateManagedObjectModel)
+        return privateManagedObjectModel;
     
     NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
-    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
+    self.privateManagedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
     return managedObjectModel;
 }
 
@@ -95,7 +99,7 @@
     if (persistentStoreCoordinator)
         return persistentStoreCoordinator;
     
-    NSString *storePath = [[self.applicationDocumentsDirectory path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
+    NSString *storePath = [self.applicationDocumentsDirectory.path stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
     NSFileManager *fileManager = NSFileManager.defaultManager;
 
     // If the expected store doesn't exist, copy the default store.
@@ -107,7 +111,7 @@
     NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
     NSError *error = nil;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                              [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
@@ -183,7 +187,7 @@
     [managedObjectModel release], managedObjectModel = nil;
     [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
     [config release], config = nil;
-
+    self.privateManagedObjectModel = nil;
     [super dealloc];
 }
 
