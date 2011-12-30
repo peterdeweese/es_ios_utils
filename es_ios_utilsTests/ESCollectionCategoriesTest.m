@@ -9,7 +9,7 @@
 
 -(void)setUp
 {
-    [[ESApplicationDelegate delegate] clearAllPersistentStores];
+    [ESApplicationDelegate.instance clearAllPersistentStores];
 }
 
 -(void)testNullCoalesceOperator

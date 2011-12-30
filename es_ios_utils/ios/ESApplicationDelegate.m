@@ -4,12 +4,15 @@
 #if IS_IOS && CORE_DATA_AVAILABLE
 
 @interface ESApplicationDelegate()
-  @property(retain) NSManagedObjectModel* privateManagedObjectModel;
+  @property(retain) NSManagedObjectModel*         privateManagedObjectModel;
+  @property(retain) NSManagedObjectContext*       privateManagedObjectContext;
+  @property(retain) NSPersistentStoreCoordinator* privatePersistentStoreCoordinator;
+  @property(retain) NSDictionary*                 privateConfig;
 @end
 
 @implementation ESApplicationDelegate
 
-@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config, privateManagedObjectModel;
+@synthesize window, privateManagedObjectModel, privateManagedObjectContext, privatePersistentStoreCoordinator, privateConfig;
 
 -(BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -63,16 +66,12 @@
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if(managedObjectContext)
-        return managedObjectContext;
-    
-    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
-    if (coordinator)
-    {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-        managedObjectContext.persistentStoreCoordinator = coordinator;
+    if(!privateManagedObjectContext && self.persistentStoreCoordinator)
+    {    
+        self.privateManagedObjectContext = [[[NSManagedObjectContext alloc] init] autorelease];
+        privateManagedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
     }
-    return managedObjectContext;
+    return privateManagedObjectContext;
 }
 
 /**
@@ -81,12 +80,12 @@
  */
 - (NSManagedObjectModel*)managedObjectModel
 {
-    if (privateManagedObjectModel)
-        return privateManagedObjectModel;
-    
-    NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
-    self.privateManagedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return managedObjectModel;
+    if (!privateManagedObjectModel)
+    {
+        NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
+        self.privateManagedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] autorelease];
+    }
+    return privateManagedObjectModel;
 }
 
 /**
@@ -96,8 +95,8 @@
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (persistentStoreCoordinator)
-        return persistentStoreCoordinator;
+    if (self.privatePersistentStoreCoordinator)
+        return privatePersistentStoreCoordinator;
     
     NSString *storePath = [self.applicationDocumentsDirectory.path stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
     NSFileManager *fileManager = NSFileManager.defaultManager;
@@ -111,23 +110,22 @@
     NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
     NSError *error = nil;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+    self.privatePersistentStoreCoordinator = [[[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel] autorelease];
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                              [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL 
-                                                        options:options error:&error])
+    if (![privatePersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         [error log];
         abort(); //FIXME: remove before final product
     }    
     
-    return persistentStoreCoordinator;
+    return privatePersistentStoreCoordinator;
 }
 
 -(NSDictionary*)config
 {
-    if(!config)
+    if(!privateConfig)
     {
         NSString *environment = ESApplicationDelegate.isProduction ? @"production" : @"development";
         NSLog(@"applicationDirectory: %@", self.applicationDirectory);
@@ -135,11 +133,12 @@
         //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
 
         if([NSFileManager.defaultManager fileExistsAtPath:configPath])
-            config = [[NSDictionary dictionaryWithContentsOfFile:configPath] retain];
+            self.privateConfig = [NSDictionary dictionaryWithContentsOfFile:configPath];
         else
             NSLog(@"ERROR: no config file found at %@", configPath); 
     }
-    return config;
+
+    return privateConfig;
 }
 
 -(BOOL)isDisplayingAlert { return self.window.isDisplayingAlert; }
@@ -152,9 +151,9 @@
 //Override to prevent aborting the app upon error.
 -(BOOL)saveContext
 {
-    if(managedObjectContext.hasChanges)
+    if(self.managedObjectContext.hasChanges)
     {
-        return [managedObjectContext saveAndDoOnError:^(NSError *e) {
+        return [self.managedObjectContext saveAndDoOnError:^(NSError *e) {
             [e log];
             [e logDetailedErrors];
             abort();
@@ -167,27 +166,23 @@
 {
     [self persistentStoreCoordinator]; //initialize if needed
         
-    for(NSPersistentStore *store in persistentStoreCoordinator.persistentStores)
+    for(NSPersistentStore *store in self.persistentStoreCoordinator.persistentStores)
     {
-        [persistentStoreCoordinator removePersistentStore:store error:nil];
+        [self.persistentStoreCoordinator removePersistentStore:store error:nil];
         [NSFileManager.defaultManager removeItemAtPath:store.URL.path error:nil];
     }
     
-    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
-    [managedObjectContext release], managedObjectContext = nil;
-    [managedObjectModel release], managedObjectModel = nil;
-    
-    [self persistentStoreCoordinator]; //initialize if needed
+    self.privatePersistentStoreCoordinator = nil;
+    self.privateManagedObjectContext = nil;
+    self.privateManagedObjectModel = nil;
 }
 
 - (void)dealloc
 {
-    //released manually because they are readonly
-    [managedObjectContext release], managedObjectContext = nil;
-    [managedObjectModel release], managedObjectModel = nil;
-    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
-    [config release], config = nil;
-    self.privateManagedObjectModel = nil;
+    self.privatePersistentStoreCoordinator = nil;
+    self.privateManagedObjectContext       = nil;
+    self.privateManagedObjectModel         = nil;
+    self.privateConfig                     = nil;
     [super dealloc];
 }
 

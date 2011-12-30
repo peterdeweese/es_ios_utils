@@ -49,7 +49,7 @@
 
 -(void)testUIWindowCategory
 {
-    STAssertFalse([appDelegate delegate].isDisplayingAlert, nil);
+    STAssertFalse(ESApplicationDelegate.instance.isDisplayingAlert, nil);
 }
 
 @end
