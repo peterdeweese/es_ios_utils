@@ -20,6 +20,11 @@
     return YES;
 }
 
+-(void)applicationWillTerminate:(UIApplication*)application
+{
+    [self saveContext];
+}
+
 -(NSString*)persistentStoreName { return @"Database"; }
 
 +(ESApplicationDelegate*)instance
