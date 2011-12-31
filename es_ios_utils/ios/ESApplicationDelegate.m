@@ -3,9 +3,16 @@
 
 #if IS_IOS && CORE_DATA_AVAILABLE
 
+@interface ESApplicationDelegate()
+  @property(retain) NSManagedObjectModel*         privateManagedObjectModel;
+  @property(retain) NSManagedObjectContext*       privateManagedObjectContext;
+  @property(retain) NSPersistentStoreCoordinator* privatePersistentStoreCoordinator;
+  @property(retain) NSDictionary*                 privateConfig;
+@end
+
 @implementation ESApplicationDelegate
 
-@synthesize managedObjectContext, managedObjectModel, persistentStoreCoordinator, window, config;
+@synthesize window, privateManagedObjectModel, privateManagedObjectContext, privatePersistentStoreCoordinator, privateConfig;
 
 -(BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
@@ -59,30 +66,26 @@
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if(managedObjectContext)
-        return managedObjectContext;
-    
-    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
-    if (coordinator)
-    {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-        managedObjectContext.persistentStoreCoordinator = coordinator;
+    if(!privateManagedObjectContext && self.persistentStoreCoordinator)
+    {    
+        self.privateManagedObjectContext = [[NSManagedObjectContext alloc] init];
+        privateManagedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
     }
-    return managedObjectContext;
+    return privateManagedObjectContext;
 }
 
 /**
  Returns the managed object model for the application.
  If the model doesn't already exist, it is created from the application's model.
  */
-- (NSManagedObjectModel *)managedObjectModel
+- (NSManagedObjectModel*)managedObjectModel
 {
-    if (managedObjectModel)
-        return managedObjectModel;
-    
-    NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
-    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return managedObjectModel;
+    if (!privateManagedObjectModel)
+    {
+        NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
+        self.privateManagedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    }
+    return privateManagedObjectModel;
 }
 
 /**
@@ -92,10 +95,10 @@
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (persistentStoreCoordinator)
-        return persistentStoreCoordinator;
+    if (self.privatePersistentStoreCoordinator)
+        return privatePersistentStoreCoordinator;
     
-    NSString *storePath = [[self.applicationDocumentsDirectory path] stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
+    NSString *storePath = [self.applicationDocumentsDirectory.path stringByAppendingPathComponent:$format(@"%@.sqlite", self.persistentStoreName)];
     NSFileManager *fileManager = NSFileManager.defaultManager;
 
     // If the expected store doesn't exist, copy the default store.
@@ -107,23 +110,22 @@
     NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
     NSError *error = nil;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    self.privatePersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                              [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL 
-                                                        options:options error:&error])
+    if (![privatePersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         [error log];
         abort(); //FIXME: remove before final product
     }    
     
-    return persistentStoreCoordinator;
+    return privatePersistentStoreCoordinator;
 }
 
 -(NSDictionary*)config
 {
-    if(!config)
+    if(!privateConfig)
     {
         NSString *environment = ESApplicationDelegate.isProduction ? @"production" : @"development";
         NSLog(@"applicationDirectory: %@", self.applicationDirectory);
@@ -131,11 +133,12 @@
         //[[NSURL URLWithString:$format(@"%@.plist", environment) relativeToURL:self.applicationDirectory] path];
 
         if([NSFileManager.defaultManager fileExistsAtPath:configPath])
-            config = [NSDictionary dictionaryWithContentsOfFile:configPath];
+            self.privateConfig = [NSDictionary dictionaryWithContentsOfFile:configPath];
         else
             NSLog(@"ERROR: no config file found at %@", configPath); 
     }
-    return config;
+
+    return privateConfig;
 }
 
 -(BOOL)isDisplayingAlert { return self.window.isDisplayingAlert; }
@@ -148,9 +151,9 @@
 //Override to prevent aborting the app upon error.
 -(BOOL)saveContext
 {
-    if(managedObjectContext.hasChanges)
+    if(self.managedObjectContext.hasChanges)
     {
-        return [managedObjectContext saveAndDoOnError:^(NSError *e) {
+        return [self.managedObjectContext saveAndDoOnError:^(NSError *e) {
             [e log];
             [e logDetailedErrors];
             abort();
@@ -163,18 +166,15 @@
 {
     [self persistentStoreCoordinator]; //initialize if needed
         
-    for(NSPersistentStore *store in persistentStoreCoordinator.persistentStores)
+    for(NSPersistentStore *store in self.persistentStoreCoordinator.persistentStores)
     {
-        [persistentStoreCoordinator removePersistentStore:store error:nil];
+        [self.persistentStoreCoordinator removePersistentStore:store error:nil];
         [NSFileManager.defaultManager removeItemAtPath:store.URL.path error:nil];
     }
     
-#warning is this right in arc?  these are readonly
-    persistentStoreCoordinator = nil;
-    managedObjectContext = nil;
-    managedObjectModel = nil;
-    
-    [self persistentStoreCoordinator]; //initialize if needed
+    self.privatePersistentStoreCoordinator = nil;
+    self.privateManagedObjectContext = nil;
+    self.privateManagedObjectModel = nil;
 }
 
 @end

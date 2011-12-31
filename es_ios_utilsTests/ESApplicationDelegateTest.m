@@ -8,10 +8,10 @@
 
 -(void)testAppDelegate
 {
-    ESApplicationDelegate *delegate = ESApplicationDelegate.delegate;
+    ESApplicationDelegate *delegate = ESApplicationDelegate.instance;
     STAssertNotNil(delegate, @"UIApplication failed to find the AppDelegate");
     
-    STAssertEquals([ESApplicationDelegate delegate], delegate, @"Class delegate method should return current application delegate");
+    STAssertEquals([ESApplicationDelegate instance], delegate, @"Class delegate method should return current application delegate");
     STAssertEquals([ESApplicationDelegate managedObjectContext], delegate.managedObjectContext, @"Class managedObjectContext method should return current managed object context");
 
     NSURL *docDir = delegate.applicationDocumentsDirectory;
@@ -33,7 +33,7 @@
 
 -(void)testConfigFile
 {
-    ESApplicationDelegate *delegate = ESApplicationDelegate.delegate;
+    ESApplicationDelegate *delegate = ESApplicationDelegate.instance;
     STAssertNotNil(delegate.config, @"The config should be created.");
     STAssertEqualObjects([delegate.config objectForKey:@"testKey"], @"testValue", @"'testKey' should be loaded from config file.");
 
