@@ -576,7 +576,7 @@
 
 +(UITableView*)tableViewWithFrame:(CGRect)bounds style:(UITableViewStyle)style
 {
-    return [[[UITableView alloc] initWithFrame:bounds style:style] autorelease];
+    return [[UITableView alloc] initWithFrame:bounds style:style];
 }
 
 // Returns YES if there are no rows in any section.
@@ -700,7 +700,7 @@
 
 +(UIImageView*)imageViewWithImage:(UIImage*)i
 {
-    return [[[UIImageView alloc] initWithImage:i] autorelease];
+    return [[UIImageView alloc] initWithImage:i];
 }
 
 @end
