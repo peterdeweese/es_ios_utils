@@ -20,7 +20,7 @@
     return YES;
 }
 
--(NSString*)persistentStoreName { return @"app"; }
+-(NSString*)persistentStoreName { return @"Database"; }
 
 +(ESApplicationDelegate*)instance
 {
