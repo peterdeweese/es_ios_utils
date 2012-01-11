@@ -13,34 +13,42 @@ typedef void(^EmptyBlock)();
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)
-    // Each argument is added to the new array. If an argument is a collection, each item from the collection is added
-    // to the array.
-    +(NSArray*)arrayByCoalescing:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
-    -(NSArray*)arrayByRemovingObject:(id)anObject;
-    -(NSArray*)arrayByRemovingObjectAtIndex:(int)index;
+  // Each argument is added to the new array. If an argument is a collection, each item from the collection is added
+  // to the array.
+  +(NSArray*)arrayByCoalescing:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
+  -(NSArray*)arrayByRemovingObject:(id)anObject;
+  -(NSArray*)arrayByRemovingObjectAtIndex:(int)index;
 
-    // Analog of ruby's: ["one", "two"].map { |str| "(#{str})" }
-    // [array arrayMappedWithFormat:@"(%@)"]
-    // @returns an array of formatted NSStrings.
-    -(NSArray*)arrayMappedWithFormat:(NSString*)format;
-    -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
-    -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
-    -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
-    -(BOOL)isIndexInRange:(NSInteger)i;
+  // Analog of ruby's: ["one", "two"].map { |str| "(#{str})" }
+  // [array arrayMappedWithFormat:@"(%@)"]
+  // @returns an array of formatted NSStrings.
+  -(NSArray*)arrayMappedWithFormat:(NSString*)format;
+  -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
+  -(NSArray*)subarrayFrom:(int)loc length:(int)len;
+  -(NSArray*)subarrayTo:(int)loc;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+  -(BOOL)isIndexInRange:(NSInteger)i;
 
-    @property(readonly) NSArray*   arrayByRemovingLastObject;
-    @property(readonly) NSArray*   reversed;
-    @property(readonly) id         firstObject;
-    @property(readonly) BOOL       isEmpty;
-    @property(readonly) BOOL       isNotEmpty;
-    @property(readonly) NSUInteger lastIndex;
+  //Object Accessors
+  -(id)at:(int)index; //shorthand for objectAtIndex:
+  @property(readonly) id first;
+  @property(readonly) id firstObject; //deprecated
+  @property(readonly) id last;
 
-    //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
-    -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
-    -(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath;
-    @property(readonly) NSSet*          asSet;
-    @property(readonly) NSMutableSet*   asMutableSet;
-    @property(readonly) NSMutableArray* asMutableArray;
+  //
+  @property(readonly) NSArray*   arrayByRemovingLastObject;
+  @property(readonly) NSArray*   reversed;
+  @property(readonly) BOOL       isEmpty;
+  @property(readonly) BOOL       isNotEmpty;
+  @property(readonly) NSUInteger lastIndex;
+
+  //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
+  -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
+  -(NSArray*)arrayOfChildrenWithKeyPath:(NSString*)keyPath;
+  @property(readonly) NSSet*          asSet;
+  @property(readonly) NSMutableSet*   asMutableSet;
+  @property(readonly) NSMutableArray* asMutableArray;
 @end
 
 @interface NSDictionary(ESUtils)

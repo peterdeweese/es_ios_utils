@@ -60,7 +60,11 @@
     NSString *fourth = @"fourth";
     NSArray *array = $array(first, second, third, fourth);
     
-    STAssertEqualObjects(array.firstObject, first, @"Should return first element.");
+    STAssertNotNil(array.firstObject, nil);
+    
+    STAssertEqualObjects([array at:2], third, nil);
+    
+    STAssertEqualObjects(array.first, first, @"Should return first element.");
     STAssertTrue(array.lastIndex == array.count-1, @"Should return length-1");
     array = $array(first, second, third, fourth, second);
     NSArray *result = [array filteredArrayUsingSet:$set(fourth, second)];
@@ -88,8 +92,20 @@
     STAssertNoThrow(array = array.arrayByRemovingLastObject, nil);
     STAssertNotNil(array, nil);
     STAssertTrue(2 == array.count, nil);
-    STAssertEquals(first, array.firstObject, nil);
-    STAssertEquals(second, array.lastObject, nil);
+    STAssertEquals(first, array.first, nil);
+    STAssertEquals(second, array.last, nil);
+    
+    array  = $array(first, second, third, fourth);
+    result = [array subarrayFrom:1 length:2];
+    STAssertTrue(2 == result.count, nil);
+    STAssertEqualObjects(second, result.first, nil);
+    STAssertEqualObjects(third, result.last, nil);
+    
+    array  = $array(first, second, third, fourth);
+    result = [array subarrayTo:1];
+    STAssertTrue(2 == result.count, nil);
+    STAssertEqualObjects(first, result.first, nil);
+    STAssertEqualObjects(second, result.last, nil);
 }
 
 -(void)testNSArrayCoersion
@@ -123,7 +139,7 @@
     array = $array(first);
     array = [array arrayMappedWithFormat:@"\"%@\""];
     STAssertTrue(array.count == 1, nil);
-    STAssertEqualObjects(array.firstObject, @"\"first\"", nil);
+    STAssertEqualObjects(array.first, @"\"first\"", nil);
 }
 
 -(void)testNSArrayFilteredArrayWhereKeyPath
@@ -134,8 +150,8 @@
     NSArray *result = [source filteredArrayWhereKeyPath:@"length" equals:[NSNumber numberWithInt:5]];
     STAssertNotNil(result, nil);
     STAssertTrue(result.count == 2, @"was %i", result.count);
-    STAssertEquals(result.firstObject, fiveLength, nil);
-    STAssertEquals(result.lastObject, fiveLength, nil);
+    STAssertEquals(result.first, fiveLength, nil);
+    STAssertEquals(result.last, fiveLength, nil);
 }
 
 -(void)testNSDictionaryCategory
@@ -163,8 +179,8 @@
     STAssertEqualObjects(camelCased, [deepCopy objectForKey:@"dictionary"], @"dictionary should copy.");
     STAssertTrue(camelCased != [deepCopy objectForKey:@"dictionary"], @"dictionary should not return original object.");
     
-    STAssertEqualObjects(camelCased, ((NSArray*)[deepCopy objectForKey:@"array"]).firstObject, @"array of dictionaries should copy.");
-    STAssertTrue(camelCased != ((NSArray*)[deepCopy objectForKey:@"array"]).firstObject, @"array of dictionaries should not return original object.");
+    STAssertEqualObjects(camelCased, ((NSArray*)[deepCopy objectForKey:@"array"]).first, @"array of dictionaries should copy.");
+    STAssertTrue(camelCased != ((NSArray*)[deepCopy objectForKey:@"array"]).first, @"array of dictionaries should not return original object.");
 }
 
 -(void)testNSDictionaryCreation
@@ -217,7 +233,7 @@
     NSMutableDictionary *d2 = [NSMutableDictionary dictionaryWithCapacity:2];
     [d2 addEntriesFromDictionary:d withKeyFilter:^NSString*(NSString *s){return @"a";}];
     STAssertTrue(d2.count == 1, @"key should be overwritten.");
-    STAssertEqualObjects(@"a", d2.allKeys.firstObject, @"Key should be 'a'");
+    STAssertEqualObjects(@"a", d2.allKeys.first, @"Key should be 'a'");
 }
 
 -(void)testNSMutableSetCategory

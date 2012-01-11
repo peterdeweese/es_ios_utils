@@ -79,6 +79,16 @@
     return result;
 }
 
+-(NSArray*)subarrayFrom:(int)loc length:(int)len
+{
+    return [self subarrayWithRange:$range(loc, len)];
+}
+
+-(NSArray*)subarrayTo:(int)loc
+{
+    return [self subarrayFrom:0 length:loc+1];
+}
+
 -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
 {
     NSString *format = $format(@"%@ == %@", keyPath, @"%@");
@@ -103,12 +113,32 @@
     return self.reverseObjectEnumerator.allObjects;
 }
 
--(id)firstObject
+#pragma mark - Object Accessors
+
+-(id)at:(int)index
+{
+    return [self objectAtIndex:index];
+}
+
+-(id)first
 {
     if(self.count > 0)
         return [self objectAtIndex:0];
     return nil;
 }
+
+-(id)firstObject
+{
+    NSLog(@"deprecated: `Array.firstObject`. Use `Array.first`."); // 1-10-2012
+    return self.first;
+}
+
+-(id)last
+{
+    return self.lastObject;
+}
+
+#pragma mark -
 
 -(BOOL)isEmpty
 {
