@@ -30,7 +30,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
   -(BOOL)isIndexInRange:(NSInteger)i;
 
-  //Object Accessors
+  // Object Accessors
   -(id)at:(int)index; //shorthand for objectAtIndex:
   @property(readonly) id first;
   @property(readonly) id firstObject; //deprecated
@@ -42,6 +42,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   @property(readonly) BOOL       isEmpty;
   @property(readonly) BOOL       isNotEmpty;
   @property(readonly) NSUInteger lastIndex;
+
+  // Calculations
+  @property(readonly) int sumAsInt;
 
   //Returns an array containing only the elements in set.  Ordering and duplication are preserved.
   -(NSArray*)filteredArrayUsingSet:(NSSet*)set;
