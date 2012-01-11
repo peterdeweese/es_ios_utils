@@ -106,6 +106,13 @@
     STAssertTrue(2 == result.count, nil);
     STAssertEqualObjects(first, result.first, nil);
     STAssertEqualObjects(second, result.last, nil);
+    
+}
+
+-(void)testNSArrayCalculations
+{
+    NSArray* array = $array([NSNumber numberWithInt:5], [NSNumber numberWithInt:11], [NSNumber numberWithInt:13], [NSNumber numberWithInt:2]);
+    STAssertEquals(array.sumAsInt, 31, nil);
 }
 
 -(void)testNSArrayCoersion

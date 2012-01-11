@@ -155,6 +155,19 @@
     return self.count - 1;
 }
 
+#pragma mark - Calculations
+
+-(int)sumAsInt
+{
+    int result = 0;
+    for(NSNumber* n in self)
+        if([n isKindOfClass:NSNumber.class])
+            result += n.intValue;
+    return result;
+}
+
+#pragma mark -
+
 -(NSArray*)filteredArrayUsingSet:(NSSet*)set
 {
     NSMutableArray *a = [NSMutableArray arrayWithCapacity:set.count];
