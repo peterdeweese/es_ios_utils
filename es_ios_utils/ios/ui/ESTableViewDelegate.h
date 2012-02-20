@@ -7,7 +7,8 @@
     -(NSString*)titleForSection:(int)s;
 
   #pragma mark - View
-    -(UITableViewCell*)cellForRowAtIndexPath:(NSIndexPath*)indexPath;
+    -(UITableViewCell*)createCellFor:(NSIndexPath*)indexPath;
+    -(void)updateCell:(UITableViewCell*)cell at:(NSIndexPath*)indexPath;
 
   #pragma mark - Events
     -(void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;

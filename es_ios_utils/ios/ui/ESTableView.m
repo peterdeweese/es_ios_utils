@@ -1,7 +1,12 @@
 #import "ESTableView.h"
 
+@interface ESTableView()
+  @property(retain) NSString* reuseIdentifier;
+@end
+
 @implementation ESTableView
 
+@synthesize /*private*/ reuseIdentifier;
 @synthesize esDelegate;
 
 -(id)initWithCoder:(NSCoder*)aDecoder
@@ -10,6 +15,7 @@
     {
         self.delegate = self;
         self.dataSource = self;
+        self.reuseIdentifier = NSString.stringWithUUID;
     }
     return self;
 }
@@ -34,9 +40,15 @@
 
 #pragma mark - View
 
--(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+-(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)ip
 {
-    return [esDelegate cellForRowAtIndexPath:indexPath];
+    
+    UITableViewCell* cell = [self dequeueReusableCellWithIdentifier:self.reuseIdentifier];
+    if(!cell)
+        cell = [esDelegate createCellFor:ip];
+    
+    [esDelegate updateCell:cell at:ip];
+    return cell;
 }
 
 
