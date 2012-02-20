@@ -194,6 +194,28 @@
     return self.mutableCopy;
 }
 
+-(int)firstIndexWhereKeyPath:(id)kp isEqual:(id)o2
+{
+    return [self indexOfObjectPassingTest:^BOOL(id o, NSUInteger i, BOOL *stop)
+            {
+                id v = [o valueForKeyPath:kp];
+                return (!o2 && !v) || (o2 && [o2 isEqual:v]);
+            }];
+}
+
+-(int)countObjectsWhereKeyPath:(id)kp isEqual:(id)o2
+{
+    int count = 0;
+    for(id o in self)
+    {
+        id v = [o valueForKeyPath:kp];
+        if((!o2 && !v) || (o2 && [o2 isEqual:v]))
+            count++;
+    }
+    
+    return count;
+}
+
 @end
 
 
