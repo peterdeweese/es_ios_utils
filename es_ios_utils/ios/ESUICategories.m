@@ -36,7 +36,7 @@
     [self dismissWithClickedButtonIndex:self.cancelButtonIndex animated:animated];
 }
 
--(IBAction)cancel
+-(void)cancel
 {
     [self cancel:YES];
 }
