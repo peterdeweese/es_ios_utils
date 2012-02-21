@@ -676,6 +676,13 @@
     [self deselectRowAtIndexPath:self.indexPathForSelectedRow animated:YES];
 }
 
+-(void)update:(ESEmptyBlock)update
+{
+    [self beginUpdates];
+    if(update) update();
+    [self endUpdates];
+}
+
 @end
 
 

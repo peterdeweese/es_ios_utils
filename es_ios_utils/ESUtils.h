@@ -19,6 +19,9 @@
   #endif
 #endif
 
+typedef void(^ESEmptyBlock)();
+typedef void(^ErrorBlock)(NSError*);
+
 #if IS_IOS
   #import <Foundation/Foundation.h>
 

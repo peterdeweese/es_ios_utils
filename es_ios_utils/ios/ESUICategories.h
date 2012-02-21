@@ -187,6 +187,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deselectAll;
+  -(void)update:(ESEmptyBlock)update;
 @end
 
 @interface UIImage(ESUtils)

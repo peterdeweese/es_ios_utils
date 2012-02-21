@@ -43,20 +43,30 @@
 -(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)ip
 {
     
-    UITableViewCell* cell = [self dequeueReusableCellWithIdentifier:self.reuseIdentifier];
-    if(!cell)
-        cell = [esDelegate createCellFor:ip];
-    
-    [esDelegate updateCell:cell at:ip];
-    return cell;
+    UITableViewCell* c = [self dequeueReusableCellWithIdentifier:self.reuseIdentifier] ?: esDelegate.createCell;
+    [esDelegate updateCell:c for:[esDelegate objectFor:ip]];
+    return c;
 }
 
+-(CGFloat)tableView:(UITableView*)tv heightForRowAtIndexPath:(NSIndexPath*)ip
+{
+    if([esDelegate respondsToSelector:@selector(heightForSelectedState)] && [ip isEqual:self.indexPathForSelectedRow])
+       return esDelegate.heightForSelectedState;
+    return self.rowHeight;
+}
 
 #pragma mark - Events
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)ip
 {
-    [esDelegate didSelectRowAtIndexPath:indexPath];
+    if([esDelegate respondsToSelector:@selector(didSelectRowAt:)])
+        [esDelegate didSelectRowAt:ip];
+}
+
+-(void)tableView:(UITableView*)tableView didDeselectRowAtIndexPath:(NSIndexPath*)ip
+{
+    if([esDelegate respondsToSelector:@selector(didDeselectRowAt:)])
+        [esDelegate didDeselectRowAt:ip];
 }
 
 @end

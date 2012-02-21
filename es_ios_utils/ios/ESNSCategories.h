@@ -5,9 +5,6 @@
 @interface ESNSCategories:NSObject
 @end
 
-typedef void(^ESEmptyBlock)();
-typedef void(^ErrorBlock)(NSError*);
-
 @interface NSBundle(ESUtils)
   -(NSURL*)URLForResource:(NSString*)resource;
 @end
