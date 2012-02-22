@@ -63,6 +63,8 @@
 
 -(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)ip
 {
+    if([esDelegate respondsToSelector:@selector(didSelectRowAt:for:)])
+        [esDelegate didSelectRowAt:ip for:[esDelegate objectFor:ip]];
     if([esDelegate respondsToSelector:@selector(didSelectRowAt:)])
         [esDelegate didSelectRowAt:ip];
 }

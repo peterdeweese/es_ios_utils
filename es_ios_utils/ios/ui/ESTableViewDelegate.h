@@ -20,6 +20,7 @@
 
   #pragma mark - Events
     @optional
-      -(void)didSelectRowAt:(NSIndexPath*)indexPath;
+      -(void)didSelectRowAt:(NSIndexPath*)ip;
+      -(void)didSelectRowAt:(NSIndexPath*)ip for:(id)o;
       -(void)didDeselectRowAt:(NSIndexPath*)indexPath;
 @end
