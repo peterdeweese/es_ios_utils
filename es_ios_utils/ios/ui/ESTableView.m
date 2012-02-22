@@ -24,6 +24,8 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
+    if([esDelegate respondsToSelector:@selector(sectionTitles)])
+        return esDelegate.sectionTitles.count;
     return esDelegate.numberOfSections;
 }
 
@@ -34,6 +36,8 @@
 
 -(NSString*)tableView:(UITableView*)tv titleForHeaderInSection:(NSInteger)s
 {
+    if([esDelegate respondsToSelector:@selector(sectionTitles)])
+        return [esDelegate.sectionTitles objectAtIndex:s];
     return [esDelegate titleForSection:s];
 }
 
