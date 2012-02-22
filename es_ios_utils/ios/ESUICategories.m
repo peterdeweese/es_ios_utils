@@ -651,6 +651,16 @@
     [self scrollToRow:r inSection:0 atScrollPosition:p animated:a];
 }
 
+-(void)reloadRowAtIndexPath:(NSIndexPath*)ip withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self reloadRowsAtIndexPaths:$array(ip) withRowAnimation:a];
+}
+
+-(void)reloadRowAtIndexPath:(NSIndexPath*)ip
+{
+    [self reloadRowAtIndexPath:ip withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a
 {
     [self deleteRowsAtIndexPaths:$array(i) withRowAnimation:a];
