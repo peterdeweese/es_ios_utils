@@ -174,6 +174,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   @property(readonly) BOOL isNotEmpty;
   -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;
   -(UITableViewCell*)cellForRow:(int)r;
+  -(UITableViewCell*)cellForSelectedRow;
   -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
   -(void)doForEachIndexPathInSection:(int)s action:(ESUIIndexPathBlock)action;
   -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;

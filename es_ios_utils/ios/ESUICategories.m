@@ -609,6 +609,11 @@
     return [self cellForRow:r inSection:0];
 }
 
+-(UITableViewCell*)cellForSelectedRow
+{
+    return [self cellForRowAtIndexPath: self.indexPathForSelectedRow];
+}
+
 -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action
 {
     for(int r=0; r<[self numberOfRowsInSection:s]; r++)
