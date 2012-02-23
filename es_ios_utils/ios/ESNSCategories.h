@@ -64,6 +64,7 @@
     //Formats like 576B, 5.6MB
     +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength;
     +(NSString*)stringWithClassName:(Class)c;
+    +(NSString*)stringWithInt:(int)i;
     +(NSString*)stringWithUUID;
     +(NSString*)stringWithSetterMethodNameForKey:(NSString*)key;
 

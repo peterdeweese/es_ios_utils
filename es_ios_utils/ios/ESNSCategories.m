@@ -221,6 +221,11 @@ float logx(float value, float base)
     return [NSString stringWithUTF8String:class_getName(c)];
 }
 
++(NSString*)stringWithInt:(int)i
+{
+    return [NSNumber numberWithInt:i].stringValue;
+}
+
 +(NSString*)stringWithUUID
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
