@@ -321,7 +321,6 @@ float logx(float value, float base)
     block();
 }
 
-#warning is this the right way to do this in arc?
 +(void)detachNewThreadBlock:(ESEmptyBlock)block
 {
     [NSThread detachNewThreadSelector:@selector(detachNewThreadBlockImplementation:) toTarget:self withObject:block];
