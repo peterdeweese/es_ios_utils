@@ -501,6 +501,11 @@
 
 @implementation UIScrollView(ESUtils)
 
+-(void)scrollToTop
+{
+    [self setContentOffset:CGPointZero animated:YES];
+}
+
 //TODO: a useful alternative may be to shrink the scrollview when the keyboard comes up.
 -(void)scrollViewToVisibleForKeyboard:(UIView*)v { [self scrollViewToVisibleForKeyboard:v animated:YES]; }
 -(void)scrollViewToVisibleForKeyboard:(UIView*)v animated:(BOOL)animated

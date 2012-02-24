@@ -148,6 +148,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIScrollView(ESUtils)
+  -(void)scrollToTop;
   -(void)scrollViewToVisibleForKeyboard:(UIView*)v;
   -(void)scrollViewToVisibleForKeyboard:(UIView*)v animated:(BOOL)animated;
   -(void)scrollFirstResponderToVisibleForKeyboard;
