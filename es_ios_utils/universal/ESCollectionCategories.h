@@ -8,8 +8,11 @@
 
 typedef NSObject<NSFastEnumeration> ESCollection;
 
-//TODO: How can I externilize these block type definitions?
-typedef void(^EmptyBlock)();
+#ifndef EmptyBlock
+  typedef void(^EmptyBlock)();
+  #define EmptyBlock
+#endif
+
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)

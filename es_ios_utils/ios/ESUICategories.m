@@ -424,6 +424,11 @@
 
 @implementation UIViewController(ESUtils)
 
+-(NSArray*)loadNibNamed:(NSString*)nib
+{
+    return [NSBundle.mainBundle loadNibNamed:nib owner:self options:nil];
+}
+
 -(UIPopoverController*)$popoverController
 {
     return [self valueForKey:@"popoverController"];

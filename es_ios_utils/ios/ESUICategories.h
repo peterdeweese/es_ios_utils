@@ -122,6 +122,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIViewController(ESUtils)
+  -(NSArray*)loadNibNamed:(NSString*)nib;
+
   //Passed Apple's review. Prefixed with a $ to indicate undocumented api and to prevent conflict with key.
   @property(nonatomic, readonly) UIPopoverController *$popoverController;
     
