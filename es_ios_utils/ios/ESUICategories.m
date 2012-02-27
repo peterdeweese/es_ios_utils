@@ -302,6 +302,8 @@
     self.frame = $rect(self.x, y, self.width, self.height);
 }
 
+-(float)bottomY { return self.y + self.height; }
+
 -(CGSize)size { return self.frame.size; }
 -(void)setSize:(CGSize)size
 {

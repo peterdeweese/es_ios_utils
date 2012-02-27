@@ -101,15 +101,16 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   +(void)animate:(void(^)(void))animations;
 
   // These sizing convenience methods manipulate the frame.
-  @property(assign) float    width;
-  @property(assign) float    height;
-  @property(assign) float    x;
-  @property(assign) float    y;
-  @property(assign) CGSize   size;
-  @property(assign) CGPoint  origin;
-  @property(assign) UIColor* borderColor;
-  @property(assign) float    borderWidth;
-  @property(assign) float    cornerRadius;
+  @property(assign)   float    width;
+  @property(assign)   float    height;
+  @property(assign)   float    x;
+  @property(assign)   float    y;
+  @property(readonly) float   bottomY;
+  @property(assign)   CGSize   size;
+  @property(assign)   CGPoint  origin;
+  @property(assign)   UIColor* borderColor;
+  @property(assign)   float    borderWidth;
+  @property(assign)   float    cornerRadius;
 
   @property(nonatomic, readonly) BOOL         isInPopover;
   @property(nonatomic, readonly) UIResponder* findFirstResponder;
