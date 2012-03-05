@@ -89,18 +89,27 @@
     return [self subarrayFrom:0 length:loc+1];
 }
 
--(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+-(NSArray*)filteredArrayUsingPredecateFormat:(NSString*)format, ...
 {
-    NSString *format = $format(@"%@ == %@", keyPath, @"%@");
-    NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
+    va_list args;
+    va_start(args, format);
+    NSPredicate *pred = [NSPredicate predicateWithFormat:format arguments:args];
     return [self filteredArrayUsingPredicate:pred];
 }
 
--(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object
 {
-    NSString *format = $format(@"%@ IN %@", @"%@", keyPath);
-    NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
-    return [self filteredArrayUsingPredicate:pred];
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%@", keyPath), object];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equalsInt:(int)i
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%d", keyPath), i];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%%@ IN %@", keyPath), object];
 }
 
 -(BOOL)isIndexInRange:(NSInteger)i

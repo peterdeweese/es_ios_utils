@@ -29,7 +29,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
   -(NSArray*)subarrayFrom:(int)loc length:(int)len;
   -(NSArray*)subarrayTo:(int)loc;
+  -(NSArray*)filteredArrayUsingPredecateFormat:(NSString*)format, ...;
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equalsInt:(int)i;
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
   -(BOOL)isIndexInRange:(NSInteger)i;
 
