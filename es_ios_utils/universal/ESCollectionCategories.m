@@ -97,6 +97,13 @@
     return [self filteredArrayUsingPredicate:pred];
 }
 
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%@", keyPath), object];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath containsIgnoreCase:(id)object;
+
 -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object
 {
     return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%@", keyPath), object];
