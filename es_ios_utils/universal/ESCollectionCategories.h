@@ -34,7 +34,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath containsIgnoreCase:(id)object;
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equalsInt:(int)i;
-  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath in:(id)object;
   -(BOOL)isIndexInRange:(NSInteger)i;
 
   // Object Accessors

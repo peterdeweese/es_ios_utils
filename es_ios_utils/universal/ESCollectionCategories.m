@@ -56,8 +56,9 @@
     return result;
 }
 
--(NSArray*)arrayMappedWithFormat:(__block NSString*)format
+-(NSArray*)arrayMappedWithFormat:(NSString*)f
 {
+    NSString* format = f;
     return [self arrayMappedWith:^id(id o) {
         return [NSString stringWithFormat:format, ((NSObject*)o).description];
     }];
@@ -99,10 +100,13 @@
 
 -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object
 {
-    return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%@", keyPath), object];
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ CONTAINS %%@", keyPath), object];
 }
 
--(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath containsIgnoreCase:(id)object;
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath containsIgnoreCase:(id)object
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ CONTAINS[c] %%@", keyPath), object];
+}
 
 -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object
 {
@@ -114,7 +118,7 @@
     return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%d", keyPath), i];
 }
 
--(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath in:(id)object
 {
     return [self filteredArrayUsingPredecateFormat: $format(@"%%@ IN %@", keyPath), object];
 }
