@@ -2,6 +2,8 @@
 
 @implementation ESArrayBackedTableViewController
 
+@synthesize cellData, textKey, detailKey;
+
 -(void)configureCellForData:(id)o
 {
     int i = [self.cellData indexOfObject:o];
@@ -9,15 +11,10 @@
     [self configureCell:c withData:o];
 }
 
--(NSArray*)cellData
-{
-    $must_override;
-    return nil;
-}
-
 -(void)configureCell:(UITableViewCell*)c withData:(id)o
 {
-    $must_override;
+    c.textLabel.text       = [o valueForKey:textKey];
+    c.detailTextLabel.text = [o valueForKey:detailKey];
 }
 
 -(void)didSelectCellWithData:(id)o { }
