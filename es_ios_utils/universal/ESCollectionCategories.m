@@ -56,7 +56,7 @@
     return result;
 }
 
--(NSArray*)arrayMappedWithFormat:(__block NSString*)format
+-(NSArray*)arrayMappedWithFormat:(NSString*)format
 {
     return [self arrayMappedWith:^id(id o) {
         return [NSString stringWithFormat:format, ((NSObject*)o).description];
