@@ -115,6 +115,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   @property(nonatomic, readonly) BOOL         isInPopover;
   @property(nonatomic, readonly) UIResponder* findFirstResponder;
 
+  -(BOOL)containsSubviewWithKindOfClass:(__unsafe_unretained Class)c;
   -(void)replaceInSuperviewWith:(UIView*)v;
   -(void)centerInSuperview;
 

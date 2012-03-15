@@ -3,22 +3,13 @@
 @interface ESArrayBackedTableViewController()
   @property(retain) NSMutableArray* sectionTitles;
   @property(retain) NSMutableArray* sectionData;
+  @property(retain) NSArray* originalCellData;
 @end
 
 @implementation ESArrayBackedTableViewController
 
 @synthesize cellData, textKey, detailKey;
-@synthesize sectionTitles, sectionData;
-
--(id)initWithCoder:(NSCoder*)aDecoder
-{
-    if(self = [super initWithCoder:aDecoder])
-    {
-        sectionTitles = NSMutableArray.new;
-        sectionData   = NSMutableArray.new;
-    }
-    return self;
-}
+@synthesize sectionTitles, sectionData, originalCellData;
 
 -(BOOL)usesSections
 {
@@ -39,6 +30,9 @@
 
 -(void)convertToAlphaIndex
 {
+    sectionTitles = NSMutableArray.new;
+    sectionData   = NSMutableArray.new;
+    
     [cellData each:^(id o) {
         NSString* text = [o valueForKey:textKey];
         NSString* sectionTitle = [text substringToIndex:1];
@@ -97,9 +91,45 @@
     [self didSelectCellWithData:[self.cellData objectAtIndex:ip.row]];
 }
 
+-(BOOL)isUsingSearchAndIndex
+{
+    return self.usesSections && sectionTitles && [self.view containsSubviewWithKindOfClass:UISearchBar.class];
+}
 -(NSArray*)sectionIndexTitlesForTableView:(UITableView*)tv
 {
-    return self.usesSections ? sectionTitles : nil;
+    NSArray* indexTitles = self.usesSections ? sectionTitles : nil;
+    if(self.isUsingSearchAndIndex)
+        indexTitles = [NSArray arrayByCoalescing:UITableViewIndexSearch, indexTitles, nil];
+    return indexTitles;
+}
+
+-(int)tableView:(UITableView*)tv sectionForSectionIndexTitle:(NSString*)t atIndex:(int)i
+{
+    if(self.isUsingSearchAndIndex)
+    {
+        if(i==0)
+            [self.tableView scrollToTop];
+        return i-1;
+    }
+    return i;
+}
+
+-(void)searchBar:(UISearchBar*)sb textDidChange:(NSString*)searchText
+{
+    if(!originalCellData)
+        self.originalCellData = cellData;
+    self.cellData = searchText.isNotEmpty ? [originalCellData filteredArrayWhereKeyPath:self.textKey containsIgnoreCase:searchText] : originalCellData;
+    [self convertToAlphaIndex];
+    [self.tableView reloadData];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar*)sb
+{
+    sb.text = NSString.string;
+    self.cellData = originalCellData;
+    [self convertToAlphaIndex];
+    [self.tableView reloadData];
+    [sb resignFirstResponder];
 }
 
 @end

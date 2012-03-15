@@ -325,6 +325,14 @@
 -(float)cornerRadius { return self.layer.cornerRadius; }
 -(void)setCornerRadius:(float)r { self.layer.cornerRadius = r; }
 
+-(BOOL)containsSubviewWithKindOfClass:(__unsafe_unretained Class)c
+{
+    for(UIView* v in self.subviews)
+        if([v isKindOfClass:c] || [v containsSubviewWithKindOfClass:c])
+            return YES;
+    return NO;
+}
+
 -(void)replaceInSuperviewWith:(UIView*)v
 {
     v.autoresizingMask = self.autoresizingMask;
