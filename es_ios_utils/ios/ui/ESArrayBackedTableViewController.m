@@ -88,7 +88,7 @@
 
 -(void)tableView:(UITableView*)tv didSelectRowAtIndexPath:(NSIndexPath*)ip
 {
-    [self didSelectCellWithData:[self.cellData objectAtIndex:ip.row]];
+    [self didSelectCellWithData:[self dataAtIndexPath:ip]];
 }
 
 -(BOOL)isUsingSearchAndIndex
