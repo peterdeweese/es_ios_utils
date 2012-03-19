@@ -706,6 +706,12 @@
     [self deleteSections:[NSIndexSet indexSetWithIndex:s] withRowAnimation:a];
 }
 
+-(void)selectFirstRow:(BOOL)animated;
+{
+    if(self.numberOfSections > 0 && [self numberOfRowsInSection:0] > 0)
+        [self selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:animated scrollPosition:UITableViewScrollPositionTop];
+}
+
 -(void)deselectAll
 {
     [self deselectRowAtIndexPath:self.indexPathForSelectedRow animated:YES];

@@ -193,6 +193,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)selectFirstRow:(BOOL)animated;
   -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deselectAll;
   -(void)update:(ESEmptyBlock)update;
