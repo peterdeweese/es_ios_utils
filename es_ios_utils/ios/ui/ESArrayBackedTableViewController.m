@@ -81,7 +81,8 @@
 
 -(UITableViewCell*)tableView:(UITableView*)tv cellForRowAtIndexPath:(NSIndexPath*)ip
 {
-    UITableViewCell *c = [tv dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell* c = [tv dequeueReusableCellWithIdentifier:self.className] ?: UITableViewCell.new;
+
     [self configureCell:c withData:[self dataAtIndexPath:ip]];
     return c;
 }
