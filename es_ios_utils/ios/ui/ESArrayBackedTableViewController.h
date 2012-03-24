@@ -1,9 +1,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ESArrayBackedTableViewController : UITableViewController
-  @property(retain) NSArray* cellData;
-  @property(retain) NSString* textKey;
-  @property(retain) NSString* detailKey;
+  @property(retain) NSArray*             cellData;
+  @property(retain) NSString*            textKey;
+  @property(retain) NSString*            detailKey;
+  @property(assign) UITableViewCellStyle cellStyle;
 
   @property(readonly) BOOL usesSections;
 
@@ -16,5 +17,4 @@
   -(NSArray*)cellData;
   -(void)configureCell:(UITableViewCell*)c withData:(id)o;
   -(void)didSelectCellWithData:(id)o;
-
 @end

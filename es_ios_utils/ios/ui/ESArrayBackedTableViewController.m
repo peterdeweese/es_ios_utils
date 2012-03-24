@@ -8,7 +8,7 @@
 
 @implementation ESArrayBackedTableViewController
 
-@synthesize cellData, textKey, detailKey;
+@synthesize cellData, textKey, detailKey, cellStyle;
 @synthesize sectionTitles, sectionData, originalCellData;
 
 -(BOOL)usesSections
@@ -85,7 +85,7 @@
 
 -(UITableViewCell*)tableView:(UITableView*)tv cellForRowAtIndexPath:(NSIndexPath*)ip
 {
-    UITableViewCell* c = [tv dequeueReusableCellWithIdentifier:self.className] ?: UITableViewCell.new;
+    UITableViewCell* c = [tv dequeueReusableCellWithIdentifier:self.className] ?: [UITableViewCell cellWithStyle:cellStyle reuseIdentifier:self.className];
 
     [self configureCell:c withData:[self dataAtIndexPath:ip]];
     return c;
