@@ -28,14 +28,13 @@
     return [cellData objectAtIndex:ip.row];
 }
 
--(void)convertToAlphaIndex
+-(void)convertToIndex:(ObjectReturnBlock)indexTitle
 {
     sectionTitles = NSMutableArray.new;
     sectionData   = NSMutableArray.new;
     
     [cellData each:^(id o) {
-        NSString* text = [o valueForKey:textKey];
-        NSString* sectionTitle = [text substringToIndex:1];
+        NSString* sectionTitle = indexTitle(o);
         if(![sectionTitle isEqualToString:sectionTitles.last])
         {
             [sectionTitles addObject:sectionTitle];
@@ -44,6 +43,11 @@
         NSMutableArray* section = sectionData.last;
         [section addObject:o];
     }];
+}
+
+-(void)convertToAlphaIndex
+{
+    return [self convertToIndex:^id(id o){return [[o valueForKey:textKey] substringToIndex:1];}];
 }
 
 -(void)configureCellForData:(id)o

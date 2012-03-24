@@ -7,6 +7,7 @@
 
   @property(readonly) BOOL usesSections;
 
+  -(void)convertToIndex:(ObjectReturnBlock)indexTitle;
   -(void)convertToAlphaIndex;
 
   -(void)configureCellForData:(id)o;
