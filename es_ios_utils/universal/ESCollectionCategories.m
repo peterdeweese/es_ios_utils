@@ -214,7 +214,7 @@
     return self.mutableCopy;
 }
 
--(int)firstIndexWhereKeyPath:(id)kp isEqual:(id)o2
+-(NSInteger)firstIndexWhereKeyPath:(id)kp isEqual:(id)o2
 {
     return [self indexOfObjectPassingTest:^BOOL(id o, NSUInteger i, BOOL *stop)
             {

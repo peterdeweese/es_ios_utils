@@ -63,7 +63,11 @@
 
 +(CGContextRef)currentContext
 {
-    return UIGraphicsGetCurrentContext();
+    #if IS_IOS
+        return UIGraphicsGetCurrentContext();
+    #else
+        return NSGraphicsContext.currentContext.graphicsPort;
+    #endif
 }
 
 +(void)beginPathInContext:(CGContextRef)c
@@ -84,16 +88,6 @@
 +(void)context:(CGContextRef)c setLineCap:(CGLineCap)cap
 {
     CGContextSetLineCap(c, cap);
-}
-
-+(void)context:(CGContextRef)c setStrokeColor:(UIColor*)color
-{
-    CGContextSetStrokeColorWithColor(c, color.CGColor);
-}
-
-+(void)context:(CGContextRef)c setFillColor:(UIColor*)color
-{
-    CGContextSetFillColorWithColor(c, color.CGColor);
 }
 
 +(void)context:(CGContextRef)c addElipseInRect:(CGRect)r
@@ -160,16 +154,6 @@
     [CG context:CG.currentContext setLineCap:cap];
 }
 
-+(void)setStrokeColor:(UIColor*)color
-{
-    [CG context:CG.currentContext setStrokeColor:color];
-}
-
-+(void)setFillColor:(UIColor*)color
-{
-    [CG context:CG.currentContext setFillColor:color];
-}
-
 +(void)drawElipseInRect:(CGRect)r
 {
     [CG context:CG.currentContext addElipseInRect:r];
@@ -199,5 +183,30 @@
 {
     [CG context:CG.currentContext addLines:points count:count];
 }
+
+
+#if IS_IOS
+
++(void)context:(CGContextRef)c setStrokeColor:(UIColor*)color
+{
+    CGContextSetStrokeColorWithColor(c, color.CGColor);
+}
+
++(void)context:(CGContextRef)c setFillColor:(UIColor*)color
+{
+    CGContextSetFillColorWithColor(c, color.CGColor);
+}
+
++(void)setStrokeColor:(UIColor*)color
+{
+    [CG context:CG.currentContext setStrokeColor:color];
+}
+
++(void)setFillColor:(UIColor*)color
+{
+    [CG context:CG.currentContext setFillColor:color];
+}
+
+#endif //IS_IOS
 
 @end

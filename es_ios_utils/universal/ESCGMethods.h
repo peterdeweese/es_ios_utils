@@ -26,8 +26,6 @@
 
   +(void)context:(CGContextRef)c setLineWidth:(CGFloat)w;
   +(void)context:(CGContextRef)c setLineCap:(CGLineCap)cap;
-  +(void)context:(CGContextRef)c setStrokeColor:(UIColor*)color;
-  +(void)context:(CGContextRef)c setFillColor:(UIColor*)color;
   +(void)context:(CGContextRef)c addElipseInRect:(CGRect)r;
   +(void)context:(CGContextRef)c addCircleAt:(CGPoint)p radius:(float)r;
   +(void)context:(CGContextRef)c moveTo:(CGPoint)p;
@@ -42,12 +40,18 @@
 
   +(void)setLineWidth:(CGFloat)w;
   +(void)setLineCap:(CGLineCap)cap;
-  +(void)setStrokeColor:(UIColor*)color;
-  +(void)setFillColor:(UIColor*)color;
   +(void)drawElipseInRect:(CGRect)r;
   +(void)drawCircleAt:(CGPoint)p radius:(float)r;
   +(void)moveTo:(CGPoint)p;
   +(void)addLineTo:(CGPoint)p;
   +(void)addLineFrom:(CGPoint)f to:(CGPoint)t;
-+(void)addLines:(const CGPoint*)points count:(size_t)count;
+  +(void)addLines:(const CGPoint*)points count:(size_t)count;
+
+#if IS_IOS
+  +(void)context:(CGContextRef)c setStrokeColor:(UIColor*)color;
+  +(void)context:(CGContextRef)c setFillColor:(UIColor*)color;
+  +(void)setStrokeColor:(UIColor*)color;
+  +(void)setFillColor:(UIColor*)color;
+#endif //IS_IOS
+
 @end
