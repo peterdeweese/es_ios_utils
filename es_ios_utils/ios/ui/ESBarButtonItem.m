@@ -19,13 +19,14 @@
     return result;
 }
 
-+(ESBarButtonItem*)barButtonItemToEditTable:(__block UITableView*)t
++(ESBarButtonItem*)barButtonItemToEditTable:(UITableView*)t
 {
     __block ESBarButtonItem* item;
+    __block UITableView*     b_t = t;
     item = [ESBarButtonItem barButtonItemWithTitle:@"Edit" action:^{
-        [t setEditing:!t.editing animated:YES];
-        item.title = t.editing ? @"Done" : @"Edit";
-        item.style = t.editing ? UIBarButtonItemStyleDone : UIBarButtonItemStylePlain;
+        [b_t setEditing:!t.editing animated:YES];
+        item.title = b_t.editing ? @"Done" : @"Edit";
+        item.style = b_t.editing ? UIBarButtonItemStyleDone : UIBarButtonItemStylePlain;
     }];
     return item;
 }
@@ -52,6 +53,17 @@
         
         if(blockAction) blockAction();
     }
+}
+
+-(void)clearActions
+{
+    self.blockAction                    = nil;
+    self.viewControllerForPopover       = nil;
+    self.popoverController.delegate     = nil;
+    self.popoverController              = nil;
+    self.userTarget                     = nil;
+    self.userAction                     = nil;
+    self.createViewControllerForPopover = nil;
 }
 
 #pragma mark - Popovers

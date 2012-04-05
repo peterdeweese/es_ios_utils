@@ -18,7 +18,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UIActionSheet(ESUtils)
   -(void)cancel:(BOOL)animated;
-  -(void)cancel;
+  -(IBAction)cancel;
 @end
 
 
