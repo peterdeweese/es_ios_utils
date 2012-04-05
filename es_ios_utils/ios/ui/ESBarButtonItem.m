@@ -55,6 +55,17 @@
     }
 }
 
+-(void)clearActions
+{
+    self.blockAction                    = nil;
+    self.viewControllerForPopover       = nil;
+    self.popoverController.delegate     = nil;
+    self.popoverController              = nil;
+    self.userTarget                     = nil;
+    self.userAction                     = nil;
+    self.createViewControllerForPopover = nil;
+}
+
 #pragma mark - Popovers
 
 -(void)presentPopover
