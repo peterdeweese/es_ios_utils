@@ -52,6 +52,10 @@
   -(SEL)setterMethodSelectorForKey:(NSString*)key;
   -(BOOL)hasSetterForKey:(NSString*)key;
   -(void)setValuesForKeys:(id<NSFastEnumeration>)keys withDictionary:(NSDictionary*)d;
+  -(void)setValuesWithDictionary:(NSDictionary*)d;
+
+  //If a sub-object has an asDictionary method, it will be used during conversion.
+  -(NSDictionary*)asDictionaryWithKeys:(id<NSFastEnumeration>)keys;
 @end
 
 @interface NSRegularExpression(ESUtils)

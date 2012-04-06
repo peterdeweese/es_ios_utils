@@ -174,6 +174,28 @@
             NSLog(@"No setter found in %@ for %@.", self.className, k);
 }
 
+-(void)setValuesWithDictionary:(NSDictionary*)d
+{
+    [self setValuesForKeys:d.allKeys withDictionary:d];
+}
+
+-(NSDictionary*)asDictionaryWithKeys:(id<NSFastEnumeration>)keys
+{
+    NSMutableDictionary* d = NSMutableDictionary.new;
+    NSMutableDictionary* od = NSMutableDictionary.new;
+    [d setObject:od forKey:self.className];
+    
+    for(NSString* key in keys)
+    {
+        id value = [self valueForKey:key];
+        if([value respondsToSelector:@selector(asDictionary)])
+            value = [value toDictionaryForRails];
+        [od setObject:value forKey:key];
+    }
+    
+    return d;
+}
+
 @end
 
 
