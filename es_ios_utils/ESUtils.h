@@ -1,5 +1,4 @@
 #import "ESCollectionCategories.h"
-#import "ESCGMethods.h"
 #import "TargetConditionals.h"
 
 #if USE_APPLICATION_UNIT_TEST
@@ -14,10 +13,12 @@
 #elif TARGET_OS_IPHONE
   #define IS_MAC 0
   #define IS_IOS 1
-#ifdef _COREDATADEFINES_H
+  #ifdef _COREDATADEFINES_H
     #define CORE_DATA_AVAILABLE 1
   #endif
 #endif
+
+#import "ESCGMethods.h"
 
 #if IS_IOS
   #import <Foundation/Foundation.h>
