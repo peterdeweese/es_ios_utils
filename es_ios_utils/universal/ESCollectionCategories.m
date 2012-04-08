@@ -214,6 +214,14 @@
     return self.mutableCopy;
 }
 
+-(NSDictionary*)asDictionaryUsingKey:(NSString*)key
+{
+    NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    for(id o in self)
+        [result setObject:o forKey:[o valueForKey:key]];
+    return result;
+}
+
 -(NSInteger)firstIndexWhereKeyPath:(id)kp isEqual:(id)o2
 {
     return [self indexOfObjectPassingTest:^BOOL(id o, NSUInteger i, BOOL *stop)

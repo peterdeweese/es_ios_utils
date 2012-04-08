@@ -59,6 +59,7 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   @property(readonly) NSSet*          asSet;
   @property(readonly) NSMutableSet*   asMutableSet;
   @property(readonly) NSMutableArray* asMutableArray;
+  -(NSDictionary*)asDictionaryUsingKey:(NSString*)key;
   -(NSInteger)firstIndexWhereKeyPath:(id)kp isEqual:(id)o;
   -(int)countObjectsWhereKeyPath:(id)kp isEqual:(id)o;
 @end
