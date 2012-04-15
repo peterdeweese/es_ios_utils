@@ -175,6 +175,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UITableView(ESUtils)
   +(UITableView*)tableViewWithFrame:(CGRect)bounds style:(UITableViewStyle)style;
+  -(UITableViewCell*)getReusableCellWithIdentifier:(NSString*)identifier style:(UITableViewCellStyle)style;
   @property(readonly) BOOL isEmpty;
   @property(readonly) BOOL isNotEmpty;
   -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;

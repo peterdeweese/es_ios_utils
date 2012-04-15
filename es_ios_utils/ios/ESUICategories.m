@@ -599,6 +599,11 @@
     return [[UITableView alloc] initWithFrame:bounds style:style];
 }
 
+-(UITableViewCell*)getReusableCellWithIdentifier:(NSString*)identifier style:(UITableViewCellStyle)style
+{
+    return [self dequeueReusableCellWithIdentifier:identifier] ?: [UITableViewCell cellWithStyle:style reuseIdentifier:identifier];
+}
+
 // Returns YES if there are no rows in any section.
 -(BOOL)isEmpty
 {    
