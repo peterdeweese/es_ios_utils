@@ -28,6 +28,29 @@
     return [cellData objectAtIndex:ip.row];
 }
 
+-(NSIndexPath*)indexPathForObject:(id)data
+{
+    NSArray* array = cellData;
+    int s=0;
+    if(self.usesSections)
+        for(NSArray* section in sectionData)
+        {
+            if([section containsObject:data])
+            {
+                array = section;
+                break;
+            }
+            s++;
+        }
+    return [NSIndexPath indexPathForRow:[array indexOfObject:data] inSection:s];
+}
+
+-(void)scrollToObject:(id)data animated:(BOOL)animated
+{
+    if(data)
+        [self.tableView scrollToRowAtIndexPath:[self indexPathForObject:data] atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
+}
+
 -(void)convertToIndex:(ObjectReturnBlock)indexTitle
 {
     sectionTitles = NSMutableArray.new;

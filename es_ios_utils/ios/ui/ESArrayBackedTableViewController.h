@@ -17,4 +17,7 @@
   -(NSArray*)cellData;
   -(void)configureCell:(UITableViewCell*)c withData:(id)o;
   -(void)didSelectCellWithData:(id)o;
+
+  -(NSIndexPath*)indexPathForObject:(id)data;
+  -(void)scrollToObject:(id)data animated:(BOOL)animated;
 @end
