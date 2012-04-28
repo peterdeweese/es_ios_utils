@@ -55,8 +55,9 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UINavigationController(ESUtils)
   +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc;
-
   -(void)popViewController;
+-(void)popToViewControllerOfClass:(Class)c animated:(BOOL)animated;
+-(void)popToViewControllerOfClass:(Class)c;
 @end
 
 

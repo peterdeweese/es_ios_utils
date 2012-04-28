@@ -147,6 +147,18 @@
 
 -(void)popViewController { [self popViewControllerAnimated:YES]; }
 
+-(void)popToViewControllerOfClass:(Class)c animated:(BOOL)animated
+{
+    for(UIViewController* vc in self.viewControllers.reversed)
+        if([vc isKindOfClass:c])
+            [self popToViewController:vc animated:animated];
+}
+
+-(void)popToViewControllerOfClass:(Class)c
+{
+    [self popToViewControllerOfClass:c animated:YES];
+}
+
 @end
 
 
