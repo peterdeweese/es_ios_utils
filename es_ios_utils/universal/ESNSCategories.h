@@ -59,7 +59,10 @@
 @end
 
 @interface NSRegularExpression(ESUtils)
-    -(BOOL)matches:(NSString*)string;
+  +(NSString*)stringByReplacingMatchesInString:(NSString*)string regex:(NSString*)regex template:(NSString*)template;
+  -(BOOL)matches:(NSString*)string;
+  -(NSString*)stringByReplacingMatchesInString:(NSString*)string options:(NSMatchingOptions)options withTemplate:(NSString *)template;
+  -(NSString*)stringByReplacingMatchesInString:(NSString*)string withTemplate:(NSString *)template;
 @end
 
 @interface NSString(ESUtils)

@@ -201,9 +201,28 @@
 
 @implementation NSRegularExpression(ESUtils)
 
++(NSString*)stringByReplacingMatchesInString:(NSString*)string regex:(NSString*)regex template:(NSString*)template
+{
+    NSError* error = nil;
+    NSRegularExpression* re = [NSRegularExpression regularExpressionWithPattern:regex options:0 error:&error];
+    if(error)
+        [NSException raise:error.domain format:error.description];
+    return [re stringByReplacingMatchesInString:string withTemplate:template];
+}
+
 -(BOOL)matches:(NSString*)string
 {
     return [self rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, string.length)].location != NSNotFound;
+}
+
+-(NSString*)stringByReplacingMatchesInString:(NSString*)string options:(NSMatchingOptions)options withTemplate:(NSString *)template
+{
+    return [self stringByReplacingMatchesInString:string options:options range:NSMakeRange(0, string.length) withTemplate:template];
+}
+
+-(NSString*)stringByReplacingMatchesInString:(NSString*)string withTemplate:(NSString *)template
+{
+    return [self stringByReplacingMatchesInString:string options:0 range:NSMakeRange(0, string.length) withTemplate:template];
 }
 
 @end
