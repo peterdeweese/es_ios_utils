@@ -30,6 +30,7 @@
 -(UITableViewCell*)createCell; //defaults to creating a cell with cellStyle
 -(void)configureFetchRequest:(NSFetchRequest*)fetchRequest; //optional
 -(void)configureFetchRequestController:(NSFetchedResultsController*)controller; //optional
+-(void)configureCell:(UITableViewCell*)cell with:(id)object;
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath;
 
 @end

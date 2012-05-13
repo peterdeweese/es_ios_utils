@@ -67,9 +67,14 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     return [self.tableView getReusableCellWithIdentifier:reuseIdentifier style:cellStyle];
 }
 
--(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
+-(void)configureCell:(UITableViewCell*)cell with:(id)object
 {
     $must_override;
+}
+
+-(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
+{
+    [self configureCell:cell with:[self objectAtIndexPath:indexPath]];
 }
 
 -(void)didSelectObject:(id)o { }
@@ -146,8 +151,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     assert(context);
     assert(self.entityClass);
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass 
-                                                 inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass inManagedObjectContext:context];
     fetchRequest.fetchBatchSize = 20;
     [self configureFetchRequest:fetchRequest];
     self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest
