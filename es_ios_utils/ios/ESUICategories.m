@@ -145,6 +145,11 @@
     return [[UINavigationController alloc] initWithRootViewController:vc];
 }
 
+-(UIViewController*)backViewController
+{
+    return self.viewControllers.count > 1 ? [self.viewControllers objectAtIndex:self.viewControllers.count - 2] : nil;
+}
+
 -(void)popViewController { [self popViewControllerAnimated:YES]; }
 
 -(void)popToViewControllerOfClass:(Class)c animated:(BOOL)animated
