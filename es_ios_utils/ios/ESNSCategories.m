@@ -212,7 +212,7 @@ float logx(float value, float base)
     float size = (float)byteLength/powf(1024, power);
     
     return $format(@"%@ %@",
-                   power?$format(@"%1.1f",size):$format(@"%i",byteLength),
+                   power?$format(@"%1.1f",size):$format(@"%lld",byteLength),
                    [labels objectAtIndex:power]);
 }
 
