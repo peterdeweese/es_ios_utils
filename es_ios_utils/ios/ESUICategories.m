@@ -242,7 +242,7 @@
     UIToolbar* bar = [[[UIToolbar alloc] initWithFrame:$rect(0, 0, 0, 44.)] autorelease];
     bar.items = items;
     
-    UIView* v = bar.subviews.lastObject;
+    UIView* v = bar.subviews.last;
     bar.width = v.x + v.width;
     
     return bar;

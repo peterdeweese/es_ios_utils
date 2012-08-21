@@ -317,7 +317,7 @@
     if(self.count == 0)
         return nil;
     
-    id object = [self lastObject];
+    id object = self.last;
     [self removeLastObject];
     return object;
 }
