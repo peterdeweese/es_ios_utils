@@ -59,7 +59,11 @@
         
         if(message)
         {
+
+#ifdef DEBUG
             NSLog(@"Setting flash message: %@", message);
+#endif
+
             if(self.alpha == 0.0)
                 self.text = message;
             __block typeof(self) bself = self;
