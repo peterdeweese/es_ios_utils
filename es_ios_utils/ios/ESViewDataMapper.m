@@ -124,7 +124,10 @@
 -(void)updateView
 {
     NSObject* value = self.objectValue;
+    
+#ifdef DEBUG
     NSLog(@"Updating view: %@=%@", self.keyPath, value);
+#endif
     
     if([self.view isKindOfClass:UITextField.class])
         ((UITextField*)self.view).text = (NSString*)value;
@@ -161,7 +164,11 @@
     {
         @try
         {
+            
+#ifdef DEBUG
                 NSLog(@"Updating object: %@=%@", self.keyPath, value);
+#endif
+            
                 self.objectValue = value;
         }
         @catch (NSException *e)
