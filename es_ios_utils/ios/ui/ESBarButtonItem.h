@@ -12,6 +12,7 @@
   @property(nonatomic, retain) IBOutlet UIViewController* viewControllerForPopover;
 
   -(void)clearActions;
+  -(BOOL)isPopoverVisible;
   -(IBAction)presentPopover;
   -(IBAction)dismissPopover;
 @end

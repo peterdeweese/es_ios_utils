@@ -82,6 +82,11 @@
     }
 }
 
+-(BOOL)isPopoverVisible
+{
+    return self.popoverController.isPopoverVisible;
+}
+
 -(void)dismissPopover
 {
     [self.popoverController dismissPopoverAnimated:YES];
