@@ -23,7 +23,7 @@
     }
     va_end(args);
     
-    return [a.copy autorelease];
+    return a.copy;
 }
 
 -(NSArray*)arrayByRemovingLastObject
@@ -56,11 +56,11 @@
     return result;
 }
 
--(NSArray*)arrayMappedWithFormat:(NSString*)format
+-(NSArray*)arrayMappedWithFormat:(NSString*)f
 {
-    __block NSString* b_format = format;
+    NSString* format = f;
     return [self arrayMappedWith:^id(id o) {
-        return [NSString stringWithFormat:b_format, ((NSObject*)o).description];
+        return [NSString stringWithFormat:format, ((NSObject*)o).description];
     }];
 }
 
@@ -90,18 +90,37 @@
     return [self subarrayFrom:0 length:loc+1];
 }
 
--(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+-(NSArray*)filteredArrayUsingPredecateFormat:(NSString*)format, ...
 {
-    NSString *format = $format(@"%@ == %@", keyPath, @"%@");
-    NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
+    va_list args;
+    va_start(args, format);
+    NSPredicate *pred = [NSPredicate predicateWithFormat:format arguments:args];
     return [self filteredArrayUsingPredicate:pred];
 }
 
--(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object
 {
-    NSString *format = $format(@"%@ IN %@", @"%@", keyPath);
-    NSPredicate *pred = [NSPredicate predicateWithFormat:format, object];
-    return [self filteredArrayUsingPredicate:pred];
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ CONTAINS %%@", keyPath), object];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath containsIgnoreCase:(id)object
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ CONTAINS[c] %%@", keyPath), object];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%@", keyPath), object];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equalsInt:(int)i
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%@ == %%d", keyPath), i];
+}
+
+-(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath in:(id)object
+{
+    return [self filteredArrayUsingPredecateFormat: $format(@"%%@ IN %@", keyPath), object];
 }
 
 -(BOOL)isIndexInRange:(NSInteger)i
@@ -177,7 +196,7 @@
         if([set containsObject:o])
             [a addObject:o];
     
-    return [a.copy autorelease];
+    return a.copy;
 }
 
 -(NSSet*)asSet
@@ -192,7 +211,37 @@
 
 -(NSMutableArray*)asMutableArray
 {
-    return [self.mutableCopy autorelease];
+    return self.mutableCopy;
+}
+
+-(NSDictionary*)asDictionaryUsingKey:(NSString*)key
+{
+    NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:self.count];
+    for(id o in self)
+        [result setObject:o forKey:[o valueForKey:key]];
+    return result;
+}
+
+-(NSInteger)firstIndexWhereKeyPath:(id)kp isEqual:(id)o2
+{
+    return [self indexOfObjectPassingTest:^BOOL(id o, NSUInteger i, BOOL *stop)
+            {
+                id v = [o valueForKeyPath:kp];
+                return (!o2 && !v) || (o2 && [o2 isEqual:v]);
+            }];
+}
+
+-(int)countObjectsWhereKeyPath:(id)kp isEqual:(id)o2
+{
+    int count = 0;
+    for(id o in self)
+    {
+        id v = [o valueForKeyPath:kp];
+        if((!o2 && !v) || (o2 && [o2 isEqual:v]))
+            count++;
+    }
+    
+    return count;
 }
 
 @end
@@ -259,7 +308,7 @@
     return result;
 }
 
--(NSMutableDictionary*)asMutableDictionary { return [self.mutableCopy autorelease]; }
+-(NSMutableDictionary*)asMutableDictionary { return self.mutableCopy; }
 
 -(BOOL)isEmpty
 {
@@ -299,7 +348,7 @@
 
 -(NSArray*)asArray
 {
-    return [self.copy autorelease];
+    return self.copy;
 }
 
 -(id)dequeue
@@ -307,7 +356,7 @@
     if(self.isEmpty)
         return nil;
     
-    id o = [[[self objectAtIndex:0] retain] autorelease];
+    id o = [self objectAtIndex:0];
     [self removeObjectAtIndex:0];
     return o;
 }
@@ -317,7 +366,7 @@
     if(self.count == 0)
         return nil;
     
-    id object = self.last;
+    id object = [self lastObject];
     [self removeLastObject];
     return object;
 }
@@ -422,7 +471,6 @@
 {
     NSSortDescriptor *d = [[NSSortDescriptor alloc] initWithKey:key ascending:ascending];
     NSArray *result = [self sortedArrayUsingDescriptors:$array(d)];
-    [d release];
     return result;
 }
 
@@ -433,7 +481,7 @@
 
 -(NSMutableSet*)asMutableSet
 {
-    return [self.mutableCopy autorelease];
+    return self.mutableCopy;
 }
 
 @end

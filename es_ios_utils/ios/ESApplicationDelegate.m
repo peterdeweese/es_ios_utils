@@ -73,7 +73,7 @@
 {
     if(!privateManagedObjectContext && self.persistentStoreCoordinator)
     {    
-        self.privateManagedObjectContext = [[[NSManagedObjectContext alloc] init] autorelease];
+        self.privateManagedObjectContext = [[NSManagedObjectContext alloc] init];
         privateManagedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
     }
     return privateManagedObjectContext;
@@ -88,7 +88,7 @@
     if (!privateManagedObjectModel)
     {
         NSURL *modelURL = [NSBundle.mainBundle URLForResource:self.persistentStoreName withExtension:@"momd"];
-        self.privateManagedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] autorelease];
+        self.privateManagedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     }
     return privateManagedObjectModel;
 }
@@ -115,7 +115,7 @@
     NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
     NSError *error = nil;
-    self.privatePersistentStoreCoordinator = [[[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel] autorelease];
+    self.privatePersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                              [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                              [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
@@ -179,15 +179,6 @@
     self.privatePersistentStoreCoordinator = nil;
     self.privateManagedObjectContext = nil;
     self.privateManagedObjectModel = nil;
-}
-
-- (void)dealloc
-{
-    self.privatePersistentStoreCoordinator = nil;
-    self.privateManagedObjectContext       = nil;
-    self.privateManagedObjectModel         = nil;
-    self.privateConfig                     = nil;
-    [super dealloc];
 }
 
 @end

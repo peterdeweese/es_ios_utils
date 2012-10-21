@@ -48,11 +48,11 @@
 
 +(UIAlertView*)createAndShowWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)button
 {
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:title
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                      message:message
                                                     delegate:nil
                                            cancelButtonTitle:nil
-                                           otherButtonTitles:button, nil] autorelease];
+                                           otherButtonTitles:button, nil];
     [alert show];
     return alert;
 }
@@ -64,17 +64,17 @@
 
 +(UIBarButtonItem*)barButtonItemWithCustomView:(UIView*)v
 {
-    return [[[UIBarButtonItem alloc] initWithCustomView:v] autorelease];
+    return [[UIBarButtonItem alloc] initWithCustomView:v];
 }
 
 +(UIBarButtonItem*)barButtonItemWithTitle:(NSString*)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
 {
-    return [[[UIBarButtonItem alloc] initWithTitle:title style:style target:target action:action] autorelease];
+    return [[UIBarButtonItem alloc] initWithTitle:title style:style target:target action:action];
 }
 
 +(UIBarButtonItem*)barButtonItemWithBarButtonSystemItem:(UIBarButtonSystemItem)item target:(id)target action:(SEL)action
 {
-    return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:target action:action] autorelease];
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:target action:action];
 }
 
 @end
@@ -121,7 +121,7 @@
 
 +(UILabel*)labelWithText:(NSString*)text
 {
-    UILabel *l = [[[UILabel alloc] init] autorelease];
+    UILabel *l = [[UILabel alloc] init];
     l.text = text;
     [l sizeToFit];
     return l;
@@ -142,10 +142,27 @@
 
 +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc
 {
-    return [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    return [[UINavigationController alloc] initWithRootViewController:vc];
+}
+
+-(UIViewController*)backViewController
+{
+    return self.viewControllers.count > 1 ? [self.viewControllers objectAtIndex:self.viewControllers.count - 2] : nil;
 }
 
 -(void)popViewController { [self popViewControllerAnimated:YES]; }
+
+-(void)popToViewControllerOfClass:(Class)c animated:(BOOL)animated
+{
+    for(UIViewController* vc in self.viewControllers.reversed)
+        if([vc isKindOfClass:c])
+            [self popToViewController:vc animated:animated];
+}
+
+-(void)popToViewControllerOfClass:(Class)c
+{
+    [self popToViewControllerOfClass:c animated:YES];
+}
 
 @end
 
@@ -171,12 +188,12 @@
 
 +(UIPickerView*)pickerView
 {
-    return [[[UIPickerView alloc] init] autorelease];
+    return [[UIPickerView alloc] init];
 }
 
 +(UIPickerView*)pickerViewWithDelegate:(id<UIPickerViewDelegate>)delegate dataSource:(id<UIPickerViewDataSource>)dataSource
 {
-    return [[[self alloc] initWithDelegate:delegate dataSource:dataSource] autorelease];
+    return [[self alloc] initWithDelegate:delegate dataSource:dataSource];
 }
 
 +(UIPickerView*)pickerViewWithDelegateAndDataSource:(id<UIPickerViewDataSource, UIPickerViewDelegate>)delegate
@@ -206,7 +223,7 @@
 
 +(UIPopoverController*)popoverControllerWithContentViewController:(UIViewController*)viewController
 {
-    return [[[UIPopoverController alloc] initWithContentViewController:viewController] autorelease];
+    return [[UIPopoverController alloc] initWithContentViewController:viewController];
 }
 
 +(UIPopoverController*)popoverControllerWithNavigationAndContentViewController:(UIViewController*)viewController
@@ -229,7 +246,7 @@
 
 +(UITableViewCell*)cellWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier
 {
-    return [[[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier] autorelease];
+    return [[UITableViewCell alloc] initWithStyle:style reuseIdentifier:identifier];
 }
 
 @end
@@ -239,7 +256,7 @@
 
 +(UIToolbar*)toolbarWithItems:(NSArray*)items
 {    
-    UIToolbar* bar = [[[UIToolbar alloc] initWithFrame:$rect(0, 0, 0, 44.)] autorelease];
+    UIToolbar* bar = [[UIToolbar alloc] initWithFrame:$rect(0, 0, 0, 44.)];
     bar.items = items;
     
     UIView* v = bar.subviews.last;
@@ -270,7 +287,7 @@
 
 +(UIView*)viewWithFrame:(CGRect)frame
 {
-    return [[[UIView alloc] initWithFrame:frame] autorelease];
+    return [[UIView alloc] initWithFrame:frame];
 }
 
 +(void)animate:(void(^)(void))animations
@@ -302,6 +319,8 @@
     self.frame = $rect(self.x, y, self.width, self.height);
 }
 
+-(float)bottomY { return self.y + self.height; }
+
 -(CGSize)size { return self.frame.size; }
 -(void)setSize:(CGSize)size
 {
@@ -322,6 +341,14 @@
 
 -(float)cornerRadius { return self.layer.cornerRadius; }
 -(void)setCornerRadius:(float)r { self.layer.cornerRadius = r; }
+
+-(BOOL)containsSubviewWithKindOfClass:(__unsafe_unretained Class)c
+{
+    for(UIView* v in self.subviews)
+        if([v isKindOfClass:c] || [v containsSubviewWithKindOfClass:c])
+            return YES;
+    return NO;
+}
 
 -(void)replaceInSuperviewWith:(UIView*)v
 {
@@ -424,6 +451,11 @@
 
 @implementation UIViewController(ESUtils)
 
+-(NSArray*)loadNibNamed:(NSString*)nib
+{
+    return [NSBundle.mainBundle loadNibNamed:nib owner:self options:nil];
+}
+
 -(UIPopoverController*)$popoverController
 {
     return [self valueForKey:@"popoverController"];
@@ -464,7 +496,6 @@
     UIViewController *c = [[UIViewController alloc]init];
     [self presentModalViewController:c animated:NO];
     [self dismissModalViewControllerAnimated:NO];
-    [c release];
 }
 
 -(void)forcePopoverSize
@@ -502,6 +533,11 @@
 
 @implementation UIScrollView(ESUtils)
 
+-(void)scrollToTop
+{
+    [self setContentOffset:CGPointZero animated:YES];
+}
+
 //TODO: a useful alternative may be to shrink the scrollview when the keyboard comes up.
 -(void)scrollViewToVisibleForKeyboard:(UIView*)v { [self scrollViewToVisibleForKeyboard:v animated:YES]; }
 -(void)scrollViewToVisibleForKeyboard:(UIView*)v animated:(BOOL)animated
@@ -531,7 +567,7 @@
 
 +(UITextField*)textFieldWithFrame:(CGRect)frame
 {
-    return [[[UITextField alloc] initWithFrame:frame] autorelease];
+    return [[UITextField alloc] initWithFrame:frame];
 }
 
 // Uses a private ivar, but Apple reviews allow it in Veporter and other apps:
@@ -577,7 +613,12 @@
 
 +(UITableView*)tableViewWithFrame:(CGRect)bounds style:(UITableViewStyle)style
 {
-    return [[[UITableView alloc] initWithFrame:bounds style:style] autorelease];
+    return [[UITableView alloc] initWithFrame:bounds style:style];
+}
+
+-(UITableViewCell*)getReusableCellWithIdentifier:(NSString*)identifier style:(UITableViewCellStyle)style
+{
+    return [self dequeueReusableCellWithIdentifier:identifier] ?: [UITableViewCell cellWithStyle:style reuseIdentifier:identifier];
 }
 
 // Returns YES if there are no rows in any section.
@@ -608,6 +649,11 @@
 -(UITableViewCell*)cellForRow:(int)r
 {
     return [self cellForRow:r inSection:0];
+}
+
+-(UITableViewCell*)cellForSelectedRow
+{
+    return [self cellForRowAtIndexPath: self.indexPathForSelectedRow];
 }
 
 -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action
@@ -652,6 +698,16 @@
     [self scrollToRow:r inSection:0 atScrollPosition:p animated:a];
 }
 
+-(void)reloadRowAtIndexPath:(NSIndexPath*)ip withRowAnimation:(UITableViewRowAnimation)a
+{
+    [self reloadRowsAtIndexPaths:$array(ip) withRowAnimation:a];
+}
+
+-(void)reloadRowAtIndexPath:(NSIndexPath*)ip
+{
+    [self reloadRowAtIndexPath:ip withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a
 {
     [self deleteRowsAtIndexPaths:$array(i) withRowAnimation:a];
@@ -672,9 +728,22 @@
     [self deleteSections:[NSIndexSet indexSetWithIndex:s] withRowAnimation:a];
 }
 
+-(void)selectFirstRow:(BOOL)animated;
+{
+    if(self.numberOfSections > 0 && [self numberOfRowsInSection:0] > 0)
+        [self selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:animated scrollPosition:UITableViewScrollPositionTop];
+}
+
 -(void)deselectAll
 {
     [self deselectRowAtIndexPath:self.indexPathForSelectedRow animated:YES];
+}
+
+-(void)update:(ESEmptyBlock)update
+{
+    [self beginUpdates];
+    if(update) update();
+    [self endUpdates];
 }
 
 @end
@@ -701,7 +770,7 @@
 
 +(UIImageView*)imageViewWithImage:(UIImage*)i
 {
-    return [[[UIImageView alloc] initWithImage:i] autorelease];
+    return [[UIImageView alloc] initWithImage:i];
 }
 
 @end

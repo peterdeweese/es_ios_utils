@@ -37,12 +37,6 @@
     [nextEditor becomeFirstResponder];
 }
 
--(void)dealloc
-{
-    self.nextEditor = nil;
-    [super dealloc];
-}
-
 @end
 
 #endif /*IS_IOS*/

@@ -64,13 +64,17 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 -(UITableViewCell*)createCell
 {
     id reuseIdentifier = self.cellReuseIdentifier ?: kESFetchedTableViewControllerCell;
-    UITableViewCell* c = [self.tableView dequeueReusableCellWithIdentifier:self.cellReuseIdentifier];
-    return c ?: [[[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:reuseIdentifier] autorelease];
+    return [self.tableView getReusableCellWithIdentifier:reuseIdentifier style:cellStyle];
+}
+
+-(void)configureCell:(UITableViewCell*)cell with:(id)object
+{
+    $must_override;
 }
 
 -(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
-    $must_override;
+    [self configureCell:cell with:[self objectAtIndexPath:indexPath]];
 }
 
 -(void)didSelectObject:(id)o { }
@@ -101,7 +105,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 }
 
 -(UITableViewCell*)tableView:(UITableView*)t cellForRowAtIndexPath:(NSIndexPath*)i
-{    
+{
     UITableViewCell *c = [t dequeueReusableCellWithIdentifier:kESFetchedTableViewControllerCell];
     if (!c)
         c = [self createCell];
@@ -147,8 +151,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     assert(context);
     assert(self.entityClass);
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass 
-                                                 inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestForClass:self.entityClass inManagedObjectContext:context];
     fetchRequest.fetchBatchSize = 20;
     [self configureFetchRequest:fetchRequest];
     self.fetchedResultsController = [NSFetchedResultsController fetchedResultsControllerWithRequest:fetchRequest
@@ -226,20 +229,6 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 {
     NSManagedObject *newManagedObject = [self.managedObjectContext createManagedObjectOfClass:self.entityClass];
     [newManagedObject.managedObjectContext saveAndDoOnError:self.doOnError];
-}
-
-#pragma mark -
-
--(void)dealloc
-{
-    _fetchedResultsController.delegate     = nil;
-    self.fetchedResultsController          = nil;
-    self.managedObjectContext              = nil;
-    self.sectionNameKeyPath                = nil;
-    self.cellReuseIdentifier               = nil;
-    self.entityClass                       = nil;
-    self.doOnError                         = nil;
-    [super dealloc];
 }
 
 @end

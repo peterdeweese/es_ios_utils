@@ -40,7 +40,7 @@
     
     if(view)
     {
-        ESViewDataMap *m = [[[ESViewDataMap alloc] init] autorelease];
+        ESViewDataMap *m = [[ESViewDataMap alloc] init];
         [maps addObject:m];
         [mapByView setObject:m forKeyObject:view];
         
@@ -87,28 +87,12 @@
     return [self mapForView:view].objectValue;
 }
 
--(void)dealloc
-{
-    self.maps = nil;
-    self.mapByView = nil;
-    
-    [super dealloc];
-}
-
 @end
 
 
 @implementation ESViewDataMap
 
 @synthesize view, object, keyPath;
-
--(void)dealloc
-{
-    self.view = nil;
-    self.object = nil;
-    self.keyPath = nil;
-    [super dealloc];
-}
 
 -(id)objectValue
 {

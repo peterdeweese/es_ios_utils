@@ -19,7 +19,7 @@
 
 +(NSDateFormatter*)dateFormatter
 {
-    return [[[NSDateFormatter alloc] init] autorelease];
+    return [[NSDateFormatter alloc] init];
 }
 
 +(NSDateFormatter*)dateFormatterWithTimeStyle:(NSDateFormatterStyle)timeStyle dateStyle:(NSDateFormatterStyle)dateStyle
@@ -49,7 +49,7 @@
 -(NSString*)asRelativeString
 {
     NSDateFormatter *f = [NSDateFormatter dateFormatterWithTimeStyle:NSDateFormatterNoStyle dateStyle:NSDateFormatterMediumStyle];
-    f.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     f.doesRelativeDateFormatting=YES;
     
     return [f stringForObjectValue:self];
@@ -142,7 +142,7 @@
 
 +(NSLock*)lock
 {
-    return [[[NSLock alloc] init] autorelease];
+    return [[NSLock alloc] init];
 }
 
 @end
@@ -174,14 +174,55 @@
             NSLog(@"No setter found in %@ for %@.", self.className, k);
 }
 
+-(void)setValuesWithDictionary:(NSDictionary*)d
+{
+    [self setValuesForKeys:d.allKeys withDictionary:d];
+}
+
+-(NSDictionary*)asDictionaryWithKeys:(id<NSFastEnumeration>)keys
+{
+    NSMutableDictionary* d = NSMutableDictionary.new;
+    NSMutableDictionary* od = NSMutableDictionary.new;
+    [d setObject:od forKey:self.className];
+    
+    for(NSString* key in keys)
+    {
+        id value = [self valueForKey:key];
+        if([value respondsToSelector:@selector(asDictionary)])
+            value = [value toDictionaryForRails];
+        [od setObject:value forKey:key];
+    }
+    
+    return d;
+}
+
 @end
 
 
 @implementation NSRegularExpression(ESUtils)
 
++(NSString*)stringByReplacingMatchesInString:(NSString*)string regex:(NSString*)regex template:(NSString*)template
+{
+    NSError* error = nil;
+    NSRegularExpression* re = [NSRegularExpression regularExpressionWithPattern:regex options:0 error:&error];
+    if(error)
+        [NSException raise:error.domain format:error.description];
+    return [re stringByReplacingMatchesInString:string withTemplate:template];
+}
+
 -(BOOL)matches:(NSString*)string
 {
     return [self rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, string.length)].location != NSNotFound;
+}
+
+-(NSString*)stringByReplacingMatchesInString:(NSString*)string options:(NSMatchingOptions)options withTemplate:(NSString *)template
+{
+    return [self stringByReplacingMatchesInString:string options:options range:NSMakeRange(0, string.length) withTemplate:template];
+}
+
+-(NSString*)stringByReplacingMatchesInString:(NSString*)string withTemplate:(NSString *)template
+{
+    return [self stringByReplacingMatchesInString:string options:0 range:NSMakeRange(0, string.length) withTemplate:template];
 }
 
 @end
@@ -191,7 +232,7 @@
 
 -(NSMutableString*)asMutableString
 {
-    return [self.mutableCopy autorelease];
+    return self.mutableCopy;
 }
 
 //REFACTOR: consider pulling up into a math util library
@@ -221,12 +262,17 @@ float logx(float value, float base)
     return [NSString stringWithUTF8String:class_getName(c)];
 }
 
++(NSString*)stringWithInt:(int)i
+{
+    return [NSNumber numberWithInt:i].stringValue;
+}
+
 +(NSString*)stringWithUUID
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
-    return [(NSString *)string autorelease];
+    return [NSString stringWithString:(__bridge_transfer NSString*)string];
 }
 
 +(NSString*)stringWithSetterMethodNameForKey:(NSString*)key
@@ -318,15 +364,12 @@ float logx(float value, float base)
 
 +(void)detachNewThreadBlockImplementation:(ESEmptyBlock)block
 {
-    NSAutoreleasePool *p = [[NSAutoreleasePool alloc] init];
     block();
-    Block_release(block);
-    [p release];
 }
 
 +(void)detachNewThreadBlock:(ESEmptyBlock)block
 {
-    [NSThread detachNewThreadSelector:@selector(detachNewThreadBlockImplementation:) toTarget:self withObject:Block_copy(block)];
+    [NSThread detachNewThreadSelector:@selector(detachNewThreadBlockImplementation:) toTarget:self withObject:block];
 }
 
 @end

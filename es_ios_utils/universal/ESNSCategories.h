@@ -5,9 +5,6 @@
 @interface ESNSCategories:NSObject
 @end
 
-typedef void(^ESEmptyBlock)();
-typedef void(^ErrorBlock)(NSError*);
-
 @interface NSBundle(ESUtils)
   -(NSURL*)URLForResource:(NSString*)resource;
 @end
@@ -55,10 +52,17 @@ typedef void(^ErrorBlock)(NSError*);
   -(SEL)setterMethodSelectorForKey:(NSString*)key;
   -(BOOL)hasSetterForKey:(NSString*)key;
   -(void)setValuesForKeys:(id<NSFastEnumeration>)keys withDictionary:(NSDictionary*)d;
+  -(void)setValuesWithDictionary:(NSDictionary*)d;
+
+  //If a sub-object has an asDictionary method, it will be used during conversion.
+  -(NSDictionary*)asDictionaryWithKeys:(id<NSFastEnumeration>)keys;
 @end
 
 @interface NSRegularExpression(ESUtils)
-    -(BOOL)matches:(NSString*)string;
+  +(NSString*)stringByReplacingMatchesInString:(NSString*)string regex:(NSString*)regex template:(NSString*)template;
+  -(BOOL)matches:(NSString*)string;
+  -(NSString*)stringByReplacingMatchesInString:(NSString*)string options:(NSMatchingOptions)options withTemplate:(NSString *)template;
+  -(NSString*)stringByReplacingMatchesInString:(NSString*)string withTemplate:(NSString *)template;
 @end
 
 @interface NSString(ESUtils)
@@ -67,6 +71,7 @@ typedef void(^ErrorBlock)(NSError*);
     //Formats like 576B, 5.6MB
     +(NSString*)stringWithFormattedFileSize:(unsigned long long)byteLength;
     +(NSString*)stringWithClassName:(Class)c;
+    +(NSString*)stringWithInt:(int)i;
     +(NSString*)stringWithUUID;
     +(NSString*)stringWithSetterMethodNameForKey:(NSString*)key;
 

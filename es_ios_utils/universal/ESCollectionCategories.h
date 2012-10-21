@@ -8,8 +8,11 @@
 
 typedef NSObject<NSFastEnumeration> ESCollection;
 
-//TODO: How can I externilize these block type definitions?
-typedef void(^EmptyBlock)();
+#ifndef EmptyBlock
+  typedef void(^EmptyBlock)();
+  #define EmptyBlock
+#endif
+
 typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
 
 @interface NSArray(ESUtils)
@@ -26,8 +29,12 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   -(NSArray*)arrayMappedWith:(id(^)(id))mapper;
   -(NSArray*)subarrayFrom:(int)loc length:(int)len;
   -(NSArray*)subarrayTo:(int)loc;
-  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+  -(NSArray*)filteredArrayUsingPredecateFormat:(NSString*)format, ...;
   -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath contains:(id)object;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath containsIgnoreCase:(id)object;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equals:(id)object;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath equalsInt:(int)i;
+  -(NSArray*)filteredArrayWhereKeyPath:(NSString*)keyPath in:(id)object;
   -(BOOL)isIndexInRange:(NSInteger)i;
 
   // Object Accessors
@@ -52,6 +59,9 @@ typedef void(^ESNSManagedObjectBlock)(NSManagedObject*);
   @property(readonly) NSSet*          asSet;
   @property(readonly) NSMutableSet*   asMutableSet;
   @property(readonly) NSMutableArray* asMutableArray;
+  -(NSDictionary*)asDictionaryUsingKey:(NSString*)key;
+  -(NSInteger)firstIndexWhereKeyPath:(id)kp isEqual:(id)o;
+  -(int)countObjectsWhereKeyPath:(id)kp isEqual:(id)o;
 @end
 
 @interface NSDictionary(ESUtils)

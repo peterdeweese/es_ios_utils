@@ -7,7 +7,7 @@
 -(id)initWithDictionary:(NSDictionary*)d
 {
     if(self = [super init])
-        dictionary = [d retain];
+        self.dictionary = d;
     return self;
 }
 
@@ -22,9 +22,4 @@
     [((NSMutableDictionary*)dictionary) setObject:o forKey:methodName];
 }
 
--(void)dealloc
-{
-    [dictionary release], dictionary = nil;
-    [super dealloc];
-}
 @end

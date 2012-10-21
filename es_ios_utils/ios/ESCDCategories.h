@@ -59,6 +59,7 @@
   -(NSArray*)fetch:(NSFetchRequest*)request;
   -(NSArray*)fetch:(Class)type predicate:(NSPredicate*)predicate;
   -(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate arg:(id)arg;
+  -(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate args:(id)first, ...;
   -(BOOL)hasAny:(Class)type;
   -(NSArray*)all:(Class)type;
   -(NSArray*)all:(Class)type sortedByKey:(NSString*)key;

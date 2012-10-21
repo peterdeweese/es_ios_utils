@@ -55,8 +55,10 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UINavigationController(ESUtils)
   +(UINavigationController*)navigationControllerWithRootViewController:(UIViewController*)vc;
-
+  @property(readonly) UIViewController* backViewController;
   -(void)popViewController;
+  -(void)popToViewControllerOfClass:(Class)c animated:(BOOL)animated;
+  -(void)popToViewControllerOfClass:(Class)c;
 @end
 
 
@@ -101,19 +103,21 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   +(void)animate:(void(^)(void))animations;
 
   // These sizing convenience methods manipulate the frame.
-  @property(assign) float    width;
-  @property(assign) float    height;
-  @property(assign) float    x;
-  @property(assign) float    y;
-  @property(assign) CGSize   size;
-  @property(assign) CGPoint  origin;
-  @property(assign) UIColor* borderColor;
-  @property(assign) float    borderWidth;
-  @property(assign) float    cornerRadius;
+  @property(assign)   float    width;
+  @property(assign)   float    height;
+  @property(assign)   float    x;
+  @property(assign)   float    y;
+  @property(readonly) float   bottomY;
+  @property(assign)   CGSize   size;
+  @property(assign)   CGPoint  origin;
+  @property(assign)   UIColor* borderColor;
+  @property(assign)   float    borderWidth;
+  @property(assign)   float    cornerRadius;
 
   @property(nonatomic, readonly) BOOL         isInPopover;
   @property(nonatomic, readonly) UIResponder* findFirstResponder;
 
+  -(BOOL)containsSubviewWithKindOfClass:(__unsafe_unretained Class)c;
   -(void)replaceInSuperviewWith:(UIView*)v;
   -(void)centerInSuperview;
 
@@ -122,6 +126,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIViewController(ESUtils)
+  -(NSArray*)loadNibNamed:(NSString*)nib;
+
   //Passed Apple's review. Prefixed with a $ to indicate undocumented api and to prevent conflict with key.
   @property(nonatomic, readonly) UIPopoverController *$popoverController;
     
@@ -148,6 +154,7 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 @end
 
 @interface UIScrollView(ESUtils)
+  -(void)scrollToTop;
   -(void)scrollViewToVisibleForKeyboard:(UIView*)v;
   -(void)scrollViewToVisibleForKeyboard:(UIView*)v animated:(BOOL)animated;
   -(void)scrollFirstResponderToVisibleForKeyboard;
@@ -170,10 +177,12 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
 @interface UITableView(ESUtils)
   +(UITableView*)tableViewWithFrame:(CGRect)bounds style:(UITableViewStyle)style;
+  -(UITableViewCell*)getReusableCellWithIdentifier:(NSString*)identifier style:(UITableViewCellStyle)style;
   @property(readonly) BOOL isEmpty;
   @property(readonly) BOOL isNotEmpty;
   -(UITableViewCell*)cellForRow:(int)r inSection:(int)s;
   -(UITableViewCell*)cellForRow:(int)r;
+  -(UITableViewCell*)cellForSelectedRow;
   -(void)doForEachCellInSection:(int)s action:(ESUICellBlock)action;
   -(void)doForEachIndexPathInSection:(int)s action:(ESUIIndexPathBlock)action;
   -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
@@ -182,11 +191,15 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
   -(void)insertSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
   -(void)scrollToRow:(int)r inSection:(int)s atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
   -(void)scrollToRow:(int)r atScrollPosition:(UITableViewScrollPosition)p animated:(BOOL)a;
+  -(void)reloadRowAtIndexPath:(NSIndexPath*)ip withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)reloadRowAtIndexPath:(NSIndexPath*)ip;
   -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deleteRow:(int)r withRowAnimation:(UITableViewRowAnimation)a;
+  -(void)selectFirstRow:(BOOL)animated;
   -(void)deleteSection:(int)s withRowAnimation:(UITableViewRowAnimation)a;
   -(void)deselectAll;
+  -(void)update:(ESEmptyBlock)update;
 @end
 
 @interface UIImage(ESUtils)

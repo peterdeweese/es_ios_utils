@@ -67,7 +67,7 @@
         return UIGraphicsGetCurrentContext();
     #else
         return NSGraphicsContext.currentContext.graphicsPort;
-    #endif //IS_IOS
+    #endif
 }
 
 +(void)beginPathInContext:(CGContextRef)c

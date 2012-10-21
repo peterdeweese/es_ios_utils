@@ -1,6 +1,7 @@
 #if IS_IOS
 
 #import "ESBarButtonItem.h"
+#import <objc/message.h>
 
 @interface ESBarButtonItem()
 @property(nonatomic, retain) UIPopoverController* popoverController;
@@ -14,19 +15,19 @@
 +(ESBarButtonItem*)barButtonItemWithTitle:(NSString*)title action:(void(^)(void))blockAction
 
 {
-    ESBarButtonItem* result = [[[ESBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
+    ESBarButtonItem* result = [[ESBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:nil action:nil];
     result.blockAction = blockAction;
     return result;
 }
 
-+(ESBarButtonItem*)barButtonItemToEditTable:(UITableView*)t
++(ESBarButtonItem*)barButtonItemToEditTable:(UITableView*)table
 {
     __block ESBarButtonItem* item;
-    __block UITableView*     b_t = t;
+    __block UITableView* t = table;
     item = [ESBarButtonItem barButtonItemWithTitle:@"Edit" action:^{
-        [b_t setEditing:!t.editing animated:YES];
-        item.title = b_t.editing ? @"Done" : @"Edit";
-        item.style = b_t.editing ? UIBarButtonItemStyleDone : UIBarButtonItemStylePlain;
+        [t setEditing:!t.editing animated:YES];
+        item.title = t.editing ? @"Done" : @"Edit";
+        item.style = t.editing ? UIBarButtonItemStyleDone : UIBarButtonItemStylePlain;
     }];
     return item;
 }
@@ -46,24 +47,14 @@
         [self dismissPopover];
     else
     {
+        //performSelector gets an ARC warning
         if(userTarget && userAction && [userTarget respondsToSelector:userAction])
-            [userTarget performSelector:userAction];
+            objc_msgSend(userTarget, userAction);
         
         [self presentPopover];
         
         if(blockAction) blockAction();
     }
-}
-
--(void)clearActions
-{
-    self.blockAction                    = nil;
-    self.viewControllerForPopover       = nil;
-    self.popoverController.delegate     = nil;
-    self.popoverController              = nil;
-    self.userTarget                     = nil;
-    self.userAction                     = nil;
-    self.createViewControllerForPopover = nil;
 }
 
 #pragma mark - Popovers
@@ -82,11 +73,6 @@
     }
 }
 
--(BOOL)isPopoverVisible
-{
-    return self.popoverController.isPopoverVisible;
-}
-
 -(void)dismissPopover
 {
     [self.popoverController dismissPopoverAnimated:YES];
@@ -98,21 +84,6 @@
 {
     self.popoverController.delegate = nil;
     self.popoverController = nil;
-}
-
-
-#pragma mark - Cleanup
-
--(void)dealloc
-{
-    self.blockAction                    = nil;
-    self.viewControllerForPopover       = nil;
-    self.popoverController.delegate     = nil;
-    self.popoverController              = nil;
-    self.userTarget                     = nil;
-    self.userAction                     = nil;
-    self.createViewControllerForPopover = nil;
-    [super dealloc];
 }
 
 @end
