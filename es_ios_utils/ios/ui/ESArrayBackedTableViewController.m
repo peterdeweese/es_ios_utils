@@ -51,12 +51,13 @@
         [self.tableView scrollToRowAtIndexPath:[self indexPathForObject:data] atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
 }
 
--(void)convertToIndex:(ObjectReturnBlock)indexTitle
+-(void)convertToIndex:(id(^)())indexTitle
 {
     sectionTitles = NSMutableArray.new;
     sectionData   = NSMutableArray.new;
     
-    [cellData each:^(id o) {
+    for(id o in cellData)
+    {
         NSString* sectionTitle = indexTitle(o);
         if(![sectionTitle isEqualToString:sectionTitles.last])
         {
@@ -65,7 +66,7 @@
         }
         NSMutableArray* section = sectionData.last;
         [section addObject:o];
-    }];
+    }
 }
 
 -(void)convertToAlphaIndex

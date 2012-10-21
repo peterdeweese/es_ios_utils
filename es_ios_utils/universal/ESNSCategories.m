@@ -1,4 +1,5 @@
 #import "ESNSCategories.h"
+
 #import <objc/runtime.h>
 
 @implementation ESNSCategories
@@ -189,7 +190,7 @@
     {
         id value = [self valueForKey:key];
         if([value respondsToSelector:@selector(asDictionary)])
-            value = [value toDictionaryForRails];
+            [value performSelector: @selector(asDictionary)];
         [od setObject:value forKey:key];
     }
     
@@ -206,7 +207,7 @@
     NSError* error = nil;
     NSRegularExpression* re = [NSRegularExpression regularExpressionWithPattern:regex options:0 error:&error];
     if(error)
-        [NSException raise:error.domain format:error.description];
+        [NSException raise:error.domain format:@"%@", error.description];
     return [re stringByReplacingMatchesInString:string withTemplate:template];
 }
 
