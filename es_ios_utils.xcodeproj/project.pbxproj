@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3478A45013BA4DA2000270F9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3478A44F13BA4DA2000270F9 /* MapKit.framework */; };
 		3478A45213BA4DCF000270F9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3478A45113BA4DCF000270F9 /* CoreLocation.framework */; };
+		9849764E16711516001A9598 /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 9849764D16711516001A9598 /* ESNSCategories.m */; };
 		A9414B5A1347B391008C67F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B591347B391008C67F4 /* UIKit.framework */; };
 		A9414B5C1347B391008C67F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5B1347B391008C67F4 /* Foundation.framework */; };
 		A9414B5E1347B391008C67F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9414B5D1347B391008C67F4 /* CoreGraphics.framework */; };
@@ -50,7 +51,6 @@
 		D0BB0F091444A2CE00EE3D1D /* ESFlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EDC1444A2CE00EE3D1D /* ESFlashMessageView.m */; };
 		D0BB0F0A1444A2CE00EE3D1D /* ESFlowLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EDE1444A2CE00EE3D1D /* ESFlowLayoutView.m */; };
 		D0BB0F0B1444A2CE00EE3D1D /* ESMKCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EE01444A2CE00EE3D1D /* ESMKCategories.m */; };
-		D0BB0F0C1444A2CE00EE3D1D /* ESNSCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EE21444A2CE00EE3D1D /* ESNSCategories.m */; };
 		D0BB0F0D1444A2CE00EE3D1D /* ESRotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EE41444A2CE00EE3D1D /* ESRotatableViewController.m */; };
 		D0BB0F0E1444A2CE00EE3D1D /* ESTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EE61444A2CE00EE3D1D /* ESTextField.m */; };
 		D0BB0F0F1444A2CE00EE3D1D /* ESTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB0EE81444A2CE00EE3D1D /* ESTouchGestureRecognizer.m */; };
@@ -81,6 +81,8 @@
 /* Begin PBXFileReference section */
 		3478A44F13BA4DA2000270F9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3478A45113BA4DCF000270F9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9849764C16711516001A9598 /* ESNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNSCategories.h; sourceTree = "<group>"; };
+		9849764D16711516001A9598 /* ESNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNSCategories.m; sourceTree = "<group>"; };
 		A9414B551347B391008C67F4 /* es_ios_utils_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = es_ios_utils_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9414B591347B391008C67F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9414B5B1347B391008C67F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,8 +149,6 @@
 		D0BB0EDE1444A2CE00EE3D1D /* ESFlowLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFlowLayoutView.m; sourceTree = "<group>"; };
 		D0BB0EDF1444A2CE00EE3D1D /* ESMKCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMKCategories.h; sourceTree = "<group>"; };
 		D0BB0EE01444A2CE00EE3D1D /* ESMKCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMKCategories.m; sourceTree = "<group>"; };
-		D0BB0EE11444A2CE00EE3D1D /* ESNSCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNSCategories.h; sourceTree = "<group>"; };
-		D0BB0EE21444A2CE00EE3D1D /* ESNSCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNSCategories.m; sourceTree = "<group>"; };
 		D0BB0EE31444A2CE00EE3D1D /* ESRotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRotatableViewController.h; sourceTree = "<group>"; };
 		D0BB0EE41444A2CE00EE3D1D /* ESRotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRotatableViewController.m; sourceTree = "<group>"; };
 		D0BB0EE51444A2CE00EE3D1D /* ESTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTextField.h; sourceTree = "<group>"; };
@@ -361,8 +361,6 @@
 				D0BB0EDE1444A2CE00EE3D1D /* ESFlowLayoutView.m */,
 				D0BB0EDF1444A2CE00EE3D1D /* ESMKCategories.h */,
 				D0BB0EE01444A2CE00EE3D1D /* ESMKCategories.m */,
-				D0BB0EE11444A2CE00EE3D1D /* ESNSCategories.h */,
-				D0BB0EE21444A2CE00EE3D1D /* ESNSCategories.m */,
 				D0BB0EE31444A2CE00EE3D1D /* ESRotatableViewController.h */,
 				D0BB0EE41444A2CE00EE3D1D /* ESRotatableViewController.m */,
 				D0BB0EE51444A2CE00EE3D1D /* ESTextField.h */,
@@ -415,6 +413,8 @@
 				D0BB0F011444A2CE00EE3D1D /* ESCollectionCategories.m */,
 				D0BB0F021444A2CE00EE3D1D /* ESDynamicMethodResolver.h */,
 				D0BB0F031444A2CE00EE3D1D /* ESDynamicMethodResolver.m */,
+				9849764C16711516001A9598 /* ESNSCategories.h */,
+				9849764D16711516001A9598 /* ESNSCategories.m */,
 			);
 			path = universal;
 			sourceTree = "<group>";
@@ -544,7 +544,6 @@
 				D0BB0F091444A2CE00EE3D1D /* ESFlashMessageView.m in Sources */,
 				D0BB0F0A1444A2CE00EE3D1D /* ESFlowLayoutView.m in Sources */,
 				D0BB0F0B1444A2CE00EE3D1D /* ESMKCategories.m in Sources */,
-				D0BB0F0C1444A2CE00EE3D1D /* ESNSCategories.m in Sources */,
 				D0BB0F0D1444A2CE00EE3D1D /* ESRotatableViewController.m in Sources */,
 				D0BB0F0E1444A2CE00EE3D1D /* ESTextField.m in Sources */,
 				D0BB0F0F1444A2CE00EE3D1D /* ESTouchGestureRecognizer.m in Sources */,
@@ -561,6 +560,7 @@
 				D0BB0F1A1444A2CE00EE3D1D /* ESCollectionCategories.m in Sources */,
 				D0BB0F1B1444A2CE00EE3D1D /* ESDynamicMethodResolver.m in Sources */,
 				D047A095145109A800F5AD0B /* ESCDCategories.m in Sources */,
+				9849764E16711516001A9598 /* ESNSCategories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

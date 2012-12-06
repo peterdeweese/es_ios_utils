@@ -15,7 +15,7 @@
 -(void)testNSDateCategory
 {
     NSDate *earliest = [NSDate dateWithTimeIntervalSince1970:0];
-    STAssertEqualObjects(earliest.asStringWithShortFormat, @"12/31/69 7:00 PM", nil);
+    STAssertEqualObjects(earliest.asStringWithShortFormat, @"12/31/69, 7:00 PM", nil);
     
     NSDate *early = NSDate.date;
     NSDate *late = [early dateByAddingDays:10];
