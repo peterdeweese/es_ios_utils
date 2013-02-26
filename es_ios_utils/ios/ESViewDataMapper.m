@@ -151,9 +151,9 @@
         @try
         {
             
-#ifdef DEBUG
-                NSLog(@"Updating object: %@=%@", self.keyPath, value);
-#endif
+            //#ifdef DEBUG
+            //                NSLog(@"Updating object: %@=%@", self.keyPath, value);
+            //#endif
             
                 self.objectValue = value;
         }

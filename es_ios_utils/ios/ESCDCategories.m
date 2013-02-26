@@ -144,7 +144,6 @@
             [result setValue:resultValue forKey:attribute];
     }
     
-    NSLog(@"%@", self);
     //Iterate through relationships.  Uses ordered<relationshipName> when available.
     for (NSString *relationship in self.entity.relationshipsByName)
     {
@@ -158,14 +157,12 @@
             @try
             {
                 many = [self valueForKey:$format(@"ordered%@",relationship.asCapitalizedFirstLetter)];
-                NSLog(@"Using ordered %@", relationship);
             }
             @catch (NSException *e)
             {
                 if([e.name isEqualToString:@"NSUnknownKeyException"])
                 {
                     many = [self valueForKey:relationship];
-                    NSLog(@"Using unordered %@", relationship);
                 }
                 else
                     @throw e;
