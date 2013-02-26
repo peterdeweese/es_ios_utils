@@ -71,7 +71,9 @@
 
 -(void)updateObjects
 {
-    NSLog(@"Saving values from views.");
+    //#ifdef DEBUG
+    //    NSLog(@"Saving values from views.");
+    //#endif
     
     for(ESViewDataMap *m in maps)
         [m updateObject];
@@ -109,9 +111,9 @@
 {
     NSObject* value = self.objectValue;
     
-#ifdef DEBUG
-    NSLog(@"Updating view: %@=%@", self.keyPath, value);
-#endif
+    //#ifdef DEBUG
+    //    NSLog(@"Updating view: %@=%@", self.keyPath, value);
+    //#endif
     
     if([self.view isKindOfClass:UITextField.class])
         ((UITextField*)self.view).text = (NSString*)value;
