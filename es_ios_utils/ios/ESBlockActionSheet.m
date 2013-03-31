@@ -3,8 +3,8 @@
 #import "ESBlockActionSheet.h"
 
 @interface ESBlockActionSheet()
-  @property(nonatomic, retain) NSMutableArray* buttonTitles;
-  @property(nonatomic, retain) NSMutableArray* doOnPresses;
+  @property(nonatomic, strong) NSMutableArray* buttonTitles;
+  @property(nonatomic, strong) NSMutableArray* doOnPresses;
 @end
 
 @implementation ESBlockActionSheet

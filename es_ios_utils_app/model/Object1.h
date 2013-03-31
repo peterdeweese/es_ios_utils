@@ -6,8 +6,8 @@
 
 @interface Object1 : NSManagedObject { }
 
-@property (nonatomic, retain) NSString *attribute1;
-@property (nonatomic, retain) Object2  *object2;
-@property (nonatomic, retain) NSSet    *object3s;
+@property (nonatomic, strong) NSString *attribute1;
+@property (nonatomic, strong) Object2  *object2;
+@property (nonatomic, strong) NSSet    *object3s;
 
 @end

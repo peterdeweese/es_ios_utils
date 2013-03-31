@@ -4,10 +4,10 @@
 #if IS_IOS && CORE_DATA_AVAILABLE
 
 @interface ESApplicationDelegate()
-  @property(retain) NSManagedObjectModel*         privateManagedObjectModel;
-  @property(retain) NSManagedObjectContext*       privateManagedObjectContext;
-  @property(retain) NSPersistentStoreCoordinator* privatePersistentStoreCoordinator;
-  @property(retain) NSDictionary*                 privateConfig;
+  @property(strong) NSManagedObjectModel*         privateManagedObjectModel;
+  @property(strong) NSManagedObjectContext*       privateManagedObjectContext;
+  @property(strong) NSPersistentStoreCoordinator* privatePersistentStoreCoordinator;
+  @property(strong) NSDictionary*                 privateConfig;
 @end
 
 @implementation ESApplicationDelegate

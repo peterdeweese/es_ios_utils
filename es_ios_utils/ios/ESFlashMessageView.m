@@ -5,8 +5,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface ESFlashMessageView()
-    @property(nonatomic, retain) NSMutableArray* queue;
-    @property(nonatomic, retain) NSTimer*        timer;
+    @property(nonatomic, strong) NSMutableArray* queue;
+    @property(nonatomic, strong) NSTimer*        timer;
 @end
 
 

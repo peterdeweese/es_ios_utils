@@ -7,10 +7,10 @@
 //  Implemented with one section.
 @interface ESFetchedTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property(nonatomic, retain) NSFetchedResultsController* fetchedResultsController;
-@property(nonatomic, retain) NSManagedObjectContext*     managedObjectContext;
+@property(nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
+@property(nonatomic, strong) NSManagedObjectContext*     managedObjectContext;
 
-@property(nonatomic, readonly) id selectedObject;
+@property(unsafe_unretained, nonatomic, readonly) id selectedObject;
 
 -(id)objectAtIndexPath:(NSIndexPath*)i;
 -(NSIndexPath*)indexPathForObject:(id)o;
@@ -19,9 +19,9 @@
 -(void)deselectAll;
 
 //Configure these:
-@property(nonatomic, assign) Class     entityClass;
-@property(nonatomic, retain) NSString* cellReuseIdentifier;
-@property(nonatomic, retain) NSString* sectionNameKeyPath; //optional, defaults to nil
+@property(nonatomic, unsafe_unretained) Class     entityClass;
+@property(nonatomic, strong) NSString* cellReuseIdentifier;
+@property(nonatomic, strong) NSString* sectionNameKeyPath; //optional, defaults to nil
 @property(copy) void(^doOnError)(NSError*); //defaults to log and abort
 @property(nonatomic, assign) UITableViewCellStyle cellStyle; //defaults to normal
 -(void)didSelectObject:(id)o;

@@ -18,17 +18,17 @@
 +(NSManagedObjectContext*)managedObjectContext;
 +(BOOL)isProduction;
 
-@property(nonatomic, retain) IBOutlet  UIWindow                     *window;
+@property(nonatomic, strong) IBOutlet  UIWindow                     *window;
 
-@property(nonatomic, readonly)         NSURL                        *applicationDocumentsDirectory;
-@property(nonatomic, readonly)         NSString                     *applicationDirectory;
+@property(unsafe_unretained, nonatomic, readonly)         NSURL                        *applicationDocumentsDirectory;
+@property(unsafe_unretained, nonatomic, readonly)         NSString                     *applicationDirectory;
 
-@property(nonatomic, readonly)         NSString                     *persistentStoreName;
+@property(unsafe_unretained, nonatomic, readonly)         NSString                     *persistentStoreName;
 
-@property(nonatomic, retain, readonly) NSManagedObjectContext       *managedObjectContext;
-@property(nonatomic, retain, readonly) NSManagedObjectModel         *managedObjectModel;
-@property(nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property(nonatomic, retain, readonly) NSDictionary                 *config;
+@property(nonatomic, strong, readonly) NSManagedObjectContext       *managedObjectContext;
+@property(nonatomic, strong, readonly) NSManagedObjectModel         *managedObjectModel;
+@property(nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property(nonatomic, strong, readonly) NSDictionary                 *config;
 
 @property(nonatomic, readonly) BOOL isDisplayingAlert;
 

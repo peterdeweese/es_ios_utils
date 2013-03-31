@@ -4,8 +4,8 @@
 #import <objc/message.h>
 
 @interface ESBarButtonItem()
-@property(nonatomic, retain) UIPopoverController* popoverController;
-@property(nonatomic, retain) id  userTarget;
+@property(nonatomic, strong) UIPopoverController* popoverController;
+@property(nonatomic, strong) id  userTarget;
 @property(nonatomic, assign) SEL userAction;
 @end
 
@@ -22,8 +22,8 @@
 
 +(ESBarButtonItem*)barButtonItemToEditTable:(UITableView*)table
 {
-    __block ESBarButtonItem* item;
-    __block UITableView* t = table;
+    __unsafe_unretained ESBarButtonItem* item;
+    __unsafe_unretained UITableView* t = table;
     item = [ESBarButtonItem barButtonItemWithTitle:@"Edit" action:^{
         [t setEditing:!t.editing animated:YES];
         item.title = t.editing ? @"Done" : @"Edit";

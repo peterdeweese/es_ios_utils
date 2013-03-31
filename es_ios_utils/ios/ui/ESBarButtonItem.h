@@ -9,7 +9,7 @@
 
   @property(nonatomic, copy) void(^blockAction)(void);
   @property(nonatomic, copy) UIViewController*(^createViewControllerForPopover)(void);
-  @property(nonatomic, retain) IBOutlet UIViewController* viewControllerForPopover;
+  @property(nonatomic, strong) IBOutlet UIViewController* viewControllerForPopover;
 
   -(void)clearActions;
   -(BOOL)isPopoverVisible;

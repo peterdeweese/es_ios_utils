@@ -4,7 +4,7 @@
 
 @interface Object3 : NSManagedObject { }
 
-@property (nonatomic, retain) NSString *attribute3;
-@property (nonatomic, retain) Object1  *parent;
+@property (nonatomic, strong) NSString *attribute3;
+@property (nonatomic, strong) Object1  *parent;
 
 @end

@@ -9,11 +9,11 @@
     NSString *keyPath;
 }
 
-@property(nonatomic, retain) UIView*          view;
-@property(nonatomic, retain) NSManagedObject* object;
-@property(nonatomic, retain) NSString*        keyPath;
+@property(nonatomic, strong) UIView*          view;
+@property(nonatomic, strong) NSManagedObject* object;
+@property(nonatomic, strong) NSString*        keyPath;
 
-@property(nonatomic, assign) id        objectValue;
+@property(nonatomic, unsafe_unretained) id        objectValue;
 -(void)updateView;
 -(void)updateObject;
 
@@ -21,8 +21,8 @@
 
 
 @interface ESViewDataMapper()
-    @property(nonatomic, retain) NSMutableArray      *maps;
-    @property(nonatomic, retain) NSMutableDictionary *mapByView;
+    @property(nonatomic, strong) NSMutableArray      *maps;
+    @property(nonatomic, strong) NSMutableDictionary *mapByView;
 @end
 
 

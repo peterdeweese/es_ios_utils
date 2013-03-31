@@ -7,11 +7,11 @@
 // TODO: a downside of this implementation is that it must be retained or the block call will return an error. Perhaps we should extend ActionSheet instead.
 @interface ESBlockActionSheet : NSObject<UIActionSheetDelegate>
 
-@property(nonatomic, retain) UIActionSheet*  sheet;
+@property(nonatomic, strong) UIActionSheet*  sheet;
 
-@property(nonatomic, retain)           NSString      *title;
-@property(nonatomic, retain)           NSString      *cancelTitle;
-@property(nonatomic, retain)           NSString      *destroyTitle;
+@property(nonatomic, strong)           NSString      *title;
+@property(nonatomic, strong)           NSString      *cancelTitle;
+@property(nonatomic, strong)           NSString      *destroyTitle;
 
 @property(nonatomic, copy) void(^doOnCancel)(void);
 @property(nonatomic, copy) void(^doOnClose)(void);

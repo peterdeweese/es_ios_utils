@@ -5,7 +5,7 @@
     ESFlowLayoutView     *flowLayout;
 }
 
-@property(nonatomic, retain) IBOutlet ESVerticalLayoutView *verticalLayout;
-@property(nonatomic, retain) IBOutlet ESFlowLayoutView *flowLayout;
+@property(nonatomic, strong) IBOutlet ESVerticalLayoutView *verticalLayout;
+@property(nonatomic, strong) IBOutlet ESFlowLayoutView *flowLayout;
 
 @end
