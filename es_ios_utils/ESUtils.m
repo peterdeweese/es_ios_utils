@@ -20,7 +20,7 @@
 	memcpy( buffer, attrs, len );
 	buffer[len] = '\0';
     
-    return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+    return @(buffer);
 }
 
 +(BOOL)isPropertyADouble:(NSString*)p inClass:(Class)c

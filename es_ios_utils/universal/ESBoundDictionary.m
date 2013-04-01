@@ -13,13 +13,13 @@
 
 -(id)dynamicGet:(NSString*)methodName
 {
-    return [dictionary objectForKey:methodName];
+    return dictionary[methodName];
 }
 
 -(void)dynamicSet:(NSString*)methodName object:(id)o
 {
     if([dictionary isKindOfClass:NSMutableDictionary.class])
-    [((NSMutableDictionary*)dictionary) setObject:o forKey:methodName];
+    ((NSMutableDictionary*)dictionary)[methodName] = o;
 }
 
 @end

@@ -147,7 +147,7 @@
 
 -(UIViewController*)backViewController
 {
-    return self.viewControllers.count > 1 ? [self.viewControllers objectAtIndex:self.viewControllers.count - 2] : nil;
+    return self.viewControllers.count > 1 ? (self.viewControllers)[self.viewControllers.count - 2] : nil;
 }
 
 -(void)popViewController { [self popViewControllerAnimated:YES]; }
@@ -519,7 +519,7 @@
 
 -(void)stopObservingKeyboardEvents
 {
-    for(NSString* n in $array(UIKeyboardWillShowNotification, UIKeyboardDidShowNotification, UIKeyboardWillHideNotification, UIKeyboardDidHideNotification))
+    for(NSString* n in @[UIKeyboardWillShowNotification, UIKeyboardDidShowNotification, UIKeyboardWillHideNotification, UIKeyboardDidHideNotification])
         [[NSNotificationCenter defaultCenter] removeObserver:self name:n object:nil];
 }
 
@@ -670,7 +670,7 @@
 
 -(void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
-    [self insertRowsAtIndexPaths:$array(indexPath) withRowAnimation:animation];
+    [self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
 }
 
 -(void)insertRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a
@@ -700,7 +700,7 @@
 
 -(void)reloadRowAtIndexPath:(NSIndexPath*)ip withRowAnimation:(UITableViewRowAnimation)a
 {
-    [self reloadRowsAtIndexPaths:$array(ip) withRowAnimation:a];
+    [self reloadRowsAtIndexPaths:@[ip] withRowAnimation:a];
 }
 
 -(void)reloadRowAtIndexPath:(NSIndexPath*)ip
@@ -710,7 +710,7 @@
 
 -(void)deleteRowAtIndexPath:(NSIndexPath*)i withRowAnimation:(UITableViewRowAnimation)a
 {
-    [self deleteRowsAtIndexPaths:$array(i) withRowAnimation:a];
+    [self deleteRowsAtIndexPaths:@[i] withRowAnimation:a];
 }
 
 -(void)deleteRow:(int)r inSection:(int)s withRowAnimation:(UITableViewRowAnimation)a

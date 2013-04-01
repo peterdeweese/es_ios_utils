@@ -94,13 +94,13 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
 
 -(int)tableView:(UITableView*)t numberOfRowsInSection:(int)s
 {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:s];
+    id<NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[s];
     return sectionInfo.numberOfObjects;
 }
 
 -(NSString*)tableView:(UITableView *)t titleForHeaderInSection:(NSInteger)s
 {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:s];
+    id<NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[s];
     return sectionInfo.name;
 }
 

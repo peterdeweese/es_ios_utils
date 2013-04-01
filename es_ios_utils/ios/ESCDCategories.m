@@ -10,7 +10,7 @@
 
 -(NSArray*)detailedErrors
 {
-    return [self.userInfo objectForKey:NSDetailedErrorsKey];
+    return (self.userInfo)[NSDetailedErrorsKey];
 }
 
 -(void)logDetailedErrors
@@ -102,8 +102,8 @@
     {
         @try
         {
-            NSRelationshipDescription *rd = [self.entity.relationshipsByName objectForKey:key];
-            NSString *value = [keyedValues objectForKey:key];
+            NSRelationshipDescription *rd = (self.entity.relationshipsByName)[key];
+            NSString *value = keyedValues[key];
             if(value && ![value isKindOfClass:NSNull.class] && !rd)
                 [self setValue:value forKey:key];
             else
@@ -148,7 +148,7 @@
     //Iterate through relationships.  Uses ordered<relationshipName> when available.
     for (NSString *relationship in self.entity.relationshipsByName)
     {
-        NSRelationshipDescription *rd = [self.entity.relationshipsByName objectForKey:relationship];
+        NSRelationshipDescription *rd = (self.entity.relationshipsByName)[relationship];
         
         NSString *target = relationshipFormat ? $format(relationshipFormat, relationship) : relationship;
         

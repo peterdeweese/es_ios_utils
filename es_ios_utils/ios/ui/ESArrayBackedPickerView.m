@@ -28,7 +28,7 @@
 
 -(NSString*)titleForRow:(int)r
 {
-    id o = [array objectAtIndex:r];
+    id o = array[r];
     return key ? [o valueForKeyPath:key] : [o description];
 }
 
@@ -63,7 +63,7 @@
 
 - (void)pickerView:(UIPickerView*)pv didSelectRow:(NSInteger)r inComponent:(NSInteger)c
 {
-    id result = valueKey ? [[array objectAtIndex:r] valueForKey:valueKey] : [self titleForRow:r];
+    id result = valueKey ? [array[r] valueForKey:valueKey] : [self titleForRow:r];
     if(doOnSelect)
         doOnSelect(result);
 }

@@ -137,13 +137,13 @@
 
 -(id)at:(int)index
 {
-    return [self objectAtIndex:index];
+    return self[index];
 }
 
 -(id)first
 {
     if(self.count > 0)
-        return [self objectAtIndex:0];
+        return self[0];
     return nil;
 }
 
@@ -218,7 +218,7 @@
 {
     NSMutableDictionary* result = [NSMutableDictionary dictionaryWithCapacity:self.count];
     for(id o in self)
-        [result setObject:o forKey:[o valueForKey:key]];
+        result[[o valueForKey:key]] = o;
     return result;
 }
 
@@ -303,7 +303,7 @@
 
     //copy subarrays and subdictionaries
     for(NSString *key in result.allKeys)
-        [result setObject:[self deepCopyObject:[result objectForKey:key] withKeyFilter:keyFilter] forKey:key];
+        result[key] = [self deepCopyObject:result[key] withKeyFilter:keyFilter];
     
     return result;
 }
@@ -322,13 +322,13 @@
 
 -(BOOL)containsValueForKey:(NSString*)key
 {
-    id o = [self objectForKey:key];
+    id o = self[key];
     return true && o && ![o isKindOfClass:NSNull.class];
 }
 
 -(id)objectForKeyObject:(id)key;
 {
-    return [self objectForKey:[NSValue valueWithNonretainedObject:key]];
+    return self[[NSValue valueWithNonretainedObject:key]];
 }
 
 -(NSDictionary*)asCamelCaseKeysFromUnderscore
@@ -356,7 +356,7 @@
     if(self.isEmpty)
         return nil;
     
-    id o = [self objectAtIndex:0];
+    id o = self[0];
     [self removeObjectAtIndex:0];
     return o;
 }
@@ -373,8 +373,7 @@
 
 -(void)replaceObject:(id)o withObject:(id)newO
 {
-    [self replaceObjectAtIndex:[self indexOfObject:o]
-                    withObject:newO];
+    self[[self indexOfObject:o]] = newO;
 }
 
 @end
@@ -384,7 +383,7 @@
 
 -(void)setObject:(id)value forKeyObject:(id)key
 {
-    [self setObject:value forKey:[NSValue valueWithNonretainedObject:key]];
+    self[[NSValue valueWithNonretainedObject:key]] = value;
 }
 
 -(void)setObjects:(ESCollection*)objects keyPathForKeys:(NSString*)keyPath
@@ -393,7 +392,7 @@
     {
         id key = [o valueForKeyPath:keyPath];
         if(key)
-            [self setObject:o forKey:key];
+            self[key] = o;
     }
 }
 
@@ -403,7 +402,7 @@
     {
         id key = [o valueForKeyPath:keyPath];
         if(key)
-            [self setObject:[o valueForKeyPath:valuePath] forKey:key];
+            self[key] = [o valueForKeyPath:valuePath];
     }
 }
 
@@ -413,15 +412,15 @@
         return [self addEntriesFromDictionary:d];
     
     for(NSString *key in d.allKeys)
-        [self setObject:[d objectForKey:key] forKey:keyFilter(key)];
+        self[keyFilter(key)] = d[key];
 }
 
 -(void)renameKey:(NSString*)key to:(NSString*)to
 {
-    id value = [self objectForKey:key];
+    id value = self[key];
     if(value)
     {
-        [self setObject:value forKey:to];
+        self[to] = value;
         [self removeObjectForKey:key];
     }
 }
@@ -470,7 +469,7 @@
 -(NSArray*)sortedArrayByKey:(NSString*)key ascending:(BOOL)ascending
 {
     NSSortDescriptor *d = [[NSSortDescriptor alloc] initWithKey:key ascending:ascending];
-    NSArray *result = [self sortedArrayUsingDescriptors:$array(d)];
+    NSArray *result = [self sortedArrayUsingDescriptors:@[d]];
     return result;
 }
 

@@ -170,7 +170,7 @@
 {
     for(id k in keys)
         if([self hasSetterForKey:k])
-            [self setValue:[d objectForKey:k] forKey:k];
+            [self setValue:d[k] forKey:k];
         else
             NSLog(@"No setter found in %@ for %@.", self.className, k);
 }
@@ -184,14 +184,14 @@
 {
     NSMutableDictionary* d = NSMutableDictionary.new;
     NSMutableDictionary* od = NSMutableDictionary.new;
-    [d setObject:od forKey:self.className];
+    d[self.className] = od;
     
     for(NSString* key in keys)
     {
         id value = [self valueForKey:key];
         if([value respondsToSelector:@selector(asDictionary)])
             [value performSelector: @selector(asDictionary)];
-        [od setObject:value forKey:key];
+        od[key] = value;
     }
     
     return d;
@@ -248,24 +248,24 @@ float logx(float value, float base)
     if(byteLength == 0)
         return @"0 B";
     //REFACTOR: consider storing for reuse
-    NSArray *labels = $array(@"B", @"KB", @"MB", @"GB", @"TB");
+    NSArray *labels = @[@"B", @"KB", @"MB", @"GB", @"TB"];
     
     int power = MIN(labels.count-1, floor(logx(byteLength, 1024)));
     float size = (float)byteLength/powf(1024, power);
     
     return $format(@"%@ %@",
                    power?$format(@"%1.1f",size):$format(@"%lld",byteLength),
-                   [labels objectAtIndex:power]);
+                   labels[power]);
 }
 
 +(NSString*)stringWithClassName:(Class)c
 {
-    return [NSString stringWithUTF8String:class_getName(c)];
+    return @(class_getName(c));
 }
 
 +(NSString*)stringWithInt:(int)i
 {
-    return [NSNumber numberWithInt:i].stringValue;
+    return @(i).stringValue;
 }
 
 +(NSString*)stringWithUUID
