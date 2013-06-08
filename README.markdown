@@ -1,3 +1,5 @@
+Please look to https://github.com/ConventionalC/ConventionalC, where many of these functionalities are being migrated. It provides more modern objective-c, rubyish categories, static library compilation, CocoaPod specs, and cleaner platform specific headers and sharing.
+
 Eye Street Research iOS Utils
 =============================
 Peter DeWeese, Eye Street Research, LLC. http://research.eyestreet.com
