@@ -286,7 +286,10 @@
 -(NSArray*)fetch:(Class)type predicateWithFormat:(NSString*)predicate args:(id)first, ...
 {
     va_list args;
-    return [self fetch:type predicate:predicate ? [NSPredicate predicateWithFormat:predicate, args] : nil];   
+    va_start(args, first);
+    NSArray* result = [self fetch:type predicate:predicate ? [NSPredicate predicateWithFormat:predicate, args] : nil];
+    va_end(args);
+    return result;
 }
 
 -(BOOL)hasAny:(Class)type

@@ -11,8 +11,6 @@
   @property(nonatomic, copy) UIViewController*(^createViewControllerForPopover)(void);
   @property(nonatomic, strong) IBOutlet UIViewController* viewControllerForPopover;
 
-  -(void)clearActions;
-  -(BOOL)isPopoverVisible;
   -(IBAction)presentPopover;
   -(IBAction)dismissPopover;
 @end
