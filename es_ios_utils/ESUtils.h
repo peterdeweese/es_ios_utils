@@ -1,5 +1,4 @@
 #import "ESCollectionCategories.h"
-#import "ESCGMethods.h"
 #import "TargetConditionals.h"
 
 #if USE_APPLICATION_UNIT_TEST
@@ -42,6 +41,8 @@ typedef void(^ErrorBlock)(NSError*);
 #define $bself __block typeof(self) bself = self
 
 #define $must_override [NSException raise:NSInternalInconsistencyException format:@"You must override %@", NSStringFromSelector(_cmd)];
+
+#import "ESCGMethods.h"
 
 @interface ES : NSObject
   +(NSString*)typeNameStringForProperty:(NSString*)propertyName inClass:(Class)c;
