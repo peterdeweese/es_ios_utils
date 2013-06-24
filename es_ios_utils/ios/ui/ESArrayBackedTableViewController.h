@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ESArrayBackedTableViewController : UITableViewController
-  @property(retain) NSArray*             cellData;
-  @property(retain) NSString*            textKey;
-  @property(retain) NSString*            detailKey;
+  @property(strong) NSArray*             cellData;
+  @property(strong) NSString*            textKey;
+  @property(strong) NSString*            detailKey;
   @property(assign) UITableViewCellStyle cellStyle;
 
   @property(readonly) BOOL usesSections;

@@ -1,7 +1,7 @@
 #import "ESTableView.h"
 
 @interface ESTableView()
-  @property(retain) NSString* reuseIdentifier;
+  @property(strong) NSString* reuseIdentifier;
 @end
 
 @implementation ESTableView

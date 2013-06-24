@@ -1,9 +1,9 @@
 #import "ESArrayBackedTableViewController.h"
 
 @interface ESArrayBackedTableViewController()
-  @property(retain) NSMutableArray* sectionTitles;
-  @property(retain) NSMutableArray* sectionData;
-  @property(retain) NSArray* originalCellData;
+  @property(strong) NSMutableArray* sectionTitles;
+  @property(strong) NSMutableArray* sectionData;
+  @property(strong) NSArray* originalCellData;
 @end
 
 @implementation ESArrayBackedTableViewController
