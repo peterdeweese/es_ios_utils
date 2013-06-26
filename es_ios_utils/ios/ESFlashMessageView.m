@@ -47,7 +47,7 @@
 {
     @synchronized(queue)
     {
-        __block NSString *message = queue.dequeue;
+        __weak NSString *message = queue.dequeue;
         
         if(message)
         {
@@ -58,7 +58,7 @@
 
             if(self.alpha == 0.0)
                 self.text = message;
-            __block typeof(self) bself = self;
+            __weak typeof(self) bself = self;
             [UIView animateWithDuration:fadeDuration
                              animations:^{
                                  bself.text = message;
@@ -67,7 +67,7 @@
         }
         else if(self.alpha >= maxAlpha)
         {
-            __block typeof(self) bself = self;
+            __weak typeof(self) bself = self;
             [UIView animateWithDuration:fadeDuration
                              animations:^{
                                  bself.alpha = 0.0;

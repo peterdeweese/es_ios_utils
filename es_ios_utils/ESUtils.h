@@ -38,7 +38,7 @@ typedef void(^ErrorBlock)(NSError*);
 #define $set(objs...) [NSSet setWithObjects: objs, nil] 
 #define $range(loc, len) NSMakeRange(loc, len)
 #define $format(format, objs...) [NSString stringWithFormat: format, objs]
-#define $bself __block typeof(self) bself = self
+#define $bself __weak typeof(self) bself = self
 
 #define $must_override [NSException raise:NSInternalInconsistencyException format:@"You must override %@", NSStringFromSelector(_cmd)];
 
