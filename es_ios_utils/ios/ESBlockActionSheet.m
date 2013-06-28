@@ -64,7 +64,7 @@
     if(self.sheet)
         return;
     [self.buttonTitles addObject:buttonTitle];
-    [self.doOnPresses addObject:doOnPress?(id)[doOnPress copy]:NSNull.null];
+    [self.doOnPresses addObject:doOnPress?(id)[doOnPress copy]:nil];
 }
 
 #pragma mark Control
@@ -82,7 +82,7 @@
         {
             [self.sheet addButtonWithTitle:destroyTitle];
             self.sheet.destructiveButtonIndex = sheet.numberOfButtons-1;
-            [self.doOnPresses insertObject:self.doOnDestroy?(id)self.doOnDestroy:NSNull.null atIndex:0];
+            [self.doOnPresses insertObject:self.doOnDestroy?(id)self.doOnDestroy:nil atIndex:0];
         }
         
         if(self.buttonTitles)
@@ -93,7 +93,7 @@
         {
             [self.sheet addButtonWithTitle:self.cancelTitle];
             self.sheet.cancelButtonIndex = sheet.numberOfButtons-1;
-            [self.doOnPresses addObject:self.doOnCancel?(id)self.doOnCancel:NSNull.null];
+            [self.doOnPresses addObject:self.doOnCancel?(id)self.doOnCancel:nil];
         }
     }
 }
@@ -134,7 +134,7 @@
     {
         $bself;
         void(^actionBlock)(void) = (bself.doOnPresses)[buttonIndex];
-        if(actionBlock && (id)actionBlock != NSNull.null)
+        if(actionBlock && (id)actionBlock != nil)
             actionBlock();
     }
     if(self.doOnClose)
