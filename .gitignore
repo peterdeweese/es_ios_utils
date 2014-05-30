@@ -11,6 +11,7 @@ c OS X Finder and whatnot
 *.perspectivev3
 *.pbxuser
 xcuserdata
+xcshareddata
 
 # rails stuff
 demo/rails-app/public/system/attachments/**

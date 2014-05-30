@@ -132,7 +132,7 @@
 {
     if([self.doOnPresses isIndexInRange:buttonIndex])//filter out cancel
     {
-        $bself;
+        __block ESBlockActionSheet *bself = self;
         void(^actionBlock)(void) = (bself.doOnPresses)[buttonIndex];
         if(actionBlock && (id)actionBlock != NSNull.null)
             actionBlock();

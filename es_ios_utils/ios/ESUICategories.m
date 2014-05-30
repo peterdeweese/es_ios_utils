@@ -402,7 +402,7 @@
     if(oldFrame.size.height != self.height)
     {
         __block float diff = self.height - oldFrame.size.height;
-        __weak typeof(self) bself = self;
+        __block UIView *bself = self;
         
         void(^resizeBlock)(void) = ^{
             if([bself.superview respondsToSelector:@selector(shouldResizeDynamically)])
