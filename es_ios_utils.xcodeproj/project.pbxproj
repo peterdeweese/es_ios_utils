@@ -39,6 +39,7 @@
 		D047A0921451074500F5AD0B /* ESCDCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D047A08F145106C600F5AD0B /* ESCDCategoriesTest.m */; };
 		D047A095145109A800F5AD0B /* ESCDCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = D047A094145109A800F5AD0B /* ESCDCategories.m */; };
 		D073F74513B50E7E004D9DD7 /* ESCollectionCategoriesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */; };
+		D07BDBC319393E6A00EFC0A4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07BDBC219393E6A00EFC0A4 /* Default-568h@2x.png */; };
 		D0B2E5CA13A029AA00F32DB5 /* Object3.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5C913A029AA00F32DB5 /* Object3.m */; };
 		D0B2E5CD13A029AA00F32DB5 /* Object1.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CC13A029AA00F32DB5 /* Object1.m */; };
 		D0B2E5D013A029AA00F32DB5 /* Object2.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2E5CF13A029AA00F32DB5 /* Object2.m */; };
@@ -125,6 +126,7 @@
 		D047A094145109A800F5AD0B /* ESCDCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCDCategories.m; sourceTree = "<group>"; };
 		D073F74313B50E7D004D9DD7 /* ESCollectionCategoriesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCollectionCategoriesTest.h; path = es_ios_utilsTests/ESCollectionCategoriesTest.h; sourceTree = SOURCE_ROOT; };
 		D073F74413B50E7D004D9DD7 /* ESCollectionCategoriesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCollectionCategoriesTest.m; path = es_ios_utilsTests/ESCollectionCategoriesTest.m; sourceTree = SOURCE_ROOT; };
+		D07BDBC219393E6A00EFC0A4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D0B2E5C813A029AA00F32DB5 /* Object3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object3.h; path = model/Object3.h; sourceTree = "<group>"; };
 		D0B2E5C913A029AA00F32DB5 /* Object3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Object3.m; path = model/Object3.m; sourceTree = "<group>"; };
 		D0B2E5CB13A029AA00F32DB5 /* Object1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object1.h; path = model/Object1.h; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		A9414B4A1347B391008C67F4 = {
 			isa = PBXGroup;
 			children = (
+				D07BDBC219393E6A00EFC0A4 /* Default-568h@2x.png */,
 				D0BB0ECF1444A2CE00EE3D1D /* es_ios_utils */,
 				A9414B5F1347B391008C67F4 /* es_ios_utils_app */,
 				A9414B7F1347B391008C67F4 /* es_ios_utils_appTests */,
@@ -494,6 +497,7 @@
 				A9414B641347B391008C67F4 /* InfoPlist.strings in Resources */,
 				A9414B6D1347B391008C67F4 /* MainWindow.xib in Resources */,
 				A99823081399618600855F2B /* development.plist in Resources */,
+				D07BDBC319393E6A00EFC0A4 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
