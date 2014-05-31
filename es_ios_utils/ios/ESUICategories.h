@@ -123,6 +123,8 @@ typedef void(^ESUIIndexPathBlock)(NSIndexPath*);
 
   -(void)resizeSuperviewAndSetHeight:(float)dynamicHeight;
   -(void)resizeSuperviewAndSetHeight:(float)dynamicHeight animated:(BOOL)animate;
+
+  -(BOOL)shouldResizeDynamically;
 @end
 
 @interface UIViewController(ESUtils)

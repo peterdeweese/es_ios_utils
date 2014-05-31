@@ -92,7 +92,7 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
     return self.fetchedResultsController.sections.count;
 }
 
--(int)tableView:(UITableView*)t numberOfRowsInSection:(int)s
+-(NSInteger)tableView:(UITableView*)t numberOfRowsInSection:(NSInteger)s
 {
     id<NSFetchedResultsSectionInfo> sectionInfo = (self.fetchedResultsController.sections)[s];
     return sectionInfo.numberOfObjects;

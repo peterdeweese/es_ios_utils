@@ -16,7 +16,7 @@
     return sectionData.isNotEmpty && [sectionData.first isKindOfClass:NSArray.class];
 }
 
--(NSMutableArray*)sectionDataFor:(int)s
+-(NSMutableArray*)sectionDataFor:(NSInteger)s
 {
     return [sectionData objectAtIndex:s];
 }
@@ -76,7 +76,7 @@
 
 -(void)configureCellForData:(id)o
 {
-    int i = [self.cellData indexOfObject:o];
+    NSInteger i = [self.cellData indexOfObject:o];
     UITableViewCell* c = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
     [self configureCell:c withData:o];
 }
@@ -92,17 +92,17 @@
 
 #pragma mark - Table view data source
 
--(int)numberOfSectionsInTableView:(UITableView*)tv
+-(NSInteger)numberOfSectionsInTableView:(UITableView*)tv
 {
     return self.usesSections ? sectionData.count : 1;
 }
 
--(NSString*)tableView:(UITableView*)tv titleForHeaderInSection:(int)s
+-(NSString*)tableView:(UITableView*)tv titleForHeaderInSection:(NSInteger)s
 {
     return self.usesSections ? [sectionTitles objectAtIndex:s] : nil;
 }
 
--(int)tableView:(UITableView*)tv numberOfRowsInSection:(int)s
+-(NSInteger)tableView:(UITableView*)tv numberOfRowsInSection:(NSInteger)s
 {
     return self.usesSections ? [self sectionDataFor:s].count : cellData.count;
 }
@@ -131,7 +131,7 @@
     return indexTitles;
 }
 
--(int)tableView:(UITableView*)tv sectionForSectionIndexTitle:(NSString*)t atIndex:(int)i
+-(NSInteger)tableView:(UITableView*)tv sectionForSectionIndexTitle:(NSString*)t atIndex:(NSInteger)i
 {
     if(self.isUsingSearchAndIndex)
     {

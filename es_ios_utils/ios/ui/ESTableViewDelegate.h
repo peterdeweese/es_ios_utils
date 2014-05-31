@@ -4,12 +4,12 @@
   #pragma mark - Data
     @required
       -(id)objectFor:(NSIndexPath*)ip;
-      -(int)numberOfRowsInSection:(int)s;
+      -(NSInteger)numberOfRowsInSection:(NSInteger)s;
     @optional
       // Either sectionTitles or numberOfSections and titleForSection must be implemented
       -(NSArray*)sectionTitles;
       -(int)numberOfSections;
-      -(NSString*)titleForSection:(int)s;
+      -(NSString*)titleForSection:(NSInteger)s;
 
   #pragma mark - View
     @required

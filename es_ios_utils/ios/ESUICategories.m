@@ -445,6 +445,7 @@
     [self resizeSuperviewAndSetHeight:dynamicHeight animated:NO];
 }
 
+-(BOOL)shouldResizeDynamically { return NO; }
 
 @end
 

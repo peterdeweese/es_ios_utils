@@ -26,7 +26,7 @@
     return self;
 }
 
--(NSString*)titleForRow:(int)r
+-(NSString*)titleForRow:(NSUInteger)r
 {
     id o = array[r];
     return key ? [o valueForKeyPath:key] : [o description];
@@ -35,7 +35,7 @@
 -(void)setSelected:(id)value
 {
     NSArray* values = key || valueKey ? [array arrayOfChildrenWithKeyPath:valueKey?:key] : array;
-    int row = [values indexOfObject:value];
+    NSUInteger row = [values indexOfObject:value];
     if(row > array.count)
     {
         row = 0;
