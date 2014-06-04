@@ -28,7 +28,6 @@
 id getIMP(ESDynamicMethodResolver *self, SEL cmd);
 id getIMP(ESDynamicMethodResolver *self, SEL cmd)
 {
-    #warning this seems to leak in ARC
     return [self dynamicGet:NSStringFromSelector(cmd)];
 }
 
