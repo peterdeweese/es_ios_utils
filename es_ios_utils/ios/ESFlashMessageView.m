@@ -24,7 +24,7 @@
         self.maxAlpha = 0.8;
         
         self.cornerRadius = 15;
-        self.textAlignment = UITextAlignmentCenter;
+        self.textAlignment = NSTextAlignmentCenter;
         self.alpha = 0.0;
         self.backgroundColor = UIColor.darkGrayColor;
         self.textColor = UIColor.whiteColor;
