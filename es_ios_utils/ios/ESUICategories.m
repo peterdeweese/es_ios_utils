@@ -501,10 +501,10 @@
 
 -(void)forcePopoverSize
 {
-    CGSize currentSetSizeForPopover = self.contentSizeForViewInPopover;
+    CGSize currentSetSizeForPopover = self.preferredContentSize;
     CGSize fakeMomentarySize = CGSizeMake(currentSetSizeForPopover.width - 1.0f, currentSetSizeForPopover.height - 1.0f);
-    self.contentSizeForViewInPopover = fakeMomentarySize;
-    self.contentSizeForViewInPopover = currentSetSizeForPopover;
+    self.preferredContentSize = fakeMomentarySize;
+    self.preferredContentSize = currentSetSizeForPopover;
 }
 
 -(UIWindow*)window { return self.view.window; }
