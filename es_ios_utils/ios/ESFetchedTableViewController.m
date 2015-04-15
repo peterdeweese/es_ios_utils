@@ -189,6 +189,9 @@ static NSString *kESFetchedTableViewControllerCell = @"ESFetchedTableViewControl
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+        default:
+            //TODO: implement update and move
+            break;
     }
 }
 
